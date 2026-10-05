@@ -1,0 +1,90 @@
+# 0001-chatbot-panel.patch
+#
+# What it does: adds the System-1 assistant panel to the movahedi.ca data
+# mapping guide page (Tier B tree, demo/index.html EN + demo/fr.html FR).
+# It adds the chatbot/executor stylesheet links and the net-guard.js script
+# (which must load first, in <head>) plus a new "assistant" block after the
+# blank-canvas builder: the draft disclaimer copy (web/legal/DISCLAIMER-DRAFT.md
+# section 2, marked DRAFT PENDING COUNSEL REVIEW, EN/FR per page), a live
+# "requests sent" counter span beside the privacy paragraph, and the
+# #s1-chatbot / #s1-assistant mount points. The assistant's own UI strings
+# come from the bundled i18n.js/chatbot.js; no window.T changes are needed.
+# Rollback: reverse-apply with `patch -p1 -R` from the Tier B root; the page
+# returns to the builder-only state and the s1/ directory becomes unreferenced.
+#
+--- a/demo/index.html
++++ b/demo/index.html
+@@ -6,6 +6,12 @@
+ <title>Your data map is a retention schedule with pictures - movahedi.ca prototype</title>
+ <meta name="description" content="An interactive field guide to data inventory, data mapping and retention: a retention timeline simulator, a worked Café Nord walkthrough, and a blank-canvas builder.">
+ <link rel="stylesheet" href="assets/css/ledger.css">
++<!-- S1 assistant styles. Deploy: copy web/site-integration/bundle/ to s1/
++     next to this page. net-guard.js must load FIRST (in <head>), before any
++     script that could issue a request, so its instrumentation is in place. -->
++<link rel="stylesheet" href="s1/chatbot/css/chatbot.css">
++<link rel="stylesheet" href="s1/executor/css/executor.css">
++<script src="s1/executor/js/net-guard.js"></script>
+ </head>
+ <body>
+ <div class="page">
+@@ -118,6 +124,22 @@
+     </div>
+   </div>
+   <div id="builder-print-sheet" aria-hidden="true"></div>
++
++  <div class="s1-block" id="s1-sec">
++    <div class="sim-head">Let the assistant draft your map</div>
++    <!-- DRAFT PENDING COUNSEL REVIEW: the copy in .s1-disclaimer below is
++         web/legal/DISCLAIMER-DRAFT.md section 2 (AI-data-map repo), not
++         signed-off legal copy. Counsel must complete the sign-off block
++         before this page launches (DEPLOY-NOTE.md, counsel gate). -->
++    <div class="s1-disclaimer">
++      <p><strong>Draft for review, not legal advice.</strong></p>
++      <p>This assistant builds a draft data inventory to support your Law 25 governance and retention-schedule obligations. Law 25 does not require a "data inventory" by name; this tool gives you a starting inventory that your lawyer reviews and your team completes.</p>
++      <p>Every output is a draft. Retention periods are shown as ranges with the statute cited and an as-of date. Entries the tool cannot verify are flagged "verify" instead of given a number. Nothing the tool produces is lawyer-ready or a statement that you are compliant.</p>
++      <p>Privacy: this page loads no third-party scripts. The tool watches its own network activity and shows the count on screen. The "<strong><span id="s1-page-netcount">0</span> requests sent</strong>" counter next to this notice reflects the pre-launch audit of this page build. A full audit procedure is documented in the pre-launch DPIA. The strongest form of this guarantee is the offline bundle: download it, disconnect, and the full flow still works with the wifi off. Only the offline bundle carries the unqualified claim that nothing leaves your machine.</p>
++    </div>
++    <div id="s1-chatbot"></div>
++    <div id="s1-assistant"></div>
++  </div>
+ 
+   <div class="sec-head"><div class="secnum">06</div><h2 class="sec-title">The part nobody wants to fund</h2></div>
+   <p>Here is the thread I am leaving open on purpose. Everything above solves the drawing. Nothing above solves the rotting. Six months after the workshop, the spreadsheet has a new column, marketing bought a new tool, and nobody updated the map. I have never seen a company fix this with software. The ones that come close do something unglamorous: they put one human on a recurring calendar invite and give that person the authority to be annoying about it. Everything else is decoration.</p>
+--- a/demo/fr.html
++++ b/demo/fr.html
+@@ -6,6 +6,12 @@
+ <title>Votre cartographie des données est un calendrier de conservation avec des images - prototype movahedi.ca</title>
+ <meta name="description" content="Guide interactif sur l'inventaire, la cartographie et la conservation des données : simulateur de cycle de vie, parcours guidé du Café Nord et canevas vierge.">
+ <link rel="stylesheet" href="assets/css/ledger.css">
++<!-- S1 assistant styles. Deploy: copy web/site-integration/bundle/ to s1/
++     next to this page. net-guard.js must load FIRST (in <head>), before any
++     script that could issue a request, so its instrumentation is in place. -->
++<link rel="stylesheet" href="s1/chatbot/css/chatbot.css">
++<link rel="stylesheet" href="s1/executor/css/executor.css">
++<script src="s1/executor/js/net-guard.js"></script>
+ </head>
+ <body>
+ <div class="page">
+@@ -118,6 +124,22 @@
+     </div>
+   </div>
+   <div id="builder-print-sheet" aria-hidden="true"></div>
++
++  <div class="s1-block" id="s1-sec">
++    <div class="sim-head">Laissez l'assistant esquisser votre carte</div>
++    <!-- DRAFT PENDING COUNSEL REVIEW : le texte dans .s1-disclaimer ci-dessous
++         est la section 2 de web/legal/DISCLAIMER-DRAFT.md (dépôt AI-data-map),
++         pas un texte juridique approuvé. Un avocat doit remplir le bloc de
++         signature avant le lancement de cette page (DEPLOY-NOTE.md). -->
++    <div class="s1-disclaimer">
++      <p><strong>Brouillon à réviser, pas un avis juridique.</strong></p>
++      <p>Cet assistant produit un inventaire provisoire pour appuyer vos obligations de gouvernance et de calendrier de conservation en lien avec la Loi 25. La Loi 25 n'exige pas nommément un « inventaire des données »&nbsp;; cet outil vous fournit un point de départ que votre avocate ou avocat révise et que votre équipe complète.</p>
++      <p>Chaque résultat est un brouillon. Les délais de conservation sont indiqués sous forme de plages, avec la loi citée et une date de vérification. Les éléments non vérifiables sont marqués « à vérifier » plutôt que chiffrés. Rien de ce que produit l'outil n'est prêt pour un avocat ni une déclaration de conformité.</p>
++      <p>Vie privée : cette page ne charge aucun script tiers. L'outil surveille sa propre activité réseau et affiche le compteur à l'écran. Le compteur « <strong><span id="s1-page-netcount">0</span> requête envoyée</strong> » à côté de cet avis reflète l'audit de pré-lancement de cette version de la page. La procédure d'audit complète est documentée dans l'EFVP de pré-lancement. La forme la plus forte de cette garantie est le forfait hors ligne : téléchargez-le, déconnectez-vous, et le flux complet fonctionne avec le wifi éteint. Seul le forfait hors ligne porte la garantie sans réserve que rien ne quitte votre machine.</p>
++    </div>
++    <div id="s1-chatbot"></div>
++    <div id="s1-assistant"></div>
++  </div>
+ 
+   <div class="sec-head"><div class="secnum">06</div><h2 class="sec-title">La partie que personne ne veut financer</h2></div>
+   <p>Voici le fil que je laisse volontairement ouvert. Tout ce qui précède résout le dessin. Rien de ce qui précède ne résout le pourrissement. Six mois après l'atelier, le chiffrier a une nouvelle colonne, le marketing a acheté un nouvel outil, et personne n'a mis la carte à jour. Je n'ai jamais vu une entreprise régler ça avec un logiciel. Celles qui s'en approchent font quelque chose de peu glamour : elles mettent un humain sur une invitation récurrente au calendrier et lui donnent le pouvoir d'être tannant à ce sujet. Tout le reste, c'est de la décoration.</p>
