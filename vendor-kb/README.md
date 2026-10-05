@@ -1,0 +1,1 @@
+Phase 3. About 100 common SaaS tools classified: node type, default data categories, retention starting point, cross-border flag. Every entry human-verified, every retention entry satisfying the Phase 0 retention rule.
