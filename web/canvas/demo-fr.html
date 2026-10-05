@@ -21,13 +21,7 @@
 
   <div class="cv-section">
     <div style="padding:1.25rem">
-      <div id="s1-chatbot"></div>
-    </div>
-  </div>
-
-  <div class="cv-section">
-    <div style="padding:1.25rem">
-      <div id="s1-assistant"></div>
+      <div id="s1-panel"></div>
     </div>
   </div>
 
@@ -184,12 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
       strings: window.T.canvas
     });
   }
-  var s1ui = null;
+  /* Single assistant panel: the quick 4-tap intake and the guided chat are
+     two modes inside one panel (the chatbot mounts embedded). */
   if (window.S1UI && typeof window.S1UI.init === "function") {
-    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: window.LANG || "fr" });
-  }
-  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
-    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: window.LANG || "fr", uiHandle: s1ui });
+    window.S1UI.init({ rootId: "s1-panel", lang: window.LANG || "fr" });
   }
 });
 </script>
