@@ -15,10 +15,10 @@ sha256-YwOYQv/CGz+9EP3Aboj/V3pnlkMrvDJwvwsTIcs8gng=  # s1/executor/js/narrate.js
 sha256-q25PX1XFRR7dDqQJUtbn0tZPywZHMXQ7E2+RZZrLPwA=  # s1/executor/js/templates.js
 sha256-+xO+93vfmrqAbOjl/p7qfBkD0IQHV4jMfoNgdDZY6eM=  # s1/executor/js/review.js
 sha256-6KddR+fWj2+F/YuPRrRV5LxyHtpHi1XlHvhKGPocUj0=  # s1/executor/js/exporter.js
-sha256-fm+BTF/2HWKccx3zCcQFZ4Z/q/kkwH1MaARozSnrsks=  # s1/executor/js/i18n.js
+sha256-brXspaI7KuIYEzDM1E0SkbBR73CPw5kTX05duhlvNVY=  # s1/executor/js/i18n.js
 sha256-GE9ziO/OeB9SMFrcpj/LDcVfjgkg/DH5QzNKNGGrz7U=  # s1/executor/js/executor.js
 sha256-fO0tw379x3dUcivB3/7bCPNxWJIfeWG8tWtasWf29LE=  # s1/executor/js/ui.js
-sha256-T3Mr97RFfS8Y3wXw8TwtjJ6Tv1TFQ3WrNXF/qzvuyOw=  # s1/chatbot/js/chatbot.js
+sha256-3aMLIAjAEvJDyyPgk32tyLP9hyIaPEu1IfGAR5KchSA=  # s1/chatbot/js/chatbot.js
 
 # --- inline scripts (hash the final built page bytes at deploy) ---
 # The S1 init block added by patches/0002-executor-wiring.patch. Hash below
