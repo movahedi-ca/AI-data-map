@@ -1,0 +1,5 @@
+# AI-data-map URLs for IndexNow submission
+# One URL per line. Lines starting with # are ignored.
+# Canonical host is movahedi.ca (tool pages ship there; GitHub Pages is not the host).
+https://movahedi.ca/tools/data-mapping-guide/assistant/
+https://movahedi.ca/fr/outils/guide-cartographie-donnees/assistant/
