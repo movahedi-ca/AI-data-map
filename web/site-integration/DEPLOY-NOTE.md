@@ -21,7 +21,7 @@ All paths below are relative to the Tier B tree root
 
 | # | Source (this repo) | Destination (Tier B / site) |
 |---|---|---|
-| 1 | `web/site-integration/bundle/` (whole tree, 20 files) | `demo/s1/` — copy preserving the internal layout (`executor/js/`, `executor/css/`, `executor/vendor/ort/`, `executor/vendor/model/`, `chatbot/js/`, `chatbot/css/`). `executor.js` resolves `vendor/model/model.onnx` and `vendor/ort/` relative to its own directory, so the layout must stay exactly as shipped. |
+| 1 | `web/site-integration/bundle/` (whole tree, 20 files) | `demo/s1/`, copy preserving the internal layout (`executor/js/`, `executor/css/`, `executor/vendor/ort/`, `executor/vendor/model/`, `chatbot/js/`, `chatbot/css/`). `executor.js` resolves `vendor/model/model.onnx` and `vendor/ort/` relative to its own directory, so the layout must stay exactly as shipped. |
 | 2 | `web/site-integration/patches/0001-chatbot-panel.patch` | Applied to `demo/index.html` + `demo/fr.html` with `patch -p1` from the Tier B root. |
 | 3 | `web/site-integration/patches/0002-executor-wiring.patch` | Applied after 0001, same way. |
 | 4 | `web/site-integration/csp-hashes.txt` (14 script hashes + inline-script note) | Pasted into the Worker's hash-based `script-src` policy at deploy. |
