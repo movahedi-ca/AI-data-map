@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AI-data-map visibility sitemap. Canonical host is movahedi.ca (tool pages
+     ship there; GitHub Pages is not the host). FR assistant URL mirrors the
+     /fr/outils/guide-cartographie-donnees/ guide slug pattern. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://movahedi.ca/tools/data-mapping-guide/assistant/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://movahedi.ca/fr/outils/guide-cartographie-donnees/assistant/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://huggingface.co/movahedi-ca/s1-workflow-tiny</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://huggingface.co/movahedi-ca/ai-data-map-teacher</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
