@@ -11,3 +11,6 @@ build/
 *.parquet
 .DS_Store
 .env
+
+# Generated scan reports (nightly deep scan output)
+scanning/reports/
