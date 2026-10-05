@@ -1,0 +1,1020 @@
+[
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Cloud consent management platform that scans a website for cookies and trackers, blocks non-essential scripts until consent is given, and logs each visitor decision for proof of compliance.",
+    "headquarters": "Copenhagen, Denmark",
+    "id": "cookiebot",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Cookiebot records each visitor's choice per purpose, which supports that accountability requirement.",
+    "mapping_features": [
+      "Automated website scan finds and categorizes cookies and trackers",
+      "Consent log records each visitor decision for audit purposes",
+      "Cookie declarations auto-update as the site changes",
+      "Supports Google Consent Mode and IAB Transparency and Consent Framework signals"
+    ],
+    "name": "Cookiebot by Usercentrics",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ at Havnegade 39, Copenhagen, Denmark; founded 2012; merged with Usercentrics in 2021",
+        "url": "https://www.cbinsights.com/company/cookiebot"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free version and free trial offered; vendor listed in Munich, Germany (Usercentrics)",
+        "url": "https://www.capterra.in/software/1022220/cookiebot"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Feature flow: scan, block scripts, consent banner, consent logging",
+        "url": "https://www.enzuzo.com/blog/what-is-cookiebot"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.cookiebot.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Enterprise consent and preference management platform for web, mobile apps and connected TV. Collects, manages and documents user consent and attaches consent IDs to the data.",
+    "headquarters": "Munich, Germany",
+    "id": "usercentrics",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Usercentrics stores documented consent records tied to the data, which supports that accountability requirement.",
+    "mapping_features": [
+      "Collects, manages and documents user consent across websites and apps",
+      "Consent IDs attached directly to data so consent is linked to the data",
+      "Granular opt-in/opt-out controls and cookie management tools",
+      "Google-certified CMP supporting multiple privacy regulations (GDPR, CCPA)"
+    ],
+    "name": "Usercentrics",
+    "pricing_model": "paid; tiers unverified",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ Munich, Bavaria; consent and preference management for web, apps and connected TVs",
+        "url": "https://www.linkedin.com/company/usercentrics"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ Munich, Germany; enterprise consent management platform for CCPA and GDPR",
+        "url": "https://app.dealroom.co/companies/usercentrics"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Consent IDs attached to data; granular consent controls, cookie management tools, opt-in/opt-out options",
+        "url": "https://ppc.land/usercentrics-cmp-receives-new-funding-to-accelerate-global-expansion/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://usercentrics.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Consent management platform for GDPR, CCPA, LGPD and POPIA compliance with a widely used WordPress cookie consent plugin. Offers automated scanning, customizable banners, consent logging and script blocking.",
+    "headquarters": "Milton Keynes, United Kingdom",
+    "id": "cookieyes",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. CookieYes keeps a consent log that records visitor choices, supporting that accountability requirement.",
+    "mapping_features": [
+      "Automatic cookie scanning with cookie categorization",
+      "Consent log and proof of consent records",
+      "Script blocking before consent",
+      "IAB TCF v2.2 compliance and geo-targeted banners",
+      "Google Consent Mode support and sub-domain consent"
+    ],
+    "name": "CookieYes",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ Milton Keynes, United Kingdom; CMP for GDPR, CCPA, LGPD, POPIA; automated scanning, customizable banners, consent logging",
+        "url": "https://www.linkedin.com/company/cookieyeshq/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free version offered; features include consent log, proof of consent, automatic scanning, script blocking, IAB TCF v2.2",
+        "url": "https://tekpon.com/software/cookieyes/reviews/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.cookieyes.com"
+  },
+  {
+    "categories": [
+      "consent",
+      "data_mapping"
+    ],
+    "data_residency": "unverified",
+    "description": "Privacy compliance suite aimed at small and mid-size businesses: policy generators for legal documents plus a cookie consent manager with automatic cookie blocking and cookie crawling.",
+    "headquarters": "Spokane, Washington, United States",
+    "id": "termly",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Termly's consent manager plus policy generators cover both the consent record and the notices Law 25 requires.",
+    "mapping_features": [
+      "Automatic cookie-blocking before consent is given",
+      "Cookie crawling to find trackers on the site",
+      "Data mapping and consent management features listed by reviewers",
+      "IAB compliance and tag manager integration"
+    ],
+    "name": "Termly",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ at 906 W 2ND AVE, Spokane, Washington; founded 2017; policy generators and consent management",
+        "url": "https://www.cbinsights.com/company/termly"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free version and free trial offered; features: automatic cookie-blocking, cookie crawling, IAB compliance, data mapping",
+        "url": "https://sourceforge.net/software/compare/Termly-vs-TrueZero-Tokenization/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://termly.io"
+  },
+  {
+    "categories": [
+      "consent",
+      "data_mapping"
+    ],
+    "data_residency": "unverified",
+    "description": "All-in-one compliance platform from Milan: privacy and cookie policy generator, Google-certified consent management platform, and data processing documentation tools, in up to 27 languages.",
+    "headquarters": "Milan, Italy",
+    "id": "iubenda",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. iubenda's CMP records consent choices and its policy generator covers the notices Law 25 requires.",
+    "mapping_features": [
+      "Google-certified CMP with IAB TCF 2.2 and Google Consent Mode",
+      "Records and stores user consent preferences via cookie banner",
+      "Privacy and cookie policy generator with multilingual documents",
+      "Data mapping and data subject rights tooling listed by reviewers"
+    ],
+    "name": "iubenda",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ Milan; 150,000+ clients; Google-certified CMP, policy generator, consent records; pricing includes free version and free trial",
+        "url": "https://sourceforge.net/software/compare/Baycloud-vs-PrivacyCenter.cloud-vs-iubenda/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "CMP collects user consent preferences via cookie banner with Google Consent Mode and IAB TCF 2.2",
+        "url": "https://Slashdot.org/software/comparison/CookieHub-vs-iubenda/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.iubenda.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Free consent management platform built for publishers and ad-funded sites, acquired by InMobi in 2023 and continued as InMobi CMP. Deep IAB Transparency and Consent Framework integration for ad consent.",
+    "headquarters": "unverified",
+    "id": "quantcast-choice",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Quantcast Choice records advertising consent per vendor through the IAB framework, supporting that accountability requirement.",
+    "mapping_features": [
+      "IAB TCF 2.3 and IAB GPP support on web and apps",
+      "Consent signaling to 500+ Google-certified and 800+ IAB-approved vendors",
+      "SDKs for iOS, Android, Unity and React Native",
+      "Google Consent Mode v2 support; free Essentials plan with no site or traffic limits"
+    ],
+    "name": "Quantcast Choice (InMobi CMP)",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "InMobi acquired Quantcast Choice in 2023; platform stays free for existing and new customers; 500+ Google-certified, 800+ IAB-approved vendors",
+        "url": "https://www.adnews.com.au/news/inmobi-acquires-quantcast-choice"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "InMobi CMP (formerly Quantcast Choice): Essentials plan free, TCF 2.3, IAB GPP, Google Consent Mode v2, mobile SDKs",
+        "url": "https://geekflare.com/guides/best-cmp-solutions/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.quantcast.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "JavaScript consent module by CIVIC UK for managing cookie consent on any website. Works with Google Consent Mode v2 and the IAB framework, with a free Community edition and paid Pro licences.",
+    "headquarters": "unverified",
+    "id": "civic-cookie-control",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Cookie Control manages consent choices per category, supporting that accountability requirement.",
+    "mapping_features": [
+      "JavaScript consent module deployable on any site or CMS via API key",
+      "Google-certified CMP for IAB TCF v2.2 compliance (Pro editions)",
+      "Google Consent Mode v2 integration via GTM template",
+      "Unlimited consent categories configurable per site"
+    ],
+    "name": "Civic Cookie Control",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "JS module for cookie consent; Google-certified CMP for IAB TCF V2.2; Google Consent Mode V2 GTM integration",
+        "url": "https://www.civicuk.com/cookie-control/documentation/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free Community edition plus annual Pro and Multisite Pro licences; Pro supports IAB TCF v2.2",
+        "url": "https://wordpress.org/plugins/civic-cookie-control-8/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.civicuk.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Budget consent management platform with a cookie scanner that auto-detects and categorizes cookies, consent logs, cross-domain consent sharing, and an API for managing banners programmatically.",
+    "headquarters": "unverified",
+    "id": "cookiescript",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. CookieScript's consent logs record visitor choices, supporting that accountability requirement.",
+    "mapping_features": [
+      "Cookie scanner detects, describes and categorizes cookies automatically",
+      "Detailed consent logs document visitor choices",
+      "Cross-domain and sub-domain consent sharing",
+      "API to manage banners, scans and consent records; Google Consent Mode support"
+    ],
+    "name": "CookieScript",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free plan plus Lite/Standard/Plus paid tiers; features: consent banners, consent logs, automatic cookie categorization",
+        "url": "https://tekpon.com/software/cookiescript/reviews/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing plans update September 2026; volume discounts for multiple domains",
+        "url": "https://help.cookie-script.com/en/articles/30265-2026-09-22-pricing-plans-update"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://cookie-script.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "WordPress privacy suite from the Netherlands offering a fully featured consent plugin for worldwide compliance, with automatic cookie blocking, cookie scanning and policy generation.",
+    "headquarters": "unverified",
+    "id": "complianz",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Complianz records consent decisions in its WordPress dashboard, supporting that accountability requirement.",
+    "mapping_features": [
+      "Automatic cookie blocking before consent",
+      "Cookie scanner finds trackers on WordPress sites",
+      "IAB compliance and tag manager integration",
+      "Integrations with WordPress, Shopify, GTM, analytics and ad platforms"
+    ],
+    "name": "Complianz",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Complianz founded 2018, Netherlands; pricing includes free version and free trial; privacy suite for WordPress",
+        "url": "https://sourceforge.net/software/compare/Complianz-vs-WPLytic/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Features: automatic cookie-blocking, cookie crawling, IAB compliance, tag manager integration",
+        "url": "https://Slashdot.org/software/comparison/Complianz-vs-Cookie-Information/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://complianz.io"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "French consent management platform focused on the banner as part of the customer experience, with deep visual customization, consent analytics, A/B testing and over 1,500 pre-integrated vendors.",
+    "headquarters": "unverified",
+    "id": "axeptio",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Axeptio stores consent records with per-vendor detail, supporting that accountability requirement.",
+    "mapping_features": [
+      "Vendor management with 1,500+ pre-integrated vendors",
+      "Consent analytics and A/B testing of consent banners",
+      "Google Consent Mode v2 and TCF support on higher plans",
+      "Cookie scanning and customizable consent widgets with mobile SDK"
+    ],
+    "name": "Axeptio",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Axeptio founded 2017, France; features: automatic cookie-blocking, cookie crawling, IAB compliance, reporting",
+        "url": "https://Slashdot.org/software/comparison/Axeptio-vs-OneTrust-Privacy-Automation/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free plan up to 2,500 pageviews/year, paid tiers by monthly pageviews; 1,500+ pre-integrated vendors, A/B testing, consent analytics",
+        "url": "https://sellbery.com/blog/best-cookieyes-alternatives-for-2026/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.axeptio.eu"
+  },
+  {
+    "categories": [
+      "consent",
+      "open_source"
+    ],
+    "data_residency": "self-hosted (visitor browser)",
+    "description": "Free and open-source JavaScript consent manager by French independent developer Amauri Champeaux. Self-hosted banner with per-service allow/deny controls for analytics, advertising, videos and social widgets.",
+    "headquarters": "unverified",
+    "id": "tarteaucitron",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. tarteaucitron stores the visitor consent state in a first-party cookie, supporting that accountability requirement.",
+    "mapping_features": [
+      "Self-hosted script disables services by default until consent",
+      "Per-service allow/deny panel for each third-party service",
+      "Fallback placeholders shown instead of blocked content",
+      "Google Consent Mode v2 support; consent stored in a first-party cookie"
+    ],
+    "name": "tarteaucitron",
+    "pricing_model": "open source (self-hosted); optional Pro service unverified",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Open-source consent manager by Amauri Champeaux, independent developer in France; banner, service-level controls, Google Consent Mode v2",
+        "url": "https://github.com/amauric/tarteaucitron.js"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Services disabled by default; per-service panel; consent stored in a cookie",
+        "url": "https://github.com/AmauriC/tarteaucitron.js"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://tarteaucitron.io"
+  },
+  {
+    "categories": [
+      "consent",
+      "open_source"
+    ],
+    "data_residency": "self-hosted (visitor browser)",
+    "description": "Open-source client-side consent manager with per-app and per-purpose consent controls. The free version is fully functional; paid subscriptions add server-side managed consent records and URL scans.",
+    "headquarters": "unverified",
+    "id": "klaro",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Klaro's managed consent records store per-purpose visitor choices, supporting that accountability requirement.",
+    "mapping_features": [
+      "Open-source JavaScript CMP for transparent third-party app consent",
+      "Consent per individual app or grouped by purpose",
+      "Server-side managed consent records available on paid plans",
+      "Multilingual support with small footprint script"
+    ],
+    "name": "Klaro",
+    "pricing_model": "open source (self-hosted); paid hosted subscriptions",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: open-source version free forever; paid subscriptions add URL scans and managed consent records",
+        "url": "https://klaro.org/pricing"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Open-source CMP; consent per third-party app or grouped by purpose; multilingual",
+        "url": "https://github.com/klaro-org/klaro-js/blob/master/README.md"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://klaro.org"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "EU: application and consent data hosted in the Netherlands (vendor site)",
+    "description": "Northern Europe consent management platform headquartered in Copenhagen. Google CMP Gold Partner with cookie scanning, audit-ready consent records, Consent Mode v2 and IAB TCF v2.2; consent data hosted in the Netherlands.",
+    "headquarters": "Copenhagen, Denmark",
+    "id": "cookie-information",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Cookie Information stores timestamped audit records of each consent, supporting that accountability requirement.",
+    "mapping_features": [
+      "Automatic scanning finds new trackers and keeps declarations updated",
+      "Stores every consent record with timestamps for audit",
+      "Google Consent Mode v2 and IAB TCF v2.2 signals",
+      "CMS plugins for WordPress, Drupal and GTM"
+    ],
+    "name": "Cookie Information",
+    "pricing_model": "free trial + paid plans (Essential and Business tiers)",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "HQ Copenhagen; consent data hosted in the Netherlands; automatic scanning; audit records; Consent Mode v2; pricing: free 14-day trial",
+        "url": "https://cookieinformation.com/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "European CMP managing and documenting user consent; Google CMP Partner; Essential and Business plans",
+        "url": "https://cookieinformation.com/cookieyes-alternative/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://cookieinformation.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Danish cookie consent and privacy compliance platform covering 55+ privacy laws worldwide, with cookie scanning, consent management and Google Partner CMP Gold-tier status.",
+    "headquarters": "Vedbæk, Denmark",
+    "id": "secure-privacy",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Secure Privacy explicitly addresses Quebec Law 25 and records consent per purpose, supporting that accountability requirement.",
+    "mapping_features": [
+      "Comprehensive cookie scanning with categorization by purpose",
+      "Consent management aligned to 55+ global privacy laws",
+      "Google Consent Mode integration; Google Partner CMP Gold Tier",
+      "Compliance coverage includes Quebec Law 25 requirements"
+    ],
+    "name": "Secure Privacy",
+    "pricing_model": "free trial + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Office: Frydenlundsvej 30, 2950 Vedbæk, Denmark; 30-day free trial; Google Partner CMP Gold Tier; cookie scanning and consent management",
+        "url": "https://secureprivacy.ai"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: Secure Privacy paid plans starting at 10 per month (comparative listing)",
+        "url": "https://tekpon.com/software/cookieyes/reviews/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://secureprivacy.ai"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "UK consent solution from London with a consent management platform, cookie scanner and audit tool, plus plugins and banner generators for Shopify, WordPress, Wix and other CMS platforms.",
+    "headquarters": "London, United Kingdom",
+    "id": "seers",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Seers records consent choices and audits cookies, supporting that accountability requirement.",
+    "mapping_features": [
+      "Consent management platform with recorded consent choices",
+      "Cookie scanner and audit tool for ongoing monitoring",
+      "Plugins for Shopify, WordPress, Wix and 20+ other platforms",
+      "Cookie banner generators for multiple frameworks (Bootstrap, Angular, Laravel)"
+    ],
+    "name": "Seers",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Office: 24 Holborn Viaduct, London EC1A 2BN; free start; pricing mention of monthly plan; consent management platform",
+        "url": "https://seersco.com/articles/tag/consent-management-platform/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Shopify plugin plus plugins for BigCommerce, Drupal, Joomla, Magento, Wix, WordPress and more",
+        "url": "https://seersco.com/plugins/how-to-install-cookie-consent-banner-and-privacy-policy-in-shopify-website/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://seersco.com"
+  },
+  {
+    "categories": [
+      "consent",
+      "data_mapping"
+    ],
+    "data_residency": "unverified",
+    "description": "Consent management platform covering GDPR, CCPA, LGPD and IAB TCF 2.0, bundled with data subject access request workflows. No-code setup via a single JavaScript tag with geo-targeted banners and cross-device consent tracking.",
+    "headquarters": "unverified",
+    "id": "adzapier",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Adzapier stores consent records in its portal as an audit-proof record, supporting that accountability requirement.",
+    "mapping_features": [
+      "Website scan finds and categorizes cookies automatically",
+      "Geo-targeted banners and consent models per region",
+      "Consent tracked across devices for the same user",
+      "DSAR management with request forms, workflows and audit trails; REST API and webhooks"
+    ],
+    "name": "Adzapier",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free version and free trial offered; covers GDPR, CCPA, LGPD, IAB TCF 2.0; DSAR management included",
+        "url": "https://www.softwareadvice.co.uk/software/330389/adzapier/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Privacy Pillar: consent preference capture, cookie consent scanning, DSAR workflows, REST API and JS SDK",
+        "url": "https://Adzapier.com/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://adzapier.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Icelandic cookie consent management platform with an automatic cookie scanner, customizable widget deployable via GTM or a JS snippet, and a free plan for sites up to 1,000 sessions per month.",
+    "headquarters": "unverified",
+    "id": "cookiehub",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. CookieHub retains visitor consent decisions, supporting that accountability requirement.",
+    "mapping_features": [
+      "Automatic cookie scanner detects cookies on the site",
+      "Consent decisions retained for future visits",
+      "IAB Transparency and Consent Framework support on Business plans",
+      "24 languages; widget deployable via GTM or pasted JS code"
+    ],
+    "name": "CookieHub",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free plan up to 1,000 sessions/month, 14-day free trial, paid plans from 6 per month; automatic scanner; IAB TCF",
+        "url": "https://www.cookiehub.com/welcome"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Company CookieHub, founded 2018, HQ Iceland; website www.cookiehub.com",
+        "url": "https://Slashdot.org/software/p/CookieHub/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.cookiehub.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "European consent management platform from consentmanager AB with adtech roots. Offers automatic cookie blocking, A/B testing of consent layers, 2,500+ tool integrations and 30+ languages.",
+    "headquarters": "unverified",
+    "id": "consentmanager",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. consentmanager records consent choices with reporting metrics, supporting that accountability requirement.",
+    "mapping_features": [
+      "Automatic cookie blocking with cookie crawling",
+      "Intelligent A/B testing and staging of consent layers",
+      "Compatible with 2,500+ tools across CMS and shop platforms",
+      "API for programmatic access to consent data"
+    ],
+    "name": "consentmanager",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free Basic plan plus Beginner/Standard/Agency/Enterprise paid tiers; consentmanager AB founded 2018, offices in Sweden, Germany, France",
+        "url": "https://Slashdot.org/software/p/ConsentManager.net/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Features: automatic cookie-blocking, cookie crawling, IAB compliance, reporting/analytics; API available",
+        "url": "https://slashdot.org/software/comparison/ConsentManager.net-vs-Tag-Pilot/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.consentmanager.net"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "Cloud servers in Frankfurt, Germany (vendor); self-hosted download option",
+    "description": "German consent management platform by Papoo Software and Media GmbH, available as a cloud version or self-hosted download. Permanent website cookie scanner, consent export and API, with servers in Frankfurt.",
+    "headquarters": "Bonn, Germany",
+    "id": "ccm19",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. CCM19 exports consent data with a log, supporting that accountability requirement.",
+    "mapping_features": [
+      "Permanent cookie and script scanner with log function",
+      "Export of all consent data possible; API for data query",
+      "Self-hosted download version for full data control",
+      "Google Consent Mode, Additional Consent and tag manager functionality"
+    ],
+    "name": "CCM19",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Papoo Software and Media GmbH, Auguststrasse 4, 53229 Bonn; cloud or download version; servers in Frankfurt; pricing: Starter/Business tariffs plus free trial",
+        "url": "https://www.softwaresuggest.com/ccm19"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free version available; cloud-based and on-premise deployment; consent management platform hosted in Germany",
+        "url": "https://www.capterra.ca/software/1014305/ccm19"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.ccm19.de"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "German WordPress consent plugin with opt-in cookie groups listing cookie name, duration, purpose and origin. Prebuilt tracking codes for Google Analytics and Facebook Pixel, multilingual, sold as a one-time license.",
+    "headquarters": "unverified",
+    "id": "borlabs-cookie",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Borlabs Cookie uses opt-in per cookie group and documents consent, supporting that accountability requirement.",
+    "mapping_features": [
+      "Cookie groups list name, duration, purpose and origin for the privacy policy",
+      "Prebuilt tracking codes for Google Analytics and Facebook Pixel",
+      "Available in 7 languages with WPML/Polylang per-language setup",
+      "Integrated opt-out mechanism and caching-plugin compatibility"
+    ],
+    "name": "Borlabs Cookie",
+    "pricing_model": "paid; one-time license, tiers unverified",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "German company Borlabs; premium WordPress plugin; opt-in model; over 129,000 active installations",
+        "url": "https://www.ezoic.com/blog/borlabs-cookie-the-intelligent-consent-management-wordpress-plugin"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: one-time purchases supported; cookie group management with name, duration, purpose, origin",
+        "url": "https://www.wappalyzer.com/technologies/cookie-compliance/borlabs-cookie/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://borlabs.io"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "self-hosted (WordPress server)",
+    "description": "WordPress-native consent plugin by German vendor devowl.io. Uses 160+ service templates and 130+ content blocker templates, a sitemap-wide service scanner, and stores consents on the site's own server.",
+    "headquarters": "unverified",
+    "id": "real-cookie-banner",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Real Cookie Banner documents consent completely with traceable origin, supporting that accountability requirement.",
+    "mapping_features": [
+      "160+ service templates and 130+ content blocker templates",
+      "Service scanner checks every page indexed in the sitemap",
+      "Consents processed and stored on the site's own server",
+      "IAB TCF v2.2, Google Consent Mode v2 and consent statistics with documentation"
+    ],
+    "name": "Real Cookie Banner",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "devowl.io is a German software company; pricing: free version plus paid plans from 59 EUR/year; 160+ service templates, 130+ content blocker templates",
+        "url": "https://www.termsfeed.com/blog/real-cookie-banner-review/"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Consents processed and stored on own server; content blockers execute features only after consent; guided configuration",
+        "url": "https://devowl.io/wordpress-real-cookie-banner/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://devowl.io"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Dublin-based consent infrastructure for ecommerce. Collects marketing consent at the Shopify checkout with dynamic, location-based consent language and audit-ready consent logs synced to email/SMS platforms.",
+    "headquarters": "Dublin, Ireland",
+    "id": "dataships",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Dataships keeps audit-ready consent logs per contact, supporting that accountability requirement.",
+    "mapping_features": [
+      "Geo-located checkout widget collects and verifies marketing consent",
+      "Audit-ready consent logs for compliance evidence",
+      "Global compliance rules engine driving location-based consent language",
+      "Klaviyo and ESP/SMS integrations with real-time status syncing"
+    ],
+    "name": "Dataships",
+    "pricing_model": "paid; tiers unverified",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Founded 2020, HQ Dublin; global compliance rules engine; 600+ brands; consent infrastructure for ecommerce",
+        "url": "https://www.dataships.io/about-us"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Dublin-based; 6.8M EUR Series A; automates GDPR and CCPA compliance; dynamic consent language at checkout",
+        "url": "https://www.eu-startups.com/2025/01/dataships-secures-e6-8-million-to-turn-data-compliance-into-an-ecommerce-growth-engine/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.dataships.io"
+  },
+  {
+    "categories": [
+      "consent",
+      "data_mapping"
+    ],
+    "data_residency": "hosted in Canada (vendor)",
+    "description": "Canadian consent management platform from Waterloo for mid-market teams. Google CMP Gold-certified with geo-specific consent rules, consent logs, DSAR workflows and a developer API; hosted in Canada.",
+    "headquarters": "Waterloo, Canada",
+    "id": "enzuzo",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Enzuzo keeps per-domain consent logs with geo-specific rules, supporting that accountability requirement.",
+    "mapping_features": [
+      "Google Consent Mode v2 and Microsoft Consent Mode support",
+      "Geo-specific consent rules with automatic law updates",
+      "Exportable consent logs per domain and consent analytics",
+      "DSAR management and legal policy generation on the same platform; developer API"
+    ],
+    "name": "Enzuzo",
+    "pricing_model": "free tier + paid plans",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Enzuzo located in Waterloo, Canada; pricing: free starting price with free trial; features: consent management, data mapping, DSAR",
+        "url": "https://www.capterra.ca/software/1069017/Enzuzo"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Pricing: free plan plus Starter/Growth/Pro paid tiers; Google Consent Mode v2, geo-specific consent, consent logs, DSAR workflows",
+        "url": "https://www.enzuzo.com/blog/cookieyes-alternatives"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.enzuzo.com"
+  },
+  {
+    "categories": [
+      "consent"
+    ],
+    "data_residency": "unverified",
+    "description": "Denver-based digital experience platform whose consent capability comes from the 2017 acquisition of Evidon. Offers the Universal Consent Platform plus website monitoring and tag governance for enterprise compliance.",
+    "headquarters": "Denver, United States",
+    "id": "crownpeak",
+    "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Crownpeak's consent platform manages the consent lifecycle with an audit trail, supporting that accountability requirement.",
+    "mapping_features": [
+      "Universal Consent Platform for digital consent and monitoring",
+      "Website monitoring for tags, scripts and marketing ecosystem controls",
+      "Site notice and ad notice solutions for consumer transparency",
+      "Audit trail capabilities to demonstrate valid consent under GDPR-style rules"
+    ],
+    "name": "Crownpeak",
+    "pricing_model": "paid; tiers unverified",
+    "retention_features": {
+      "claims": [],
+      "notes": "No statutory retention period for consent records found; Law 25 sets no numerical retention periods. Verify any retention requirement with counsel before setting a deletion policy.",
+      "verify": true
+    },
+    "sources": [
+      {
+        "consulted": "2026-10-05",
+        "note": "Crownpeak acquired Evidon in 2017; Evidon GDPR/cookie-law Universal Consent Platform; consent management and website monitoring",
+        "url": "https://iapp.org/news/a/crownpeak-acquires-evidon-to-boost-consent-management-ux-offerings"
+      },
+      {
+        "consulted": "2026-10-05",
+        "note": "Crownpeak is Denver-based; acquired Evidon's SaaS consent, monitoring and compliance solutions",
+        "url": "https://www.cmswire.com/digital-experience/crownpeak-acquires-evidon-to-boost-digital-quality-management/"
+      }
+    ],
+    "verification": {
+      "checked_utc": "2026-10-05T03:35:00Z",
+      "status": "verified"
+    },
+    "website": "https://www.crownpeak.com"
+  },
+  {
+    "id": "cookiefirst",
+    "name": "CookieFirst",
+    "categories": [
+      "consent"
+    ],
+    "description": "Consent management platform (CMP) providing a customizable cookie banner and modal, automatic blocking of third-party tracking scripts until consent is given, and a dashboard for managing tracking scripts without code.",
+    "website": "https://cookiefirst.com",
+    "headquarters": "unverified",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Cookie and tracking-script inventory surfaced in the dashboard, grouped per tracking tool.",
+      "Consent logs and audit trails recording visitor consent choices.",
+      "Google Consent Mode integration for consent-aware tag behavior.",
+      "Cookie policy generator with editable default cookie descriptions per language.",
+      "Banner and modal support for 40+ languages."
+    ],
+    "retention_features": {
+      "notes": "Consent logs are retained per customer configuration; no statutory retention period is cited by the vendor. Flagged verify: no statute found.",
+      "claims": [],
+      "verify": true
+    },
+    "law25_relevance": "Consent records support the consent documentation expectations under Law 25. Law 25 sets no retention periods itself, so consent-log retention follows customer policy, not a statutory number.",
+    "pricing_model": "freemium + paid plans from EUR 99/year (annual)",
+    "sources": [
+      {
+        "url": "https://cookiefirst.com/cookiebot-alternative/",
+        "consulted": "2026-10-05",
+        "note": "pricing page: freemium plus paid plans from EUR 99/year; features: auto-blocking, consent logs, Google Consent Mode, 40+ languages"
+      },
+      {
+        "url": "https://slashdot.org/software/comparison/CookieFirst-vs-Secure-Privacy/",
+        "consulted": "2026-10-05",
+        "note": "third-party comparison confirming CMP feature set"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  }
+]
