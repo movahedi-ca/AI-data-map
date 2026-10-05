@@ -84,15 +84,6 @@
     });
   }
 
-  function shortErr(e) {
-    var m = String((e && e.message) || e).split("\n")[0];
-    if (m.length <= 160) return m;
-    /* Cut at the last space at or before the 157 budget so the ellipsis
-       never lands mid-word; hard cut only when one token is huge. */
-    var cut = m.lastIndexOf(" ", 157);
-    return (cut > 0 ? m.slice(0, cut) : m.slice(0, 157)) + "...";
-  }
-
   /**
    * Deterministic structural check of a pasted recipe JSON.
    * Returns {ok: true, recipe} or {ok: false, message} with a
@@ -105,7 +96,7 @@
     try {
       recipe = JSON.parse(text);
     } catch (e) {
-      return { ok: false, message: fill(S.chatErrNotJson, { detail: shortErr(e) }) };
+      return { ok: false, message: S.chatErrNotJson };
     }
     if (!recipe || typeof recipe !== "object" || Array.isArray(recipe)) {
       return { ok: false, message: S.chatErrNotObject };
