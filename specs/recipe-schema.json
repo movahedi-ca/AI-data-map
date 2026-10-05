@@ -1,1 +1,572 @@
-{"$id":"https://movahedi.ca/schemas/ai-data-map/recipe-schema.json","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":false,"compatibility":{"matrix":{"executor 1.x":{"supports_recipe":["1.0.x"]}},"rejection_rule":"The executor compares the recipe schema_version against this matrix at load, before the first item runs. An unsupported version aborts the session with a plain-language error naming the recipe version, the executor version, and the supported recipe range. The executor never executes part of a recipe it cannot fully support: no silent misfire, no best-effort downgrade."},"description":"A recipe is an ordered list of intents executed against the frozen data-mapping guide. schema_version is required and frozen at 1.0.0 for Phase 0.","properties":{"items":{"description":"Ordered intent list. Max 512 items per the Phase 0 error contract.","items":{"additionalProperties":false,"allOf":[{"if":{"properties":{"intent":{"const":"add_node"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"label":{"maxLength":200,"minLength":1,"type":"string"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"type":{"enum":["collection","system","thirdparty","destruction"],"type":"string"},"x":{"maximum":600,"minimum":40,"type":"number"},"y":{"maximum":380,"minimum":40,"type":"number"}},"required":["node_id","type","x","y","label"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"add_collection_point"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"label":{"maxLength":200,"minLength":1,"type":"string"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"x":{"maximum":600,"minimum":40,"type":"number"},"y":{"maximum":380,"minimum":40,"type":"number"}},"required":["node_id","x","y","label"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"connect"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"a":{"pattern":"^n[1-9]\\d*$","type":"string"},"b":{"pattern":"^n[1-9]\\d*$","type":"string"},"cat":{"enum":["contact","payment","marketing"],"type":"string"}},"required":["a","b","cat"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"set_field"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"field":{"enum":["label","x","y"],"type":"string"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"value":{"description":"string for label (1-200 chars), number 40-600 for x, number 40-380 for y"}},"required":["node_id","field","value"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"set_retention"}}},"then":{"properties":{"params":{"additionalProperties":false,"allOf":[{"else":{"required":["node_id","record_type","range_min_years","range_max_years","statute","as_of"]},"if":{"properties":{"verify_only":{"const":true}}},"then":{"required":["node_id","record_type","as_of"]}}],"properties":{"as_of":{"pattern":"^\\d{4}-\\d{2}-\\d{2}$","type":"string"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"range_max_years":{"exclusiveMinimum":0,"type":"number"},"range_min_years":{"exclusiveMinimum":0,"type":"number"},"record_type":{"maxLength":120,"minLength":1,"type":"string"},"statute":{"maxLength":300,"minLength":8,"type":"string"},"verify_only":{"default":false,"type":"boolean"}},"type":"object"}}}},{"if":{"properties":{"intent":{"const":"confirm_node"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"note":{"maxLength":500,"type":"string"}},"required":["node_id"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"flag_for_review"}}},"then":{"properties":{"params":{"additionalProperties":false,"anyOf":[{"required":["node_id"]},{"required":["item_index"]}],"properties":{"item_index":{"minimum":0,"type":"integer"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"reason":{"maxLength":500,"minLength":1,"type":"string"}},"required":["reason"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"run_check"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"checks":{"items":{"enum":["label_coverage","connectivity","retention_cited","edge_categories"],"type":"string"},"minItems":1,"type":"array","uniqueItems":true}},"required":["checks"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"export"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"format":{"const":"xls","type":"string"}},"required":["format"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"skip_recipe_item"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"item_index":{"minimum":0,"type":"integer"},"reason":{"maxLength":200,"minLength":1,"type":"string"}},"required":["item_index","reason"],"type":"object"}}}},{"if":{"properties":{"intent":{"const":"undo_last"}}},"then":{"properties":{"params":{"maxProperties":0,"type":"object"}}}},{"if":{"properties":{"intent":{"const":"abort_session"}}},"then":{"properties":{"params":{"additionalProperties":false,"properties":{"reason":{"maxLength":500,"minLength":1,"type":"string"}},"required":["reason"],"type":"object"}}}}],"properties":{"intent":{"enum":["add_node","add_collection_point","connect","set_field","set_retention","confirm_node","flag_for_review","run_check","export","skip_recipe_item","undo_last","abort_session"],"type":"string"},"params":{"description":"Intent parameters. Serialized params JSON must not exceed 4096 bytes per item (Phase 0 error contract).","maxProperties":12,"type":"object"}},"required":["intent","params"],"type":"object"},"maxItems":512,"minItems":1,"type":"array"},"name":{"description":"Optional human-readable recipe name.","maxLength":200,"type":"string"},"recipe_id":{"description":"Stable recipe identifier. Feeds the idempotency key: SHA-256 of (recipe_id, item_index, action_name).","maxLength":128,"minLength":1,"pattern":"^[A-Za-z0-9_-]+$","type":"string"},"schema_version":{"description":"Recipe format version. Phase 0 freezes the major.minor at 1.0; patch digits are allowed.","pattern":"^1\\.0\\.\\d+$","type":"string"}},"required":["schema_version","recipe_id","items"],"size_limits":{"max_edges_per_canvas":64,"max_items":512,"max_label_chars":200,"max_nodes_per_canvas":64,"max_params_bytes_per_item":4096,"note":"Serialized params JSON is measured as UTF-8 bytes of the canonical (sorted-key, no-whitespace) form. Violations abort recipe load with a plain-language error. These are the Phase 0 frozen values."},"title":"AI-data-map recipe schema","type":"object"}
+{
+  "$id": "https://movahedi.ca/schemas/ai-data-map/recipe-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "compatibility": {
+    "matrix": {
+      "executor 1.x": {
+        "supports_recipe": [
+          "1.0.x"
+        ]
+      }
+    },
+    "rejection_rule": "The executor compares the recipe schema_version against this matrix at load, before the first item runs. An unsupported version aborts the session with a plain-language error naming the recipe version, the executor version, and the supported recipe range. The executor never executes part of a recipe it cannot fully support: no silent misfire, no best-effort downgrade."
+  },
+  "description": "A recipe is an ordered list of intents executed against the frozen data-mapping guide. schema_version is required and frozen at 1.0.0 for Phase 0.",
+  "properties": {
+    "items": {
+      "description": "Ordered intent list. Max 512 items per the Phase 0 error contract.",
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "add_node"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "type": {
+                      "enum": [
+                        "collection",
+                        "system",
+                        "thirdparty",
+                        "destruction"
+                      ],
+                      "type": "string"
+                    },
+                    "x": {
+                      "maximum": 600,
+                      "minimum": 40,
+                      "type": "number"
+                    },
+                    "y": {
+                      "maximum": 380,
+                      "minimum": 40,
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "node_id",
+                    "type",
+                    "x",
+                    "y",
+                    "label"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "add_collection_point"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "label": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "x": {
+                      "maximum": 600,
+                      "minimum": 40,
+                      "type": "number"
+                    },
+                    "y": {
+                      "maximum": 380,
+                      "minimum": 40,
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "node_id",
+                    "x",
+                    "y",
+                    "label"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "connect"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "a": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "b": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "cat": {
+                      "enum": [
+                        "contact",
+                        "payment",
+                        "marketing"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "a",
+                    "b",
+                    "cat"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "set_field"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "field": {
+                      "enum": [
+                        "label",
+                        "x",
+                        "y"
+                      ],
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "string for label (1-200 chars), number 40-600 for x, number 40-380 for y"
+                    }
+                  },
+                  "required": [
+                    "node_id",
+                    "field",
+                    "value"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "set_retention"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "allOf": [
+                    {
+                      "else": {
+                        "required": [
+                          "node_id",
+                          "record_type",
+                          "range_min_years",
+                          "range_max_years",
+                          "statute",
+                          "as_of"
+                        ]
+                      },
+                      "if": {
+                        "properties": {
+                          "verify_only": {
+                            "const": true
+                          }
+                        },
+                        "required": [
+                          "verify_only"
+                        ]
+                      },
+                      "then": {
+                        "required": [
+                          "node_id",
+                          "record_type",
+                          "as_of"
+                        ]
+                      }
+                    }
+                  ],
+                  "properties": {
+                    "as_of": {
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "range_max_years": {
+                      "exclusiveMinimum": 0,
+                      "type": "number"
+                    },
+                    "range_min_years": {
+                      "exclusiveMinimum": 0,
+                      "type": "number"
+                    },
+                    "record_type": {
+                      "maxLength": 120,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "statute": {
+                      "type": "string",
+                      "minLength": 8,
+                      "maxLength": 300,
+                      "pattern": "([Ss][Ss]?\\.?\\s*[0-9]+|[Aa][Rr][Tt]\\.?\\s*[0-9]+|[Aa][Rr][Tt][Ii][Cc][Ll][Ee]\\s+[0-9]+|[Rr]\\.?\\s*[0-9]+(\\.[0-9]+)*|\\u00a7\\s*[0-9]+)",
+                      "not": {
+                        "pattern": "([Ll][Aa][Ww]\\s*25|[Ll][Oo][Ii]\\s*25|[Bb][Ii][Ll][Ll]\\s*64|[Ll][Pp][Rr][Pp][Ss][Pp]|[Mm][Oo][Dd][Ee][Rr][Nn][Ii][Ss][Aa][Nn][Tt]|[Rr][Ee][Nn][Ss][Ee][Ii][Gg][Nn][Ee][Mm][Ee][Nn][Tt][Ss]\\s+[Pp][Ee][Rr][Ss][Oo][Nn][Nn][Ee][Ll][Ss])"
+                      },
+                      "description": "Must name the act and section (pattern-matched). Rejects Law 25 name variants as the source of a number. See action-catalogue.json statute_validation for the normative matcher."
+                    },
+                    "verify_only": {
+                      "default": false,
+                      "type": "boolean"
+                    },
+                    "anchor": {
+                      "type": "string",
+                      "maxLength": 120,
+                      "description": "Event the range is measured from, e.g. 'after death', 'duration of services', 'after account closure', 'after dissolution'. When present, range_min_years and range_max_years are measured from the anchor event."
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "confirm_node"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "note": {
+                      "maxLength": 500,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "node_id"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "flag_for_review"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "anyOf": [
+                    {
+                      "required": [
+                        "node_id"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "item_index"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "item_index": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "node_id": {
+                      "pattern": "^n[1-9]\\d*$",
+                      "type": "string"
+                    },
+                    "reason": {
+                      "maxLength": 500,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "reason"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "run_check"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "checks": {
+                      "items": {
+                        "enum": [
+                          "label_coverage",
+                          "connectivity",
+                          "retention_cited",
+                          "edge_categories"
+                        ],
+                        "type": "string"
+                      },
+                      "minItems": 1,
+                      "type": "array",
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "checks"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "export"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "format": {
+                      "const": "xls",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "format"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "skip_recipe_item"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "item_index": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "maxLength": 200,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "item_index",
+                    "reason"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "undo_last"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "maxProperties": 0,
+                  "type": "object"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "intent": {
+                  "const": "abort_session"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "reason": {
+                      "maxLength": 500,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "reason"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "intent": {
+            "enum": [
+              "add_node",
+              "add_collection_point",
+              "connect",
+              "set_field",
+              "set_retention",
+              "confirm_node",
+              "flag_for_review",
+              "run_check",
+              "export",
+              "skip_recipe_item",
+              "undo_last",
+              "abort_session"
+            ],
+            "type": "string"
+          },
+          "params": {
+            "description": "Intent parameters. Serialized params JSON must not exceed 4096 bytes per item (Phase 0 error contract).",
+            "maxProperties": 12,
+            "type": "object"
+          }
+        },
+        "required": [
+          "intent",
+          "params"
+        ],
+        "type": "object"
+      },
+      "maxItems": 512,
+      "minItems": 1,
+      "type": "array"
+    },
+    "name": {
+      "description": "Optional human-readable recipe name.",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "recipe_id": {
+      "description": "Stable recipe identifier. Feeds the idempotency key: SHA-256 of (recipe_id, item_index, action_name).",
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "type": "string"
+    },
+    "schema_version": {
+      "description": "Recipe format version. Phase 0 freezes the major.minor at 1.0; patch digits are allowed.",
+      "pattern": "^1\\.0\\.\\d+$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "recipe_id",
+    "items"
+  ],
+  "size_limits": {
+    "max_edges_per_canvas": 64,
+    "max_items": 512,
+    "max_label_chars": 200,
+    "max_nodes_per_canvas": 64,
+    "max_params_bytes_per_item": 4096,
+    "note": "Serialized params JSON is measured as UTF-8 bytes of the canonical (sorted-key, no-whitespace) form. Violations abort recipe load with a plain-language error. These are the Phase 0 frozen values."
+  },
+  "title": "AI-data-map recipe schema",
+  "type": "object"
+}
