@@ -52,10 +52,19 @@
 +  }
 +  var nc = document.getElementById("s1-page-netcount");
 +  if (nc) {
-+    setInterval(function () {
-+      try { nc.textContent = String(window.__s1net ? window.__s1net.count() : 0); }
-+      catch (e) { /* keep the last value */ }
-+    }, 1000);
++    (function () {
++      /* Single write path for every counter: plain count string from the
++         first paint, never empty or a debug string. */
++      var api = window.__s1net;
++      function paint() {
++        try {
++          if (api && typeof api.setNetCount === "function") api.setNetCount(nc);
++          else nc.textContent = "0";
++        } catch (e) { /* keep the last value */ }
++      }
++      paint();
++      setInterval(paint, 1000);
++    })();
 +  }
 +});
 +</script>
@@ -101,10 +110,19 @@
 +  }
 +  var nc = document.getElementById("s1-page-netcount");
 +  if (nc) {
-+    setInterval(function () {
-+      try { nc.textContent = String(window.__s1net ? window.__s1net.count() : 0); }
-+      catch (e) { /* keep the last value */ }
-+    }, 1000);
++    (function () {
++      /* Single write path for every counter: plain count string from the
++         first paint, never empty or a debug string. */
++      var api = window.__s1net;
++      function paint() {
++        try {
++          if (api && typeof api.setNetCount === "function") api.setNetCount(nc);
++          else nc.textContent = "0";
++        } catch (e) { /* keep the last value */ }
++      }
++      paint();
++      setInterval(paint, 1000);
++    })();
 +  }
 +});
 +</script>
