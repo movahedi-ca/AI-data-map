@@ -1,0 +1,2978 @@
+[
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "unverified",
+  "description": "Accenture (accenture.com) is a global professional services company. Its public company profile describes approximately 786,000 people serving approximately 9,000 clients with approximately $70 billion in FY25 revenue, across Reinvention Services including cybersecurity, digital core, and AI and data. Its privacy statement names Accenture Limited of Dublin, Ireland for data privacy inquiries and describes Binding Corporate Rules for intra-group transfers.",
+  "headquarters": "Dublin, Ireland",
+  "id": "accenture",
+  "law25_relevance": "Quebec enterprises that outsource IT or business processes to Accenture disclose employee and customer personal data to it as a processor. A Law 25 data map should record Accenture as a processor, list the data types from its data privacy terms, and document the cross-border transfer basis for the transfer register.",
+  "mapping_features": [
+   "Data privacy terms list personal data processed on a client's behalf: name, phone numbers, email address, time zone, address data, system access/usage/authorization data, company name, contract data, invoice data",
+   "Privacy statement covers personal data of employees, clients and their employees, suppliers, business contacts, shareholders, and website users",
+   "Maintains Binding Corporate Rules; data privacy officer reachable via Accenture Limited, Dublin, Ireland"
+  ],
+  "name": "Accenture",
+  "pricing_model": "services contracts; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the client DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: DPO contact via Accenture Limited Dublin; Binding Corporate Rules; data subject rights",
+    "url": "https://www.accenture.com/en/support/privacy-policy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Data privacy terms: categories of personal data Accenture processes on a client's behalf as processor",
+    "url": "https://www.accenture.com/content/dam/accenture/a-com-no-follow-no-index/document/Accenture-55DPT-Data-Privacy-Terms-all-country-EN-07-20.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Company profile: ~786,000 people, ~9,000 clients, ~$70B FY25 revenue; Reinvention Services incl. cybersecurity and AI and data",
+    "url": "https://ie.linkedin.com/company/accenture?trk=organization_guest_main-feed-card_reshare-text"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.accenture.com"
+ },
+ {
+  "categories": [
+   "privacy_management",
+   "dsr_automation"
+  ],
+  "data_residency": "unverified",
+  "description": "Adobe (adobe.com) is an enterprise software company; its privacy policy covers Adobe websites, apps, and cloud services including Experience Cloud applications. The policy lists collected categories: network activity (IP address, browser and device information), professional and demographic information, commercial and transaction information including user content that contains personal information, and sensitive information such as precise geolocation and biometric identifiers. Adobe Experience Platform Privacy Service provides a REST API and user interface to automate access and delete requests across Experience Cloud applications, with Adobe acting as data processor.",
+  "headquarters": "San Jose, USA",
+  "id": "adobe",
+  "law25_relevance": "Quebec organizations using Adobe Experience Cloud or Document Cloud send customer and employee personal data, including content containing personal information, to Adobe as a service provider. A Law 25 data map should record Adobe as a processor, the data categories from its privacy policy, and DSR handling through Privacy Service.",
+  "mapping_features": [
+   "Privacy policy lists collected categories: network activity (IP, browser/device info), professional/demographic info, commercial/transaction info including content with personal information, sensitive info (precise geolocation, accessibility, biometrics)",
+   "Privacy Service provides a REST API and UI to submit access and delete requests across Adobe Experience Cloud applications",
+   "Adobe acts as data processor and orchestrates privacy requests to each subscribed solution automatically"
+  ],
+  "name": "Adobe Inc.",
+  "pricing_model": "paid subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: categories of personal information collected across Adobe services",
+    "url": "https://www.adobe.com/uk/privacy/policy.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy Service overview: REST API and UI for access/delete requests across Experience Cloud apps",
+    "url": "https://github.com/adobedocs/experience-platform.en/blob/HEAD/help/privacy-service/home.md"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Adobe acts as data processor; Privacy Service orchestrates requests automatically without manual record edits",
+    "url": "https://experienceleague.adobe.com/en/docs/experience-cloud-kcs/kbarticles/ka-29736"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.adobe.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "AMD (amd.com) makes processor products and operates from Santa Clara, California. Its privacy policy states it collects personal identifiers (name, phone number, email address, postal address, username, password, IP address and other online identifiers) and professional and employment information (job title, company name) through online interactions, for order fulfillment, account management, events, and marketing. Its 10-K risk factors note processing of personal information about workers, customers, and others in the ordinary course of business.",
+  "headquarters": "Santa Clara, USA",
+  "id": "amd",
+  "law25_relevance": "AMD appears in Quebec data maps as a hardware vendor receiving only business contact and support data. The map should record those limited flows and note that no customer personal data processing platform is involved.",
+  "mapping_features": [
+   "Privacy policy lists collected personal identifiers (name, phone, email, postal address, username, password, IP address) and professional/employment info (job title, company name)",
+   "10-K discloses processing of personal information about workers, customers, and others by AMD and its third-party providers"
+  ],
+  "name": "Advanced Micro Devices",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal identifiers and professional/employment information collected online",
+    "url": "https://www.amd.com/en/legal/privacy.html?utm_campaign=privacy&utm_medium=redirect&utm_source=301"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "10-K risk factors: Santa Clara operations; processing of personal information about workers and customers",
+    "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/amd-20260328.htm"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.amd.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "unverified",
+  "description": "Akamai (akamai.com) provides content delivery and cloud security services under a published Data Protection Addendum. The DPA states Akamai acts as a data processor when providing services, maintains a published list of authorized sub-processors with advance notice of changes, notifies customers of personal data breaches within 48 hours, and assists customers with data subject rights. Its Data Protection and Privacy Program is managed by a Global Data Protection Office headed by a Chief Data Protection Officer.",
+  "headquarters": "Cambridge, USA",
+  "id": "akamai",
+  "law25_relevance": "Quebec websites using Akamai's CDN and security services route visitor traffic data, including IP addresses, through Akamai as a processor. Its DPA, 48-hour breach notification duty, and published sub-processor list support Law 25 vendor documentation and the transfer register.",
+  "mapping_features": [
+   "DPA states Akamai acts as data processor; authorized sub-processors published at akamai.com/legal/compliance/privacytrustcenter/listofsubprocessors with advance notice of changes",
+   "Breach notification within 48 hours of becoming aware of a personal data breach; assistance with data subject rights",
+   "Global Data Protection Office headed by a Chief Data Protection Officer runs the data protection and privacy program"
+  ],
+  "name": "Akamai Technologies",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Data Protection Addendum (July 2026): processor role, sub-processor list and notice, 48-hour breach notification",
+    "url": "https://www.akamai.com/content/dam/site/en/documents/akamai/akamai-data-protection-addendum.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Data Protection Addendum (2025 version): processor terms and sub-processor authorization",
+    "url": "https://www.akamai.com/site/en/documents/akamai/akamai-data-protection-addendum.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.akamai.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Amphenol (amphenol.com) manufactures interconnect, sensor, and antenna products, headquartered at 358 Hall Avenue, Wallingford, Connecticut. Subsidiary privacy policies, such as Amphenol Antenna Solutions, describe collection of business contact data (name, address, email, company, phone, country) for product and service requests, plus automatically received device and technical data (IP address, browser and device type, time zone).",
+  "headquarters": "Wallingford, USA",
+  "id": "amphenol",
+  "law25_relevance": "Amphenol appears in Quebec data maps as a components vendor. Only business contact and support-request data flows to it, which the map records as a low-risk vendor relationship with no customer personal data processing.",
+  "mapping_features": [
+   "Subsidiary privacy policies describe collection of business contact data (name, company, email, phone, country) for product/service requests and support",
+   "Automatic collection of device and technical data (IP address, browser and device type, country and language code)"
+  ],
+  "name": "Amphenol",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Amphenol Antenna Solutions privacy policy: business contact and device/technical data collected",
+    "url": "https://amphenol-antennas.com/wp-content/uploads/2022/10/Amphenol-Antenna-Solutions-Privacy-Policy.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "World headquarters: 358 Hall Avenue, Wallingford, CT; corporate site www.amphenol.com",
+    "url": "https://www.northernsteelvic.com.au/a-corporate-office/amphenol-world-headquarters-wallingford.html"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.amphenol.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Analog Devices (analog.com) is a semiconductor company with registered address One Analog Way, Wilmington, Massachusetts. Its privacy policy carries CCPA and China PIPL rights notices, including rights to access, correct, delete, port, and restrict personal data. Its Data Protection and Privacy page commits to privacy by design and to deleting personal information that is no longer needed.",
+  "headquarters": "Wilmington, USA",
+  "id": "analog-devices",
+  "law25_relevance": "Analog Devices appears in Quebec data maps as a semiconductor vendor. Personal data is limited to business contacts and support interactions, governed by its published privacy program and its practice of deleting personal information that is no longer needed.",
+  "mapping_features": [
+   "Privacy policy provides CCPA and China PIPL rights notices: access, correction, deletion, portability, restriction of personal data",
+   "Data Protection and Privacy program commits to privacy by design and deletion of personal information no longer needed",
+   "Registered address One Analog Way, Wilmington, MA stated as the personal information processor address"
+  ],
+  "name": "Analog Devices",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "ADI states it deletes personal information that is no longer needed, but publishes no statutory retention schedule; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: Wilmington registered address; CCPA and China PIPL rights notices",
+    "url": "https://www.analog.com/en/who-we-are/legal-and-risk-oversight/data-privacy/privacy-policy.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Company located at One Analog Way, Wilmington, Massachusetts (equity plan data privacy terms)",
+    "url": "https://investor.analog.com/static-files/1667134e-5d78-4409-a783-5fcc274bf79c"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.analog.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "unverified",
+  "description": "Apple (apple.com) publishes a privacy policy covering its devices, services, and apps. Its Messages for Business privacy notice states Apple retains personal data only as long as necessary to fulfill the purposes for which it was collected and works to keep the shortest period permissible under law. Apple requires App Store developers to disclose data practices through privacy nutrition labels, and describes Private Cloud Compute as neither storing personal data nor making it accessible to Apple.",
+  "headquarters": "Cupertino, USA",
+  "id": "apple",
+  "law25_relevance": "Quebec employers issuing Apple devices or using Apple services such as iCloud disclose employee and customer personal data to Apple. The map should record those flows alongside Apple's published retention-minimization practice and its developer disclosure requirements.",
+  "mapping_features": [
+   "Retains personal data only as long as necessary; works to keep the shortest period permissible under law (Messages for Business notice)",
+   "App Store privacy nutrition labels require developers to disclose data types collected, purposes, linkage, and tracking",
+   "Private Cloud Compute described as not storing personal data nor making it accessible to Apple, with outside verification"
+  ],
+  "name": "Apple Inc.",
+  "pricing_model": "hardware sales and paid services; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Apple states it retains personal data only as long as necessary and aims for the shortest period permissible under law, but publishes no statutory schedule; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Messages for Business privacy notice: retention practice; privacy policy reference",
+    "url": "https://www.apple.com/legal/privacy/data/en/messages-for-business/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "App Store privacy nutrition label requirements for developers",
+    "url": "https://support.singular.net/hc/en-us/articles/360053160271-Submitting-App-Privacy-Details-Nutrition-Labels-to-the-App-Store"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Private Cloud Compute: personal data not stored nor made accessible to Apple",
+    "url": "https://www.macobserver.com/tips/round-ups/private-cloud-compute-what-apple-publishes-about-your-data/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.apple.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Applied Materials (appliedmaterials.com) makes semiconductor manufacturing equipment; its career portal is operated by Applied Materials, Inc., 3050 Bowers Avenue, Santa Clara, California. Its candidate privacy policy describes joint controllership across group companies with centralized exercise of data subject rights against Applied Materials, Inc. Its business-partner standards require partners to comply with data protection laws, meet minimum supplier security standards, and report data breaches immediately.",
+  "headquarters": "Santa Clara, USA",
+  "id": "applied-materials",
+  "law25_relevance": "Applied Materials appears in Quebec data maps as an equipment vendor. Personal data flows are limited to procurement contacts and support data, with partner data-handling obligations documented in its supplier standards.",
+  "mapping_features": [
+   "Candidate privacy policy: joint controllership across group companies; data subject rights exercisable centrally against Applied Materials, Inc.",
+   "Business-partner standards require compliance with data protection laws, supplier security standards, and immediate breach reporting",
+   "Career portal operated by Applied Materials, Inc., 3050 Bowers Avenue, Santa Clara, CA"
+  ],
+  "name": "Applied Materials",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy policy (linked from careers portal); candidate data handling",
+    "url": "https://www.appliedmaterials.com/us/en/pages/privacy.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Partnering with Integrity standards: data protection compliance and breach reporting duties for business partners",
+    "url": "https://appliedmaterials.com/content/dam/site/company/about/doc/corporate-governance/sbc_bp_2023.pdf.coredownload.inline.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.appliedmaterials.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Arista Networks (arista.com) makes network equipment and is headquartered at 5453 Great America Parkway, Santa Clara, California. A signed data-processing exhibit describes its AGNI network access product processing user data (first and last name, email address, phone, account status, group membership) and device data (client MAC and IP addresses, location, login duration, bytes transferred). Its CloudVision as-a-Service management platform applies encryption of data at rest and in transit and derives analytics from anonymized customer data sets.",
+  "headquarters": "Santa Clara, USA",
+  "id": "arista-networks",
+  "law25_relevance": "Quebec enterprises running Arista network gear stream telemetry and, for AGNI deployments, user and device identity data to Arista. The data map should capture these flows and the anonymization applied to CloudVision analytics data.",
+  "mapping_features": [
+   "AGNI processes user data (name, email, phone, account status, group membership) and device data (MAC/IP addresses, location, login duration, bytes in/out)",
+   "CloudVision as-a-Service: encryption of data at rest and in transit; analytics derived from anonymized customer data sets",
+   "Company address 5453 Great America Parkway, Santa Clara, CA in signed data-processing exhibit"
+  ],
+  "name": "Arista Networks",
+  "pricing_model": "enterprise sales and subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Signed DPA exhibit: AGNI user/device data processed; Santa Clara company address",
+    "url": "https://sdpc.a4l.org/agreements/2025-10-02_2427_20409_signed_agreement_file.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "CloudVision as-a-Service launch: encryption, anonymized analytics, multi-region deployment",
+    "url": "https://www.businesswire.com/news/home/20200818005234/en/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.arista.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "unverified",
+  "description": "Autodesk (autodesk.com) makes design and engineering software. Its Trust Center describes a privacy-by-design program with privacy impact assessments and six privacy principles applied globally. Its EU Data Act handbook states Autodesk publishes the vendors (sub-processors) it uses globally on its website and that the Trust Center sets out where data is processed and stored. Its terms note cloud providers may store customer content on third-party computers around the globe and bar uploading sensitive personal information to the services.",
+  "headquarters": "San Francisco, USA",
+  "id": "autodesk",
+  "law25_relevance": "Quebec design and construction firms using Autodesk cloud services upload project content that can contain personal information. The map must record Autodesk as a service provider, its published sub-processors, and the contractual bar on sensitive personal information.",
+  "mapping_features": [
+   "Trust Center publishes privacy program: privacy by design, privacy impact assessments, six privacy principles",
+   "Publishes the vendors (sub-processors) used globally on its website; Trust Center sets out where data is processed and stored",
+   "Terms: cloud providers may store content on third-party computers around the globe; sensitive personal information must not be uploaded"
+  ],
+  "name": "Autodesk",
+  "pricing_model": "paid subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Trust Center: privacy by design, PIAs, six privacy principles",
+    "url": "https://www.autodesk.com/trust/privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "EU Data Act handbook: sub-processors published on website; data processing/storage locations in Trust Center",
+    "url": "https://damassets.autodesk.net/content/dam/autodesk/www/pdfs/autodesk-eu-data-act.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Terms of service: global cloud storage; no sensitive personal information in services",
+    "url": "https://www.autodesk.com/company/legal-notices-trademarks/terms-of-service-autodesk360-web-services/terms-of-service-for-recap-recap360"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.autodesk.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Broadcom (broadcom.com) is a semiconductor and enterprise software company, including VMware, with primary location at 3401 Hillview Ave, Palo Alto, California. Its VMware pass-through terms state Broadcom processes personal data under its privacy policy and, where it acts as processor, under a global Data Processing Addendum with standard contractual clauses for international transfers. Its Tanzu telemetry documentation states the Telemetry CLI collects only configuration data and filters out user IDs, names, and IP addresses before transmission.",
+  "headquarters": "Palo Alto, USA",
+  "id": "broadcom",
+  "law25_relevance": "Quebec enterprises running VMware or Broadcom software disclose administrator and support personal data to Broadcom. Its global DPA with standard contractual clauses documents the cross-border transfer basis for the Law 25 transfer register.",
+  "mapping_features": [
+   "VMware pass-through terms: Broadcom as processor under global DPA with SCCs for international transfers; privacy policy at broadcom.com/company/legal/privacy",
+   "Tanzu Telemetry CLI collects configuration data only; filters out user IDs, names, and IP addresses before transmission to Broadcom",
+   "Primary location 3401 Hillview Ave, Palo Alto, California"
+  ],
+  "name": "Broadcom",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Broadcom VMware pass-through terms: processor role, global DPA with SCCs",
+    "url": "https://www.tdsynnex.com/content/dam/tds-site/americas/us/terms-and-conditions/vendor-pass-through-terms/broadcom-vmware-pass-through-terms-2025.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Tanzu telemetry docs: CLI collects config data only; personal identifiers filtered out",
+    "url": "https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/telemetry/2-4/telmtry/cli-data.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Company profile: primary location 3401 Hillview Ave, Palo Alto, California",
+    "url": "https://www.linkedin.com/company/broadcom?trk=public_profile__posts-text"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.broadcom.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Cadence Design Systems (cadence.com) is an electronic design automation company providing software, hardware, and intellectual property for chip design, with principal place of business at 2655 Seely Avenue, San Jose, California. Its General Terms state personal data provided by customers is used in accordance with the Cadence privacy policy, and its candidate privacy notice covers recruitment data use.",
+  "headquarters": "San Jose, USA",
+  "id": "cadence",
+  "law25_relevance": "Cadence appears in Quebec data maps as an EDA software vendor. Customer-provided personal data is handled under its privacy policy, and the map records support and licensing contact flows.",
+  "mapping_features": [
+   "General Terms (Feb 2026): personal data provided by customers used in accordance with the Cadence privacy policy",
+   "Candidate privacy notice covers recruitment personal data use",
+   "Principal place of business 2655 Seely Avenue, San Jose, California"
+  ],
+  "name": "Cadence Design Systems",
+  "pricing_model": "enterprise licensing and subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "General Terms Feb 2026: personal data handled per Cadence privacy policy",
+    "url": "https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/terms-and-conditions/GeneralTerms-2026Feb.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "NDA: principal place of business 2655 Seely Avenue, San Jose, California",
+    "url": "https://www5.cadence.com/rs/070-BII-206/images/cadence_nda_353546.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "EDA company profile: chip design software/hardware/IP; privacy policy reference",
+    "url": "https://sanjose.us.expertini.com/job/executive-administrator-san-jose-cadence-design-systems-inc-cadencedsinc-executiveadministrator-r52301/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.cadence.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "United States (servers and digital operations, per CDW privacy disclosures)",
+  "description": "CDW (cdw.com) is an IT products and services reseller headquartered at 200 N. Milwaukee Ave, Vernon Hills, Illinois. Its Data Processing Agreement casts CDW as processor for professional and managed services, covering customers' employees and customers with data types including name, address, email, phone, IP address, and system access/usage/authorization data, with no sensitive data intended. CDW also operates a Data Privacy Services practice offering GDPR assessments, DPIAs, and data lifecycle mapping, and states its servers and digital operations are in the United States.",
+  "headquarters": "Vernon Hills, USA",
+  "id": "cdw",
+  "law25_relevance": "Quebec organizations buying through CDW or using its managed services disclose employee and customer personal data to CDW as a processor under its DPA. Its US-only hosting statement and enumerated data types feed directly into the Law 25 inventory and transfer register.",
+  "mapping_features": [
+   "DPA: CDW as processor for professional/managed services; data subjects are customers' employees and customers; data types include name, address, email, phone, IP, system access/usage/authorization data; no sensitive data intended",
+   "Data Privacy Services practice offers GDPR assessments, DPIAs, data lifecycle mapping, and privacy program operationalization",
+   "Servers and digital operations located in the United States"
+  ],
+  "name": "CDW Corporation",
+  "pricing_model": "product resale and services contracts; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Data Processing Agreement: processor role, data subjects and types, no sensitive data intended",
+    "url": "https://webobjects2.cdw.com/is/content/CDW/cdw/on-domain-cdw/reference-material/website-terms-conditions-data-processing-agreement-2023.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy disclosures: HQ Vernon Hills, IL; servers and digital operations in the United States",
+    "url": "https://www.cdw.com/content/cdw/en/terms-conditions/privacy-notice/education-privacy-disclosures.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Data Privacy Services: GDPR assessments, DPIAs, data lifecycle mapping",
+    "url": "https://webobjects2.cdw.com/is/content/CDW/cdw/on-domain-cdw/program-strategy-and-ops/data-privacy-services.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.cdw.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Ciena (ciena.com) makes networking equipment and is headquartered at 7035 Ridge Road, Hanover, Maryland. Its privacy policy lists collected personal data including contact identifiers (name, title, company, email, phone, postal address), account and commercial information, communications, and MyCiena portal data. Its supplier guidelines direct suppliers to process personal information only per Ciena's instructions and to give notice before engaging sub-processors.",
+  "headquarters": "Hanover, USA",
+  "id": "ciena",
+  "law25_relevance": "Ciena appears in Quebec data maps as a networking vendor. The map records business contact, account, and MyCiena portal data flows, plus its supplier sub-processor notice practice for the vendor inventory.",
+  "mapping_features": [
+   "Privacy policy lists personal data: contact identifiers, account/commercial info, communications, MyCiena portal data",
+   "Supplier guidelines: process personal information only per Ciena's instructions; notice required before engaging sub-processors",
+   "Headquarters 7035 Ridge Road, Hanover, Maryland"
+  ],
+  "name": "Ciena",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: categories of personal data collected",
+    "url": "https://www.ciena.com/about/corporate-governance/privacy-policy?campaign=X820417&mkt_tok=ODQ3LUZFSS02OTQAAAGGdT8a3zkcEKN8v2qUsepe8-GD-kQXmbWhgRR8Gy1AvB5xAsyVzFNzbXgQe9__cnicBlfY4AYegk9wLDYk5o3e_-wWmsWEaVly2k0AgYD3VNI9PfE"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Recruitment privacy policy: Ciena Corporation, 7035 Ridge Road, Hanover, Maryland",
+    "url": "https://www.ciena.com/about/corporate-governance/privacy-policy/hr-privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Supplier guidelines: personal information processing instructions; sub-processor notice",
+    "url": "https://media.ciena.com/documents/Supplier_Guidelines.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.ciena.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "Published per product in Trust Portal privacy data sheets; Webex regions include United States, Germany, and Singapore",
+  "description": "Cisco (cisco.com) makes networking and security products. Its Trust Portal publishes per-product privacy data sheets and privacy data maps, for example for Webex Calling, listing personal data categories, subprocessors, and data center locations. A Webex data sheet names subprocessors including AWS with data centers in the US and Frankfurt, noting EU customer data is stored in the EU.",
+  "headquarters": "San Jose, USA",
+  "id": "cisco",
+  "law25_relevance": "Quebec enterprises using Webex or Cisco security products disclose communications content, call detail records, and device data to Cisco. Its per-product privacy data sheets and data maps give Law 25 teams ready-made flow documentation including sub-processors and data center locations.",
+  "mapping_features": [
+   "Trust Portal publishes per-product privacy data sheets and privacy data maps (e.g., Webex Calling) listing data categories, subprocessors, and data center locations",
+   "Webex subprocessors include AWS with data centers in the US and Frankfurt; EU customer data stored in the EU",
+   "Webex Meetings disclosure lists subprocessor data center locations in the United States, Germany, and Singapore"
+  ],
+  "name": "Cisco",
+  "pricing_model": "enterprise sales and subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Webex Calling privacy data map: data categories and processing nodes",
+    "url": "https://trustportal.cisco.com/c/dam/r/ctp/docs/privacydatamap/collaboration/webex-calling-privacy-data-map.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Webex subprocessor list: AWS regions; EU customer data stored in EU",
+    "url": "https://sdpc.A4L.org/agreements/2024-09-17_3132_5391_signed_agreement_file.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Webex Meetings offer disclosure: subprocessor data center locations (US, Germany, Singapore)",
+    "url": "https://trustportal.cisco.com/c/dam/r/ctp/docs/privacydatasheet/collaboration/cisco-webex-meetings-offer-disclosure.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.cisco.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "data_residency": "unverified",
+  "description": "Cognizant (cognizant.com) is an IT services and consulting company registered at 500 Frank W Burr Blvd, Teaneck, New Jersey. Its associate privacy notice lists personal information including name, email, address, phone, date of birth, government-issued IDs, IP address, and hardware identifiers, and defines sensitive personal information with handling rules. Its candidate privacy notice covers recruitment data purposes and legal bases.",
+  "headquarters": "Teaneck, USA",
+  "id": "cognizant",
+  "law25_relevance": "Quebec enterprises outsourcing IT work to Cognizant disclose employee and customer personal data to it as a processor. The enumerated data categories in its privacy notices belong in the Law 25 processing inventory.",
+  "mapping_features": [
+   "Associate privacy notice lists personal information: name, email, address, phone, date of birth, government IDs, IP address, hardware identifiers",
+   "Defines sensitive personal information (SSN, financial, health, biometric, criminal history) with handling rules",
+   "Registered address 500 Frank W Burr Blvd, Teaneck, NJ"
+  ],
+  "name": "Cognizant",
+  "pricing_model": "services contracts; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the client DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Global associate privacy notice: Teaneck registered address; personal and sensitive information categories",
+    "url": "https://www.cognizant.com/en_us/general/documents/global_associate_privacy_notice.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Candidate privacy notice: recruitment data purposes and legal bases",
+    "url": "https://stagepublish.cognizant.com/en_us/general/documents/Cognizant_Candidate_Privacy_Notice.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.cognizant.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Coherent Corp. (coherent.com) is a photonics and laser company headquartered at 375 Saxonburg Blvd, Saxonburg, Pennsylvania. Its website privacy notice describes collection of device and browser information (IP address, location, device ID), usage data, and event or transaction records from online shops and contact forms.",
+  "headquarters": "Saxonburg, USA",
+  "id": "coherent",
+  "law25_relevance": "Coherent appears in Quebec data maps as a photonics components vendor. Personal data is limited to business contacts and website usage data described in its privacy notice.",
+  "mapping_features": [
+   "Website privacy notice: device/browser info (IP, location, device ID), usage data, event and transaction records collected",
+   "Headquarters 375 Saxonburg Blvd, Saxonburg, PA"
+  ],
+  "name": "Coherent Corp.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Website privacy notice: device, usage, and transaction data collected",
+    "url": "https://oss.cloud.custouch.com/res/17043530584807/PVY-004_Website_Privacy_Notice_%28Coherent_Websites%29.pdf?Expires=1783925971"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Terms of sale: Coherent Corp., 375 Saxonburg Blvd., Saxonburg, PA",
+    "url": "https://www.coherent.com/resources/legal/coherent-corp/coherent-corp-terms-and-conditions-of-sale-china.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.coherent.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Corning Inc. (corning.com) is a materials science manufacturer. Its Global Data Protection Policy establishes binding corporate rules with principles including a defined business purpose for collection, data quality, defined retention policies, and secured transfers to suppliers and third countries.",
+  "headquarters": "Corning, USA",
+  "id": "corning",
+  "law25_relevance": "Corning appears in Quebec data maps as a materials vendor. Its binding corporate rules and stated retention policies provide the transfer and retention documentation a Law 25 inventory needs for its limited business-contact flows.",
+  "mapping_features": [
+   "Global Data Protection Policy: binding corporate rules; defined purposes, data quality, retention policies, secured supplier and third-country transfers",
+   "Data privacy policy overview: access, rectification, erasure, and objection rights respected"
+  ],
+  "name": "Corning Inc.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Corning states defined retention policies are applied but publishes no statutory schedule; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Global Data Protection Policy: BCR principles incl. retention policies and secured transfers",
+    "url": "https://www.corning.com/media/worldwide/global/documents/Global_Data_Protection_Policy.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Data privacy policy overview: data protection principles",
+    "url": "https://www.corning.com/content/dam/corning/media/worldwide/global/documents/Data_Privacy_policy.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.corning.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "data_discovery"
+  ],
+  "data_residency": "Falcon regional clouds; in-country deployments announced January 2026 for Saudi Arabia, India, and the UAE",
+  "description": "CrowdStrike Holdings, Inc. (crowdstrike.com) is a cloud-native cybersecurity company offering the Falcon platform. Analyses describe Falcon as processing data about devices, users, and security events, and its Falcon Data Security capability discovers and classifies data to prevent exposure in AI workflows. In January 2026 the company announced new in-country regional clouds for Saudi Arabia, India, and the UAE under its Global Data Sovereignty initiative.",
+  "headquarters": "Austin, USA",
+  "id": "crowdstrike",
+  "law25_relevance": "Quebec enterprises deploying Falcon disclose endpoint telemetry about devices and users to CrowdStrike. The map should record those flows and note the regional cloud options available for data residency planning.",
+  "mapping_features": [
+   "Falcon processes data about devices, users, and security events under privacy regulations such as GDPR",
+   "Falcon Data Security discovers, classifies, and enforces policies to prevent data exposure in AI workflows",
+   "Regional clouds for data sovereignty; in-country deployments announced for Saudi Arabia, India, and the UAE (January 2026)"
+  ],
+  "name": "CrowdStrike Holdings, Inc.",
+  "pricing_model": "enterprise subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Regional clouds announcement: in-country deployments for Saudi Arabia, India, UAE; data sovereignty",
+    "url": "https://www.intelligentcio.com/me/2026/01/22/crowdstrike-announces-new-regional-clouds-to-expand-secure-data-sovereignty/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Falcon Data Security discovers and classifies data in AI workflows",
+    "url": "https://www.stocktitan.net/news/CRWD/crowd-strike-expands-strategic-collaboration-with-intel-to-secure-7aab9i7dp72l.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Falcon processes data about devices, users, and security events; privacy law obligations",
+    "url": "https://thestrategystory.com/blog/crowdstrike-pestel-analysis-2026/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.crowdstrike.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "data_discovery"
+  ],
+  "data_residency": "Independent regional sites across North America, Europe, Asia, AWS GovCloud, Australia, and the UK; data never shared between sites",
+  "description": "Datadog, Inc. (datadoghq.com) provides a monitoring and security platform for cloud applications. Its Observability Pipelines include a Sensitive Data Scanner processor for finding sensitive data in logs. Google Cloud documentation notes Datadog operates independent regional sites with data never shared between sites, and its master subscription agreement points to published list pricing and security documentation at trust.datadoghq.com.",
+  "headquarters": "New York City, USA",
+  "id": "datadog",
+  "law25_relevance": "Quebec teams sending logs and metrics to Datadog may transmit personal data contained in those logs. The map should record Datadog as a processor, the regional site selected, and the Sensitive Data Scanner as a control for finding personal data in log streams.",
+  "mapping_features": [
+   "Sensitive Data Scanner processor finds sensitive data in log pipelines",
+   "Independent regional sites (North America, Europe, Asia, AWS GovCloud, Australia, UK); data never shared between sites",
+   "Master subscription agreement references published list pricing and security documentation at trust.datadoghq.com"
+  ],
+  "name": "Datadog, Inc.",
+  "pricing_model": "usage-based subscriptions; list prices published; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify log retention settings and timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Observability Pipelines: Sensitive Data Scanner processor for logs",
+    "url": "https://expanso.io/blog/datadog-observability-pipelines/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Datadog regional sites: independent sites; data never shared between sites",
+    "url": "https://docs.cloud.google.com/architecture/partners/stream-cloud-logs-to-datadog"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Master subscription agreement: list pricing; security measures at trust.datadoghq.com",
+    "url": "https://d7umqicpi7263.cloudfront.net/eula/1H8XcdwVO7papqU7mn557nU3XoYX0fSeU"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.datadoghq.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Dell Technologies (dell.com) makes computer hardware and infrastructure products. Its North America privacy statement lists collected contact and identity data, payment data, and transaction data. Its APEX Managed Device service description states Dell collects System Data (configuration, operation, performance, and use of the service), treats personal information in it under the Dell privacy statement, and requires telemetry collection features to remain enabled.",
+  "headquarters": "Round Rock, USA",
+  "id": "dell",
+  "law25_relevance": "Quebec enterprises buying Dell hardware or APEX managed services disclose purchaser, support, and device telemetry data to Dell. The map records those flows under Dell's privacy statement and the APEX System Data terms.",
+  "mapping_features": [
+   "Privacy statement lists contact/identity data, payment data, and transaction data collected",
+   "APEX Managed Device service collects System Data (configuration, operation, performance, use); personal information handled under Dell privacy statement",
+   "Telemetry collection features must remain enabled; disabling them can disrupt the APEX service"
+  ],
+  "name": "Dell Technologies",
+  "pricing_model": "hardware sales and subscription services; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "North America privacy statement: contact/identity, payment, and transaction data",
+    "url": "https://www.dell.com/en-ca/lp/legal/policies-privacy?dgc=ba&cid=dellcom&lid=whats_hap_gen"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "APEX Managed Device service: System Data collection and telemetry terms",
+    "url": "https://www.dell.com/learn/us/en/25/legal_docs/apex-managed-device-service-sd-en.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.dell.com"
+ },
+ {
+  "categories": [
+   "data_discovery",
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Everpure, Inc. (everpuredata.com) is a data storage and management company listed on NYSE under ticker P. SEC EDGAR (CIK 0001474432) lists Everpure, Inc. at 2555 Augustine Drive, Santa Clara, formerly Pure Storage, Inc.; the company rebranded from Pure Storage in February 2026 and began trading under the single-letter ticker in March 2026. It joined the S&P 500 effective September 21, 2026 in the Information Technology sector. Its Everpure Data Intelligence offering aims to automatically discover, classify, and contextualize enterprise data for AI applications, and its DPA states Everpure acts as processor for end-user personal data and will not sell or share it.",
+  "headquarters": "Santa Clara, USA",
+  "id": "everpure",
+  "law25_relevance": "Quebec enterprises storing data on Everpure arrays or using its data intelligence features place customer personal data with Everpure as a processor under its DPA. The map should record the storage flows and note the DPA's no-sale, no-share commitment.",
+  "mapping_features": [
+   "Everpure Data Intelligence aims to automatically discover, classify, and contextualize enterprise data for AI applications",
+   "DPA: Everpure acts as processor for end-user personal data; will not sell or share it; deidentification commitments",
+   "Privacy notice: collects name, email address, IP address, and language for communications"
+  ],
+  "name": "Everpure, Inc.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Everpure states retention is based on business needs and legal requirements, with anonymization or secure destruction when no longer needed; no statutory schedule published. Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "S&P 500 addition announcement: Everpure (NYSE: P); company boilerplate; everpuredata.com",
+    "url": "https://www.webull.com/news/15544291261015040"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "September 2026 rebalance table: Everpure, ticker P, Information Technology, added to S&P 500 effective Sept 21, 2026",
+    "url": "https://www.webull.com/news/15522644696376320"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "EDGAR: Everpure, Inc., CIK 0001474432, Santa Clara; formerly Pure Storage, Inc.",
+    "url": "https://www.sec.gov/Archives/edgar/data/1474432/000147443226000031/0001474432-26-000031.txt"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "DPA: Everpure as processor for end-user personal data; no sell/share",
+    "url": "https://www.everpuredata.com/legal/data-processing-addendum.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Privacy notice: name, email, IP address, language collected for communications",
+    "url": "https://www.everpuredata.com/privacy.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "February 2026 rebrand from Pure Storage; ticker P; Data Intelligence discover/classify positioning",
+    "url": "https://ts2.tech/en/everpure-stocks-may-test-analysts-see-upside-but-supply-costs-loom/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.everpuredata.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "data_discovery"
+  ],
+  "data_residency": "unverified",
+  "description": "F5, Inc. (f5.com) is an application delivery and security company based in Seattle. Its AI Gateway added data leakage detection and prevention that examines AI prompts and responses for sensitive data including personal information, applying policies to redact, block, or log it. Its support and professional services DPA sets processor terms with personal data breach notification duties, and its security addendum commits to ISO 27001 or SOC 2 Type II certification coverage.",
+  "headquarters": "Seattle, USA",
+  "id": "f5",
+  "law25_relevance": "Quebec enterprises routing application traffic through F5 disclose user and device data carried in that traffic. The map records F5 as a processor under its DPA and can note AI Gateway leakage detection as a safeguard for AI data flows.",
+  "mapping_features": [
+   "AI Gateway data leakage detection and prevention examines AI prompts/responses for sensitive data including personal information; redact, block, or log policies",
+   "Support and professional services DPA: processor terms and personal data breach notification duties",
+   "Security addendum commits to ISO 27001 or SOC 2 Type II certification coverage of systems processing customer data"
+  ],
+  "name": "F5, Inc.",
+  "pricing_model": "enterprise sales and subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "AI Gateway: data leakage detection/prevention for personal information in AI prompts and responses",
+    "url": "https://markets.financialcontent.com/startribune/article/bizwire-2025-7-16-f5-application-delivery-and-security-platform-introduces-data-leakage-detection-and-prevention-for-securing-ai-workloads"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Support and professional services DPA: processor terms; breach notification",
+    "url": "https://proxy.filestage.io/_url/https://www.f5.com/pdf/customer-support/f5-support-and-professional-services-dpa.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Seattle-based security vendor; threat actor incident disclosure",
+    "url": "https://www.crn.com/news/security/f5-customer-information-accessed-by-threat-actor"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.f5.com"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "grc"
+  ],
+  "data_residency": "unverified",
+  "description": "Fair Isaac Corporation (fico.com), known as FICO, is a data analytics company based in Bozeman, Montana, and an S&P 500 component. It operates Scores and Software segments; its FICO score is described as used by 90 percent of lenders, and its Falcon Fraud Manager builds a neural-network memory of cardholder habits such as where and when customers shop and typical spend to detect fraud. Its FICO Platform offers modular analytic and decisioning software.",
+  "headquarters": "Bozeman, USA",
+  "id": "fair-isaac",
+  "law25_relevance": "Quebec financial institutions using FICO scores or Falcon Fraud Manager disclose customer transaction and credit data for scoring and fraud decisions. The map must record these high-sensitivity flows and the decisioning purpose for Law 25 transparency.",
+  "mapping_features": [
+   "FICO score used by 90 percent of lenders for credit decisions",
+   "Falcon Fraud Manager builds neural-network memory of cardholder habits (shopping locations, timing, spend amounts) to detect fraud",
+   "Operates Scores and Software segments; FICO Platform for analytic decisioning use cases"
+  ],
+  "name": "Fair Isaac Corporation",
+  "pricing_model": "enterprise licensing and subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines in the vendor DPA and with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Company profile: HQ Bozeman, Montana; S&P 500 component; data analytics; FICO score",
+    "url": "https://en.wikipedia.org/wiki/FICO"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Falcon Fraud Manager: neural-network memory of cardholder habits for fraud detection",
+    "url": "https://www.sherwoodbank.com/assets/files/79Y0ucTR/r/FICO+Falcon+newsletter+article_Final.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Scores and Software segments; FICO Platform; decisioning products",
+    "url": "https://www-web.itiger.com/stock/FICO/company"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.fico.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "First Solar, Inc. (firstsolar.com) manufactures solar modules using a thin-film semiconductor process, listing its corporate address as 350 West Washington Street, Tempe, Arizona. Consulted sources describe it as a manufacturing vendor with no customer-facing data processing platform or published subprocessor list; its published personal-data footprint is business contact information.",
+  "headquarters": "Tempe, USA",
+  "id": "first-solar",
+  "law25_relevance": "First Solar appears in Quebec data maps as a solar equipment vendor. Personal data flows are limited to procurement and business contact data, a low-risk entry in the vendor inventory.",
+  "mapping_features": [
+   "Corporate directories list business contact details (address, phone) as the company's published personal-data footprint",
+   "No customer-facing data processing platform or published subprocessor list found in consulted sources"
+  ],
+  "name": "First Solar, Inc.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted; Law 25 sets no numerical retention periods, so any period used must cite another statute. Verify retention and deletion timelines with counsel.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Thin-film solar module manufacturer; corporate address 350 West Washington Street, Tempe, AZ",
+    "url": "https://www.azocleantech.com/suppliers.aspx?SupplierID=229"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:47:11Z",
+   "status": "verified"
+  },
+  "website": "https://www.firstsolar.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Flex Ltd. (flex.com) is a multinational electronics manufacturing services company. It provides design, manufacturing, and supply chain services to other companies under contract. Its privacy policy states it collects business contact data such as name, email, phone number, and employer for running its business, communicating with customers and suppliers, and complying with contractual and legal obligations.",
+  "headquarters": "Austin, USA",
+  "id": "flex",
+  "law25_relevance": "Flex is a business-to-business processor: Quebec companies that outsource electronics manufacturing share business contact and employee data with it. A Quebec Law 25 data map should record Flex as a processor, note what data categories it receives, and assess the cross-border transfer rules that apply to the transfer.",
+  "mapping_features": [
+   "Privacy policy lists business contact data categories collected (name, email, phone, employer) and the purposes: customer/supplier communications, transactions, R&D, compliance",
+   "Discloses categories of third parties receiving business contact data: Flex group companies, business associates, professional advisers, event-management third parties"
+  ],
+  "name": "Flex Ltd.",
+  "pricing_model": "enterprise sales (contract manufacturing); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Flex privacy policy: business contact data collected and third-party disclosure categories",
+    "url": "https://flex.com/other/privacy-policy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Flex California privacy policy: purposes and recipients of business contact data",
+    "url": "https://flex.com/company/policies/california-privacy-policy"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://flex.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "FortiGate Cloud stores data based on the customer-selected region: Global, Canada, US, Europe, or Japan (per Fortinet data privacy practices sheet). Other products not confirmed in sources; overall corporate hosting regions unverified beyond this.",
+  "description": "Fortinet is a cybersecurity company selling network security appliances and cloud security services such as FortiGate Cloud, FortiAnalyzer, and FortiSIEM. When its products manage customer networks, Fortinet processes account data, device identifiers, IP addresses, logs, and telemetry. Its FortiGate Cloud data privacy practices sheet lists the exact data categories, the region choice at setup, and how long logs and backups are kept.",
+  "headquarters": "Sunnyvale, USA",
+  "id": "fortinet",
+  "law25_relevance": "Fortinet appliances and cloud services sit on enterprise networks and process logs and telemetry that can identify users and devices. A Quebec Law 25 data map should list which Fortinet cloud services are used, the region selected at setup, and what telemetry categories are collected.",
+  "mapping_features": [
+   "FortiGate Cloud data privacy practices sheet lists collected data: login email, account IDs, serial numbers, IP addresses, logs and telemetry, device configuration and backups",
+   "FortiGate Cloud stores data in the customer-selected region (Global, Canada, US, Europe, Japan)",
+   "FortiGate Cloud retention: logs, reports, and configuration backups kept for one year with an active subscription; free tier log data kept seven days"
+  ],
+  "name": "Fortinet",
+  "pricing_model": "enterprise sales (appliances plus subscriptions); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Vendor-published product retention periods exist (one year with subscription, seven days free tier) but no vendor-published statutory retention schedule. Claims are product terms, not statutes.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Fortinet data privacy practices sheet: data categories, storage regions, retention for FortiGate Cloud",
+    "url": "https://fpsecure.com/content/dam/fortinet/assets/data-sheets/Fortinet_Data_Privacy_Practices.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Fortinet privacy policy referenced in product license terms",
+    "url": "https://www.fortinet.com/aboutus/privacy.html"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.fortinet.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Gartner is a technology research and advisory company selling subscription research, conferences, and consulting to enterprises. It collects client and prospect data through its website, apps, and services: identifiers such as name, title, contact details, and company name; internet and network activity such as browsing history; and inference data about individuals.",
+  "headquarters": "Stamford, USA",
+  "id": "gartner",
+  "law25_relevance": "Gartner holds contact and behavioral data on employees who use its research, and it shares some website data for cross-context behavioral advertising. Quebec companies that subscribe should record Gartner in the data map as a service provider receiving employee data, and note the advertising-sharing opt-out for website visitors.",
+  "mapping_features": [
+   "Privacy policy lists collected categories: identifiers (name, title, contact details, company name), internet or network/device activity (browsing history, app usage), inference data",
+   "Privacy policy describes sharing for cross-context behavioral advertising (limited to public-website data, not logged-in account data) with an opt-out link"
+  ],
+  "name": "Gartner",
+  "pricing_model": "subscription research; enterprise sales; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Gartner privacy policy: data categories collected, advertising sharing, opt-out",
+    "url": "https://www.gartner.ca/en/privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Gartner privacy policy: sources and uses of collected information",
+    "url": "https://www.gartner.com.au/en/about/policies/privacy"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.gartner.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Gen Digital Inc. is a consumer cyber safety company whose brands include Norton, LifeLock, Avast, and AVG. Its products collect account data, device data, website data, location data, support data, and security data from users. LifeLock identity protection services collect government identifiers such as Social Security numbers, dates of birth, and financial account details to monitor for identity theft.",
+  "headquarters": "Tempe, USA",
+  "id": "gen-digital",
+  "law25_relevance": "LifeLock processes highly sensitive identity data (government IDs, financial accounts) for subscribers, which is exactly the kind of sensitive personal information a Quebec Law 25 data map must inventory with extra safeguards. Norton endpoint products also process device and security data from any employee devices that run them.",
+  "mapping_features": [
+   "Norton privacy notices list data categories with operational retention: account data while active or 36 months, IP address 30 days, support requests 2 years, call recordings 3 months",
+   "LifeLock privacy policy lists identity data collected for monitoring: name, contact info, Social Security number, date of birth, driver's license info, financial account numbers",
+   "Norton global privacy statement discloses categories shared with service providers (user data, product data, website data, third-party data)"
+  ],
+  "name": "Gen Digital",
+  "pricing_model": "consumer subscription; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Vendor publishes operational retention windows in product privacy notices (e.g., account data 36 months), but these are product terms with no statutory basis cited. No vendor-published statutory retention schedule.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Norton privacy notices: categories of data and personal data collected with retention windows",
+    "url": "https://asia.norton.com/privacy/privacy-notices"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Norton global privacy statement: categories disclosed to service providers and authorities",
+    "url": "https://www.nortonlifelock.com/content/dam/nortonlifelock/pdfs/eulas/privacy-notice/norton-global-privacy-statement-en.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "LifeLock privacy policy: identity data collected directly from members",
+    "url": "https://nortonlifelock.com/content/dam/nortonlifelock/pdfs/eulas/privacy-notice/archive-lifelock-privacy-policy-en.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.gendigital.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "Published via subprocessor list: cloud infrastructure in the United States (AWS); colocation facilities in France (Datadock SARL); other regional providers by product. A single consolidated hosting-region statement was not found in the sources consulted.",
+  "description": "GoDaddy provides domain registration, web hosting, website building, and commerce services. As a hosting provider it processes customer account data and, through hosted websites and applications, data belonging to its customers' own customers. GoDaddy publishes a public subprocessor list naming each subprocessor, its country of incorporation, the service it provides, and the data categories involved, plus a data processing addendum covering contact, identification, financial, and transactional data.",
+  "headquarters": "Tempe, USA",
+  "id": "godaddy",
+  "law25_relevance": "GoDaddy hosts websites and applications that can hold Quebec residents' personal data, and its subprocessor list shows processing across several countries. A Quebec Law 25 data map should use the subprocessor list to document cross-border transfers and confirm the hosting region selected for each product.",
+  "mapping_features": [
+   "Public subprocessor list (revised 2026-05-04) names each subprocessor with country, service description, and data categories (e.g., AWS: infrastructure and network traffic data; Acronis: customer backups)",
+   "Data processing addendum lists data categories: contact information, identification information, financial information, transactional information",
+   "Subprocessors in multiple countries (US, Switzerland, UK, Germany, France) are disclosed with their data categories"
+  ],
+  "name": "GoDaddy",
+  "pricing_model": "subscription/SaaS; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "GoDaddy subprocessor list: company, country, service description, categories of data",
+    "url": "https://www.godaddy.com/en-ca/legal/agreements/subprocessor-list"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "GoDaddy data processing addendum: categories of data transferred",
+    "url": "https://www.godaddy.com/en-uk/legal/agreements/data-processing-addendum-controller"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.godaddy.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Hewlett Packard Enterprise (HPE) sells enterprise servers, storage, networking, and managed services. It acts as a data processor for customers under its Data Privacy and Security Addendum, which names HPE's data protection officer and describes the controller/processor roles. For HPE Networking Instant On support, its published schedule states that applications are hosted on AWS and that support staff access customer data only to resolve support tickets.",
+  "headquarters": "Houston, USA",
+  "id": "hpe",
+  "law25_relevance": "HPE equipment and managed services process customer data that can include personal information of employees and customers, and HPE support operations can access that data. A Quebec Law 25 data map should record HPE's processor role, the addendum terms, and where support data is hosted.",
+  "mapping_features": [
+   "Data Privacy and Security Addendum defines controller/processor roles with HPE as processor and names the data protection officer",
+   "Instant On data privacy and security schedule states applications are hosted on AWS and support access is limited to support/maintenance ticket resolution",
+   "Published data privacy and security agreement schedules describe per-product data access, security, and encryption practices"
+  ],
+  "name": "Hewlett Packard Enterprise",
+  "pricing_model": "enterprise sales (hardware plus services/subscriptions); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "HPE Data Privacy and Security Addendum: controller/processor roles, DPO contact",
+    "url": "https://www.hpe.com/psnow/downloadDoc/HPE%20Data%20Privacy%20and%20Security%20Addendum-a50011819enw.pdf?id=a50011819enw&isFutureVersion=true&ver=&form=false&print=&hf=regular&r=&section=&prelaunchSection=&softrollSection=&deepLink=&utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=&originalObjectName=&isLinearized=false&contentDisposition=attachment"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "HPE Instant On data privacy and security schedule: AWS hosting, support-only data access",
+    "url": "https://www.hpe.com/psnow/downloadDoc/HPE Networking Instant On data privacy and security agreement schedule-a50015017enw.pdf?id=a50015017enw&isFutureVersion=true&ver=1&form=false&preview=false&print=&hf=regular&r=§ion=&prelaunchSection=&softrollSection=&deepLink=&utm_source=&utm_medium=&utm_campaign=&utm_content=&utm_term=&originalObjectName=&isLinearized=false&contentDisposition=attachment"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.hpe.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "HP Inc. sells personal computers, printers, and related services and software. Its privacy statement lists the personal data categories it collects: contact data, payment data, account data, location data, security credentials, demographic data, preferences, printer usage data, device data, application data, and performance data. HP publishes a Data Processing Agreement for HP services covering processing of customer personal data where HP acts as data processor.",
+  "headquarters": "Palo Alto, USA",
+  "id": "hp",
+  "law25_relevance": "HP printers and PCs collect device, usage, and print data that can be tied to employees, and HP's cloud-connected services move that data off the device. A Quebec Law 25 data map should record what HP telemetry and account data flows to HP and under what DPA terms.",
+  "mapping_features": [
+   "Global privacy statement lists collected categories: contact, payment, account, location, credentials, demographic, printer usage, device, application, and performance data",
+   "HP states it does not scan or collect the content of printed files; printer usage data covers pages, modes, cartridge type, and file types",
+   "Data Processing Agreement for HP Services defines processor obligations and sets out the categories of data subjects and processing purposes"
+  ],
+  "name": "HP Inc.",
+  "pricing_model": "hardware sales plus services/subscriptions; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "HP Global Privacy Statement: categories of personal data collected",
+    "url": "https://www.hp.com/content/dam/sites/worldwide/privacy/pdf/2026/apr/en.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "HP Data Processing Agreement: processor obligations, categories of personal data",
+    "url": "https://www.hp.com/content/dam/sites/worldwide/privacy/pdf/dpa/2025/EN.pdf?jumpid=ma_globalnav_sup_supser"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.hp.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "Workforce data: United States plus regional hubs (Costa Rica, EU, India, Israel, Malaysia, Vietnam) per Intel's contingent worker privacy notice. Product/service data hosting regions not confirmed in sources consulted; overall unverified.",
+  "description": "Intel is a semiconductor company making processors and related technologies. Beyond chips, it runs partner programs, security products, and cloud services that collect personal and device data. Its security products privacy notice describes analyzing data sent to and from devices for threats, including IP addresses and threat intelligence. Its workforce notices state personal data may be stored and processed in the United States and in regional hubs including Costa Rica, the European Union, India, Israel, Malaysia, and Vietnam.",
+  "headquarters": "Santa Clara, USA",
+  "id": "intel",
+  "law25_relevance": "Intel's security and manageability services process device and network data that can identify employees, and its workforce data moves across several countries. A Quebec Law 25 data map should document Intel's processing hubs and what device telemetry flows to Intel.",
+  "mapping_features": [
+   "Security products privacy notice: Intel services analyze device data for threats, assess device reputation, and share data with threat intelligence systems",
+   "Contingent worker privacy notice: personal data stored and processed in the US and regional hubs (Costa Rica, EU, India, Israel, Malaysia, Vietnam)",
+   "Partner program notices describe member data collected (name, company, contact details) and its uses"
+  ],
+  "name": "Intel",
+  "pricing_model": "enterprise sales (hardware plus services/subscriptions); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Intel security products privacy notice: device and threat data collection",
+    "url": "https://Www.intel.com/content/www/us/en/privacy/security-related-data-supplement.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Intel contingent worker privacy notice: data collected and storage/processing locations",
+    "url": "https://cdrdv2-public.intel.com/857051/cw-data-privacy-consent-form.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.intel.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Intuit sells financial software including QuickBooks, TurboTax, Credit Karma, and Mailchimp. Its QuickBooks Online Data Processing Agreement defines Intuit as processor for 'Business Connection Data', which covers personal data of its customers' customers, employees, vendors, and prospects. Intuit's privacy disclosures list identity verification data, location data, marketing data, online behavioral data, financial data, and usage data.",
+  "headquarters": "Mountain View, USA",
+  "id": "intuit",
+  "law25_relevance": "QuickBooks and TurboTax process financial and tax data, which is sensitive personal information under Quebec's Law 25. Quebec businesses using Intuit products should record in their data map what customer and employee data flows to Intuit and under which DPA terms.",
+  "mapping_features": [
+   "QuickBooks Online DPA defines Business Connection Data and Intuit's processor role, with the customer's discretion controlling what personal data is uploaded",
+   "DPA Annex A lists data subject categories: customer's customers, employees, personnel, vendors, prospects",
+   "Privacy disclosures list data categories: identity verification data (government IDs), location data, financial data, online behavioral data, usage data"
+  ],
+  "name": "Intuit",
+  "pricing_model": "subscription SaaS; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "QuickBooks Online DPA: Business Connection Data, processor role, data subject categories",
+    "url": "https://www.intuit.com/legal/terms/en-us/quickbooks/qbo-data-processing/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Intuit lawful basis of processing: categories of personal data collected",
+    "url": "https://www.ploymarket.com/proxy/https/digitalasset.intuit.com/render/content/dam/intuit/ic/en_us/content/English-UK-EU-Switzerland-Lawful-Basis-of-Processing.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.intuit.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Jabil is an electronics manufacturing services company providing design, manufacturing, and supply chain services. Its privacy notices describe collecting identifiers, commercial information, internet activity, geolocation data, professional and employment information, and sensitive personal information from people interacting with its websites and services. Its supplier security requirements define Jabil Data to include personal data and customer data and require recipients to apply information security controls.",
+  "headquarters": "St. Petersburg, USA",
+  "id": "jabil",
+  "law25_relevance": "Jabil is a business-to-business processor: Quebec companies outsourcing manufacturing share business contact, employee, and customer data with it. A Quebec Law 25 data map should record Jabil as a processor and note what categories it handles under its supplier data requirements.",
+  "mapping_features": [
+   "CCPA supplement lists categories collected: identifiers, commercial information, internet activity, geolocation, audio/visual data, professional or employment information, sensitive personal information",
+   "Supplier information security requirements define Jabil Data (personal data, customer data, confidential information) and impose security controls on recipients and their subprocessors"
+  ],
+  "name": "Jabil",
+  "pricing_model": "enterprise sales (contract manufacturing); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Jabil CCPA supplement: categories of personal information collected",
+    "url": "https://www.jabil.cn/dam/jcr:3f5efa06-adae-4e7a-9ee9-ebabec2f70d2/CCPA_Supplement_to_Website_Privacy_Statement_Feb_2022.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Jabil supplier security requirements: definition of Jabil Data and subprocessor terms",
+    "url": "https://live.public.jabil-prod.magnolia-platform.io/jabil-one-26-cn/dam/jcr:af075856-3213-4823-ac63-60d267e9fbe0/Supplier%20Information%20Security%20Requirements.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.jabil.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Keysight Technologies sells electronic test and measurement equipment and software. Its customer privacy statement lists personal data collected: name, contact information, billing information, transaction history, financial information, online usage information (IP address, browser details), and software usage information (username, device ID, IP address, Wi-Fi access point information, feature usage). Its software privacy notice for Monitoring Insights confirms collection of username, email, IP address, device ID, and application metrics.",
+  "headquarters": "Santa Rosa, USA",
+  "id": "keysight",
+  "law25_relevance": "Keysight's connected instruments and software collect device, network, and usage data from customer environments. A Quebec Law 25 data map should record what Keysight software telemetry is collected from Quebec sites and who can access it.",
+  "mapping_features": [
+   "Customer privacy statement lists data types: personal information (name, contact, billing, financial), online usage (IP, browser, URLs), software usage (device username, device ID, Wi-Fi access point info, feature metrics)",
+   "Software privacy notice for Monitoring Insights lists personal data processed: software username, email, IP address, device ID, feature use and application metrics",
+   "Published information security pages describe data classification, least-privilege access, and production environment controls"
+  ],
+  "name": "Keysight Technologies",
+  "pricing_model": "enterprise sales (hardware plus software licenses/subscriptions); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Keysight customer privacy statement: types of personal data collected",
+    "url": "https://www.keysight.com/mx/en/contact/privacy.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Keysight software privacy notice: categories processed by Monitoring Insights",
+    "url": "https://portal.hub.eggplant.cloud/hub/common/docs/pdf/MI-Privacy-Policy.pdf?23052022"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.keysight.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "KLA Corporation makes process control and yield management equipment for the semiconductor industry. Its career site privacy policy lists categories of personal information collected: identifiers, usage data, geolocation data, audio/video and electronic data, professional and employment information, education information, and characteristics of protected classifications. KLA also publishes data protection standards for suppliers that define KLA Data and set KLA as controller of data shared with suppliers.",
+  "headquarters": "Milpitas, USA",
+  "id": "kla",
+  "law25_relevance": "KLA equipment vendors and service operations handle employee, supplier, and customer data, and KLA's supplier standards set the controller/processor split. Quebec companies using KLA tools should record KLA as a processor/vendor and note the data categories covered by its data protection standards.",
+  "mapping_features": [
+   "Career site privacy policy lists collected categories: identifiers, usage data, geolocation, audio/video electronic data, professional and employment information, education information",
+   "KLA Data Protection Standards define KLA as controller of KLA Data shared with suppliers and describe supplier processing obligations",
+   "Privacy contact published: privacy@kla.com"
+  ],
+  "name": "KLA Corporation",
+  "pricing_model": "enterprise sales (equipment plus service contracts); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "KLA career site privacy policy: categories of personal information collected",
+    "url": "https://www.kla.com/documents/KLA_Corporation_Global_Career_Site_Privacy_Policy_2021.12.22.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "KLA Data Protection Standards: KLA as controller of data shared with suppliers",
+    "url": "https://www.KLA-Tencor.com/documents/2023/KLA_Data_Protection_Standards.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.kla.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Lam Research makes wafer fabrication equipment for the semiconductor industry. Its privacy statement lists categories of personal information collected, including identifiers, California customer records data, protected classifications (job applicants), commercial information, internet activity, geolocation data, audio/electronic/visual information, professional and employment information, and education information. Its supplier security requirements treat personal data and customer data as in-scope information subject to security controls aligned to standards such as ISO 27001.",
+  "headquarters": "Fremont, USA",
+  "id": "lam-research",
+  "law25_relevance": "Lam's supplier and service operations handle personal and customer data under its published security requirements. A Quebec Law 25 data map should record Lam as a vendor/processor and note the security controls it contractually requires of its own recipients.",
+  "mapping_features": [
+   "Privacy statement lists CCPA categories collected: identifiers, customer records, protected classifications, commercial info, internet activity, geolocation, audio/electronic/visual, employment and education info",
+   "Supplier information security requirements define in-scope data to include personal data and require controls aligned to NIST CSF or ISO 27001"
+  ],
+  "name": "Lam Research",
+  "pricing_model": "enterprise sales (equipment plus service contracts); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Lam Research privacy statement: categories of personal information collected",
+    "url": "https://www.lamresearch.com/privacy/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Lam information security requirements for recipients: in-scope data including personal data",
+    "url": "https://www.lamresearch.com/wp-content/uploads/2025/02/Information-Security-Requirements-for-Recipients_022025.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.lamresearch.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Lumentum designs and manufactures optical and photonic products for communications and industrial markets, including laser chips, optical components, and 3D sensing parts. It publishes a privacy policy and a California CCPA notice describing the categories of personal and sensitive personal information it collects from website visitors and business contacts.",
+  "headquarters": "San Jose, USA",
+  "id": "lumentum",
+  "law25_relevance": "Lumentum's website and business processes collect contact and behavioral data from customers and prospects. Quebec companies should record Lumentum as a vendor receiving business contact data and check its CCPA notice categories when mapping the flows.",
+  "mapping_features": [
+   "Privacy policy describes cookies and personal information collected from site visitors, including analytical cookies",
+   "CCPA notice (reviewed December 2025) lists categories of personal and sensitive personal information collected, disclosed, or sold/shared in the preceding twelve months",
+   "Company information describes ISO 27001 certification for its information security management"
+  ],
+  "name": "Lumentum",
+  "pricing_model": "enterprise sales (components plus services); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Lumentum privacy policy: data collected via cookies and site interactions",
+    "url": "https://www.lumentum.com/en/privacy-policy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Lumentum CCPA notice: categories of personal information collected and disclosed",
+    "url": "https://www.lumentum.com/en/ccpa-notice"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.lumentum.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Marvell Technology is a semiconductor company selling data infrastructure products such as network, storage, and custom silicon. Its website privacy policy lists the types of personal data it processes: identity data, contact data, technical data (IP address, browser, device), profile data, product data, usage data, and marketing and communications data. A separate candidate privacy notice lists personal identifiers, professional information, recruitment process data, and sensitive candidate data collected during hiring.",
+  "headquarters": "Santa Clara, USA",
+  "id": "marvell",
+  "law25_relevance": "Marvell collects customer, prospect, and candidate data through its website and hiring channels. A Quebec Law 25 data map should record Marvell as a vendor receiving business contact data and note that its privacy policy treats combined non-personal data as personal data once it can identify a person.",
+  "mapping_features": [
+   "Website privacy policy lists data types processed: identity, contact, technical (IP, browser, device), profile, product, usage, marketing and communications data",
+   "Candidate privacy notice lists categories: personal identifiers and contact details, professional information, recruitment process data, sensitive candidate data"
+  ],
+  "name": "Marvell Technology",
+  "pricing_model": "enterprise sales (chips plus services); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Marvell website privacy policy: types of personal data collected",
+    "url": "https://www.marvell.com/privacy-statement.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Marvell candidate privacy notice: categories of candidate data",
+    "url": "https://www.marvell.com/privacy-statement/marvell-candidate-privacy-notice.html"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.marvell.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Microchip Technology is a semiconductor company designing and manufacturing microcontrollers, analog, and memory products. Its supplier code of conduct commits participants to protecting the reasonable privacy expectations of personal information of suppliers, customers, consumers, and employees, and to complying with privacy and information security laws when personal information is collected, stored, processed, transmitted, and shared.",
+  "headquarters": "Chandler, USA",
+  "id": "microchip",
+  "law25_relevance": "Microchip's supply chain requirements contractually push privacy obligations onto its suppliers. Quebec companies buying from Microchip should record it as a vendor in the data map and use its published privacy commitments as an input to cross-border transfer analysis.",
+  "mapping_features": [
+   "Supplier code of conduct (Responsible Business Alliance v8.0) requires participants to comply with privacy and information security laws for personal information of suppliers, customers, consumers, and employees"
+  ],
+  "name": "Microchip Technology",
+  "pricing_model": "enterprise sales (semiconductors plus development tools); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Microchip supplier code of conduct: privacy obligations for suppliers",
+    "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/LegalDocuments/LegalDocuments/microchips-supplier-code-of-conduct.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.microchip.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Micron Technology makes memory and storage semiconductors. Its privacy notices cover workforce, customer, and website data. The US employment privacy notice lists detailed categories with retention periods: personal identifiers kept permanently, internet/network activity for 2 years, biometric information for 3 years, and sensory data for 2 to 5 years. Its privacy and data security principles state data minimization and no sale of personal information.",
+  "headquarters": "Boise, USA",
+  "id": "micron",
+  "law25_relevance": "Micron publishes one of the more detailed vendor retention tables, which helps a Quebec Law 25 data map document how long workforce data is kept. The retention periods are Micron's own operational choices, not statutory requirements, and should be recorded as such.",
+  "mapping_features": [
+   "US employment privacy notice lists data categories with retention: personal identifiers (permanent), internet/network activity (2 years), biometric information (3 years), sensory data (2 to 5 years)",
+   "General privacy notices list identifiers, commercial uses, and categories of third parties receiving data",
+   "Published privacy and data security principles: data minimization, aggregation/anonymization techniques, no sale of personal information"
+  ],
+  "name": "Micron Technology",
+  "pricing_model": "enterprise sales (memory and storage); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Micron publishes operational retention periods in its employment privacy notice (e.g., network activity 2 years, biometrics 3 years), but these are product terms with no statutory basis cited. No vendor-published statutory retention schedule.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Micron US employment privacy notice: data categories, third parties, retention periods",
+    "url": "https://www.micron.com/content/dam/micron/global/public/documents/about/privacy/employment-privacy/micron-employment-privacy-notice-united-states.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Micron privacy and data security principles: minimization, retention approach, no sale",
+    "url": "https://micronus.top/static/file/micron-privacy-data-security-principles.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.micron.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Microsoft sells cloud, productivity, and operating system products (Azure, Microsoft 365, Windows, Dynamics). Its Products and Services Data Protection Addendum defines three data categories: Customer Data, Personal Data, and Professional Services Data, and sets processor terms including data isolation between tenants and a prohibition on using customer data in testing environments. Microsoft's Service Assurance documentation describes privacy controls covered by third-party audits such as ISO 27018 and ISO 27701.",
+  "headquarters": "Redmond, USA",
+  "id": "microsoft",
+  "law25_relevance": "Microsoft is the dominant processor in most enterprise data maps, holding email, files, identity, and telemetry across Azure and Microsoft 365. A Quebec Law 25 data map should record the DPA data categories, the regions chosen for each service, and how Microsoft 365 tenant data is isolated.",
+  "mapping_features": [
+   "Products and Services DPA defines three data categories: Customer Data, Personal Data, Professional Services Data",
+   "Service Assurance docs describe privacy controls (data minimization, retention and deletion, location and transfer) covered by ISO 27018/27701 audits",
+   "DPA states customer data is pseudonymized/aggregated for confidentiality and prohibited from use in testing environments"
+  ],
+  "name": "Microsoft",
+  "pricing_model": "subscription SaaS and licensing; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Microsoft Service Assurance: DPA data categories and privacy controls",
+    "url": "https://learn.microsoft.com/sr-latn-rs/microsoft-365/enterprise/essentials-privacy?view=o365-worldwide"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Microsoft Products and Services DPA (Sept 2025): data categories and processor terms",
+    "url": "https://productfruits.net/dpa/microsoft.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.microsoft.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Monolithic Power Systems (MPS) is a semiconductor company selling analog and mixed-signal power management chips. It publishes a privacy policy for its technical forum and a supplier code of conduct aligned to the Responsible Business Alliance. The forum privacy policy publishes concrete retention limits: server logs with IP addresses kept no more than 90 days, and IP addresses of registered users and their posts kept no more than 5 years.",
+  "headquarters": "Kirkland, USA",
+  "id": "monolithic-power",
+  "law25_relevance": "MPS publishes concrete retention limits for its forum, which is more than most semiconductor vendors disclose. A Quebec Law 25 data map should record MPS as a vendor and use these published limits as an example of verifiable retention practice.",
+  "mapping_features": [
+   "Forum privacy policy publishes retention limits: server IP logs no more than 90 days; registered-user IP addresses and posts no more than 5 years",
+   "Forum privacy policy states third-party service providers may not use collected information except to help MPS conduct and improve its business",
+   "Supplier code of conduct requires privacy law compliance for personal information of suppliers, customers, consumers, and employees"
+  ],
+  "name": "Monolithic Power Systems",
+  "pricing_model": "enterprise sales (semiconductors); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "MPS publishes operational retention limits for its forum (IP logs 90 days, registered-user data 5 years), but these are product terms with no statutory basis cited. No vendor-published statutory retention schedule.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "MPS technical forum privacy policy: collection, retention limits, third-party sharing",
+    "url": "https://forum.monolithicpower.com/privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "MPS supplier code of conduct: privacy obligations",
+    "url": "https://media.monolithicpower.cn/mps_cms_document/s/u/supplier_code_of_conduct_112024.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.monolithicpower.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Motorola Solutions sells land mobile radio, video security, access control, and command center software for public safety and enterprise customers. It publishes a global Data Processing Addendum listing the personal data categories customers may include in customer data: basic personal data, authentication data, contact information, unique identifiers, financial and insurance information, commercial information, biometric information, and location data. Its SOC 3 trust reports cover security, availability, processing integrity, confidentiality, and privacy for its managed support and video security operations.",
+  "headquarters": "Chicago, USA",
+  "id": "motorola-solutions",
+  "law25_relevance": "Motorola Solutions' products process biometric, location, and video data, which are among the most sensitive categories under Quebec's Law 25. Its published DPA and SOC 3 reports give a Quebec data map concrete evidence of data categories, retention controls, and post-termination deletion commitments.",
+  "mapping_features": [
+   "Global DPA lists personal data categories: basic personal data, authentication data, contact info, unique identifiers, financial/insurance info, commercial info, biometric info, location data",
+   "SOC 3 trust reports cover retention and destruction standards plus privacy safeguards for managed support and video security operations",
+   "SOC 3 reports commit to deleting all customer data ninety days following termination or expiration of the agreement"
+  ],
+  "name": "Motorola Solutions",
+  "pricing_model": "enterprise sales (hardware plus software/services); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "Motorola's SOC 3 reports commit to deleting customer data 90 days after termination, but this is a contractual term with no statutory basis cited. No vendor-published statutory retention schedule.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Motorola Solutions global DPA: categories of personal data transferred",
+    "url": "https://www.motorolasolutions.com/content/dam/msi/docs/msi-standards_terms-conditions/motorola_solutions_supplier_global_data_processing_addendum.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Motorola Solutions SOC 3 report: retention, destruction, and privacy controls",
+    "url": "https://www.motorolasolutions.com/content/dam/msi/docs/trust-center/motorola-solutions-cmso-soc-3-final-report.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.motorolasolutions.com"
+ },
+ {
+  "categories": [
+   "data_discovery",
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "NetApp sells data storage and data management products, including the BlueXP management platform with BlueXP classification, which scans stored data and identifies personal data types. NetApp's documentation notes BlueXP classification can identify types such as the Botswana identity card (Omang) number, Botswana passport number, and Singapore NRIC. NetApp publishes a Customer Data Processing Addendum listing categories of customer personal information processed, from customer information and commercial information to individual identifiers and electronic network information.",
+  "headquarters": "San Jose, USA",
+  "id": "netapp",
+  "law25_relevance": "NetApp's BlueXP classification is a data discovery tool that helps Quebec companies inventory personal information across their storage, directly supporting Law 25 data mapping. NetApp is also a processor of customer data, so its DPA data categories belong in the data map too.",
+  "mapping_features": [
+   "BlueXP classification scans data and identifies personal data types, including Botswana Omang and passport numbers and the Singapore NRIC",
+   "Customer DPA lists categories processed: customer information, commercial information, individual identifiers, electronic network information, personal info in customer content",
+   "Supplier DPA lists data subject and data categories for personal data shared with suppliers"
+  ],
+  "name": "NetApp",
+  "pricing_model": "enterprise sales (storage plus subscriptions); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "NetApp BlueXP classification docs: personal data types identified",
+    "url": "https://docs.netapp.com/us-en/data-services-data-classification/whats-new.html"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "NetApp Customer DPA: categories of customer personal information",
+    "url": "https://assets.netapp.com/asset/0add5df3-edba-45dc-b9ce-866ac6a62611/Customer-Data-Processing-Addendum.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.netapp.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "NVIDIA is a semiconductor company known for GPUs and AI infrastructure. Its privacy policy states it collects personal data from publicly available sources (names, titles, areas of work, contact information) for market research and customer outreach, plus identity enrichment data (name, email, job title, company, social media handles) from third-party sources. Its cloud services, such as GeForce NOW and Fleet Intelligence, collect device and system data including software versions, geographic region, internet speed, session data, and GPU configuration metrics.",
+  "headquarters": "Santa Clara, USA",
+  "id": "nvidia",
+  "law25_relevance": "NVIDIA collects publicly sourced contact data for marketing and device telemetry through its cloud services, both of which touch individuals in Quebec. A Quebec Law 25 data map should record these collection practices and the opt-out options for marketing data.",
+  "mapping_features": [
+   "Privacy policy describes collection of publicly available personal data (names, titles, contact info) and identity enrichment data from third-party sources",
+   "GeForce NOW terms describe data collection: device configuration, games played, session data, system information such as CPU, GPU, serial number",
+   "Fleet Intelligence terms list collected data: configuration and OS data, metrics, logs, installed NVIDIA application versions, performance data"
+  ],
+  "name": "Nvidia",
+  "pricing_model": "enterprise sales (hardware plus cloud/subscription services); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "NVIDIA privacy policy: publicly sourced and enrichment data collection",
+    "url": "https://www.nvidia.com/en-us/about-nvidia/privacy-policy/feb2025/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "NVIDIA Fleet Intelligence service terms: data collected from GPU environments",
+    "url": "https://www.nvidia.com/content/dam/en-zz/nvidiaweb/agreements/cloud-services/service-specific-terms-for-nvidia-fleet-intelligence-service-2026-03-04.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.nvidia.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "NXP Semiconductors is a Dutch semiconductor company selling automotive, industrial, and IoT chips. Its privacy statement describes sharing personal information with categories of third parties: NXP affiliates, external service providers (hosting, marketing, cloud, analytics, SaaS), distributors and business partners, and advisory/legal services. Its code of conduct states personal data is collected, processed, stored, transferred, and deleted only when transparent and authorized, and disposed of when no longer required.",
+  "headquarters": "Eindhoven, Netherlands",
+  "id": "nxp",
+  "law25_relevance": "NXP is one of the few non-US vendors in this set, which matters for Quebec Law 25 cross-border transfer analysis: transfers to the Netherlands face different rules than transfers to the US. Its published third-party sharing categories help document the flows.",
+  "mapping_features": [
+   "Privacy statement lists third-party sharing categories: NXP affiliates, external service providers, distributors and business partners, advisory and legal services",
+   "Code of conduct: personal data disposed of when no longer required; requests to review, update, correct, or delete are answered promptly",
+   "Software license agreement states name, email, and location may be used for internal analysis of future software offerings"
+  ],
+  "name": "NXP Semiconductors",
+  "pricing_model": "enterprise sales (semiconductors plus software/licenses); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the sources consulted.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "NXP privacy statement: legal bases and third-party sharing categories",
+    "url": "https://www.nxp.co.kr/privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "NXP code of conduct: personal data and data protection commitments",
+    "url": "https://www.lobbyregister.bundestag.de/media/f6/2a/812647/NXP_BUSINESS-CODE-OF-CONDUCT.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.nxp.com"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "onsemi (ON Semiconductor) is a semiconductor company selling intelligent power and sensing products. Its California job applicant privacy notice describes the categories of personal data collected from applicants, the business purposes, the categories of third parties receiving it, and the criteria used to set retention periods (duration of the hiring process, ongoing relationship, legal obligations, statutes of limitations). Its global privacy office can be reached at privacy@onsemi.com.",
+  "headquarters": "Phoenix, USA",
+  "id": "on-semiconductor",
+  "law25_relevance": "onsemi publishes its retention-period criteria for applicant data, which a Quebec Law 25 data map can cite when documenting how long vendor-held data is kept. These criteria are internal policy, not statutory requirements.",
+  "mapping_features": [
+   "California job applicant privacy notice lists retention criteria: hiring process duration, ongoing relationship, legal obligations, statutes of limitations",
+   "Privacy notices list applicant data categories, purposes, and third-party categories, with rights to access, correct, or delete",
+   "Published global privacy office contact: privacy@onsemi.com"
+  ],
+  "name": "ON Semiconductor",
+  "pricing_model": "enterprise sales (semiconductors); tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "onsemi publishes retention-period criteria in its applicant privacy notice, but these are internal policy criteria with no statutory schedule. No vendor-published statutory retention schedule.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "onsemi California job applicant privacy notice: data categories, retention criteria, third parties",
+    "url": "https://www.onsemi.jp/site/pdf/Privacy_Notice_for_California_Job_Applicants.pdf"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:41:56Z",
+   "status": "verified"
+  },
+  "website": "https://www.onsemi.com"
+ },
+ {
+  "id": "oracle",
+  "name": "Oracle Corporation",
+  "categories": [
+   "data_mapping",
+   "data_discovery",
+   "dspm",
+   "grc"
+  ],
+  "description": "Oracle Corporation is a global enterprise software and cloud infrastructure company headquartered in Austin, Texas, known for Oracle Database, Oracle Cloud Infrastructure, and SaaS suites such as Fusion ERP and NetSuite. Its Cloud Services Data Processing Agreement defines the personal data categories it may process on behalf of customers, including contact details, family and lifestyle data, employment details, financial details, device identifiers, IP addresses, and online behavior data, and names data subjects such as employees, job applicants, contractors, and customers. Oracle publishes a third-party subprocessor list and commits to processing personal data only for providing the cloud services, on documented customer instructions, or to meet regulatory obligations.",
+  "website": "https://www.oracle.com/",
+  "headquarters": "Austin, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published DPA enumerates the personal data categories Oracle may process (contact, family and lifestyle, employment, financial, device IDs, IP addresses, online behavior data).",
+   "DPA states processing occurs only for providing the cloud services, on documented customer instructions, or to meet Oracle's regulatory obligations.",
+   "Third-party subprocessor list is published; subprocessors act under Oracle's authority for the same purposes."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify the applicable retention period against Oracle's DPA retention clause and your contract's data return and deletion terms before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec organizations using Oracle Cloud or Oracle SaaS hold personal data in Oracle systems, so Oracle belongs in the data map as a processor with its DPA categories copied into the vendor record. Cross-border hosting means the organization must also document transfer safeguards and verify the data region ordered.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+    "consulted": "2026-10-05",
+    "note": "HQ in Austin, Texas; products and services overview."
+   },
+   {
+    "url": "https://www.oracle.com/contracts/docs/data-processing-agreement-072718-5029569.pdf?download=false",
+    "consulted": "2026-10-05",
+    "note": "Cloud Services DPA: personal data categories, data subjects, processing purposes, subprocessor terms."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "palantir",
+  "name": "Palantir Technologies Inc.",
+  "categories": [
+   "data_mapping",
+   "data_discovery",
+   "grc"
+  ],
+  "description": "Palantir Technologies Inc. is a software and AI company headquartered in Miami, Florida (moved to Miami-Dade County in 2026, per LeadIQ), with products including Gotham, Foundry, Apollo, and the Artificial Intelligence Platform (AIP). Foundry provides a unified environment for managing and operationalizing data with access controls, auditing, and a governed data ontology, used by enterprises such as Stellantis to consolidate fragmented datasets. Palantir's Terms of Service require customers handling PII or PHI to follow published guidance for protecting sensitive data, and regulators such as the UK FCA have engaged Palantir to act as a data processor acting only on the regulator's instructions.",
+  "website": "https://www.palantir.com/",
+  "headquarters": "Miami, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Foundry data integration platform with ontology-based governance, access controls, and auditing of data use.",
+   "Terms of Service require customers to follow published sensitive-data guidance when PII or PHI is used in the service.",
+   "Customer retains ownership of customer data; Palantir processes it to provide the service, and acts as a data processor on customer instruction in regulated engagements."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the customer agreement and the customer's own retention schedule before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Palantir typically acts as a processor running on customer-controlled infrastructure, which matters for Law 25 records of processing and for documenting where personal data sits. Because Foundry can centralize data from many systems, a Quebec data map should record each source system feeding it and confirm retention follows the customer's own schedule.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Palantir",
+    "consulted": "2026-10-05",
+    "note": "HQ Miami, Florida; products Gotham, Foundry, Apollo; corporate overview."
+   },
+   {
+    "url": "https://palantir.pactsafe.io/versions/6981d79b28e83c369ebbb7c9.pdf",
+    "consulted": "2026-10-05",
+    "note": "Terms of Service: PII/PHI guidance, customer data ownership."
+   },
+   {
+    "url": "https://www.businesswire.com/news/home/20260330921521/en/Palantir-Technologies-Announces-the-Renewal-and-Expansion-of-Its-Partnership-With-Stellantis-for-an-Additional-Five-Years",
+    "consulted": "2026-10-05",
+    "note": "Foundry unified data environment, ontology, access controls, auditing; customer-controlled deployment."
+   },
+   {
+    "url": "https://inshorts.com/en/news/palantir-to-gain-access-to-uk-s-financial-data-after-fca-contract--report-1774274806166",
+    "consulted": "2026-10-05",
+    "note": "Palantir acting as data processor on regulator instructions."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "palo-alto-networks",
+  "name": "Palo Alto Networks, Inc.",
+  "categories": [
+   "dspm",
+   "data_mapping"
+  ],
+  "description": "Palo Alto Networks, Inc. is a cybersecurity company headquartered in Santa Clara, California, selling next-generation firewalls, Prisma SASE, Prisma Cloud, and Cortex XDR and XSIAM. Its products process personal data as a processor: per-product privacy datasheets describe categories such as customer-provided user data, product logs and telemetry, third-party integration data, and packet captures. The company's privacy policy lists the personal information categories it collects as a controller, including identifiers, commercial information, network information, geolocation, professional information, and AI-generated interaction analytics.",
+  "website": "https://www.paloaltonetworks.com/",
+  "headquarters": "Santa Clara, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Per-product privacy datasheets describe personal data processed as a processor (customer-provided user data, firewall logs and telemetry, third-party integration data, packet captures).",
+   "Privacy policy enumerates controller-side personal information categories (identifiers, commercial, network, geolocation, professional, AI analytics).",
+   "Privacy policy lists controller-side personal information categories (identifiers, commercial, network, geolocation, professional, AI analytics)."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Call recordings are retained up to 180 days per the privacy policy; verify log and telemetry retention against the product documentation and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Security tooling is often overlooked in data maps, but firewalls, SASE, and XDR ingest network traffic and logs that can contain identifiers and, in packet captures, message content. A Quebec organization should map Palo Alto products as processors, note which network segments feed them, and keep their privacy datasheets with the vendor record.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Palo_Alto_Networks",
+    "consulted": "2026-10-05",
+    "note": "HQ Santa Clara, California; products and corporate overview."
+   },
+   {
+    "url": "https://www.paloaltonetworks.com/legal-notices/privacy",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal information categories, call recording retention."
+   },
+   {
+    "url": "https://www.prismacloud.io/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/privacy-next-generation-trust-security",
+    "consulted": "2026-10-05",
+    "note": "Privacy datasheet: personal data processed by the NGTS product as processor."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "ptc",
+  "name": "PTC Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "PTC Inc. is a software company headquartered in Boston, Massachusetts, selling CAD (Creo), PLM (Windchill), IoT (ThingWorx), and AR (Vuforia) products, plus SaaS offerings including Onshape, Arena, and ServiceMax. Its SaaS privacy statements cover name, email, phone number, organization, role, device identifiers, IP addresses, and usage logs, and state that customer-submitted data is processed as Customer Data under its Cybersecurity and Privacy Addendum. Windchill+ service documentation specifies daily full-system backups held for 30 days in production with geo-redundant storage, plus defined export formats for authorized data exports.",
+  "website": "https://www.ptc.com/",
+  "headquarters": "Boston, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "SaaS privacy statement lists personal data collected for accounts and service use (name, email, phone, role, device identifiers, IP address, usage logs).",
+   "Customer-submitted data is treated as Customer Data processed under PTC's Cybersecurity and Privacy Addendum.",
+   "Windchill+ documentation defines backup frequency (daily), production backup retention (30 days), and authorized data export formats (schema export, LDIF user lists, file vault contents)."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Windchill+ production backups are kept 30 days per the service description; verify customer-data retention against the Cybersecurity and Privacy Addendum and your order form before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Manufacturing and engineering firms in Quebec using Windchill or Onshape process employee and sometimes customer personal data in PTC SaaS, so PTC appears in the data map as a processor with clear DPA terms. The backup and export documentation helps the organization document retention windows and plan data portability.",
+  "pricing_model": "subscription and license sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/PTC_Inc.",
+    "consulted": "2026-10-05",
+    "note": "HQ Boston, Massachusetts; products Creo, Windchill, ThingWorx, Onshape, Arena, ServiceMax."
+   },
+   {
+    "url": "https://www.ptc.com/-/media/Files/PDFs/Legal-Policies/PTC----Privacy-Policy-ENG.pdf?la=it-IT&hash=0251501A4047CEFBFCE87180EAFE26B5",
+    "consulted": "2026-10-05",
+    "note": "PTC privacy policy: scope across products and cloud/SaaS services."
+   },
+   {
+    "url": "https://ptc-p-001.sitecorecontenthub.cloud/api/public/content/0bb9f5d1cb9b465ea6e122e5baf04ad0?v=cb0c25a8",
+    "consulted": "2026-10-05",
+    "note": "Windchill+ service description: backups, export formats, trust center reference."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "qualcomm",
+  "name": "Qualcomm Incorporated",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Qualcomm Incorporated is a semiconductor and wireless technology company headquartered in San Diego, California, known for Snapdragon chipsets and licensing of foundational wireless intellectual property. Its privacy policy describes collecting personal information from customers, partners, and website visitors, with sources including the individual, affiliates, business partners, vendors, and analytics providers. The policy discloses global transfers of information to countries where Qualcomm and its service providers operate, with safeguards such as standard contractual clauses where required.",
+  "website": "https://www.qualcomm.com/",
+  "headquarters": "San Diego, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates personal information sources (direct, affiliates, business partners, vendors, analytics providers, public sources).",
+   "Policy discloses global data transfers with standard contractual clause safeguards for EEA and UK data.",
+   "Published job-application privacy notice lists applicant personal data categories (identity, resume, interview notes, references, IT information)."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Qualcomm's privacy policy and any applicable agreement before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Qualcomm is a secondary but real entry in a data map: personal data of employees, business contacts, and partners can be shared with it under NDAs and business relationships. Quebec organizations should record Qualcomm as a recipient where data sharing occurs and note the cross-border transfer safeguards in its privacy policy.",
+  "pricing_model": "hardware and licensing sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Qualcomm",
+    "consulted": "2026-10-05",
+    "note": "HQ San Diego, California; products and corporate overview."
+   },
+   {
+    "url": "https://www.qualcomm.com/site/privacy",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: information sources, advertising and analytics, global transfers with SCC safeguards."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "qnity",
+  "name": "Qnity Electronics, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Qnity Electronics, Inc. is a semiconductor materials company headquartered in Wilmington, Delaware, formed from the November 2025 spin-off of DuPont's electronics business (formerly Novus SpinCo 1). Its Semiconductor Technologies segment makes materials for chemical-mechanical polishing, photolithography, and OLED displays, while Interconnect Solutions covers signal-integrity materials; customers include nearly all of the 20 largest semiconductor manufacturers, with Samsung and TSMC as its largest. No public consumer-facing privacy policy covering personal data processing was located in the sources used.",
+  "website": "https://www.qnityelectronics.com/",
+  "headquarters": "Wilmington, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears in enterprise data maps as a supply-chain vendor rather than a personal data processor; its business is semiconductor materials, not data services.",
+   "Company operates 39 manufacturing sites (22 in Asia-Pacific, 19 in the Americas, 2 in EMEA), which defines where business-contact data could be exchanged.",
+   "No public privacy policy with personal data categories was located; confirm data handling directly with the vendor before recording categories."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. No retention claims could be verified; confirm directly with the vendor before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Qnity matters to a Quebec data map only in the vendor register: procurement relationships can involve sharing business-contact personal data, and any such sharing should be documented. If no personal data is exchanged beyond public business contacts, record that finding rather than assuming categories.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Qnity_Electronics",
+    "consulted": "2026-10-05",
+    "note": "HQ Wilmington, Delaware; spin-off from DuPont Nov 2025; segments, customers, 39 manufacturing sites."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "roper",
+  "name": "Roper Technologies, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Roper Technologies, Inc. is a diversified holding company headquartered in Sarasota, Florida, operating application software (Aderant, Deltek, Vertafore, Clinisys, Procare), network software (DAT Solutions, iPipeline), and technology-enabled products businesses. The parent company's own privacy footprint is small; the personal data processing happens inside its operating companies' SaaS products, each with its own privacy and DPA terms. A data map should therefore record the specific Roper operating company engaged, not Roper Technologies as a single vendor.",
+  "website": "https://www.ropertech.com/",
+  "headquarters": "Sarasota, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Application software division products (Deltek, Vertafore, Aderant, Procare, Clinisys) process customer and employee personal data in their own SaaS environments.",
+   "Parent is a holding company: map the operating subsidiary and its DPA terms rather than the parent.",
+   "No parent-level personal data category schedule was published in the sources used; verify terms at the subsidiary level."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the specific operating company's DPA and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec organizations buying Roper-owned software (for example Deltek or Vertafore) should name the operating company as the processor in their Law 25 records of processing. Group-level privacy statements do not substitute for the subsidiary's DPA.",
+  "pricing_model": "enterprise sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Roper_Technologies",
+    "consulted": "2026-10-05",
+    "note": "HQ Sarasota, Florida; holding company structure; application software, network software, and technology-enabled products divisions."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "salesforce",
+  "name": "Salesforce, Inc.",
+  "categories": [
+   "data_mapping",
+   "privacy_management"
+  ],
+  "description": "Salesforce, Inc. is a cloud CRM and enterprise applications company headquartered in San Francisco, California, offering Sales, Service, Marketing, and other clouds plus subsidiaries such as Slack, Tableau, and MuleSoft. Its Data Processing Addendum sets out the personal data categories customers may submit (names, titles, positions, employers, contact information, ID data, professional and personal life data, localization data, and special categories), processed for the duration of the agreement. Salesforce publishes its subprocessor list and infrastructure documentation through its Trust and Compliance page.",
+  "website": "https://www.salesforce.com/",
+  "headquarters": "San Francisco, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "DPA enumerates customer-submitted personal data categories (identity, contact, ID, professional life, personal life, localization, special categories).",
+   "Subprocessor identities, locations, and processing activities are published via Trust and Compliance documentation with change notifications.",
+   "DPA defines processing duration as the agreement term unless otherwise agreed."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the DPA and your order form's data return and deletion terms before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Salesforce is typically the largest processor in a Quebec company's data map, holding customer, lead, and employee data across clouds. The data map should mirror the DPA's category list, record each Salesforce cloud and subprocessor, and confirm the hosting region in the order form.",
+  "pricing_model": "subscription SaaS; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Salesforce",
+    "consulted": "2026-10-05",
+    "note": "HQ San Francisco, California; products and subsidiaries overview."
+   },
+   {
+    "url": "https://www.salesforce.com/en-us/wp-content/uploads/sites/4/documents/legal/Agreements/data-processing-addendum.pdf?bc=HL",
+    "consulted": "2026-10-05",
+    "note": "Salesforce DPA: personal data categories, sensitive data, subprocessor list, processing duration."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "sandisk",
+  "name": "Sandisk Corporation",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Sandisk Corporation is a flash memory company headquartered in Milpitas, California, designing memory cards, USB drives, and solid-state drives; it was a Western Digital subsidiary from 2016 to 2025 and now trades independently. Its privacy statement lists personal data categories it collects: personal identifiers, commercial information, financial information, demographics, location, internet and network activity, professional information, inferences, and payment-card sensitive information. It discloses sharing personal data with service providers (hosting, payment processing, analytics, cloud storage) that are obligated to protect the information.",
+  "website": "https://www.sandisk.com/",
+  "headquarters": "Milpitas, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy statement enumerates collected personal data categories (identifiers, commercial, financial, demographics, location, network activity, professional, inferences, payment card data).",
+   "Sharing disclosures list service provider categories (hosting, email, marketing, payment processing, analytics, cloud storage).",
+   "Applicant privacy notice enumerates candidate data categories (identity, contact, resume, employment history, background checks, IP addresses)."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Sandisk's privacy statement and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Sandisk appears in a data map where the organization buys storage media or uses its support and account services, which collect customer identifiers and telemetry. Record Sandisk as a vendor for those touchpoints and keep its privacy statement's category list in the vendor record.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Sandisk",
+    "consulted": "2026-10-05",
+    "note": "HQ Milpitas, California; flash memory products; Western Digital subsidiary 2016-2025."
+   },
+   {
+    "url": "https://www.sandisk.com/legal/privacy-statement",
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: personal data categories, service provider sharing."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "seagate",
+  "name": "Seagate Technology Holdings plc",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Seagate Technology Holdings plc is a data storage company legally domiciled in Dublin, Ireland, with operational headquarters in Fremont, California, manufacturing hard disk drives and solid-state drives. Its US consumer privacy notice lists personal information categories collected in the last 12 months: identifiers, commercial information, internet or network activity, geolocation, audio/visual information such as call recordings, professional information, and account credentials. The notice describes collection from customer interactions, surveys, product registration, public databases, and joint marketing partners.",
+  "website": "https://www.seagate.com/",
+  "headquarters": "Dublin, Ireland",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Consumer privacy notice enumerates collected categories (identifiers, commercial, network activity, geolocation, call recordings, professional, account credentials).",
+   "Notice describes collection sources (customer interactions, surveys, product registration, public databases, joint marketing partners)."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Seagate's privacy notice and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Seagate enters a Quebec data map through product registration, support interactions, and any data recovery engagements that expose drive contents. Map it as a vendor with the privacy notice categories, and record drive contents as customer data where recovery services are used.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Seagate_Technology",
+    "consulted": "2026-10-05",
+    "note": "Dublin legal domicile, Fremont operational HQ; HDD and SSD products."
+   },
+   {
+    "url": "https://www.seagate.com/it/it/legal/privacy/us-consumer-privacy-notice/",
+    "consulted": "2026-10-05",
+    "note": "US consumer privacy notice: personal information categories and collection sources."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "servicenow",
+  "name": "ServiceNow, Inc.",
+  "categories": [
+   "privacy_management",
+   "grc",
+   "dsr_automation",
+   "data_mapping"
+  ],
+  "description": "ServiceNow, Inc. is an enterprise workflow platform company headquartered in Santa Clara, California, offering ITSM, GRC, HR service delivery, and security operations on the Now Platform. Beyond acting as a data processor (its privacy FAQ describes ServiceNow as a data-agnostic processor with no visibility into customer-instance data), it sells Privacy Management, which provides privacy assessments, personal data rights (DSAR) workflows with intake, validation, due-date tracking, and audit history, plus privacy case management. Its trust documentation defines the customer as data controller and ServiceNow as data processor, with the customer retaining data ownership.",
+  "website": "https://www.servicenow.com/",
+  "headquarters": "Santa Clara, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy Management product supports DSAR workflows: intake forms, requester validation, fulfillment tasks, due-date tracking, and audit history.",
+   "Privacy FAQ confirms ServiceNow acts as a data-agnostic processor with no visibility into customer-instance personal data.",
+   "Trust documentation assigns data management, classification, and retention responsibility to the customer, with ServiceNow handling platform security.",
+   "Privacy workspace supports breach assessment with configurable personal data element types and breach factors."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Customer instances hold data per the customer's own retention schedule; verify against the DPA and your order form before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "ServiceNow is both a processor (customer instances hold Quebec personal data) and a Law 25 compliance tool (Privacy Management can run the organization's DSAR and assessment workflows). A data map should record the processor relationship separately from the compliance use, and note which regions host each instance.",
+  "pricing_model": "subscription SaaS; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/ServiceNow",
+    "consulted": "2026-10-05",
+    "note": "HQ Santa Clara, California; Now Platform; ITSM, GRC, HR service delivery."
+   },
+   {
+    "url": "https://www.servicenow.com/community/grc-articles/are-you-using-all-the-capabilites-of-privacy-mgmt/ta-p/3602170",
+    "consulted": "2026-10-05",
+    "note": "Privacy Management capabilities: assessments, personal data rights workflows, privacy case management."
+   },
+   {
+    "url": "https://www.servicenow.com/de/company/trust/privacy/faq.html",
+    "consulted": "2026-10-05",
+    "note": "Privacy FAQ: data-agnostic processor role, customer data storage locations, subprocessor list."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "skyworks",
+  "name": "Skyworks Solutions, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Skyworks Solutions, Inc. is a semiconductor company headquartered in Irvine, California, making analog and mixed-signal chips for smartphones, IoT, automotive, and aerospace. Its privacy policy lists categories of personal information collected from California residents: identifiers, California customer-records data, commercial information, internet or network activity, and professional or employment-related information. HR privacy policies enumerate applicant and employee data such as identification data, CVs, prior-employer information, and personal characteristics.",
+  "website": "https://www.skyworksinc.com/",
+  "headquarters": "Irvine, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates collected categories (identifiers, customer records, commercial, network activity, professional and employment).",
+   "HR privacy policies list applicant and employee personal data categories (identification, CV, prior employers, personal characteristics).",
+   "Policy states aggregated or de-identified information is not treated as personal information."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Skyworks' privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Skyworks appears in a Quebec data map through procurement and business-contact relationships, with limited personal data categories. Record it as a vendor, note the privacy policy categories, and confirm whether any employee or customer personal data is shared beyond business contacts.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Skyworks_Solutions",
+    "consulted": "2026-10-05",
+    "note": "HQ Irvine, California; analog and mixed-signal semiconductors."
+   },
+   {
+    "url": "https://www.skyworksinc.com/Articles/Privacy-Policy",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: categories of personal information collected."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "supermicro",
+  "name": "Super Micro Computer, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Super Micro Computer, Inc. is a server and data center infrastructure company headquartered in San Jose, California, selling servers, GPU-accelerated systems, storage, and networking for cloud, HPC, and AI workloads. Its privacy policy lists personal data categories collected from customers, partners, and website visitors: identifiers, commercial information, usage information, and geolocation. Enterprise customers share staff contact and account details through purchasing, support, and warranty relationships.",
+  "website": "https://www.supermicro.com/",
+  "headquarters": "San Jose, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates collected categories (identifiers, commercial information, usage information, geolocation).",
+   "Hardware vendor relationship involves customer account and support contact data, plus diagnostic and telemetry data from deployed systems.",
+   "No public processor DPA schedule was found in the sources used; confirm terms directly with the vendor."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Supermicro's privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Supermicro appears in a Quebec data map through infrastructure procurement: account and support contacts are shared, and servers may transmit diagnostic telemetry. Record it as a vendor with the privacy policy categories, and note any telemetry flows from your infrastructure.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Supermicro",
+    "consulted": "2026-10-05",
+    "note": "HQ San Jose, California; servers, GPU systems, storage, networking for data center and AI."
+   },
+   {
+    "url": "https://www.supermicro.com/en/about/policies/privacy",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal data categories collected."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "synopsys",
+  "name": "Synopsys, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Synopsys, Inc. is an electronic design automation company headquartered in Sunnyvale, California, selling chip design and verification software plus silicon intellectual property. Its data privacy and protection statement says Synopsys does not typically process personal data on customers' behalf and instead acts as controller for customer employee contact information used for account management, licensing, and marketing. In the rare cases where it acts as a processor, it signs a data processing agreement; its business-contacts notice lists categories including contact, professional, identifying, purchasing, location, marketing, and billing data.",
+  "website": "https://www.synopsys.com/",
+  "headquarters": "Sunnyvale, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy statement states Synopsys typically does not process personal data on customers' behalf and acts as controller for customer employee contact data.",
+   "Business-contacts notice enumerates categories (contact, professional, identifying, purchasing, location, marketing, billing).",
+   "Will execute a data processing agreement in rare processor scenarios."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Synopsys' privacy statement and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Synopsys matters to a Quebec data map mainly as a controller of customer employee contact data under licensing and account relationships. If it ever acts as a processor, its DPA should be recorded; otherwise document the contact-data sharing in the vendor register.",
+  "pricing_model": "software licensing and subscription; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Synopsys",
+    "consulted": "2026-10-05",
+    "note": "HQ Sunnyvale, California; EDA software and silicon IP."
+   },
+   {
+    "url": "https://www.synopsys.com/content/dam/synopsys/company/about/legal/synopsys-data-privacy-and-protection-statement-15Jul2023.pdf",
+    "consulted": "2026-10-05",
+    "note": "Data privacy and protection statement: controller role, rare processor scenarios, business-contact categories."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "te-connectivity",
+  "name": "TE Connectivity plc",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "TE Connectivity plc is an electronic components company legally domiciled in Galway, Ireland, with executive operations in Berwyn, Pennsylvania, making connectors, sensors, and connectivity solutions for automotive, industrial, and communications markets. Its privacy policy lists the purposes for processing personal data, including website registration, product inquiries, sales transactions, support, marketing, and job applications. Its supplier privacy addendum imposes CCPA service-provider terms, limiting use of shared personal data to performing the services with no sale or retention for other purposes.",
+  "website": "https://www.te.com/",
+  "headquarters": "Galway, Ireland",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates processing purposes (registration, product inquiries, sales transactions, support, marketing, job applications).",
+   "Supplier DPA addendum imposes CCPA service-provider terms (no sale, use limited to performing the services).",
+   "Privacy policy describes cross-border transfer mechanisms for international data movements."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against TE's privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "TE Connectivity appears in a Quebec data map through component procurement and business-contact sharing, with an Irish legal domicile that affects transfer documentation. Record it as a vendor, note the CCPA service-provider terms in its supplier addendum, and document any employee personal data shared beyond business contacts.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/TE_Connectivity",
+    "consulted": "2026-10-05",
+    "note": "Galway, Ireland legal domicile; executive operations Berwyn, PA; connectors and sensors."
+   },
+   {
+    "url": "https://te.com/en/policies-agreements/privacy-policy.html",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: processing purposes, cross-border transfers, supplier addendum with CCPA terms."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "teledyne",
+  "name": "Teledyne Technologies Incorporated",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Teledyne Technologies Incorporated is an industrial technology conglomerate headquartered in Thousand Oaks, California, operating in digital imaging, instrumentation, engineered systems, and aerospace and defense (including FLIR thermal imaging). Its privacy policy lists personal information categories collected: identifiers, California customer-records data, payment information, interaction data, commercial information, biometric information, internet activity, geolocation, audio and visual data, education information, professional information, inferences, and compliance data. The policy describes collection across employment, business relationships, website visits, and product use.",
+  "website": "https://www.teledyne.com/",
+  "headquarters": "Thousand Oaks, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates broad categories (identifiers, customer records, payment, interaction, commercial, biometric, internet activity, geolocation, audio/visual, education, professional, inferences, compliance).",
+   "Biometric information collection is disclosed, relevant where imaging products or facilities are involved.",
+   "Policy describes collection sources across employment, business relationships, websites, and products."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Teledyne's privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Teledyne's breadth means a Quebec data map should record the specific subsidiary or product engaged and its category list. Biometric and compliance data categories warrant special attention in the Law 25 assessment, since they are sensitive and may trigger stricter safeguards.",
+  "pricing_model": "hardware and software sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Teledyne_Technologies",
+    "consulted": "2026-10-05",
+    "note": "HQ Thousand Oaks, California; digital imaging, instrumentation, engineered systems, aerospace and defense including FLIR."
+   },
+   {
+    "url": "https://www.teledyne.com/privacy-policy/",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal information categories including biometric, interaction, and compliance data."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "teradyne",
+  "name": "Teradyne, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Teradyne, Inc. is a test equipment and robotics company headquartered in North Reading, Massachusetts, selling automatic test equipment for semiconductors and collaborative robots through its Universal Robots business. Its privacy policy lists personal information categories including identifiers, California customer-records data, commercial information, and internet activity. Its robotics data notice separates operational and diagnostic data from personal data (credentials, access logs) and states personal data is retained as long as necessary for service provision or statutory compliance.",
+  "website": "https://www.teradyne.com/",
+  "headquarters": "North Reading, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates categories (identifiers, customer records, commercial information, internet activity).",
+   "Robotics data notice distinguishes operational and diagnostic data from personal data (credentials, access logs).",
+   "Notice describes data export formats (ZIP, CSV, TXT) for customer-controlled retrieval."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. The robotics data notice states personal data is kept as long as necessary for service provision or statutory compliance; verify against the privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Teradyne appears in a Quebec data map through test equipment procurement and robotics deployments, where operator credentials and access logs are personal data. Record the product line, note the distinction between operational and personal data, and confirm retention expectations with the vendor.",
+  "pricing_model": "hardware and software sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Teradyne",
+    "consulted": "2026-10-05",
+    "note": "HQ North Reading, Massachusetts; automatic test equipment and robotics including Universal Robots."
+   },
+   {
+    "url": "https://www.teradyne.com/privacy-policy/",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal information categories; robotics data notice with retention statement."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "texas-instruments",
+  "name": "Texas Instruments Incorporated",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Texas Instruments Incorporated is a semiconductor company headquartered in Dallas, Texas, manufacturing analog chips and embedded processors. Its privacy policy lists personal data categories including web activity, device technical data (operating system, device identifiers, IP addresses, geolocation), identity verification data, and business and transaction data. The policy sets out legal bases for processing (consent, contract, legal obligation, legitimate interests) and describes safeguards for cross-border data transfers.",
+  "website": "https://www.ti.com/",
+  "headquarters": "Dallas, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy policy enumerates categories (web activity, device technical data, identity verification, business and transaction data).",
+   "Policy states legal bases for processing (consent, contract, legal obligation, legitimate interests).",
+   "Cross-border transfer safeguards are described for international data movements."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against TI's privacy policy and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "TI appears in a Quebec data map through procurement and business relationships, with device-level telemetry and business contact data in scope. Record the privacy policy categories and confirm which legal basis applies where personal data is shared under Law 25's consent and necessity rules.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Texas_Instruments_Incorporated",
+    "consulted": "2026-10-05",
+    "note": "HQ Dallas, Texas; analog chips and embedded processors."
+   },
+   {
+    "url": "https://www.ti.com/legal/terms-conditions/privacy-policy.html?ref_url=http%3a%2f%2feducation.ti.com%2fen%2fsoftware%2fdetails",
+    "consulted": "2026-10-05",
+    "note": "Privacy policy: personal data categories, legal bases, cross-border safeguards."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "trimble",
+  "name": "Trimble Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Trimble Inc. is a positioning and industrial technology company headquartered in Westminster, Colorado, selling solutions for construction, geospatial, agriculture, and transportation, including Trimble Connect collaboration software. Its privacy notice lists controller-side personal data categories (name, employer, email, identifiable data, payment information, IP addresses, behavioral data). The Trimble Connect GDPR data processing addendum specifies processor-side data types (name, phone number, email, location, online identifier, language preference) for employees and contractors of enterprise customers.",
+  "website": "https://www.trimble.com/",
+  "headquarters": "Westminster, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy notice enumerates controller-side categories (name, employer, email, identifiable data, payment, IP, behavioral data).",
+   "Trimble Connect GDPR addendum specifies processor-side data types (name, phone, email, location, online identifier, language preference).",
+   "Addendum identifies data subjects as employees and contractors of enterprise customers."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the GDPR addendum and your order form before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Trimble is a processor of employee location and identifier data for Quebec construction and surveying firms using its products, which is sensitive in a Law 25 assessment. The data map should copy the addendum's data types and record which Trimble products and regions are in use.",
+  "pricing_model": "subscription and hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Trimble_Inc",
+    "consulted": "2026-10-05",
+    "note": "HQ Westminster, Colorado; positioning technology for construction, geospatial, agriculture, transportation."
+   },
+   {
+    "url": "https://www.trimble.com/en/our-commitment/responsible-business/data-privacy-and-security/data-privacy-center/privacy-notice",
+    "consulted": "2026-10-05",
+    "note": "Privacy notice: controller-side personal data categories."
+   },
+   {
+    "url": "https://www.trimble.com/en/products/trimble-connect/gdpr-addendum",
+    "consulted": "2026-10-05",
+    "note": "Trimble Connect GDPR addendum: processor data types and data subjects."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "tyler-technologies",
+  "name": "Tyler Technologies, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Tyler Technologies, Inc. is a public-sector software company headquartered in Plano, Texas, selling ERP, courts, public safety, tax, and school management systems to US and Canadian governments, with a Toronto office. Its privacy statement lists controller-side categories including sensitive personal data (social security numbers, logins, payment cards), biometrics, education data, geolocation, commercial information, and network activity. Its GDPR compliance page states that in its processor role it handles account numbers, addresses, emails, IP addresses, names, and phone numbers, hosted on AWS servers in Ireland with standard contractual clauses for EU-to-US transfers, and describes privacy-by-design measures such as data redaction and role-based access.",
+  "website": "https://www.tylertech.com/",
+  "headquarters": "Plano, United States",
+  "data_residency": "AWS servers in Ireland (Tyler GDPR compliance page)",
+  "mapping_features": [
+   "Privacy statement enumerates collected categories including sensitive data (SSN, logins, payment cards), biometrics, education, geolocation, commercial, and network activity data.",
+   "GDPR page lists processor-side data types (account numbers, addresses, emails, IP addresses, names, phone numbers).",
+   "Processor hosting stated as AWS servers in Ireland, with standard contractual clauses for EU-to-US transfers.",
+   "Privacy-by-design measures described: data redaction and role-based access controls."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the applicable DPA and the client agency's records schedule before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Tyler serves Quebec municipalities and agencies, so it is a high-sensitivity processor holding citizen data with government-grade retention obligations. The data map should record the Ireland hosting region, the processor data types, and the client agency's own retention schedule.",
+  "pricing_model": "enterprise SaaS and license sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Tyler_Technologies",
+    "consulted": "2026-10-05",
+    "note": "HQ Plano, Texas; public-sector software (ERP, courts, public safety, tax, schools); US and Canada including Toronto."
+   },
+   {
+    "url": "https://www.tylertech.com/privacy",
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: personal data categories including sensitive, biometric, education, and geolocation data."
+   },
+   {
+    "url": "https://www.tylertech.com/about-us/security-compliance/gdpr-compliance",
+    "consulted": "2026-10-05",
+    "note": "GDPR page: processor data types, AWS Ireland hosting, SCCs, privacy-by-design measures."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "verisign",
+  "name": "Verisign, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Verisign, Inc. is an internet infrastructure company headquartered in Reston, Virginia, operating the .com and .net domain registries, two of the thirteen DNS root servers, and maintaining the root zone under agreement with ICANN. Its privacy statement lists personal information categories including identity data, contact data, financial data, transaction data, technical data, profile data, usage data, and marketing and communications data. Domain registrations route registrant contact details through the registry, and the company publishes a trust page describing its security and compliance practices.",
+  "website": "https://www.verisign.com/",
+  "headquarters": "Reston, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy statement enumerates categories (identity, contact, financial, transaction, technical, profile, usage, marketing and communications).",
+   "Domain registry operations process registrant contact details flowing through .com and .net registrations.",
+   "Trust documentation describes the company's security and compliance practices for registry operations."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Verisign's privacy statement and your registrar agreement before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Verisign touches Quebec personal data through domain registrations, where registrant contact details transit the registry. The data map should note the registrar-to-registry flow and record Verisign as an infrastructure vendor with the privacy statement categories.",
+  "pricing_model": "registry and service fees; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Verisign",
+    "consulted": "2026-10-05",
+    "note": "HQ Reston, Virginia; .com and .net registries; root zone maintainer."
+   },
+   {
+    "url": "https://www.verisign.com/legal-center/privacy/",
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: personal information categories."
+   },
+   {
+    "url": "https://dig.watch/actor/verisign",
+    "consulted": "2026-10-05",
+    "note": "Verisign profile: DNS root server operations."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "western-digital",
+  "name": "Western Digital Corporation",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Western Digital Corporation is a data storage company headquartered in San Jose, California, manufacturing hard disk drives and storage systems; its flash business became the independent Sandisk Corporation in 2025. Its privacy statement lists personal data categories: identifiers, commercial information, financial information, demographics, location, internet and network activity, professional information, inferences, and payment-card sensitive information. The statement says Western Digital is the data controller, names a data protection officer (privacy@wdc.com), and notes that some data may be retained where authorized or required by law, such as for fraud prevention.",
+  "website": "https://www.westerndigital.com/",
+  "headquarters": "San Jose, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy statement enumerates categories (identifiers, commercial, financial, demographics, location, network activity, professional, inferences, payment card data).",
+   "Statement declares Western Digital as data controller with a named data protection officer (privacy@wdc.com).",
+   "Retention statement: some data kept where authorized or required by law, such as for fraud prevention."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against Western Digital's privacy statement and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Western Digital appears in a Quebec data map through storage hardware procurement, product registration, support, and data recovery services that can expose drive contents. Record it as a vendor with the privacy statement categories, and treat drive contents as customer data in recovery engagements.",
+  "pricing_model": "hardware sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Western_Digital",
+    "consulted": "2026-10-05",
+    "note": "HQ San Jose, California; HDD and storage systems; flash spin-off to Sandisk in 2025."
+   },
+   {
+    "url": "https://www.westerndigital.com/legal/privacy-statement",
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: categories, controller designation, DPO, retention note."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "workday",
+  "name": "Workday, Inc.",
+  "categories": [
+   "data_mapping",
+   "grc"
+  ],
+  "description": "Workday, Inc. is a cloud HR and finance software company headquartered in Pleasanton, California, selling human capital management, payroll, and financials applications. Its data processing exhibits list the personal data customers may submit: employee, applicant, and related-person data (names, contact details, dates of birth, dependents and beneficiaries) plus special categories such as ethnicity, religious beliefs, union membership, and health data. Its California privacy addendum states Workday acts only as a service provider, does not sell or share customer personal information, and does not combine customer data across customers.",
+  "website": "https://www.workday.com/",
+  "headquarters": "Pleasanton, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Data processing exhibit enumerates personal data categories (employee, applicant, and related-person identifiers and contacts, dates of birth, dependents and beneficiaries, plus special categories: ethnicity, religious beliefs, union membership, health data).",
+   "California privacy addendum: service provider only, no sale or sharing of customer personal information, no cross-customer combining.",
+   "Published subprocessor list supports processor-side data mapping."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Verify retention against the data processing exhibit and your order form before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Workday typically holds the largest set of employee personal data, including sensitive categories, in a Quebec organization's data map. The map should mirror the processing exhibit's category list and document the service-provider-only restrictions in the vendor record.",
+  "pricing_model": "subscription SaaS; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Workday,_Inc.",
+    "consulted": "2026-10-05",
+    "note": "HQ Pleasanton, California; cloud HCM, payroll, financials."
+   },
+   {
+    "url": "https://www.workday.com/content/dam/web/en-us/documents/legal/workday-universal-data-processing-exhibit-scc-v20.2.pdf",
+    "consulted": "2026-10-05",
+    "note": "Data processing exhibit: personal data categories including special categories."
+   },
+   {
+    "url": "https://www.workday.com/content/dam/web/en-us/documents/legal/california-privacy-addendum-to-dpe.pdf",
+    "consulted": "2026-10-05",
+    "note": "California privacy addendum: service provider role, no sale or sharing."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ },
+ {
+  "id": "zebra",
+  "name": "Zebra Technologies Corporation",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Zebra Technologies Corporation is an enterprise data capture company headquartered in Lincolnshire, Illinois, making barcode printers, RFID systems, rugged mobile computers, scanners, and real-time locating systems. Its privacy statement lists personal data categories including name and contact information, biometric information (only when customer-enabled), credentials, payment information, and usage data. Its Global Customer Data Privacy Addendum defines processing purposes and customer personnel data types, and its biometric data policy states biometric storage follows the customer's retention schedule and is not sold.",
+  "website": "https://www.zebra.com/",
+  "headquarters": "Lincolnshire, United States",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Privacy statement enumerates categories (name, contact, biometric when customer-enabled, credentials, payment, usage data).",
+   "Global Customer Data Privacy Addendum defines processing purposes and customer personnel data types.",
+   "Biometric data policy: retention governed by customer policies, data not sold."
+  ],
+  "retention_features": {
+   "notes": "No vendor-published statutory retention schedule was found in the sources used. Biometric retention follows customer policies; verify retention against the addendum and your contract before recording any period in the data map.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Zebra devices can collect biometric and location data from Quebec employees, which is sensitive under Law 25. The data map should record the device types deployed, the customer-enabled features in use, and the organization's own retention policy for biometric data.",
+  "pricing_model": "hardware and software sales; tiers unverified",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Zebra_Technologies",
+    "consulted": "2026-10-05",
+    "note": "HQ Lincolnshire, Illinois; barcode printers, RFID, rugged mobile computers, scanners, real-time locating."
+   },
+   {
+    "url": "https://www.zebra.com/us/en/about-zebra/company-information/legal/privacy-statement.html",
+    "consulted": "2026-10-05",
+    "note": "Privacy statement: personal data categories including biometric data."
+   },
+   {
+    "url": "https://www.zebra.com/content/dam/zebra_dam/en/terms-and-conditions/global-customer-data-privacy-addendum.pdf",
+    "consulted": "2026-10-05",
+    "note": "Global Customer Data Privacy Addendum: processing purposes and customer personnel data types."
+   }
+  ],
+  "verification": {
+   "status": "verified",
+   "checked_utc": "2026-10-05T03:43:30Z"
+  }
+ }
+]
