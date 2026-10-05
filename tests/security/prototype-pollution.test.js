@@ -5,11 +5,13 @@
  *
  * JSON merge/deep-extend paths in first-party code (verified by reading):
  *  - web/executor/js/s1tokenize.js parseJsonFields(): hand-written JSON
- *    parser; parseObject() does obj[key] = parseValue() with an
- *    attacker-controlled key. For "__proto__" this mutates the parsed
+ *    parser; parseObject() used obj[key] = parseValue() with an
+ *    attacker-controlled key. For "__proto__" this mutated the parsed
  *    object's own prototype (NOT the global Object.prototype).
- *    => REAL FINDING (reported, not fixed; sources are read-only here).
- *       The required property still holds: ({}).polluted stays undefined.
+ *    => REAL FINDING, FIXED: __proto__ keys now go through
+ *       Object.defineProperty as own data properties; the prototype chain
+ *       stays intact. The required property still holds: ({}).polluted
+ *       stays undefined.
  *  - web/executor/js/s1util.js deepCopy(): JSON.parse(JSON.stringify(v)).
  *    JSON.parse materializes "__proto__" as an own data property without
  *    invoking the setter, so the copy is clean. Safe.
@@ -61,6 +63,14 @@ function main() {
   /* The parsed value itself is usable: normal keys survive. */
   const parsed = Tok.parseJsonFields('{"x": 40, "label": "CRM"}');
   eq(parsed.label, "CRM", "ordinary parse result intact");
+
+  /* The fix: a "__proto__" key must become an own data property, never a
+     prototype rewire. */
+  const protoParsed = Tok.parseJsonFields('{"__proto__": {"polluted": "PX"}, "label": "CRM"}');
+  eq(Object.getPrototypeOf(protoParsed), PROTO, "parsed object keeps Object.prototype");
+  ok(Object.prototype.hasOwnProperty.call(protoParsed, "__proto__"),
+    "__proto__ materializes as an own property");
+  eq(protoParsed.label, "CRM", "sibling keys survive a __proto__ payload");
 
   /* Even a proto-tainted parse result becomes clean through deepCopy:
      JSON.stringify only serializes own properties, so the mutated
