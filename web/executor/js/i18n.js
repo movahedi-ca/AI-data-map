@@ -22,6 +22,17 @@
     en: {
       entryTitle: "Map my data with the assistant",
       entryBody: "Four taps, no typing. The assistant builds your data map step by step, right in your browser, and you review each piece.",
+      /* Single-panel chrome (Issue 8): one title + one lede for the merged
+         assistant; the mode toggle picks the quick 4-tap intake or the
+         guided chat. The old entryTitle/chatTitle keys stay for
+         compatibility but are no longer rendered. */
+      assistantTitle: "AI Data Mapping Assistant",
+      assistantLede: "Two ways to start. Pick four quick answers, or walk through it in a chat. Either way, the assistant drafts your data map in your browser, and you review every piece before anything is exported.",
+      modeLabel: "How to start",
+      modeQuick: "Quick setup",
+      modeQuickDesc: "Four taps, no typing.",
+      modeGuided: "Guided chat",
+      modeGuidedDesc: "Four questions in a chat, or paste a recipe.",
       entryButton: "Start",
       chipSize: "Company size",
       chipSector: "Sector",
@@ -124,6 +135,14 @@
     fr: {
       entryTitle: "Cartographiez mes données avec l’assistant",
       entryBody: "Quatre choix, sans rien taper. L’assistant construit votre carte de données étape par étape, dans votre navigateur, et vous révisez chaque élément.",
+      /* Single-panel chrome (Issue 8): see the EN block above. */
+      assistantTitle: "Assistant IA de cartographie des données",
+      assistantLede: "Deux façons de commencer. Choisissez quatre réponses rapides ou avancez en conversation. Dans les deux cas, l’assistant esquisse votre carte de données dans votre navigateur, et vous révisez chaque élément avant toute exportation.",
+      modeLabel: "Comment commencer",
+      modeQuick: "Configuration rapide",
+      modeQuickDesc: "Quatre choix, sans rien taper.",
+      modeGuided: "Conversation guidée",
+      modeGuidedDesc: "Quatre questions en conversation, ou collez une recette.",
       entryButton: "Commencer",
       chipSize: "Taille de l’entreprise",
       chipSector: "Secteur",
