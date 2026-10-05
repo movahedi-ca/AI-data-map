@@ -232,3 +232,109 @@
   .s1c-chat { padding: 1rem; }
   .s1c-chat .s1c-draftbadge { margin-left: 0; }
 }
+
+/* ---- Persistent refinement (2026-10-05): text row, typing indicator,
+   gap list, docked-at-panel spacing. Radius tiers per the brief:
+   chips/inputs 10px, panel 14px. Ledger teal accent only. ---- */
+
+/* The chat docks at panel level beside the review cards and results. */
+.s1c-chat.s1c-docked {
+  margin-top: 1.25rem;
+}
+
+/* Refinement text row: input + send, same chip language as quick mode. */
+.s1c-chat .s1c-textrow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.s1c-chat .s1c-textinput {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  box-sizing: border-box;
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.s1c-chat .s1c-textinput::placeholder {
+  color: #64748b;
+}
+
+.s1c-chat .s1c-textinput:focus {
+  border-color: #0e6e64;
+}
+
+.s1c-chat .s1c-textinput:focus-visible {
+  outline: 3px solid #0e6e64;
+  outline-offset: 2px;
+}
+
+.s1c-chat .s1c-send {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0e6e64;
+  border-radius: 0.625rem;
+  background: #0e6e64;
+  color: #ffffff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.s1c-chat .s1c-send:hover {
+  background: #0a4f48;
+  border-color: #0a4f48;
+}
+
+.s1c-chat .s1c-send:focus-visible {
+  outline: 3px solid #0e6e64;
+  outline-offset: 2px;
+}
+
+/* Typing indicator: three dots, brief and honest, always resolves. */
+.s1c-chat .s1c-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.7rem 0.9rem;
+}
+
+.s1c-chat .s1c-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #0e6e64;
+  opacity: 0.3;
+  animation: s1cdot 900ms ease-in-out infinite;
+}
+
+.s1c-chat .s1c-dot:nth-child(2) { animation-delay: 150ms; }
+.s1c-chat .s1c-dot:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes s1cdot {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+
+/* Gap-analysis list inside a bot bubble. */
+.s1c-chat .s1c-gaplist {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.s1c-chat .s1c-gaplist li {
+  margin-bottom: 0.3rem;
+}
+
+.s1c-chat .s1c-gaplist li:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s1c-chat .s1c-dot { animation: none; opacity: 0.6; }
+}
