@@ -1,1 +1,251 @@
-{"$id":"https://movahedi.ca/schemas/ai-data-map/state-snapshot-schema.json","$schema":"https://json-schema.org/draft/2020-12/schema","action_record":{"description":"Each serialized action record carries exactly three fields: the action id, its params, and the resulting state hash.","properties":{"action_id":{"description":"String of the form <action_name>:<item_index>, e.g. connect:3.","pattern":"^[a-z_]+:\\d+$","type":"string"},"params":{"description":"The params object exactly as executed.","type":"object"},"state_hash":{"description":"64 hex chars: SHA-256 over the canonical canvas serialization taken immediately after the action completed.","pattern":"^[0-9a-f]{64}$","type":"string"}},"required":["action_id","params","state_hash"],"type":"object"},"canonical_serialization":{"definition":{"canvas":{"edges":[{"a":"node id, string","b":"node id, string","cat":"contact | payment | marketing"}],"edges_sorted_by":["a numeric","b numeric","cat alphabetical"],"nodes":[{"label":"string, UTF-8","type":"collection | system | thirdparty | destruction","x":"integer","y":"integer"}],"nodes_sorted_by":["node id numeric (n1 < n2 < n10)"]},"json_rules":"UTF-8 bytes of JSON with object keys sorted ascending (byte order), arrays in the defined sort order, no whitespace outside string values, no trailing newline.","number_formatting":"Guide coordinates are rounded to the nearest integer (round half up) before hashing; floats never appear in the canonical form. All other numbers serialize as plain JSON numbers."},"state_hash":"SHA-256, hex-encoded, over the canonical serialization bytes of {nodes, edges, annotations} taken immediately after the action completes."},"description":"Versioned schema for executor state snapshots. snapshot_version is frozen at 1.0.0 for Phase 0.","properties":{"actions":{"description":"The last N action records, oldest first. N = 32.","items":{"$ref":"#/action_record"},"maxItems":32,"type":"array"},"annotations":{"description":"Session-layer annotations (retention ranges, confirmations, review flags), sorted by (node_id numeric, kind).","items":{"properties":{"kind":{"enum":["retention","confirmation","review_flag"],"type":"string"},"node_id":{"pattern":"^n[1-9]\\d*$","type":"string"},"payload":{"type":"object"}},"required":["node_id","kind","payload"],"type":"object"},"type":"array"},"applied_keys":{"description":"Idempotency keys already applied in this session, mapped to their recorded results. Replaying a key is a no-op.","items":{"type":"string"},"type":"array","uniqueItems":true},"canvas":{"properties":{"edges":{"items":{"additionalProperties":false,"properties":{"a":{"pattern":"^n[1-9]\\d*$","type":"string"},"b":{"pattern":"^n[1-9]\\d*$","type":"string"},"cat":{"enum":["contact","payment","marketing"],"type":"string"}},"required":["a","b","cat"],"type":"object"},"type":"array"},"nodes":{"additionalProperties":false,"items":{"properties":{"label":{"type":"string"},"type":{"enum":["collection","system","thirdparty","destruction"],"type":"string"},"x":{"type":"number"},"y":{"type":"number"}},"required":["type","x","y","label"],"type":"object"},"patternProperties":{"^n[1-9]\\d*$":{}},"type":"object"}},"required":["nodes","edges"],"type":"object"},"dropped_prefix":{"description":"Verifiability of what was truncated away.","properties":{"count":{"description":"Number of action records dropped from the front of the window.","minimum":0,"type":"integer"},"prefix_hash":{"description":"SHA-256 over the concatenation (in order) of the state_hash values of the dropped records. An empty prefix hashes the empty string.","pattern":"^[0-9a-f]{64}$","type":"string"}},"required":["count","prefix_hash"],"type":"object"},"item_index":{"description":"Index of the next recipe item to execute.","minimum":0,"type":"integer"},"recipe_id":{"type":"string"},"snapshot_version":{"const":"1.0.0","description":"Snapshot format version. Frozen at 1.0.0 for Phase 0.","type":"string"}},"required":["snapshot_version","recipe_id","item_index","canvas","annotations","applied_keys","actions","dropped_prefix"],"title":"AI-data-map state snapshot schema","type":"object","window":{"N":32,"justification":"32 covers a full small-org recipe (typically 8-20 items) plus one full pass of recovery actions (undo/skip/retry) with headroom, while keeping the serialized snapshot under ~64 KB so it fits comfortably in the model's context on every step.","truncation_rule":"The actions array keeps the most recent 32 records. When a 33rd record arrives, the oldest is moved into dropped_prefix: count increments by one and prefix_hash becomes SHA-256 over (old prefix_hash bytes concatenated with the dropped record's state_hash bytes), so the dropped history remains verifiable as a hash chain anchored at the empty string."}}
+{
+  "$id": "https://movahedi.ca/schemas/ai-data-map/state-snapshot-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "action_record": {
+    "description": "Each serialized action record carries exactly three fields: the action id, its params, and the resulting state hash.",
+    "properties": {
+      "action_id": {
+        "description": "String of the form <action_name>:<item_index>, e.g. connect:3.",
+        "pattern": "^[a-z_]+:\\d+$",
+        "type": "string"
+      },
+      "params": {
+        "description": "The params object exactly as executed.",
+        "type": "object"
+      },
+      "state_hash": {
+        "description": "64 hex chars: SHA-256 over the canonical canvas serialization taken immediately after the action completed.",
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "action_id",
+      "params",
+      "state_hash"
+    ],
+    "type": "object"
+  },
+  "canonical_serialization": {
+    "definition": {
+      "canvas": {
+        "edges": [
+          {
+            "a": "node id, string",
+            "b": "node id, string",
+            "cat": "contact | payment | marketing"
+          }
+        ],
+        "edges_sorted_by": [
+          "a numeric",
+          "b numeric",
+          "cat alphabetical (contact < marketing < payment)"
+        ],
+        "nodes": [
+          {
+            "id": "node id, string ^n[1-9]\\d*$",
+            "label": "string, UTF-8",
+            "type": "collection | system | thirdparty | destruction",
+            "x": "integer",
+            "y": "integer"
+          }
+        ],
+        "nodes_sorted_by": [
+          "node id numeric (n1 < n2 < n10)"
+        ],
+        "node_transform": "The canvas nodes map is converted to the array by iterating map keys sorted numerically by node id (n1 < n2 < n10) and emitting one element per node with keys in the order id, label, type, x, y (byte-ascending)."
+      },
+      "json_rules": "UTF-8 bytes of JSON with object keys sorted ascending (byte order), arrays in the defined sort order, no whitespace outside string values, no trailing newline.",
+      "number_formatting": "Guide coordinates are rounded to the nearest integer (round half up) before hashing; floats never appear in the canonical form. All other numbers serialize as plain JSON numbers."
+    },
+    "state_hash": "SHA-256, hex-encoded, over the canonical serialization bytes of {nodes, edges, annotations} taken immediately after the action completes."
+  },
+  "description": "Versioned schema for executor state snapshots. snapshot_version is frozen at 1.0.0 for Phase 0.",
+  "properties": {
+    "actions": {
+      "description": "The last N action records, oldest first. N = 32.",
+      "items": {
+        "$ref": "#/action_record"
+      },
+      "maxItems": 32,
+      "type": "array"
+    },
+    "annotations": {
+      "description": "Session-layer annotations (retention ranges, confirmations, review flags), sorted by (node_id numeric, kind), ties broken by canonical payload JSON byte order (UTF-8).",
+      "items": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "retention",
+              "confirmation",
+              "review_flag"
+            ],
+            "type": "string"
+          },
+          "node_id": {
+            "pattern": "^n[1-9]\\d*$",
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "node_id",
+          "kind",
+          "payload"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "applied_keys": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "description": "The recorded result of the action, returned verbatim on replay."
+      },
+      "description": "Idempotency keys mapped to their recorded results. Replaying a key returns the recorded result and performs no work. Keys are never deleted except by moving to the tombstone set on undo."
+    },
+    "canvas": {
+      "properties": {
+        "edges": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "a": {
+                "pattern": "^n[1-9]\\d*$",
+                "type": "string"
+              },
+              "b": {
+                "pattern": "^n[1-9]\\d*$",
+                "type": "string"
+              },
+              "cat": {
+                "enum": [
+                  "contact",
+                  "payment",
+                  "marketing"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "a",
+              "b",
+              "cat"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "nodes": {
+          "additionalProperties": false,
+          "items": {
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "collection",
+                  "system",
+                  "thirdparty",
+                  "destruction"
+                ],
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "x",
+              "y",
+              "label"
+            ],
+            "type": "object"
+          },
+          "patternProperties": {
+            "^n[1-9]\\d*$": {}
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "type": "object"
+    },
+    "dropped_prefix": {
+      "description": "Verifiability of what was truncated away.",
+      "properties": {
+        "count": {
+          "description": "Number of action records dropped from the front of the window.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "prefix_hash": {
+          "description": "Iterative hash chain per window.truncation_rule. An empty prefix (count 0) is H(0), the SHA-256 hex of the empty string.",
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "count",
+        "prefix_hash"
+      ],
+      "type": "object"
+    },
+    "item_index": {
+      "description": "Index of the next recipe item to execute.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "recipe_id": {
+      "type": "string"
+    },
+    "snapshot_version": {
+      "const": "1.0.0",
+      "description": "Snapshot format version. Frozen at exactly 1.0.0 for Phase 0. The const (no patch flexibility), unlike the recipe schema_version pattern, is deliberate: the executor writes exactly the format it implements, and readers reject anything else loudly.",
+      "type": "string"
+    },
+    "terminated": {
+      "type": "boolean",
+      "default": false,
+      "description": "True once abort_session has sealed the snapshot; no further items execute."
+    },
+    "abort_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": null,
+      "description": "The abort reason when terminated is true, else null."
+    }
+  },
+  "required": [
+    "snapshot_version",
+    "recipe_id",
+    "item_index",
+    "canvas",
+    "annotations",
+    "applied_keys",
+    "actions",
+    "dropped_prefix",
+    "terminated",
+    "abort_reason"
+  ],
+  "title": "AI-data-map state snapshot schema",
+  "type": "object",
+  "window": {
+    "N": 32,
+    "justification": "32 covers a full small-org recipe (typically 8-20 items) plus one full pass of recovery actions (undo/skip/retry) with headroom, while keeping the serialized snapshot under ~64 KB so it fits comfortably in the model's context on every step.",
+    "truncation_rule": "The actions array keeps the most recent 32 records. When a 33rd record arrives, the oldest is moved into dropped_prefix: count increments by one and the prefix hash advances as an iterative chain. Let H(0) be the SHA-256 hex digest of the empty string. When dropping a record whose state_hash is the 64-char lowercase hex string h, H(k+1) = SHA-256 hex digest of the UTF-8 bytes of the ASCII string (H(k) concatenated with h). Byte encoding is fixed: ASCII bytes of the lowercase hex digests, never raw bytes. Worked example: H(0)=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. Drop a record with state_hash=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: H(1)=52eb1e93d4e47646bf787c48513698fcde9f5952763a7a4bfa7c52fe0e8388e8. Drop a second record with state_hash=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb: H(2)=aa15cd3f0802376650ebc56322cdec1bf6f6990ed2602dd0648bbd8b10646195."
+  }
+}
