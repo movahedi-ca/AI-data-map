@@ -1,0 +1,1370 @@
+[
+ {
+  "id": "amazon-web-services",
+  "name": "Amazon Web Services",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Amazon Web Services publishes a subprocessor list (researched 2026-10-05; 64 subprocessor rows recorded). It appears as a subprocessor in the published lists of 17 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://aws.amazon.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 17 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 17 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://aws.amazon.com/compliance/sub-processors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "twilio",
+  "name": "Twilio",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Twilio publishes a subprocessor list (researched 2026-10-05; 40 subprocessor rows recorded). It appears as a subprocessor in the published lists of 11 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://twilio.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 11 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 11 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://twilio.com/en-us/legal/sub-processors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "openai",
+  "name": "OpenAI",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "OpenAI publishes a subprocessor list (researched 2026-10-05; 24 subprocessor rows recorded). It appears as a subprocessor in the published lists of 8 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://openai.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 8 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 8 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://OpenAI.com/policies/sub-processor-list/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "pendo",
+  "name": "Pendo",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Pendo appears as a subprocessor in the published lists of 7 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.pendo.io",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 7 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 7 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.pendo.io",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "cloudflare",
+  "name": "Cloudflare",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Cloudflare publishes a subprocessor list (researched 2026-10-05; 30 subprocessor rows recorded). It appears as a subprocessor in the published lists of 6 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.cloudflare.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 6 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 6 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.cloudflare.com/gdpr/subprocessors/cloudflare-services/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "okta",
+  "name": "Okta",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Okta publishes a subprocessor list (researched 2026-10-05; 29 subprocessor rows recorded). It appears as a subprocessor in the published lists of 6 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.okta.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 6 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 6 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.okta.com/en-se/legal/trustandcompliance/subprocessors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "zendesk",
+  "name": "Zendesk",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Zendesk publishes a subprocessor list (researched 2026-10-05; 70 subprocessor rows recorded). It appears as a subprocessor in the published lists of 6 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.zendesk.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 6 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 6 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://support.zendesk.com/hc/en-us/articles/4408883061530-Subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "mailgun",
+  "name": "Mailgun",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Mailgun publishes a subprocessor list (researched 2026-10-05; 9 subprocessor rows recorded). It appears as a subprocessor in the published lists of 0 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.mailgun.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 0 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 0 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.mailgun.com/legal/dpa-old/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "mailchimp",
+  "name": "Mailchimp",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Mailchimp publishes a subprocessor list (researched 2026-10-05; 13 subprocessor rows recorded). It appears as a subprocessor in the published lists of 0 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://mailchimp.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 0 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 0 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.stabile-familie.com/app/download/6607175818/This+Data+Processing+Addendum+MailChimp.pdf?t=1679572930",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "anthropic",
+  "name": "Anthropic",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Anthropic publishes a subprocessor list (researched 2026-10-05; 18 subprocessor rows recorded). It appears as a subprocessor in the published lists of 4 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.anthropic.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 4 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 4 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://trust.anthropic.com/subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "elastic",
+  "name": "Elastic",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Elastic publishes a subprocessor list (researched 2026-10-05; 33 subprocessor rows recorded). It appears as a subprocessor in the published lists of 4 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.elastic.co",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 4 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 4 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.elastic.co/agreements/internal_subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "slack",
+  "name": "Slack",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Slack publishes a subprocessor list (researched 2026-10-05; 7 subprocessor rows recorded). It appears as a subprocessor in the published lists of 4 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://slack.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 4 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 4 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://github.com/bibsysdev/track-changes-to-aws-terms-and-conditions/blob/HEAD/slack/subprocessors.md",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "snowflake",
+  "name": "Snowflake",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Snowflake publishes a subprocessor list (researched 2026-10-05; 9 subprocessor rows recorded). It appears as a subprocessor in the published lists of 4 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.snowflake.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 4 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 4 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.snowflake.com/en/legal/privacy/snowflake-sub-processors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "splunk",
+  "name": "Splunk",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Splunk appears as a subprocessor in the published lists of 4 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.splunk.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 4 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 4 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.splunk.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "amplitude",
+  "name": "Amplitude",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Amplitude publishes a subprocessor list (researched 2026-10-05; 15 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.amplitude.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.amplitude.com/subprocessor-list",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "atlassian",
+  "name": "Atlassian",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Atlassian publishes a subprocessor list (researched 2026-10-05; 34 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.atlassian.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.atlassian.com/legal/sub-processors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "hubspot",
+  "name": "HubSpot",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "HubSpot publishes a subprocessor list (researched 2026-10-05; 20 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.hubspot.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://legal.hubspot.com/sub-processors-page",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "mongodb",
+  "name": "MongoDB",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "MongoDB publishes a subprocessor list (researched 2026-10-05; 16 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.mongodb.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.mongodb.com/cloud/trust/compliance/subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "concentrix",
+  "name": "Concentrix Corporation",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Concentrix Corporation appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.concentrix.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 3 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.concentrix.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "gainsight",
+  "name": "Gainsight",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Gainsight publishes a subprocessor list (researched 2026-10-05; 46 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.gainsight.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.gainsight.com/policy/sub-processors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "intercom",
+  "name": "Intercom Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Intercom Inc. publishes a subprocessor list (researched 2026-10-05; 18 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.intercom.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.intercom.com/legal/subprocessors-list",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "khoros",
+  "name": "Khoros LLC",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Khoros LLC publishes a subprocessor list (researched 2026-10-05; 13 subprocessor rows recorded). It appears as a subprocessor in the published lists of 3 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://khoros.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 3 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 3 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://community.khoros.com/category/supportcenter/kb/supportinformation",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "databricks",
+  "name": "Databricks",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Databricks publishes a subprocessor list (researched 2026-10-05; 35 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.databricks.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.databricks.com/legal/databricks-subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "zoom-video",
+  "name": "Zoom",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Zoom publishes a subprocessor list (researched 2026-10-05; 51 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.zoom.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.zoom.com/en/trust/subprocessors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "clickhouse",
+  "name": "ClickHouse, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "ClickHouse, Inc. publishes a subprocessor list (researched 2026-10-05; 19 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://clickhouse.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://clickhouse.com/legal/agreements/clickhouse-subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "fastly",
+  "name": "Fastly, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Fastly, Inc. publishes a subprocessor list (researched 2026-10-05; 17 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.fastly.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://docs.fastly.com/products/sub-processors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "sentry",
+  "name": "Functional Software, Inc. (Sentry)",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Functional Software, Inc. (Sentry) publishes a subprocessor list (researched 2026-10-05; 11 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://sentry.io",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://sentry.io/legal/subprocessors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "ivanti",
+  "name": "Ivanti Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Ivanti Inc. publishes a subprocessor list (researched 2026-10-05; 50 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.ivanti.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.ivanti.com/company/legal/ivanti-subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "lexisnexis",
+  "name": "LexisNexis",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "LexisNexis appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.lexisnexis.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 2 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.lexisnexis.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "new-relic",
+  "name": "New Relic Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "New Relic Inc. publishes a subprocessor list (researched 2026-10-05; 15 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://newrelic.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://newrelic.com/sub-processors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "pagerduty",
+  "name": "PagerDuty, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "PagerDuty, Inc. publishes a subprocessor list (researched 2026-10-05; 53 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.pagerduty.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.pagerduty.com/subprocessors/",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "sap",
+  "name": "SAP SE",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "SAP SE appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.sap.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 2 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.sap.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "spycloud",
+  "name": "SpyCloud",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "SpyCloud appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://spycloud.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 2 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://spycloud.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "sumo-logic",
+  "name": "Sumo Logic, Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Sumo Logic, Inc. publishes a subprocessor list (researched 2026-10-05; 11 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.sumologic.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.sumologic.com/solutions/security/subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "teleperformance",
+  "name": "Teleperformance",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Teleperformance appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, but no public subprocessor list of its own was found after exhaustive search of its trust center, DPA, legal and privacy pages (search trail recorded in data/subprocessor-graph/graph.json not_published).",
+  "website": "https://www.teleperformance.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)",
+   "No public subprocessor list found; the gap is recorded with a search trail in the dataset"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know their processors and subprocessors. This vendor sits in the supply chain of 2 mapped index companies yet publishes no subprocessor list of its own, a transparency gap worth flagging in a Law 25 processor inventory.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.teleperformance.com",
+    "consulted": "2026-10-05",
+    "note": "Vendor website; no public subprocessor list found, search trail in graph.json not_published"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ },
+ {
+  "id": "zapier",
+  "name": "Zapier Inc.",
+  "categories": [
+   "data_mapping"
+  ],
+  "description": "Zapier Inc. publishes a subprocessor list (researched 2026-10-05; 38 subprocessor rows recorded). It appears as a subprocessor in the published lists of 2 of the 87 tech index companies mapped in data/subprocessor-graph, making it part of the shared supply chain under large technology vendors.",
+  "website": "https://www.zapier.com",
+  "headquarters": "unverified",
+  "data_residency": "unverified",
+  "mapping_features": [
+   "Published subprocessor list names third-party subprocessors with purposes and processing locations where stated",
+   "Appears as a subprocessor for 2 index companies in the subprocessor-graph dataset (data/subprocessor-graph/edges.csv)"
+  ],
+  "retention_features": {
+   "notes": "No retention period verified against a statute for this vendor. Verify retention terms in the vendor's DPA before citing a period.",
+   "claims": [],
+   "verify": true
+  },
+  "law25_relevance": "Quebec Law 25 requires organizations to know which processors and subprocessors handle personal information. This vendor appears in the published subprocessor lists of 2 of 87 mapped tech index companies, so it is likely to surface in Law 25 data-mapping inventories and cross-border transfer assessments.",
+  "pricing_model": "unverified",
+  "sources": [
+   {
+    "url": "https://www.zapier.com/legal/subprocessors",
+    "consulted": "2026-10-05",
+    "note": "Vendor's published subprocessor list"
+   },
+   {
+    "url": "https://github.com/movahedi-ca/AI-data-map",
+    "consulted": "2026-10-05",
+    "note": "Subprocessor-graph dataset: data/subprocessor-graph/graph.json and edges.csv"
+   }
+  ],
+  "verification": {
+   "status": "partial",
+   "checked_utc": "2026-10-05T04:35:00Z"
+  }
+ }
+]
