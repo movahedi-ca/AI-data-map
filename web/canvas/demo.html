@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Import and canvas demo: data mapping guide</title>
+<meta name="description" content="Verification page: spreadsheet import flow plus a zoomable, pannable canvas with fullscreen. Everything runs in the browser.">
+<link rel="stylesheet" href="../import/import.css">
+<link rel="stylesheet" href="canvas.css">
+</head>
+<body class="cv-demo">
+<div class="cv-page">
+
+  <h1>Import and canvas, wired together</h1>
+  <p class="cv-lede">Upload a filled data-inventory template, step through the import, and the map lands on the canvas below. The toolbar on the canvas zooms, pans by drag, fits the map to the view, and goes fullscreen. Everything runs in your browser; the file never leaves this page.</p>
+  <p class="cv-disclaimer">Illustrative working draft only. Not legal advice; verify retention obligations independently.</p>
+
+  <div class="cv-section">
+    <div class="builder-import" id="imp-sec">
+      <div class="sim-head">Import a spreadsheet</div>
+      <div style="padding:1.25rem">
+      <p class="imp-lede">Upload a filled data-inventory template and turn it into a map. Everything runs in your browser. The file never leaves this page.</p>
+      <p class="imp-note">Works with the movahedi.ca data inventory template, and with the Excel file this tool exports.</p>
+
+      <div id="imp-step-file">
+        <label class="imp-drop" id="imp-drop">
+          <span class="imp-drop-text">Drop your .xlsx, .xls, or .csv file here, or</span>
+          <span class="btn secondary" aria-hidden="true">Choose a file</span>
+          <input type="file" id="imp-file" class="imp-visually-hidden" accept=".xlsx,.xls,.csv" aria-label="Choose a spreadsheet file to import">
+        </label>
+        <p class="imp-status" id="imp-status" role="status"></p>
+      </div>
+
+      <div id="imp-step-sheets" hidden>
+        <h3>Pick the sheets to import</h3>
+        <div class="field"><label for="imp-sys-sheet">Systems sheet</label><select id="imp-sys-sheet"></select></div>
+        <div class="field"><label for="imp-flows-sheet">Data flows sheet</label><select id="imp-flows-sheet"></select></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-sheets-back">Back</button>
+          <button type="button" class="btn" id="imp-sheets-next">Continue</button>
+        </div>
+      </div>
+
+      <div id="imp-step-map" hidden>
+        <h3>Match the columns</h3>
+        <p class="imp-lede">We guessed which column is which. Check each one and fix the guesses before continuing.</p>
+        <div id="imp-map-body"></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-map-back">Back</button>
+          <button type="button" class="btn" id="imp-map-next">Review the data</button>
+        </div>
+      </div>
+
+      <div id="imp-step-review" hidden>
+        <h3>Review before building</h3>
+        <p class="imp-lede">Nothing is fixed automatically. Rows with problems are flagged below; they are left out when the map is built.</p>
+        <div id="imp-review-body"></div>
+        <p class="imp-note" id="imp-build-note" hidden></p>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-review-back">Back</button>
+          <button type="button" class="btn" id="imp-build">Build map</button>
+        </div>
+      </div>
+
+      <div id="imp-step-done" hidden>
+        <h3>Map built</h3>
+        <div id="imp-done-body"></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-again">Import another file</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="sim-head">Map canvas</div>
+    <div style="padding:1.25rem">
+      <div id="canvas-wrap">
+        <div id="cv-toolbar" role="toolbar" aria-label="Map view controls">
+          <button type="button" id="cv-zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" id="cv-zoom-out" aria-label="Zoom out">&#8722;</button>
+          <button type="button" id="cv-fit" aria-label="Fit view">Fit</button>
+          <button type="button" id="cv-full" aria-label="Fullscreen">Fullscreen</button>
+        </div>
+        <svg id="builder-canvas" aria-label="Blank mapping canvas"></svg>
+        <p id="cv-status" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.LANG = "en";
+window.T = {
+  canvas: {
+    zoomIn: "Zoom in",
+    zoomOut: "Zoom out",
+    fitView: "Fit view",
+    fullscreen: "Fullscreen",
+    exitFullscreen: "Exit fullscreen",
+    selected: "Selected",
+    deselected: "Deselected",
+    mapFitted: "Map fitted to view.",
+    canvasLabel: "Blank mapping canvas",
+    toolbarLabel: "Map view controls"
+  },
+  import: {
+    applied: "Imported map applied to the canvas.",
+    parsing: "Reading your file\u2026",
+    parseFail: "We could not read that file.",
+    noSystems: "No systems sheet found in this file. Pick a file with a systems list and try again.",
+    kindSystems: "systems template",
+    kindFlows: "data flows template",
+    kindExporter: "this tool's Excel export",
+    kindUnknown: "not importable",
+    flowsNone: "None",
+    confidence: "match confidence",
+    doNotUse: "Do not use",
+    suggested: "Suggested",
+    fromFile: "From your file",
+    chooseCat: "Choose\u2026",
+    buildBlocked: "Choose a category for every flow before building the map.",
+    row: "Row",
+    skipped: "Skipped rows",
+    error: "Error",
+    warning: "Warning",
+    systemsHead: "Systems",
+    flowsHead: "Data flows",
+    doneCounts: "{n} systems placed, {e} connections drawn, {s} rows skipped.",
+    doneNote: "Warnings were kept as they were. Nothing was merged, renamed, or guessed beyond what you confirmed.",
+    fields: {
+      systemName: "System name", type: "Type", dataCategories: "Data categories",
+      purposes: "Purposes of use", lawfulBasis: "Lawful basis", retention: "Retention period",
+      storageLocation: "Storage location", owner: "Owner / department", notes: "Notes",
+      from: "From", to: "To", category: "Category", purpose: "Purpose of transfer",
+      crossBorder: "Cross-border?", destination: "Destination", safeguards: "Safeguards"
+    }
+  }
+};
+</script>
+<script src="../import/engine/engine-bundle.js"></script>
+<script src="../import/worker/worker-client.js"></script>
+<script src="../import/vendor/xlsx.full.min.js"></script>
+<script src="canvas.js"></script>
+<script src="../import/import.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.DMCanvas && typeof window.DMCanvas.init === "function") {
+    window.DMCanvas.init({
+      wrapId: "canvas-wrap",
+      svgId: "builder-canvas",
+      statusId: "cv-status",
+      strings: window.T.canvas
+    });
+  }
+});
+</script>
+</body>
+</html>
