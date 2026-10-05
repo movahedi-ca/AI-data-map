@@ -1,0 +1,129 @@
+{
+  "shard": "ood-content",
+  "domain": "ood-content-pipeline",
+  "recipe_id": "pilot-ood-content-01",
+  "recipe": {
+    "name": "Pilot OOD: editorial pipeline map (inbox, CMS, writers, archive)",
+    "recipe_id": "pilot-ood-content-01",
+    "schema_version": "1.0.0",
+    "items": [
+      {
+        "intent": "add_collection_point",
+        "params": {
+          "node_id": "n1",
+          "x": 70,
+          "y": 90,
+          "label": "Draft inbox"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n2",
+          "type": "system",
+          "x": 300,
+          "y": 90,
+          "label": "CMS"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n3",
+          "type": "thirdparty",
+          "x": 540,
+          "y": 90,
+          "label": "Freelance writer pool"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n4",
+          "type": "destruction",
+          "x": 540,
+          "y": 300,
+          "label": "Archived drafts"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n5",
+          "type": "system",
+          "x": 300,
+          "y": 220,
+          "label": "Review calendar"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n5",
+          "type": "system",
+          "x": 300,
+          "y": 250,
+          "label": "Newsletter tool"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n2",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n3",
+          "cat": "marketing"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n3",
+          "b": "n5",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n4",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "set_field",
+        "params": {
+          "node_id": "n2",
+          "field": "x",
+          "value": 340
+        }
+      },
+      {
+        "intent": "run_check",
+        "params": {
+          "checks": [
+            "edge_categories"
+          ]
+        }
+      },
+      {
+        "intent": "export",
+        "params": {
+          "format": "xls"
+        }
+      }
+    ]
+  },
+  "steps": 13,
+  "first_state_hash": "7458342a56680445d13fbcbd776972df18f7b41b3d17cd29fa9ba1b945a42df6",
+  "last_state_hash": "32ac3ed6399fdbf07ec5b0295ca85913ca9700ef47b422688df64ce6d55be13c",
+  "created_utc": "2026-10-05T03:28:43.676Z"
+}
