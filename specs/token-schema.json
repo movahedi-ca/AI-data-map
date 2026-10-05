@@ -1,1 +1,189 @@
-{"binary_encoding":{"byte_order":"big-endian","note":"A token sequence is the concatenation of uint16 token ids, most significant byte first, with no separators. Two implementations that build the same token id list produce byte-identical output.","token_width_bits":16},"control_tokens":[{"fields":[],"id":0,"name":"BOS","role":"start of token sequence"},{"fields":[],"id":1,"name":"EOS","role":"end of token sequence"},{"fields":[],"id":2,"name":"SNAPSHOT_SEP","role":"separator between state snapshot and action menu"},{"fields":[],"id":3,"name":"ANNOT_SEP","role":"separator between edge list and annotation list"},{"fields":[],"id":4,"name":"MENU_SEP","role":"separator between annotation list and valid-action menu"}],"description":"Typed-token encoding of canvas state and the valid-action menu. This is the System-1 model's input language. Token ids are fixed; the field tables are canonical JSON (sorted keys, no whitespace, UTF-8). Any change to a token id, a field layout, or the ordering rule bumps encoding_version and forces retraining.","encoding_version":"1.0.0","kind_tables":[{"fields":[{"name":"node_id","type":"string, matches ^n[1-9]\\d*$"},{"name":"type","type":"enum: 0=collection, 1=system, 2=thirdparty, 3=destruction"},{"name":"x","type":"integer, 40-600 (rounded from guide coordinates)"},{"name":"y","type":"integer, 40-380 (rounded from guide coordinates)"},{"name":"label","type":"string, UTF-8, max 200 chars"}],"id_range":[32,95],"max_slots":64,"name":"node","token_id_rule":"32 + slot_index, where slot_index is the position of the node in node-id sort order (n1 -> slot 0, n2 -> slot 1, ...)"},{"fields":[{"name":"a","type":"node slot_index of the source node"},{"name":"b","type":"node slot_index of the target node"},{"name":"cat","type":"enum: 0=contact, 1=payment, 2=marketing"}],"id_range":[96,159],"max_slots":64,"name":"edge","token_id_rule":"96 + slot_index, where slot_index is the position of the edge in (a, b, cat) sort order, a and b compared as node slot indices"},{"fields":[{"name":"node_slot","type":"node slot_index the annotation attaches to"},{"name":"kind","type":"enum: 0=retention, 1=confirmation, 2=review_flag"},{"name":"payload","type":"canonical JSON object, kind-specific"}],"id_range":[160,223],"max_slots":64,"name":"annotation","token_id_rule":"160 + slot_index, where slot_index is the position in (node_slot, kind) sort order. Retention payload: {record_type, range_min_years, range_max_years, statute, as_of} or {record_type, verify_only: true, as_of}. Confirmation payload: {note}. Review-flag payload: {reason, item_index or null}."},{"fields":[{"name":"action_name","type":"string, one of the action-catalogue action names"},{"name":"params_digest","type":"first 8 hex chars of SHA-256 over canonical params JSON"}],"id_range":[224,287],"max_slots":64,"name":"action_menu","token_id_rule":"224 + slot_index, where slot_index is the position of the action in action_name alphabetical order, ties broken by params_digest"}],"ordering_rule":{"note":"This ordering is load-bearing: two independent implementations must serialize the same canvas to the same token sequence.","sequence":["BOS","node tokens in node-id sort order (n1, n2, ... n10; numeric sort, not lexicographic)","SNAPSHOT_SEP","edge tokens in (a, b, cat) sort order","ANNOT_SEP","annotation tokens in (node_slot, kind) sort order","MENU_SEP","action-menu tokens: the valid actions at this step, in action_name alphabetical order","EOS"],"snapshot_example":"[BOS, node(n1), node(n2), SNAPSHOT_SEP, edge(n1->n2), ANNOT_SEP, annot(retention on n2), MENU_SEP, action(connect), action(export), action(set_retention), EOS]"},"reserved":[{"id_range":[5,31],"name":"control_future"},{"id_range":[288,65535],"name":"vocab_future"}],"vocab_accounting":{"breakdown":{"action_menu":64,"annotations":64,"control":5,"edges":64,"future_reserved":65248,"nodes":64,"reserved_control":27},"total_vocab_size":65536,"usable_in_phase0":272,"usable_note":"Phase 0 uses 5 control + 64 node + 64 edge + 64 annotation + 64 action-menu + 11 spare control ids = 272 ids. The rest of the 16-bit space is reserved for later phases (field-level tokens, undo-history tokens, multi-canvas tokens)."}}
+{
+  "binary_encoding": {
+    "token_width_bits": 16,
+    "byte_order": "big-endian",
+    "layout": "[uint16 BE token_count][uint16 BE token ids in sequence order, count entries][fields section: for each token id in the same order, uint32 BE byte-length followed by that many UTF-8 bytes of the canonical JSON (sorted keys, no whitespace) of the token's field object; tokens with no fields encode an empty object {}]",
+    "note": "Two implementations that build the same token id list with the same field objects produce byte-identical output. Field objects are the kind_tables field sets; absent optional fields are omitted from the JSON, never null."
+  },
+  "control_tokens": [
+    {
+      "fields": [],
+      "id": 0,
+      "name": "BOS",
+      "role": "start of token sequence"
+    },
+    {
+      "fields": [],
+      "id": 1,
+      "name": "EOS",
+      "role": "end of token sequence"
+    },
+    {
+      "fields": [],
+      "id": 2,
+      "name": "SNAPSHOT_SEP",
+      "role": "separator between state snapshot and action menu"
+    },
+    {
+      "fields": [],
+      "id": 3,
+      "name": "ANNOT_SEP",
+      "role": "separator between edge list and annotation list"
+    },
+    {
+      "fields": [],
+      "id": 4,
+      "name": "MENU_SEP",
+      "role": "separator between annotation list and valid-action menu"
+    }
+  ],
+  "description": "Typed-token encoding of canvas state and the valid-action menu. This is the System-1 model's input language. Token ids are fixed; the field tables are canonical JSON (sorted keys, no whitespace, UTF-8). Any change to a token id, a field layout, or the ordering rule bumps encoding_version and forces retraining.",
+  "encoding_version": "1.0.0",
+  "kind_tables": [
+    {
+      "fields": [
+        {
+          "name": "node_id",
+          "type": "string, matches ^n[1-9]\\d*$"
+        },
+        {
+          "name": "type",
+          "type": "enum: 0=collection, 1=system, 2=thirdparty, 3=destruction"
+        },
+        {
+          "name": "x",
+          "type": "integer, 40-600 (guide coordinates rounded, round half up)"
+        },
+        {
+          "name": "y",
+          "type": "integer, 40-380 (guide coordinates rounded, round half up)"
+        },
+        {
+          "name": "label",
+          "type": "string, UTF-8, max 200 chars"
+        }
+      ],
+      "id_range": [
+        32,
+        95
+      ],
+      "max_slots": 64,
+      "name": "node",
+      "token_id_rule": "32 + slot_index, where slot_index is the position of the node in node-id sort order (n1 -> slot 0, n2 -> slot 1, ...)"
+    },
+    {
+      "fields": [
+        {
+          "name": "a",
+          "type": "node slot_index of the source node"
+        },
+        {
+          "name": "b",
+          "type": "node slot_index of the target node"
+        },
+        {
+          "name": "cat",
+          "type": "enum: 0=contact, 1=payment, 2=marketing"
+        }
+      ],
+      "id_range": [
+        96,
+        159
+      ],
+      "max_slots": 64,
+      "name": "edge",
+      "token_id_rule": "96 + slot_index, where slot_index is the position of the edge in (a, b, cat) sort order; a and b compared as node slot indices, cat compared alphabetically (contact < marketing < payment)"
+    },
+    {
+      "fields": [
+        {
+          "name": "node_slot",
+          "type": "node slot_index the annotation attaches to"
+        },
+        {
+          "name": "kind",
+          "type": "enum: 0=retention, 1=confirmation, 2=review_flag"
+        },
+        {
+          "name": "payload",
+          "type": "canonical JSON object, kind-specific"
+        }
+      ],
+      "id_range": [
+        160,
+        223
+      ],
+      "max_slots": 64,
+      "name": "annotation",
+      "token_id_rule": "160 + slot_index, where slot_index is the position in (node_slot, kind) sort order, ties broken by canonical payload JSON byte order (UTF-8). Retention payload: {record_type, range_min_years, range_max_years, statute, as_of} or {record_type, verify_only: true, as_of}, plus optional anchor. Confirmation payload: {note, item_index}. Review-flag payload: {reason, item_index or null}."
+    },
+    {
+      "fields": [
+        {
+          "name": "action_name",
+          "type": "string, one of the action-catalogue action names"
+        },
+        {
+          "name": "params_digest",
+          "type": "first 8 hex chars of SHA-256 over canonical params JSON"
+        }
+      ],
+      "id_range": [
+        224,
+        287
+      ],
+      "max_slots": 64,
+      "name": "action_menu",
+      "token_id_rule": "224 + slot_index, where slot_index is the position of the action in action_name alphabetical order, ties broken by params_digest",
+      "menu_grounding": {
+        "description": "The menu is a closed deterministic function of (recipe item at item_index, session state). Entries: the current recipe item's intent grounded with its exact params from the recipe; plus recovery entries: undo_last (present iff at least one applied, non-tombstoned mutating action exists), skip_recipe_item (target fixed to the current item_index), flag_for_review (unparameterized; targets the current item by default), abort_session (always present). At most 5 entries, so the 64 slots can never overflow.",
+        "max_entries": 5
+      }
+    }
+  ],
+  "ordering_rule": {
+    "note": "This ordering is load-bearing: two independent implementations must serialize the same canvas to the same token sequence. Separators (SNAPSHOT_SEP, ANNOT_SEP, MENU_SEP) are always emitted even when a section is empty. Node/edge/annotation counts past 64 slots are rejected loudly at recipe load per the size limits; the encoder never wraps or truncates silently.",
+    "sequence": [
+      "BOS",
+      "node tokens in node-id sort order (n1, n2, ... n10; numeric sort, not lexicographic)",
+      "SNAPSHOT_SEP",
+      "edge tokens in (a, b, cat) sort order",
+      "ANNOT_SEP",
+      "annotation tokens in (node_slot, kind) sort order",
+      "MENU_SEP",
+      "action-menu tokens: the valid actions at this step, in action_name alphabetical order",
+      "EOS"
+    ],
+    "snapshot_example": "[BOS, node(n1), node(n2), SNAPSHOT_SEP, edge(n1->n2), ANNOT_SEP, annot(retention on n2), MENU_SEP, action(connect), action(export), action(set_retention), EOS]"
+  },
+  "reserved": [
+    {
+      "id_range": [
+        5,
+        31
+      ],
+      "name": "control_future"
+    },
+    {
+      "id_range": [
+        288,
+        65535
+      ],
+      "name": "vocab_future"
+    }
+  ],
+  "vocab_accounting": {
+    "breakdown": {
+      "action_menu": 64,
+      "annotations": 64,
+      "control": 5,
+      "edges": 64,
+      "future_reserved": 65248,
+      "nodes": 64,
+      "reserved_control": 27
+    },
+    "total_vocab_size": 65536,
+    "usable_in_phase0": 288,
+    "usable_note": "Phase 0 uses 5 control + 27 spare control + 64 node + 64 edge + 64 annotation + 64 action-menu = 288 ids. The rest of the 16-bit space is reserved for later phases (field-level tokens, undo-history tokens, multi-canvas tokens)."
+  }
+}
