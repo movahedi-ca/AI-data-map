@@ -78,6 +78,28 @@ framework, no external requests, parsing in a Web Worker.
   `fixtures/fixture-export-roundtrip.xls` (the tool's own export format:
   must skip the mapping step, pre-fill categories "From your file",
   restore 3 nodes + 2 payment edges).
+
+## Phase 5 model pin (recorded 2026-10-05, for Phase 6/7 wiring)
+
+The System-1 tiny model trained in Phase 5 is published at
+`https://huggingface.co/movahedi-ca/s1-workflow-tiny` (public, MIT).
+Phase 6 loads `model.onnx` (+ `model.onnx.data`) via onnxruntime-web,
+client-side only, zero network at inference. The weights file is fetched
+once from the pinned URL below and its SHA-256 is verified in the browser
+before first use; a hash mismatch refuses to run.
+
+Pinned artifact hashes (verify at Phase 7 deploy; re-pin if retrained):
+
+- `model.onnx`:
+  `f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62`
+- `model.onnx.data` (external weights, keep next to model.onnx):
+  `a2cdac628fedd2c98c2c304493a78ea2637fe8d20eb3149e271807a1e479ecad`
+- `checkpoint.pt` (PyTorch training checkpoint, not shipped):
+  `f54b8a2b430519fa1f5c7642c89a5aca406fbc037ba19855450b20b0886459dc`
+
+Eval gates at train time (see `training/eval.py`; report in the HF repo as
+`eval-report.json`): in-domain 0.9561 (gate 0.85), out-of-domain 0.9420
+(gate 0.60), menu-permutation drift 0.00 (tolerance 0.10). All passed.
 - The import section sits inside `#builder-app`, behind the existing T&C
   gate, exactly so the hook (`window.DMImport.applyState`, installed when
   the gate opens `initCanvas()`) always exists before the UI can call it.
