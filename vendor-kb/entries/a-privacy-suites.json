@@ -1,0 +1,1103 @@
+[
+  {
+    "id": "onetrust",
+    "name": "OneTrust",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "consent",
+      "dsr_automation",
+      "grc"
+    ],
+    "description": "American privacy and trust-intelligence company founded in Atlanta in 2016. Its platform covers consent management, data mapping, data subject request automation, third-party risk assessments, and AI governance, and the company reports more than 14,000 customers worldwide.",
+    "website": "https://www.onetrust.com",
+    "headquarters": "Atlanta, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Consent management across web and mobile touchpoints",
+      "Automated data mapping and data inventory",
+      "Privacy impact assessment automation",
+      "Third-party risk assessments for vendors",
+      "Data subject request fulfillment workflows"
+    ],
+    "law25_relevance": "Quebec teams use its data-mapping, consent, and assessment modules to build processing inventories and document the disclosures that Law 25 transparency rules require.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/OneTrust",
+        "consulted": "2026-10-05",
+        "note": "Company profile: founded 2016 in Atlanta; products include consent management, data mapping, third-party risk assessments; 14,000+ customers."
+      },
+      {
+        "url": "https://www.automationlabz.com/compare/onetrust-vs-osano",
+        "consulted": "2026-10-05",
+        "note": "Comparison: OneTrust HQ Atlanta; custom annual pricing; no free tier."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "trustarc",
+    "name": "TrustArc",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "consent",
+      "dsr_automation",
+      "grc"
+    ],
+    "description": "Privacy management company founded as TRUSTe in 1997 and rebranded as TrustArc in 2016, headquartered in San Francisco. Its platform combines regulatory intelligence with automation and AI, and in 2025 it launched Arc, an AI-powered privacy management platform.",
+    "website": "https://trustarc.com",
+    "headquarters": "San Francisco, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Data mapping with unified privacy program management",
+      "Automated fulfillment of data subject requests",
+      "AI risk assessments",
+      "Real-time compliance reporting",
+      "Cookie consent management"
+    ],
+    "law25_relevance": "TrustArc's data-mapping and DSR automation modules help Quebec organizations keep processing records current and respond to individual rights requests under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.morningstar.com/news/pr-newswire/20251218cl50579/trustarc-launches-arc-the-ai-powered-privacy-management-platform-built-for-modern-teams",
+        "consulted": "2026-10-05",
+        "note": "Arc launch: automated DSR fulfillment, AI risk assessments, real-time compliance reporting; HQ San Francisco Bay Area."
+      },
+      {
+        "url": "https://www.promptloop.com/directory/what-does-trustarc-do",
+        "consulted": "2026-10-05",
+        "note": "Directory: TrustArc privacy management platform with data mapping; HQ San Francisco, CA."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "bigid",
+    "name": "BigID",
+    "categories": [
+      "data_discovery",
+      "dspm",
+      "privacy_management",
+      "data_mapping",
+      "dsr_automation"
+    ],
+    "description": "New York data intelligence company founded in 2016. It uses machine learning to discover, classify, and map sensitive personal data across cloud and on-premises sources, and its platform covers DSPM, privacy automation, and AI data governance.",
+    "website": "https://bigid.com",
+    "headquarters": "New York, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Identity-aware data discovery across 500+ data sources",
+      "Machine-learning-based data classification",
+      "AI-driven data mapping and data inventory",
+      "Privacy operations automation (DSRs, RoPAs, PIAs)",
+      "Data security posture management"
+    ],
+    "law25_relevance": "BigID's discovery and classification tooling helps Quebec teams find personal data across their estate, a prerequisite for the processing inventory Law 25 expects.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://zoonop.com/articles/bigid",
+        "consulted": "2026-10-05",
+        "note": "Company profile: HQ New York City, founded 2016; ML-based discovery and classification of sensitive data."
+      },
+      {
+        "url": "https://atarc.org/corporate-member-bigid/",
+        "consulted": "2026-10-05",
+        "note": "Member profile: DSPM, privacy, AI data mapping; HQ New York, NY; www.bigid.com."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "securiti",
+    "name": "Securiti",
+    "categories": [
+      "dspm",
+      "privacy_management",
+      "data_discovery",
+      "data_mapping",
+      "consent",
+      "dsr_automation"
+    ],
+    "description": "San Jose data platform company founded in 2019. Its DataAI Command Platform unifies DSPM, privacy operations, consent management, and data subject request automation. Veeam announced its acquisition of Securiti AI for $1.7B in October 2025.",
+    "website": "https://securiti.ai",
+    "headquarters": "San Jose, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Sensitive data discovery and classification",
+      "Data security posture management via the DataAI Command Graph",
+      "Data flow governance",
+      "Consent management",
+      "Data subject request automation"
+    ],
+    "law25_relevance": "Securiti's discovery, consent, and DSR modules support Quebec organizations documenting data flows and honoring individual rights under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://atlas.verdantix.com/vendors/securiti",
+        "consulted": "2026-10-05",
+        "note": "Vendor profile: HQ San Jose; DataAI Command Platform covers DSPM, discovery and classification, data flow governance, PrivacyOps, consent, DSR automation."
+      },
+      {
+        "url": "https://www.geekwire.com/2025/veeam-to-acquire-securiti-ai-for-1-7b-boosting-companys-data-protection-platform/",
+        "consulted": "2026-10-05",
+        "note": "Veeam to acquire Securiti AI for $1.7B; Securiti based in San Jose; founded 2019."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "osano",
+    "name": "Osano",
+    "categories": [
+      "privacy_management",
+      "consent",
+      "data_mapping",
+      "dsr_automation"
+    ],
+    "description": "Austin-based privacy platform founded in 2018 and certified as a B Corp. It acquired enterprise privacy vendor WireWheel in December 2023. Modules include cookie consent, subject rights management, data mapping, vendor privacy risk scoring across 11,000+ vendors, and privacy assessments.",
+    "website": "https://www.osano.com",
+    "headquarters": "Austin, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated data mapping with data-store discovery and classification",
+      "Subject rights (DSAR) intake, identity verification, and fulfillment workflows",
+      "Cookie consent with jurisdiction-specific banners",
+      "Vendor privacy scoring across 11,000+ vendors",
+      "Privacy assessments with pre-built ISO and NIST templates"
+    ],
+    "law25_relevance": "Osano's data mapping and DSAR workflows give Quebec teams a practical way to inventory personal data stores and process rights requests under Law 25.",
+    "pricing_model": "free tier + paid plans",
+    "sources": [
+      {
+        "url": "https://www.osano.com/?ref=designremotely.co",
+        "consulted": "2026-10-05",
+        "note": "Platform page: Cookie Consent, Subject Rights Management, Data Mapping, Vendor Privacy Risk Management, Assessments."
+      },
+      {
+        "url": "https://www.automationlabz.com/compare/onetrust-vs-osano",
+        "consulted": "2026-10-05",
+        "note": "Comparison: Osano HQ Austin TX; free tier with basic consent management; paid tiers."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "wirewheel",
+    "name": "WireWheel",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "consent",
+      "dsr_automation"
+    ],
+    "description": "Enterprise privacy technology company founded in 2017 and based in Arlington, Virginia. Its Privacy Operations Manager automates data discovery, inventories, privacy assessments, incident management, and consent. Osano acquired WireWheel in December 2023 and integrated its technology into the Osano platform.",
+    "website": "https://wirewheel.io",
+    "headquarters": "Arlington, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated data discovery and data inventories",
+      "Privacy impact assessments and RoPA assessments",
+      "Trust Access and Consent product for consumer controls",
+      "Vendor risk management",
+      "Privacy incident management"
+    ],
+    "law25_relevance": "WireWheel's assessment and inventory tooling, now part of Osano, helps Quebec organizations run privacy impact assessments and keep processing records up to date for Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/wirewheel",
+        "consulted": "2026-10-05",
+        "note": "Profile: founded 2017, HQ Arlington VA; privacy assessment tools; acquired by Osano December 2023."
+      },
+      {
+        "url": "https://www.osano.com/newsletter/osano-acquires-wirewheel",
+        "consulted": "2026-10-05",
+        "note": "Osano announcement: acquired WireWheel; WireWheel assessment solutions automate PIA and RoPA assessments."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "datagrail",
+    "name": "DataGrail",
+    "categories": [
+      "privacy_management",
+      "dsr_automation",
+      "data_mapping",
+      "consent"
+    ],
+    "description": "San Francisco privacy platform founded in 2018. Its patented Risk Intelligence technology detects shadow IT and vulnerable data, and an integration network covering 2,500+ systems automates privacy workflows including risk assessments and data subject request fulfillment.",
+    "website": "https://www.datagrail.io",
+    "headquarters": "San Francisco, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Shadow IT detection via patented Risk Intelligence",
+      "Data mapping across 2,500+ system integrations",
+      "Automated data subject request fulfillment",
+      "Privacy risk assessments",
+      "AI privacy agent Vera for discovery and consent tasks"
+    ],
+    "law25_relevance": "DataGrail's shadow-IT detection and DSR automation help Quebec teams discover unmanaged personal data and answer rights requests within Law 25 processes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.datagrail.io/press/datagrail-reports-worldwide-surge-in-data-privacy-requests/",
+        "consulted": "2026-10-05",
+        "note": "Press: Risk Intelligence detects shadow IT; automates risk assessments and DSR fulfillment; HQ San Francisco."
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2025/11/13/3187419/0/en/DataGrail-Recognized-as-a-Leader-in-the-2025-IDC-MarketScape-for-Worldwide-Data-Privacy-Compliance-Software.html",
+        "consulted": "2026-10-05",
+        "note": "IDC MarketScape leader; platform automates risk assessments and DSR fulfillment across systems."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "transcend",
+    "name": "Transcend",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "consent",
+      "dsr_automation"
+    ],
+    "description": "San Francisco Bay Area data decision platform founded in 2017. It encodes consent, preferences, and business rules into the systems that process customer data, with a live data map auto-generated from the tech stack, ROPA generation, automated DSR fulfillment, and a Policy Engine for real-time data-use decisions.",
+    "website": "https://transcend.io",
+    "headquarters": "San Francisco Bay Area, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Live data map auto-generated from the tech stack",
+      "Automated ROPA record generation",
+      "Data subject request fulfillment at scale",
+      "Consent and preference enforcement across systems",
+      "Real-time cookie and tracker triage"
+    ],
+    "law25_relevance": "Transcend's live data map and ROPA generation map directly onto the processing inventories and consent records Quebec organizations need under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://markets.financialcontent.com/stocks/article/bizwire-2022-1-27-transcend-introduces-first-actionable-data-mapping-product-along-with-privacy-compliance-survey-data",
+        "consulted": "2026-10-05",
+        "note": "Launch: live collaborative data map, ROPA generation, automated privacy request fulfillment; founded 2017, HQ SF Bay Area."
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20260722023406/en/Transcend-Launches-Policy-Engine-Business-Rules-Applied-at-the-Speed-of-AI",
+        "consulted": "2026-10-05",
+        "note": "Policy Engine: real-time consent, preference, and business-rule decisions; consent expiry windows."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "mine",
+    "name": "Mine",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "dsr_automation",
+      "data_discovery",
+      "consent"
+    ],
+    "description": "Tel Aviv privacy company founded in 2019, rebranded from Mine PrivacyOps to MineOS. Its platform offers continuous inventory discovery, AI-driven data mapping, data subject request handling, and consent management, serving brands such as Reddit and HelloFresh.",
+    "website": "https://mineos.ai",
+    "headquarters": "Tel Aviv, Israel",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Continuous data inventory discovery and classification",
+      "Automated data mapping with AI Asset Discovery",
+      "Data subject request (DSR/DSAR) fulfillment",
+      "Consent management",
+      "Vendor management with PIA and DPIA modules"
+    ],
+    "law25_relevance": "Mine's continuous inventory discovery keeps processing records current, which supports the ongoing transparency and rights-handling work Law 25 requires of Quebec organizations.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.channelpronetwork.com/2024/03/26/mineos-unveils-ai-asset-discovery/",
+        "consulted": "2026-10-05",
+        "note": "HQ Tel Aviv; continuous inventory discovery and classifications; $42.5M raised."
+      },
+      {
+        "url": "https://tekpon.com/software/mine-privacyops/reviews/",
+        "consulted": "2026-10-05",
+        "note": "Feature list: Data Mapping, Data Subject Requests, Data Discovery, Consent Management, PIA/DPIA, Vendor Management."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "didomi",
+    "name": "Didomi",
+    "categories": [
+      "consent",
+      "privacy_management",
+      "dsr_automation"
+    ],
+    "description": "Paris-based consent and preference management platform founded in 2017. Its CMP covers web, mobile, and CTV, paired with a Preference Management Platform for zero-party data, Advanced Compliance Monitoring of trackers and vendors, and privacy request (DSAR) workflows. It acquired Agnostik in 2022.",
+    "website": "https://www.didomi.io",
+    "headquarters": "Paris, France",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Multi-regulation consent management (GDPR, CCPA, IAB TCF v2.x, Google Consent Mode v2)",
+      "Preference Management Platform for zero-party data",
+      "Advanced Compliance Monitoring with automated website and tracker scans",
+      "Privacy request (DSAR) intake and secure response delivery",
+      "Geo-targeted consent banners and privacy notices"
+    ],
+    "law25_relevance": "Didomi's consent records and DSAR workflows give Quebec organizations auditable proof of consent and structured request handling for Law 25 compliance.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.gartner.com/reviews/product/didomi-consent-and-preference-platform",
+        "consulted": "2026-10-05",
+        "note": "Peer Insights: Didomi Consent and Preference Management Platform; HQ Paris, France; founded 2017."
+      },
+      {
+        "url": "https://www.didomi.io/industry/consumer-goods",
+        "consulted": "2026-10-05",
+        "note": "Product page: Advanced Compliance Monitoring, Preference Management, Privacy Requests (DSAR processing)."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "ketch",
+    "name": "Ketch",
+    "categories": [
+      "consent",
+      "privacy_management",
+      "data_mapping",
+      "dsr_automation"
+    ],
+    "description": "San Francisco privacy platform founded in 2020 that treats permissioning as a programmatic data layer. It offers a full-feature CMP at $0/month with Discovery, Permissioning, and data subject request products available a la carte, and was named a G2 leader across consent, privacy, and DSAR categories in 2026.",
+    "website": "https://www.ketch.com",
+    "headquarters": "San Francisco, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Programmatic consent orchestration across internal and external systems",
+      "Data discovery, classification, and data mapping",
+      "Data subject request fulfillment",
+      "Permission Vault with audit-grade evidence",
+      "Real-time AI Sentry monitoring of data use"
+    ],
+    "law25_relevance": "Ketch's consent orchestration and permission vault give Quebec organizations enforceable, auditable consent records aligned with Law 25 consent rules.",
+    "pricing_model": "free tier + paid plans",
+    "sources": [
+      {
+        "url": "https://www.ketch.com",
+        "consulted": "2026-10-05",
+        "note": "Homepage: free full-feature CMP at $0/month; Discovery, Permissioning, and DSR products; HQ 140 New Montgomery, San Francisco."
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20260618041587/en/Ketch-Named-Grid-Leader-in-G2-Summer-2026-Reports-Signaling-Market-Momentum-and-Enterprise-Customer-Trust",
+        "consulted": "2026-10-05",
+        "note": "G2 Summer 2026 leader in Consent Management, Data Privacy Management, and DSAR categories."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "ethyca",
+    "name": "Ethyca",
+    "categories": [
+      "data_mapping",
+      "privacy_management",
+      "consent",
+      "dsr_automation",
+      "open_source"
+    ],
+    "description": "New York privacy-infrastructure company founded in 2018. Its code-first tooling automates data inventory, consent orchestration, DPIAs, and subject access requests for developers and privacy teams. It maintains the open-source Fides privacy engineering framework on GitHub.",
+    "website": "https://ethyca.com",
+    "headquarters": "New York, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated data inventory built from code annotations",
+      "Consent orchestration and consent receipt management",
+      "Subject access request automation",
+      "DPIA automation",
+      "Open-source Fides toolkit for privacy engineering and data mapping"
+    ],
+    "law25_relevance": "Ethyca's code-level data inventory and DSR automation help Quebec engineering teams keep processing records accurate and rights requests fulfilled under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.promptloop.com/directory/what-does-ethyca-do",
+        "consulted": "2026-10-05",
+        "note": "Directory: HQ New York; automated data inventory, consent orchestration, DSR and DPIA automation."
+      },
+      {
+        "url": "https://github.com/ethyca",
+        "consulted": "2026-10-05",
+        "note": "GitHub org: Fides ecosystem of open source projects including Fides, fideslang, fides-helm."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "clarip",
+    "name": "Clarip",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "consent",
+      "dsr_automation"
+    ],
+    "description": "AI-powered privacy platform based in Radnor, Pennsylvania, founded by Delaware entrepreneur Andy Sambandam. It covers automated data discovery and mapping, universal consent management, a DSAR portal, website risk scanning, vendor risk management, and privacy impact assessments.",
+    "website": "https://www.clarip.com",
+    "headquarters": "Radnor, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated data mapping with auto tag and auto categorize",
+      "DSAR portal for access, deletion, and correction requests",
+      "Universal consent management with granular controls",
+      "Third-party vendor risk management",
+      "Privacy impact assessments with automated risk monitoring"
+    ],
+    "law25_relevance": "Clarip's automated data mapping and DSAR portal help Quebec organizations inventory data flows and handle individual rights requests under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://highperformr.ai/company/clarip",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Radnor; automated data discovery and mapping, universal consent management, DSAR handling, vendor risk, PIAs."
+      },
+      {
+        "url": "https://www.clarip.com/blog/googles-ongoing-data-privacy-dilemma-why-companies-shouldnt-rely-on-consumers-browser-settings/",
+        "consulted": "2026-10-05",
+        "note": "Clarip blog: comprehensive automated data mapping; consumer rights management for access, deletion, correction."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "2b-advice",
+    "name": "2B Advice",
+    "categories": [
+      "privacy_management",
+      "data_mapping",
+      "grc",
+      "consent"
+    ],
+    "description": "German privacy consultancy and software vendor founded in 2003 and headquartered in Bonn. Its Ailance platform includes a RoPA directory (Ailance RoPA), an external data protection officer service, whistleblowing modules (whistleOps), consent management, and PIA/DPIA tooling.",
+    "website": "https://2b-advice.com",
+    "headquarters": "Bonn, Germany",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "RoPA directory (Ailance RoPA) for records of processing activities",
+      "Data mapping across processing activities",
+      "Consent management module",
+      "PIA/DPIA module",
+      "Incident, policy, and risk management modules"
+    ],
+    "law25_relevance": "2B Advice's RoPA tooling gives Quebec organizations a structured register of processing activities, which supports the documentation Law 25 expects.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://2b-advice.com/en/about-2b-advice/",
+        "consulted": "2026-10-05",
+        "note": "About page: Ailance RoPA sets a standard in digital processing directory; external DPO service; 20+ years in data protection."
+      },
+      {
+        "url": "https://www.highperformr.ai/company/2b-advice-group",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Bonn, Germany; PrIME/Ailance privacy management software; offices across Europe and the US."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "secuvy",
+    "name": "Secuvy",
+    "categories": [
+      "data_discovery",
+      "dspm",
+      "privacy_management",
+      "data_mapping",
+      "dsr_automation"
+    ],
+    "description": "Silicon Valley data readiness platform founded in 2019 and based in Pleasanton, California. Its self-learning AI workflows discover and classify structured and unstructured data across cloud and on-premises sources without moving data, with modules for DSPM, AI governance, and privacy automation.",
+    "website": "https://secuvy.ai",
+    "headquarters": "Pleasanton, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "AI-driven discovery and classification of structured and unstructured data",
+      "DSPM with contextual data correlation across sources",
+      "Privacy automation including DSAR workflows",
+      "Consent management for data usage and sharing",
+      "Data Bill of Materials tracing data used by AI pipelines"
+    ],
+    "law25_relevance": "Secuvy's discovery and classification tooling helps Quebec teams locate personal data across systems, the starting point for a Law 25 processing inventory.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://secuvy.ai/company/about",
+        "consulted": "2026-10-05",
+        "note": "About page: founded 2019 in Silicon Valley; HQ Silicon Valley, California; enterprise subscription pricing; Discovery and classification, AI governance."
+      },
+      {
+        "url": "https://secuvy.ai/use-cases/",
+        "consulted": "2026-10-05",
+        "note": "Use cases: automated DSAR responses, consent management for data usage and sharing, privacy impact assessments."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "relyance-ai",
+    "name": "Relyance AI",
+    "categories": [
+      "data_mapping",
+      "privacy_management",
+      "data_discovery",
+      "dspm",
+      "grc"
+    ],
+    "description": "Privacy-as-code platform founded in 2020 and based in San Mateo, California. It uses natural language processing and compiler-style source code analysis to track how code processes personal data in real time, building a dynamic data inventory and map, and it launched the Lyo autonomous data defense product in 2026.",
+    "website": "https://www.relyance.ai",
+    "headquarters": "San Mateo, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Code-level privacy scanning with semantic analysis",
+      "Dynamic, real-time data inventory and data maps",
+      "RoPA records generated from observed code behavior",
+      "AI Data Journeys across code, cloud, AI agents, and third parties",
+      "DSPM and AI governance controls"
+    ],
+    "law25_relevance": "Relyance AI's code-level inventory keeps data maps accurate as software changes, supporting the living processing records Quebec organizations need under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://venturebeat.com/technology/relyance-emerges-from-stealth-to-spot-risky-code",
+        "consulted": "2026-10-05",
+        "note": "Stealth launch: San Francisco startup; NLP and compiler-style source code analysis of personal data processing."
+      },
+      {
+        "url": "https://www.relyance.ai/blog/the-three-things-you-need-to-build-a-sustainable-and-scalable-privacy-protection-program",
+        "consulted": "2026-10-05",
+        "note": "Blog: ML-built dynamic data inventory and map; ROPA updates; address 1900 S. Norfolk St, San Mateo, CA."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "privado",
+    "name": "Privado",
+    "categories": [
+      "data_mapping",
+      "privacy_management",
+      "data_discovery",
+      "grc"
+    ],
+    "description": "Privacy code scanning platform founded in 2020 and based in Dover, Delaware. It automates data mapping without questionnaires by scanning source code, runtime environments, and third-party integrations, and in 2025 it launched Agentic Assessments and Dynamic Data Maps.",
+    "website": "https://privado.ai",
+    "headquarters": "Dover, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Privacy code scanning of websites, apps, and backend systems",
+      "Automated data maps without questionnaires",
+      "Runtime software scanning via APM integrations such as Datadog and Dynatrace",
+      "Third-party scanning of CRM, HR, and marketing tools via API integrations",
+      "AI agents that populate privacy assessments and sync findings to data maps"
+    ],
+    "law25_relevance": "Privado's automated, code-derived data maps give Quebec teams evidence-based processing records for Law 25, without relying on manual surveys.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/privado",
+        "consulted": "2026-10-05",
+        "note": "Profile: founded 2020, HQ Dover, Delaware; privacy code scanning automates data maps and compliance reports."
+      },
+      {
+        "url": "https://markets.financialcontent.com/gatehouse.rrstar/article/bizwire-2025-10-28-privadoai-launches-ai-agents-to-automate-manual-privacy-assessments-and-data-maps",
+        "consulted": "2026-10-05",
+        "note": "Launch: Dynamic Data Maps fully automate data maps without questionnaires; runtime and third-party scanning."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "data443",
+    "name": "Data443",
+    "categories": [
+      "data_discovery",
+      "privacy_management",
+      "data_mapping",
+      "consent"
+    ],
+    "description": "Publicly traded (OTCPK: ATDS) data security and privacy software company headquartered in Research Triangle Park, North Carolina, with over 10,000 customers in more than 100 countries. Its portfolio includes Data Identification Manager for agentless discovery and Global Privacy Manager for consent and consumer privacy workflows.",
+    "website": "https://data443.com",
+    "headquarters": "Research Triangle Park, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Agentless data identification across cloud, on-premises, and hybrid environments",
+      "Automatic inventory of all data repositories",
+      "Data classification and tagging",
+      "Global Privacy Manager consent and privacy portal",
+      "Workflows to identify, report, migrate, or delete sensitive data"
+    ],
+    "law25_relevance": "Data443's discovery and classification tooling helps Quebec organizations find and inventory personal data across repositories, supporting Law 25 documentation.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.globenewswire.com/news-release/2026/09/02/3355033/0/en/four-leaf-acquisition-corporation-and-data443-risk-mitigation-inc-advance-definitive-business-combination-and-path-to-a-market-listing.html",
+        "consulted": "2026-10-05",
+        "note": "Company description: HQ Research Triangle Park, NC; data443.com; identifies and protects sensitive data."
+      },
+      {
+        "url": "https://rss.investorbrandnetwork.com/iw-full/data443-risk-mitigation-inc-atds-is-one-to-watch/",
+        "consulted": "2026-10-05",
+        "note": "Profile: Data Identification Manager inventories and classifies data; tools to identify, report, migrate, or delete sensitive data."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "exterro",
+    "name": "Exterro",
+    "categories": [
+      "grc",
+      "privacy_management",
+      "records_retention",
+      "dsr_automation",
+      "data_mapping"
+    ],
+    "description": "Data risk management software company founded in 2004 and headquartered in Portland, Oregon. Its unified SaaS platform covers e-discovery, data privacy, cybersecurity and governance, and digital forensics, with FedRAMP-authorized solutions available through the AWS Marketplace.",
+    "website": "https://www.exterro.com",
+    "headquarters": "Portland, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Legal hold and data inventory across custodians and sources",
+      "Data mapping for privacy program operations",
+      "Data subject and privacy request workflows",
+      "Information governance with defensible deletion",
+      "E-discovery collection with advanced analytics and machine learning"
+    ],
+    "law25_relevance": "Exterro's information governance and defensible-deletion tooling supports Quebec organizations managing retention and deletion duties under Law 25.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://leadiq.com/c/exterro/5a1d8e2954000059007482a1",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Portland, Oregon; unified data risk management platform covering e-discovery, data privacy, governance, digital forensics."
+      },
+      {
+        "url": "https://ghost.bitscale.ai/exterro/",
+        "consulted": "2026-10-05",
+        "note": "Profile: founded 2004, Portland OR; legal GRC software; e-discovery, data privacy, compliance, information governance."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "qohash",
+    "name": "Qohash",
+    "categories": [
+      "dspm",
+      "data_discovery",
+      "privacy_management",
+      "data_mapping"
+    ],
+    "description": "Quebec City data security company founded in 2018. Its Qostodian platform scans Microsoft 365, workstations, and on-premises file drives with continuous element-level monitoring, using a patented edge approach that analyzes data without moving it outside its native environment. TELUS partnered with Qohash for its Fuel iX platform in 2025.",
+    "website": "https://qohash.com",
+    "headquarters": "Quebec City, Canada",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Continuous data discovery across Microsoft 365, workstations, and file drives",
+      "Data inventory with element-level monitoring",
+      "Insider risk tracking",
+      "Data security posture management",
+      "Sensitive-data classification without moving data"
+    ],
+    "law25_relevance": "Qohash is headquartered in Quebec City, which can simplify procurement and support for Quebec organizations; its discovery tooling builds the personal-data inventories Law 25 transparency obligations call for.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/compare/qohash-vs-symmetry-systems",
+        "consulted": "2026-10-05",
+        "note": "Profile: founded 2018, HQ Quebec City, Canada; data discovery, insider risk tracking, DSPM via Qostodian."
+      },
+      {
+        "url": "https://www.newswire.ca/news-releases/telus-partners-with-qohash-to-bring-advanced-data-security-to-fuel-ix-tm--867790836.html",
+        "consulted": "2026-10-05",
+        "note": "TELUS partnership: Qohash identifies, monitors, and protects sensitive data in real time without moving it outside its native environment."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "possiblenow",
+    "name": "PossibleNOW",
+    "categories": [
+      "consent",
+      "privacy_management"
+    ],
+    "description": "Consent and preference management specialist founded in 2000 and headquartered in Duluth, Georgia. Its MyPreferences platform centralizes consent and preference collection across the enterprise, and DNCSolution addresses Do Not Contact regulations such as TCPA, CAN-SPAM, and CASL with a compliance guarantee.",
+    "website": "https://www.possiblenow.com",
+    "headquarters": "Duluth, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Centralized consent and preference hub (MyPreferences)",
+      "Express written consent capture across marketing channels",
+      "Do Not Contact list scrubbing (DNCSolution)",
+      "Zero-party data collection for personalization",
+      "Preference data distribution to CRM and marketing systems"
+    ],
+    "law25_relevance": "PossibleNOW's centralized consent records give Quebec organizations auditable proof of the consent Law 25 requires for collecting and using personal information.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://contactout.com/company/possiblenow-7419966",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Duluth GA; MyPreferences consent and preference platform; DNCSolution DNC compliance."
+      },
+      {
+        "url": "https://www.possiblenow.com/resources/possiblenow-integrates-wireless-consent-compliance-application-into-its-mypreferences-solution/",
+        "consulted": "2026-10-05",
+        "note": "Press: MyPreferences consolidates consent and preference collection enterprise-wide; express opt-in consent management."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "privacycheq",
+    "name": "PrivacyCheq",
+    "categories": [
+      "consent",
+      "privacy_management"
+    ],
+    "description": "York, Pennsylvania privacy company founded in 2014, originating as AgeCheq with early work on COPPA parental-consent verification. It offers API-first consent management including ConsentCheq, with mobile-first privacy notices and support for parent/child proxy consent scenarios under GDPR, CCPA, and COPPA.",
+    "website": "https://www.consentcheq.com",
+    "headquarters": "York, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "API-based consent management (ConsentCheq)",
+      "Mobile-first privacy notices in a nutrition-label style",
+      "Parent and child proxy consent handling",
+      "Downstream third-party notification workflows",
+      "Geo-specific consent configuration for GDPR, CCPA, and COPPA"
+    ],
+    "law25_relevance": "PrivacyCheq's consent records and proxy-consent handling support Quebec organizations documenting consent under Law 25, including consent given on behalf of minors.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://cbinsights.com/company/agecheq",
+        "consulted": "2026-10-05",
+        "note": "Profile: founded 2014, HQ York, Pennsylvania; products include ConsentCheq."
+      },
+      {
+        "url": "https://leadiq.com/c/privacycheq/5a1dac3f2300005200a172ca",
+        "consulted": "2026-10-05",
+        "note": "Profile: API-based consent management; nutrition-label notices; parent/child proxy consent; GDPR, CCPA, COPPA."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "smart-global-governance",
+    "name": "Smart Global Governance",
+    "categories": [
+      "grc",
+      "privacy_management",
+      "data_mapping"
+    ],
+    "description": "French integrated risk management vendor based in Valbonne and founded in 2019. Its modular GRC platform offers thirteen modules covering risk management, internal audit, compliance, and data protection, including the Smart GDPR solution.",
+    "website": "https://www.smartglobalgovernance.com",
+    "headquarters": "Valbonne, France",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Smart GDPR module for data protection program management",
+      "Processing-activity registers within the GRC suite",
+      "Risk assessments and internal audit workflows",
+      "Compliance control monitoring",
+      "Third-party risk management"
+    ],
+    "law25_relevance": "Smart Global Governance's modular GRC suite gives Quebec organizations register and assessment tooling that supports Law 25 documentation duties.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://leadiq.com/c/smart-global-governance/5e9a12f860fe5627506b0f6f",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Valbonne, France; modular GRC platform with thirteen modules; Smart GDPR solution."
+      },
+      {
+        "url": "https://ccibusiness.fr/print/pdf/node/22766",
+        "consulted": "2026-10-05",
+        "note": "Chamber listing: 1240 Route des Dolines, Valbonne, France; modules include data privacy, GDPR, ISO 27001/27701."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "dataguard",
+    "name": "DataGuard",
+    "categories": [
+      "grc",
+      "privacy_management"
+    ],
+    "description": "Munich-based security and compliance platform. Its all-in-one ISMS and compliance management platform combines AI-driven workflows with expert consultancy, covering ISO 27001, SOC 2, GDPR, NIS2, and the EU AI Act, and is used by more than 4,000 organizations across 50+ countries.",
+    "website": "https://www.dataguard.com",
+    "headquarters": "Munich, Germany",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "GDPR compliance module with documentation workflows",
+      "Asset tracking for information security management",
+      "Risk assessment and audit planning",
+      "Compliance reporting across multiple frameworks",
+      "Workflow automation for certification programs"
+    ],
+    "law25_relevance": "DataGuard's GDPR compliance workflows translate well to Quebec organizations structuring their Law 25 privacy programs and documentation.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/dataguard",
+        "consulted": "2026-10-05",
+        "note": "Profile: HQ Nymphenburger Str. 86, Munich, Germany; Series B; competitors include TrustArc and Transcend."
+      },
+      {
+        "url": "https://rocketreach.co/dataguard-profile_b7752f64c5330189",
+        "consulted": "2026-10-05",
+        "note": "Profile: 4,000+ organizations across 50+ countries; ISO 27001, SOC 2, GDPR, NIS2, EU AI Act coverage."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  },
+  {
+    "id": "soveren",
+    "name": "Soveren",
+    "categories": [
+      "dspm",
+      "data_discovery",
+      "data_mapping"
+    ],
+    "description": "London-based DSPM company founded in 2021. Its eBPF-powered real-time data observability detects sensitive data in encrypted TLS traffic, with machine-learning classification covering 45+ PII, PCI, and PHI types across 30+ countries at a stated 98% detection rate. SecureSky acquired Soveren in September 2026.",
+    "website": "https://soveren.io",
+    "headquarters": "London, United Kingdom",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Real-time sensitive data discovery in application environments",
+      "Machine-learning classification with a stated 98% detection rate",
+      "Sensitive data and asset mapping across services and APIs",
+      "eBPF-based network analysis of data in motion",
+      "Continuous data inventory supporting compliance audits"
+    ],
+    "law25_relevance": "Soveren's real-time data-flow visibility helps Quebec teams see where personal data actually moves, grounding the processing inventories Law 25 expects.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://soveren.io/product",
+        "consulted": "2026-10-05",
+        "note": "Product page: real-time data observability; sensitive data and asset mapping; 98% ML detection rate across 45+ PII/PCI/PHI types and 30+ countries."
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/securesky-acquires-soveren-adding-industry-leading-real-time-dspm-to-its-active-protection-platform-302874103.html",
+        "consulted": "2026-10-05",
+        "note": "Acquisition: Soveren founded 2021, based in London; acquired by SecureSky; visit soveren.io."
+      }
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "Law 25 sets no numerical retention periods, so no retention claim here is tied to it. The vendor does not publish a statutory retention schedule in a verified source; retention periods must come from each applicable statute in the customer's own legal analysis.",
+      "verify": true
+    },
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T04:00:00Z"
+    }
+  }
+]
