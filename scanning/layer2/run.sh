@@ -51,7 +51,9 @@ trap 'rm -f "$TMP"' EXIT
 
 export SEMGREP_SEND_METRICS=off
 
-# Semgrep exits 0 (clean) or 1 (findings); 2+ means a tool failure.
+# Semgrep exits 0 whether or not it found matches; 2+ means a tool failure.
+# (An earlier comment claimed exit 1 on findings; verified against semgrep
+# 1.179.0 that findings still exit 0. filter.js sets the real contract code.)
 set +e
 "$SEMGREP" \
   --config scanning/layer2/rules \
