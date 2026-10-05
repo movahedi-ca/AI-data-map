@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../import/import.css">
 <link rel="stylesheet" href="canvas.css">
 <link rel="stylesheet" href="../executor/css/executor.css">
+<link rel="stylesheet" href="../chatbot/css/chatbot.css">
 <script src="../executor/js/net-guard.js"></script>
 </head>
 <body class="cv-demo">
@@ -17,6 +18,12 @@
   <h1>Import and canvas, wired together</h1>
   <p class="cv-lede">Upload a filled data-inventory template, step through the import, and the map lands on the canvas below. The toolbar on the canvas zooms, pans by drag, fits the map to the view, and goes fullscreen. Everything runs in your browser; the file never leaves this page.</p>
   <p class="cv-disclaimer">Illustrative working draft only. Not legal advice; verify retention obligations independently.</p>
+
+  <div class="cv-section">
+    <div style="padding:1.25rem">
+      <div id="s1-chatbot"></div>
+    </div>
+  </div>
 
   <div class="cv-section">
     <div style="padding:1.25rem">
@@ -166,6 +173,7 @@ window.T = {
 <script src="../executor/js/i18n.js"></script>
 <script src="../executor/js/executor.js"></script>
 <script src="../executor/js/ui.js"></script>
+<script src="../chatbot/js/chatbot.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   if (window.DMCanvas && typeof window.DMCanvas.init === "function") {
@@ -176,8 +184,12 @@ document.addEventListener("DOMContentLoaded", function () {
       strings: window.T.canvas
     });
   }
+  var s1ui = null;
   if (window.S1UI && typeof window.S1UI.init === "function") {
-    window.S1UI.init({ rootId: "s1-assistant", lang: window.LANG || "en" });
+    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: window.LANG || "en" });
+  }
+  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
+    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: window.LANG || "en", uiHandle: s1ui });
   }
 });
 </script>
