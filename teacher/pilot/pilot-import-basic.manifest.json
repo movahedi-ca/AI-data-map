@@ -1,0 +1,153 @@
+{
+  "shard": "pilot-import-basic",
+  "domain": "data-mapping",
+  "recipe_id": "pilot-import-basic-01",
+  "recipe": {
+    "name": "Pilot import: SaaS template EXAMPLE 2 to canvas map",
+    "recipe_id": "pilot-import-basic-01",
+    "schema_version": "1.0.0",
+    "items": [
+      {
+        "intent": "add_collection_point",
+        "params": {
+          "node_id": "n1",
+          "x": 80,
+          "y": 200,
+          "label": "Signup form (app)"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n2",
+          "type": "system",
+          "x": 310,
+          "y": 80,
+          "label": "PostgreSQL (AWS ca-central-1)"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n3",
+          "type": "thirdparty",
+          "x": 545,
+          "y": 80,
+          "label": "Stripe"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n4",
+          "type": "thirdparty",
+          "x": 545,
+          "y": 160,
+          "label": "HubSpot"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n5",
+          "type": "thirdparty",
+          "x": 545,
+          "y": 240,
+          "label": "Intercom"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n6",
+          "type": "system",
+          "x": 310,
+          "y": 320,
+          "label": "Google Workspace"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n7",
+          "type": "thirdparty",
+          "x": 545,
+          "y": 320,
+          "label": "Iron Mountain (backups)"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n2",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n3",
+          "cat": "payment"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n4",
+          "cat": "marketing"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n5",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n7",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "set_retention",
+        "params": {
+          "node_id": "n2",
+          "record_type": "Quebec tax books and records",
+          "range_min_years": 6,
+          "range_max_years": 7,
+          "statute": "Loi sur l'administration fiscale, RLRQ, c. A-6.002, ss. 34, 35.3",
+          "as_of": "2026-09-15"
+        }
+      },
+      {
+        "intent": "run_check",
+        "params": {
+          "checks": [
+            "label_coverage",
+            "connectivity",
+            "retention_cited",
+            "edge_categories"
+          ]
+        }
+      },
+      {
+        "intent": "export",
+        "params": {
+          "format": "xls"
+        }
+      }
+    ]
+  },
+  "steps": 15,
+  "first_state_hash": "7458342a56680445d13fbcbd776972df18f7b41b3d17cd29fa9ba1b945a42df6",
+  "last_state_hash": "5e7989095eff1f9b7af1041bcd603cc29f88ee3a0f2d367fb075b2e91b2b9201",
+  "created_utc": "2026-10-05T03:29:43.406Z"
+}
