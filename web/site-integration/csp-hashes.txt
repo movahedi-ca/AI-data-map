@@ -15,9 +15,9 @@ sha256-PcnlYb/EZcrifygE0yI7Nyla+5OkaixJg0et3sj1ayU=  # s1/executor/js/narrate.js
 sha256-q25PX1XFRR7dDqQJUtbn0tZPywZHMXQ7E2+RZZrLPwA=  # s1/executor/js/templates.js
 sha256-YW1wDqVvwTJq0+r/YLcrYte2jV0BB0ORl9dFry1YyRY=  # s1/executor/js/review.js
 sha256-3vTbuOVp+JZOq3pMw7ipFQbGZ4yvdXcaBOTldJbWn78=  # s1/executor/js/exporter.js
-sha256-Srm3H7C8thLQcisWAaB2GP/ElBhQSMCeyuueRtWBztM=  # s1/executor/js/i18n.js
+sha256-6DxRC2tuIi1eoPt3kUw0xSZ78yTkLzSiAZ6HamfFYVQ=  # s1/executor/js/i18n.js
 sha256-GE9ziO/OeB9SMFrcpj/LDcVfjgkg/DH5QzNKNGGrz7U=  # s1/executor/js/executor.js
-sha256-5fxirZzKjx75KFJDAfTr1muNcVupy1tKQ4ERVHvPlps=  # s1/executor/js/ui.js
+sha256-+vuQc3QulME3oeWecSKJexef2snev8CyQAUgac7LBxE=  # s1/executor/js/ui.js
 sha256-v9iNtjr2RDD37jV2/Db8EjFVv1WsxW3MXb/qrybhaQo=  # s1/chatbot/js/chatbot.js
 
 # --- inline scripts (hash the final built page bytes at deploy) ---
