@@ -10,18 +10,18 @@ Exit 0 means all green. No npm dependencies, no network, plain Node 18+.
 
 ## Layout
 
-- `specs/` — frozen contract tests: recipe/token/state-snapshot/action-catalogue
+- `specs/`: frozen contract tests: recipe/token/state-snapshot/action-catalogue
   schemas plus the retention rule, positive and must-fail cases, driven through
   the real validators (`mcp/server.js`, chatbot `validateRecipeText`).
-- `tokenizer-executor/` — JS/Python tokenizer byte-parity (68 handcrafted +
+- `tokenizer-executor/`: JS/Python tokenizer byte-parity (68 handcrafted +
   200 seeded fuzz vectors, generators preserved), menu grounding, apply
   idempotency/tombstones/monotonic seq, done-heads, EN/FR narration.
-- `chatbot-mcp/` — 384 chip-combo determinism, pasted-recipe rejections,
+- `chatbot-mcp/`: 384 chip-combo determinism, pasted-recipe rejections,
   MCP session lifecycle, error contracts, openapi.yaml drift checks.
-- `import-export/` — parser/normalizer round-trips on real fixtures,
+- `import-export/`: parser/normalizer round-trips on real fixtures,
   broken-file and dangling-reference handling, SpreadsheetML structure with
   Review/Confirmations sheets, export re-import round-trip.
-- `security/` — no-exfiltration static scan + runtime 0-request counter,
+- `security/`: no-exfiltration static scan + runtime 0-request counter,
   XSS vectors, formula-injection, path traversal, prototype pollution,
   CSP hash coverage, dependency hygiene.
 
