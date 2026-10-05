@@ -49,6 +49,8 @@
       template: null,
       running: false,
       stopRequested: false,
+      generation: 0,      /* bumped on every teardown so a stale run loop exits */
+      flagResolve: null,  /* pending pauseOnFlag resolver, if any */
       checklist: [],
       confirmations: [],
       corrections: [],
@@ -65,8 +67,12 @@
     var draftBadge = el("span", "s1-draftbadge", S.draftBadge);
     trustBar.appendChild(draftBadge);
 
+    /* All counter writes go through window.__s1net.setNetCount so the
+       element always holds a plain count string from the first paint. */
     function refreshNet() {
-      netCount.textContent = String(root.__s1net ? root.__s1net.count() : 0);
+      var api = root.__s1net;
+      if (api && typeof api.setNetCount === "function") api.setNetCount(netCount);
+      else netCount.textContent = "0";
     }
     setInterval(refreshNet, 1000);
     refreshNet();
@@ -162,6 +168,14 @@
       stopBtn.disabled = true;
     });
     runHead.appendChild(stopBtn);
+    /* Recovery: visible in the Steps panel for both the quick 4-tap flow
+       and the chatbot flow (shared panel). Tears the run down and restores
+       the intake form to its initial state. Native button: keyboard-
+       operable, and the site CSS gives it a visible focus ring. */
+    var startOverBtn = el("button", "btn secondary s1-startover", S.startOver);
+    startOverBtn.type = "button";
+    startOverBtn.addEventListener("click", startOver);
+    runHead.appendChild(startOverBtn);
     runBox.appendChild(runHead);
     var statusLine = el("p", "s1-status", "");
     statusLine.setAttribute("role", "status");
@@ -243,26 +257,42 @@
       if (state.running || !state.template) return;
       state.running = true;
       state.stopRequested = false;
+      state.generation++;
+      var myGen = state.generation;
       intake.hidden = true;
       runBox.hidden = false;
       reviewBox.hidden = true;
       doneBox.hidden = true;
       logTitle.focus();
       statusLine.textContent = S.loadingModel;
+      /* Engine init (WASM + model load): never render raw engine errors,
+         stacks, or policy internals. Plain message for the user, technical
+         detail to the console only. */
       try {
         await H.ready();
       } catch (e) {
-        statusLine.textContent = String((e && e.message) || e);
+        console.error("[s1] engine init failed:", e);
+        statusLine.textContent = S.engineFailed;
         state.running = false;
+        startOverBtn.focus();
         return;
       }
       statusLine.textContent = S.modelReady;
-      H.start(state.template);
+      try {
+        H.start(state.template);
+      } catch (e) {
+        console.error("[s1] run start failed:", e);
+        statusLine.textContent = S.engineFailed;
+        state.running = false;
+        startOverBtn.focus();
+        return;
+      }
       paintCanvas();
       refreshNet();
 
       var aborted = false;
       while (!aborted) {
+        if (myGen !== state.generation) return; /* torn down (Start over) */
         if (state.stopRequested) {
           try {
             var ab = H.abort(null, lang);
@@ -277,16 +307,21 @@
         try {
           step = await H.stepOnce();
         } catch (e) {
-          logStep(String((e && e.message) || e), "s1-error");
-          statusLine.textContent = String((e && e.message) || e);
+          /* Per-step failure: plain message in the log and status line;
+             technical detail to the console only. */
+          console.error("[s1] step failed:", e);
+          logStep(S.stepFailed, "s1-error");
+          statusLine.textContent = S.stepFailed;
           aborted = true;
           break;
         }
+        if (myGen !== state.generation) return; /* torn down (Start over) */
         paintCanvas();
         logStep(narrateStep(step));
         refreshNet();
         if (step.terminal === "flag_open") {
           await pauseOnFlag();
+          if (myGen !== state.generation) return; /* torn down (Start over) */
           continue;
         }
         if (step.terminal === "aborted") {
@@ -305,6 +340,10 @@
 
     function pauseOnFlag() {
       return new Promise(function (resolve) {
+        state.flagResolve = function () {
+          state.flagResolve = null;
+          resolve();
+        };
         while (flagBox.firstChild) flagBox.removeChild(flagBox.firstChild);
         flagBox.hidden = false;
         flagBox.appendChild(el("p", "s1-flagmsg", S.flagPaused));
@@ -314,7 +353,7 @@
           H.clearFlagAndContinue();
           flagBox.hidden = true;
           paintCanvas();
-          resolve();
+          if (state.flagResolve) state.flagResolve();
         });
         flagBox.appendChild(btn);
         btn.focus();
@@ -581,8 +620,18 @@
       downloadBlob(BufferSafe(lines + "\n"), "corrections.jsonl", "application/json");
     }
 
-    function wipe() {
-      if (!window.confirm(S.wipeConfirm)) return;
+    /* Tear the run down and restore the intake form to its initial state:
+       chips unselected, step log and review cleared, flag box hidden, run /
+       review / done panels hidden, intake shown, focus back on the entry
+       title. Bumps the run generation so a stale run loop exits quietly
+       (no console errors) instead of writing into the cleared panels.
+       Shared by the Steps-panel "Start over" button (both flows reach this
+       panel) and the "Wipe everything" button. */
+    function teardownToIntake() {
+      state.generation++;
+      if (state.flagResolve) {
+        try { state.flagResolve(); } catch (e) { /* ignore */ }
+      }
       H.reset();
       state.chips = { size: null, sector: null, region: null, types: null };
       state.template = null;
@@ -592,6 +641,7 @@
       state.reviewed = false;
       state.running = false;
       state.stopRequested = false;
+      stopBtn.disabled = false;
       Object.keys(chipInputs).forEach(function (cid) {
         var radios = chipInputs[cid].querySelectorAll("input");
         for (var i = 0; i < radios.length; i++) radios[i].checked = false;
@@ -600,7 +650,7 @@
       while (stepLog.firstChild) stepLog.removeChild(stepLog.firstChild);
       while (reviewList.firstChild) reviewList.removeChild(reviewList.firstChild);
       flagBox.hidden = true;
-      statusLine.textContent = S.wipeDone;
+      statusLine.textContent = "";
       runBox.hidden = true;
       reviewBox.hidden = true;
       doneBox.hidden = true;
@@ -610,6 +660,23 @@
           root.DMImport.applyState({ nodes: {}, edges: [] });
         }
       } catch (e) { /* ignore */ }
+    }
+
+    /* Recovery path for a failed or abandoned run: no confirmation, so one
+       tap returns to a clean intake. Also resets the trust counter to 0. */
+    function startOver() {
+      teardownToIntake();
+      try {
+        if (root.__s1net && typeof root.__s1net.reset === "function") root.__s1net.reset();
+      } catch (e) { /* counter reset is best-effort */ }
+      refreshNet();
+      h2.focus();
+    }
+
+    function wipe() {
+      if (!window.confirm(S.wipeConfirm)) return;
+      teardownToIntake();
+      statusLine.textContent = S.wipeDone;
       h2.focus();
       refreshNet();
     }
