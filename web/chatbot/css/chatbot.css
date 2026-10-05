@@ -2,25 +2,25 @@
    Classic stylesheet, no dependencies. Matches the executor.css palette.
    Visible focus everywhere, logical tab order follows the DOM order. */
 
-#s1-chatbot {
+.s1c-chat {
   border: 1px solid #cbd5e1;
   border-radius: 0.75rem;
   padding: 1.25rem;
   background: #f8fafc;
 }
 
-#s1-chatbot .s1c-title {
+.s1c-chat .s1c-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
 }
 
-#s1-chatbot .s1c-lede {
+.s1c-chat .s1c-lede {
   margin: 0 0 1rem;
   color: #334155;
 }
 
 /* Trust line: live counter next to the guarantee copy. */
-#s1-chatbot .s1c-trust {
+.s1c-chat .s1c-trust {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -33,11 +33,11 @@
   font-size: 0.9rem;
 }
 
-#s1-chatbot .s1c-netcount {
+.s1c-chat .s1c-netcount {
   font-variant-numeric: tabular-nums;
 }
 
-#s1-chatbot .s1c-draftbadge {
+.s1c-chat .s1c-draftbadge {
   margin-left: auto;
   background: #fef3c7;
   border: 1px solid #f59e0b;
@@ -48,7 +48,7 @@
 }
 
 /* Message list: capped height, scrolls as the run narrates. */
-#s1-chatbot .s1c-log {
+.s1c-chat .s1c-log {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
@@ -59,19 +59,19 @@
   overflow-y: auto;
 }
 
-#s1-chatbot .s1c-msg {
+.s1c-chat .s1c-msg {
   display: flex;
 }
 
-#s1-chatbot .s1c-bot {
+.s1c-chat .s1c-bot {
   justify-content: flex-start;
 }
 
-#s1-chatbot .s1c-user {
+.s1c-chat .s1c-user {
   justify-content: flex-end;
 }
 
-#s1-chatbot .s1c-bubble {
+.s1c-chat .s1c-bubble {
   max-width: 85%;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
@@ -79,49 +79,49 @@
   line-height: 1.4;
 }
 
-#s1-chatbot .s1c-bot .s1c-bubble {
+.s1c-chat .s1c-bot .s1c-bubble {
   background: #ffffff;
   border: 1px solid #cbd5e1;
   border-bottom-left-radius: 0.2rem;
   color: #0f172a;
 }
 
-#s1-chatbot .s1c-user .s1c-bubble {
+.s1c-chat .s1c-user .s1c-bubble {
   background: #dbeafe;
   border: 1px solid #93c5fd;
   border-bottom-right-radius: 0.2rem;
   color: #0f172a;
 }
 
-#s1-chatbot .s1c-bubble p {
+.s1c-chat .s1c-bubble p {
   margin: 0 0 0.5rem;
 }
 
-#s1-chatbot .s1c-bubble p:last-child {
+.s1c-chat .s1c-bubble p:last-child {
   margin-bottom: 0;
 }
 
-#s1-chatbot .s1c-status .s1c-bubble {
+.s1c-chat .s1c-status .s1c-bubble {
   background: #f1f5f9;
   border-style: dashed;
   color: #475569;
 }
 
-#s1-chatbot .s1c-error .s1c-bubble {
+.s1c-chat .s1c-error .s1c-bubble {
   background: #fef2f2;
   border-color: #fca5a5;
   color: #7f1d1d;
 }
 
 /* Chips: real buttons, pill style, roving tabindex in JS. */
-#s1-chatbot .s1c-chips {
+.s1c-chat .s1c-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-#s1-chatbot .s1c-chip {
+.s1c-chat .s1c-chip {
   border: 1px solid #94a3b8;
   background: #ffffff;
   border-radius: 999px;
@@ -131,28 +131,28 @@
   color: #0f172a;
 }
 
-#s1-chatbot .s1c-chip:hover {
+.s1c-chat .s1c-chip:hover {
   border-color: #2563eb;
   color: #1d4ed8;
 }
 
-#s1-chatbot .s1c-chip:focus-visible,
-#s1-chatbot .s1c-pastetoggle:focus-visible,
-#s1-chatbot .s1c-textarea:focus-visible,
-#s1-chatbot .btn:focus-visible {
+.s1c-chat .s1c-chip:focus-visible,
+.s1c-chat .s1c-pastetoggle:focus-visible,
+.s1c-chat .s1c-textarea:focus-visible,
+.s1c-chat .btn:focus-visible {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
 
 /* Action row under the log. */
-#s1-chatbot .s1c-actions {
+.s1c-chat .s1c-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-#s1-chatbot .s1c-pastetoggle {
+.s1c-chat .s1c-pastetoggle {
   background: none;
   border: none;
   padding: 0.25rem 0;
@@ -162,7 +162,7 @@
   font-size: 0.9rem;
 }
 
-#s1-chatbot .s1c-paste .s1c-textarea {
+.s1c-chat .s1c-paste .s1c-textarea {
   width: 100%;
   box-sizing: border-box;
   font-family: ui-monospace, monospace;
@@ -176,7 +176,7 @@
 }
 
 @media (max-width: 40rem) {
-  #s1-chatbot .s1c-bubble {
+  .s1c-chat .s1c-bubble {
     max-width: 95%;
   }
 }
