@@ -40,7 +40,9 @@ try:
     import tree_sitter_javascript
 
     PARSER = "tree-sitter"
-except ImportError:  # pragma: no cover - documented fallback, not expected
+except ImportError:
+    # No silent degradation: run() exits 1 with a clear error when the
+    # parser is unavailable, per the documented contract.
     PARSER = "fallback"
     Language = Parser = None
 
@@ -442,6 +444,25 @@ def resolve_import(from_rel, src_path, file_set):
 
 
 def run():
+    if PARSER != "tree-sitter":
+        # Fail loud, never silently certify: without the real parser the
+        # graph queries cannot run, so this is a tool error (exit 1), not a
+        # clean scan. The README documents the install step.
+        report = {
+            "layer": 3,
+            "generated_utc": datetime.now(timezone.utc).isoformat(),
+            "parser": "missing",
+            "error": "tree-sitter or tree_sitter_javascript is not installed; see scanning/layer3/README.md",
+            "stats": {"files": 0, "functions": 0},
+            "findings": [],
+        }
+        os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+        with open(OUT_PATH, "w", encoding="utf-8") as fh:
+            json.dump(report, fh, indent=2)
+            fh.write("\n")
+        print("layer3 tool error: tree-sitter not installed", file=sys.stderr)
+        return 1
+
     graph = RepoGraph()
 
     files = first_party_files(ROOT)
