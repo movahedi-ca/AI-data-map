@@ -1,73 +1,65 @@
-# Dataset Card: AI Data Map Scripted-Teacher Shards (Phase 4 pilot)
+# Dataset Card: AI Data Map Scripted-Teacher Shards (Phase 4 full run)
 
 ## Purpose
 
-Teacher demonstrations for training the System-1 workflow executor of the AI
-data-map build. Each shard is a deterministic, scripted run of the frozen
-action grammar against the Phase 0 guide model: a fixed recipe plus the exact
-action sequence an expert teacher would take, recorded as state-hash-chained
-records with full snapshots. The Phase 4 scripted-teacher harness turns these
-records into supervised training pairs (menu state -> action) for the tiny
-in-browser model.
+Teacher demonstrations for training the System-1 workflow executor of the
+AI-data-map build (github.com/movahedi-ca/AI-data-map). Each shard is a
+deterministic, scripted run of the frozen action grammar: a fixed recipe
+plus the exact action sequence an expert teacher would take, recorded as
+labeled steps in SHARD-FORMAT 1.0.0 (tokenized state plus valid-action
+menu, gold menu index). These are the supervised training pairs
+(menu state -> action) for the tiny in-browser model (Phase 5).
 
-## In-domain vs out-of-domain split
+## Scale
 
-- **In-domain shards** (`import-basic`, `import-broken`): the grammar used
-  for its original purpose, building a personal-data inventory map from the
-  Excel template import. These teach the core mechanics: collection points,
-  system/thirdparty nodes, flows, retention citations, checks, export.
-- **Out-of-domain shards** (`ood-conference`, `ood-incident`, `ood-content`,
-  `ood-asset`): the same frozen grammar reused in unrelated workflows:
-  conference planning, security incident triage, editorial pipeline, IT asset
-  inventory. The labels and story change; the actions, menus, undo semantics,
-  and checks do not.
+- 33 shards, 526 labeled steps, 33 unique recipes.
+- In-domain (`data-mapping/*`): 319 steps. Real browser sessions
+  (template upload, column mapping, review, build, export, broken-file
+  recovery) plus headless import variants and canvas view-transform
+  sessions. Labels and graph shapes come from real inventory templates.
+- Out-of-domain (`ood-*`): 207 steps. The same frozen grammar reused in
+  unrelated workflows: conference planning, incident response, content
+  pipeline, asset inventory, hiring, lab inventory, event ticketing,
+  library catalog, volunteer rota, warehouse zones.
+- Corrupted sessions: adversarial runs (dangling references, wrong
+  labels, retention conflicts, flag storms, aborts, check-fix loops)
+  teach recovery. Corrupted steps are labeled with the correct recovery
+  action exactly like clean steps; there is no separate flag.
 
-Why: the Phase 4 goal is a modular, dynamic workflow-execution module with a
+## Why the split
+
+The build goal is a modular, dynamic workflow-execution module with a
 domain-agnostic action vocabulary, data mapping as one instantiation. The
-out-of-domain shards prove the executor generalizes: if the model learns the
-action grammar from mapping data but performs on conference planning and
-incident triage, the vocabulary is genuinely domain-agnostic rather than
-memorized labels.
+out-of-domain shards prove the executor generalizes: if the model learns
+the action grammar from mapping data but performs on hiring pipelines and
+warehouse zones, the vocabulary is genuinely domain-agnostic rather than
+memorized labels. Training and eval report in-domain and out-of-domain
+scores separately.
 
-## Record format
+## Record format (SHARD-FORMAT 1.0.0)
 
-Each shard ships as two files:
+One JSON object per line:
 
-- `<shard>.jsonl`: one JSON record per action, in order. Fields: `step`,
-  `menu_before` (the valid-action menu the teacher saw), `action`
-  (`action_id`, `params`), `state_hash` (SHA-256 over canonical
-  {nodes, edges, annotations}), `snapshot_after` (full executor snapshot);
-  step 0 also carries `snapshot_before`.
-- `<shard>.manifest.json`: shard name, domain, recipe_id, the full recipe
-  (so replay is self-contained), step count, first/last state hashes,
-  creation timestamp.
+- `shard_format`: "1.0.0"
+- `recipe_id`: steps sharing an id belong to one episode; splits are by
+  recipe id, never by step.
+- `domain`: `data-mapping/*` in-domain, `ood-*` out-of-domain. Never a
+  model feature; used for eval splits.
+- `step_index`, `input_ids` (uint16 token ids per specs/token-schema.json),
+  `fields` (canonical JSON per token, same order), `menu_actions`
+  (action names in menu order), `gold_menu_index` (teacher's choice).
+- Annotation `node_slot` lives in the union slot space of canvas nodes
+  and annotation anchors (a flag may anchor a not-yet-built node).
 
-Snapshots validate against `state-snapshot-schema.json`; recipes validate
-against `recipe-schema.json`. Every shard replays byte-deterministically via
-`lib/replay.mjs`.
+## Determinism
 
-## Schema versions
-
-- Recipe schema: `1.0.x` (executor supports 1.0.x)
-- State snapshot schema: `1.0.0`
-- Action catalogue: the 12 frozen actions in `specs/action-catalogue.json`
+Scenarios are deterministic: fixed templates, fixed dates, fixed
+statutes, seeded RNG. All 24 headless scenarios were run twice;
+converted shards are byte-identical across runs (sha256). Every shard
+replays cleanly through the teacher executor. See manifest.json for
+per-shard sha256.
 
 ## License
 
 MIT. No personal data: every shard is fully synthetic, with fixed
 coordinates, fixed labels, and fixed dates.
-
-## TODO for the full Phase 4 run
-
-- [ ] Scale the in-domain corpus: dozens of template-import variants
-      (different sheet splits, broken columns, multi-sheet workbooks).
-- [ ] Scale the out-of-domain set: more workflows (hiring pipeline, lab
-      inventory, event ticketing) to harden the domain-agnostic claim.
-- [ ] Add adversarial teacher runs: deliberate menu violations, flag storms,
-      undo chains, abort mid-recipe, and their recoveries.
-- [ ] Convert shards to training pairs: (menu_before + canvas summary) ->
-      (action, params), with a held-out OOD evaluation split.
-- [ ] Publish to Hugging Face (datasets): dataset viewer config, train/eval
-      splits, datasheet for datasets, DOI via the HF paper page.
-- [ ] Write the Phase 5 training/eval plan that proves out-of-domain reuse
-      on the trained model, per the modular-and-dynamic instruction.
