@@ -1,0 +1,1 @@
+Phase 4. Scripted Playwright teacher plus synthetic org generator. The teacher is code, not an LLM: given a state plus a recipe, it emits the correct next action. About 40% of sessions are corrupted so the model learns recovery.
