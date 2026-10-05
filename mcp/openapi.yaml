@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: AI-data-map Phase 7 MCP bridge
+  version: 1.0.0
+  description: >
+    HTTP bridge for the Phase 7 MCP server (mcp/server.js). The in-page
+    executor POSTs step events here; HTTP-native MCP clients read sessions
+    and stream events over SSE. The stdio server can mount this bridge
+    in-process with a shared session store by setting AI_DATA_MAP_BRIDGE_PORT.
+    No em dashes were used in this document.
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local bridge (127.0.0.1 only)
+paths:
+  /sessions/{sessionId}/steps:
+    post:
+      summary: Ingest one step event streamed by the in-page executor
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StepEvent'
+      responses:
+        '200':
+          description: Event stored
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, stored]
+                properties:
+                  ok: { type: boolean, const: true }
+                  stored: { type: integer, description: Total step events stored for this session }
+        '400':
+          description: Invalid step event
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PlainError' }
+  /sessions/{sessionId}:
+    get:
+      summary: Return the session record with all streamed results
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: Session record
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SessionRecord' }
+        '404':
+          description: Unknown session
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PlainError' }
+  /sessions/{sessionId}/stream:
+    get:
+      summary: SSE feed of step events for a session
+      parameters:
+        - $ref: '#/components/parameters/SessionId'
+      responses:
+        '200':
+          description: text/event-stream of StepEvent payloads
+          content:
+            text/event-stream:
+              schema: { type: string }
+components:
+  parameters:
+    SessionId:
+      name: sessionId
+      in: path
+      required: true
+      schema: { type: string, pattern: '^s1-[0-9a-f]{12}$' }
+      description: Session ticket id minted by execute_mapping_workflow
+  schemas:
+    StepEvent:
+      type: object
+      required: [action]
+      additionalProperties: false
+      properties:
+        action: { type: string, description: Applied action name, always the model argmax }
+        narration_en: { type: string }
+        narration_fr: { type: string }
+        done_heads:
+          type: object
+          description: Map of recipe item index to its completion predicate
+          additionalProperties: { type: boolean }
+        terminal: { type: boolean, description: True when the run reached a terminal step }
+    SessionRecord:
+      type: object
+      required: [session_id, status, results]
+      properties:
+        session_id: { type: string }
+        recipe_id: { type: string, nullable: true }
+        item_count: { type: integer, nullable: true }
+        status: { type: string, enum: [ticketed, running, finished, cancelled] }
+        created_at: { type: string, format: date-time }
+        results:
+          type: array
+          items: { $ref: '#/components/schemas/StepEvent' }
+    PlainError:
+      type: object
+      required: [ok, error]
+      properties:
+        ok: { type: boolean, const: false }
+        error: { type: string }
+    # JSON-schema description of the execute_mapping_workflow stdio tool.
+    ToolInput:
+      type: object
+      required: [recipe]
+      additionalProperties: false
+      properties:
+        recipe:
+          type: object
+          required: [recipe_id, schema_version, items]
+          additionalProperties: false
+          properties:
+            recipe_id: { type: string, pattern: '^[A-Za-z0-9_-]+$', maxLength: 128 }
+            schema_version: { type: string, pattern: '^1\.0\.\d+$', description: Supported range 1.0.x }
+            name: { type: string, maxLength: 200 }
+            items:
+              type: array
+              minItems: 1
+              maxItems: 200
+              items:
+                type: object
+                required: [intent, params]
+                additionalProperties: false
+                properties:
+                  intent:
+                    type: string
+                    enum: [add_node, add_collection_point, connect, set_field, set_retention, run_check, export, confirm_node, flag_for_review]
+                    description: Authoring intents only. Executor-only recovery intents (undo_last, skip_recipe_item, abort_session) are rejected in recipes.
+                  params:
+                    type: object
+                    description: Intent params, shaped per specs/recipe-schema.json. Serialized params must not exceed 4096 bytes per item.
+                    maxProperties: 12
+    SessionTicket:
+      type: object
+      required: [ok, session_id, recipe_id, item_count, status, deep_link]
+      properties:
+        ok: { type: boolean, const: true }
+        session_id: { type: string, description: 's1- plus 12 hex chars of sha256(recipe_id + NUL + Date.now())' }
+        recipe_id: { type: string }
+        item_count: { type: integer }
+        status: { type: string, const: ticketed }
+        deep_link: { type: string, format: uri, description: 'Guide page URL with ?ticket=<session_id>' }
+    ValidationError:
+      type: object
+      required: [ok, failed_item_index, reason, partial_state, recovery_hint]
+      properties:
+        ok: { type: boolean, const: false }
+        failed_item_index: { type: integer, nullable: true, description: Item index that failed, or null for recipe-level failures }
+        reason: { type: string, description: Plain-language reason naming the item and the violated rule }
+        partial_state: { const: null }
+        recovery_hint: { type: string }
