@@ -34,8 +34,9 @@ First-party `.js`/`.mjs` under `web/`, `mcp/`, `tools/`, `tests/`, `training/`,
 - `SCAN_OUT` env var selects the report path (repo-root-relative or
   absolute); default `scanning/reports/layer3-latest.json`.
 - Report JSON: `{"layer": 3, "generated_utc": "<ISO>", "parser":
-  "tree-sitter|fallback", "stats": {"files": n, "functions": n}, "findings":
-  [{"rule", "severity", "file", "line", "message"}]}`.
+  "tree-sitter", "stats": {"files": n, "functions": n}, "findings":
+  [{"rule", "severity", "file", "line", "message"}]}`. When tree-sitter is not
+  installed the report carries `"parser": "missing"` plus an `"error"` field.
 - Exit codes: `0` clean, `2` findings present, `1` tool error.
 - A short human summary (counts by rule) is printed to stdout.
 
