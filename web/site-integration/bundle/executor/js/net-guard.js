@@ -10,7 +10,7 @@
  * Load this script FIRST, before any other script that could issue a
  * request, so the instrumentation is in place from the start.
  *
- * Exposes window.__s1net = { count(), log(), reset() }.
+ * Exposes window.__s1net = { count(), log(), reset(), setNetCount(el) }.
  * No em dashes.
  */
 (function () {
@@ -85,9 +85,27 @@
     };
   }
 
+  /* setNetCount(el): the ONE write path for every "requests sent" counter
+     element (quick flow, chat flow, page-level, and the Start-over rebuild).
+     Coerces the count to a plain digit string and falls back to "0" on any
+     unexpected value, so the element can never render empty, "undefined",
+     or a debug string, even if this script ran before the element existed. */
+  function setNetCount(el) {
+    var txt = "0";
+    try {
+      var n = count;
+      if (typeof n === "number" && isFinite(n) && n >= 0) txt = String(Math.floor(n));
+    } catch (e) { /* fall back to "0" */ }
+    try {
+      if (el) el.textContent = txt;
+    } catch (e) { /* element detached or read-only; keep "0" */ }
+    return txt;
+  }
+
   root.__s1net = {
     count: function () { return count; },
     log: function () { return log.slice(); },
-    reset: function () { count = 0; log = []; }
+    reset: function () { count = 0; log = []; },
+    setNetCount: setNetCount
   };
 })();
