@@ -1,0 +1,3019 @@
+{
+ "vectors": [
+  {
+   "id": "minimal",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"add_node\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224
+    ],
+    "field_hash": [
+     3546
+    ],
+    "name_hash": [
+     683
+    ],
+    "menu_mask": [
+     true
+    ]
+   }
+  },
+  {
+   "id": "bos-menu-eos",
+   "ids": [
+    0,
+    224,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"x\"}",
+    "{}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     0,
+     224,
+     1
+    ],
+    "field_hash": [
+     1930,
+     2276,
+     1930
+    ],
+    "name_hash": [
+     0,
+     68,
+     0
+    ],
+    "menu_mask": [
+     false,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "full-realistic",
+   "ids": [
+    0,
+    32,
+    33,
+    2,
+    96,
+    3,
+    160,
+    4,
+    224,
+    225,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{\"node_id\":\"n1\",\"type\":1,\"x\":100,\"y\":120,\"label\":\"CRM\"}",
+    "{\"label\":\"Site Web\",\"node_id\":\"n2\",\"type\":0,\"x\":200.5,\"y\":80,\"extra\":null}",
+    "{}",
+    "{\"a\":0,\"b\":1,\"cat\":2}",
+    "{}",
+    "{\"kind\":1,\"node_slot\":0,\"payload\":{\"note\":\"ok\"}}",
+    "{}",
+    "{\"action_name\":\"add_node\",\"params_digest\":\"abcdef12\"}",
+    "{\"params_digest\":\"00112233\",\"action_name\":\"skip_recipe_item\"}",
+    "{}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     0,
+     32,
+     33,
+     2,
+     96,
+     3,
+     160,
+     4,
+     224,
+     225,
+     1
+    ],
+    "field_hash": [
+     1930,
+     1580,
+     3635,
+     1930,
+     118,
+     1930,
+     170,
+     1930,
+     3536,
+     2472,
+     1930
+    ],
+    "name_hash": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     683,
+     856,
+     0
+    ],
+    "menu_mask": [
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "id-boundaries",
+   "ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    32,
+    95,
+    96,
+    159,
+    160,
+    223,
+    224,
+    287,
+    288,
+    65535
+   ],
+   "fields": [
+    "{}",
+    "{}",
+    "{}",
+    "{}",
+    "{}",
+    "{\"node_id\":\"n1\"}",
+    "{\"node_id\":\"n64\"}",
+    "{\"a\":0}",
+    "{\"a\":63}",
+    "{\"k\":0}",
+    "{\"k\":63}",
+    "{\"action_name\":\"first\"}",
+    "{\"action_name\":\"last\"}",
+    "{\"plain\":\"non-menu\"}",
+    "{\"plain\":\"max-id\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     32,
+     95,
+     96,
+     159,
+     160,
+     223,
+     224,
+     287,
+     288,
+     65535
+    ],
+    "field_hash": [
+     1930,
+     1930,
+     1930,
+     1930,
+     1930,
+     1170,
+     3707,
+     2818,
+     1238,
+     203,
+     476,
+     57,
+     3413,
+     1148,
+     2242
+    ],
+    "name_hash": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     399,
+     154,
+     0,
+     0
+    ],
+    "menu_mask": [
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     true,
+     false,
+     false
+    ]
+   }
+  },
+  {
+   "id": "menu-64-max",
+   "ids": [
+    4,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"action_00\"}",
+    "{\"action_name\":\"action_01\"}",
+    "{\"action_name\":\"action_02\"}",
+    "{\"action_name\":\"action_03\"}",
+    "{\"action_name\":\"action_04\"}",
+    "{\"action_name\":\"action_05\"}",
+    "{\"action_name\":\"action_06\"}",
+    "{\"action_name\":\"action_07\"}",
+    "{\"action_name\":\"action_08\"}",
+    "{\"action_name\":\"action_09\"}",
+    "{\"action_name\":\"action_10\"}",
+    "{\"action_name\":\"action_11\"}",
+    "{\"action_name\":\"action_12\"}",
+    "{\"action_name\":\"action_13\"}",
+    "{\"action_name\":\"action_14\"}",
+    "{\"action_name\":\"action_15\"}",
+    "{\"action_name\":\"action_16\"}",
+    "{\"action_name\":\"action_17\"}",
+    "{\"action_name\":\"action_18\"}",
+    "{\"action_name\":\"action_19\"}",
+    "{\"action_name\":\"action_20\"}",
+    "{\"action_name\":\"action_21\"}",
+    "{\"action_name\":\"action_22\"}",
+    "{\"action_name\":\"action_23\"}",
+    "{\"action_name\":\"action_24\"}",
+    "{\"action_name\":\"action_25\"}",
+    "{\"action_name\":\"action_26\"}",
+    "{\"action_name\":\"action_27\"}",
+    "{\"action_name\":\"action_28\"}",
+    "{\"action_name\":\"action_29\"}",
+    "{\"action_name\":\"action_30\"}",
+    "{\"action_name\":\"action_31\"}",
+    "{\"action_name\":\"action_32\"}",
+    "{\"action_name\":\"action_33\"}",
+    "{\"action_name\":\"action_34\"}",
+    "{\"action_name\":\"action_35\"}",
+    "{\"action_name\":\"action_36\"}",
+    "{\"action_name\":\"action_37\"}",
+    "{\"action_name\":\"action_38\"}",
+    "{\"action_name\":\"action_39\"}",
+    "{\"action_name\":\"action_40\"}",
+    "{\"action_name\":\"action_41\"}",
+    "{\"action_name\":\"action_42\"}",
+    "{\"action_name\":\"action_43\"}",
+    "{\"action_name\":\"action_44\"}",
+    "{\"action_name\":\"action_45\"}",
+    "{\"action_name\":\"action_46\"}",
+    "{\"action_name\":\"action_47\"}",
+    "{\"action_name\":\"action_48\"}",
+    "{\"action_name\":\"action_49\"}",
+    "{\"action_name\":\"action_50\"}",
+    "{\"action_name\":\"action_51\"}",
+    "{\"action_name\":\"action_52\"}",
+    "{\"action_name\":\"action_53\"}",
+    "{\"action_name\":\"action_54\"}",
+    "{\"action_name\":\"action_55\"}",
+    "{\"action_name\":\"action_56\"}",
+    "{\"action_name\":\"action_57\"}",
+    "{\"action_name\":\"action_58\"}",
+    "{\"action_name\":\"action_59\"}",
+    "{\"action_name\":\"action_60\"}",
+    "{\"action_name\":\"action_61\"}",
+    "{\"action_name\":\"action_62\"}",
+    "{\"action_name\":\"action_63\"}",
+    "{}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     4,
+     224,
+     225,
+     226,
+     227,
+     228,
+     229,
+     230,
+     231,
+     232,
+     233,
+     234,
+     235,
+     236,
+     237,
+     238,
+     239,
+     240,
+     241,
+     242,
+     243,
+     244,
+     245,
+     246,
+     247,
+     248,
+     249,
+     250,
+     251,
+     252,
+     253,
+     254,
+     255,
+     256,
+     257,
+     258,
+     259,
+     260,
+     261,
+     262,
+     263,
+     264,
+     265,
+     266,
+     267,
+     268,
+     269,
+     270,
+     271,
+     272,
+     273,
+     274,
+     275,
+     276,
+     277,
+     278,
+     279,
+     280,
+     281,
+     282,
+     283,
+     284,
+     285,
+     286,
+     287,
+     1
+    ],
+    "field_hash": [
+     1930,
+     1092,
+     2041,
+     2097,
+     3834,
+     1593,
+     3528,
+     1020,
+     1589,
+     3299,
+     827,
+     376,
+     161,
+     920,
+     1933,
+     3443,
+     2261,
+     1805,
+     1339,
+     3775,
+     685,
+     1670,
+     863,
+     2724,
+     1607,
+     3748,
+     2396,
+     2582,
+     1963,
+     607,
+     456,
+     3220,
+     2591,
+     214,
+     354,
+     1216,
+     1513,
+     2000,
+     974,
+     328,
+     3319,
+     2127,
+     1074,
+     179,
+     1184,
+     4049,
+     2358,
+     359,
+     402,
+     3237,
+     2616,
+     1042,
+     2948,
+     1879,
+     1843,
+     97,
+     810,
+     2188,
+     3689,
+     3204,
+     3051,
+     892,
+     647,
+     2830,
+     1531,
+     1930
+    ],
+    "name_hash": [
+     0,
+     252,
+     303,
+     496,
+     622,
+     776,
+     770,
+     710,
+     495,
+     18,
+     336,
+     632,
+     718,
+     719,
+     870,
+     943,
+     248,
+     841,
+     989,
+     397,
+     3,
+     814,
+     319,
+     707,
+     274,
+     274,
+     390,
+     770,
+     950,
+     801,
+     614,
+     888,
+     641,
+     110,
+     811,
+     939,
+     405,
+     984,
+     723,
+     899,
+     890,
+     344,
+     590,
+     1018,
+     528,
+     948,
+     967,
+     920,
+     965,
+     569,
+     732,
+     90,
+     66,
+     890,
+     635,
+     958,
+     601,
+     65,
+     748,
+     426,
+     445,
+     144,
+     732,
+     848,
+     453,
+     0
+    ],
+    "menu_mask": [
+     false,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "duplicate-menu-entries",
+   "ids": [
+    224,
+    225,
+    226
+   ],
+   "fields": [
+    "{\"action_name\":\"connect\",\"params_digest\":\"aa\"}",
+    "{\"action_name\":\"connect\",\"params_digest\":\"bb\"}",
+    "{\"action_name\":\"connect\",\"params_digest\":\"aa\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224,
+     225,
+     226
+    ],
+    "field_hash": [
+     708,
+     854,
+     708
+    ],
+    "name_hash": [
+     840,
+     840,
+     840
+    ],
+    "menu_mask": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "id": "menu-boundary-224-only",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"edge\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224
+    ],
+    "field_hash": [
+     2381
+    ],
+    "name_hash": [
+     458
+    ],
+    "menu_mask": [
+     true
+    ]
+   }
+  },
+  {
+   "id": "menu-boundary-287-only",
+   "ids": [
+    0,
+    287,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"edge\"}",
+    "{}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     0,
+     287,
+     1
+    ],
+    "field_hash": [
+     1930,
+     2381,
+     1930
+    ],
+    "name_hash": [
+     0,
+     458,
+     0
+    ],
+    "menu_mask": [
+     false,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "nonmenu-223-288",
+   "ids": [
+    223,
+    224,
+    288
+   ],
+   "fields": [
+    "{\"x\":1}",
+    "{\"action_name\":\"m\"}",
+    "{\"x\":2}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     223,
+     224,
+     288
+    ],
+    "field_hash": [
+     516,
+     2936,
+     1410
+    ],
+    "name_hash": [
+     0,
+     49,
+     0
+    ],
+    "menu_mask": [
+     false,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "menu-field-minimal",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"a\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224
+    ],
+    "field_hash": [
+     3524
+    ],
+    "name_hash": [
+     458
+    ],
+    "menu_mask": [
+     true
+    ]
+   }
+  },
+  {
+   "id": "menu-field-extra",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"x\",\"params_digest\":\"ab\",\"zzz\":[1,{\"q\":null}],\"n\":3.5}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224
+    ],
+    "field_hash": [
+     1380
+    ],
+    "name_hash": [
+     68
+    ],
+    "menu_mask": [
+     true
+    ]
+   }
+  },
+  {
+   "id": "action-name-ignored-offmenu",
+   "ids": [
+    32,
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"ignored-here\"}",
+    "{\"action_name\":\"used\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     32,
+     224
+    ],
+    "field_hash": [
+     2147,
+     1295
+    ],
+    "name_hash": [
+     0,
+     973
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "stress-129-tokens",
+   "ids": [
+    0,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    223,
+    2,
+    3,
+    4,
+    1000,
+    60000,
+    32,
+    40,
+    95,
+    96,
+    120,
+    159,
+    160,
+    200,
+    4,
+    224,
+    225,
+    226,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{\"i\":0,\"s\":\"tok0\"}",
+    "{\"i\":1,\"s\":\"tok1\"}",
+    "{\"i\":2,\"s\":\"tok2\"}",
+    "{\"i\":3,\"s\":\"tok3\"}",
+    "{\"i\":4,\"s\":\"tok4\"}",
+    "{\"i\":5,\"s\":\"tok5\"}",
+    "{\"i\":6,\"s\":\"tok6\"}",
+    "{\"i\":7,\"s\":\"tok7\"}",
+    "{\"i\":8,\"s\":\"tok8\"}",
+    "{\"i\":9,\"s\":\"tok9\"}",
+    "{\"i\":10,\"s\":\"tok10\"}",
+    "{\"i\":11,\"s\":\"tok11\"}",
+    "{\"i\":12,\"s\":\"tok12\"}",
+    "{\"i\":13,\"s\":\"tok13\"}",
+    "{\"i\":14,\"s\":\"tok14\"}",
+    "{\"i\":15,\"s\":\"tok15\"}",
+    "{\"i\":16,\"s\":\"tok16\"}",
+    "{\"i\":17,\"s\":\"tok17\"}",
+    "{\"i\":18,\"s\":\"tok18\"}",
+    "{\"i\":19,\"s\":\"tok19\"}",
+    "{\"i\":20,\"s\":\"tok20\"}",
+    "{\"i\":21,\"s\":\"tok21\"}",
+    "{\"i\":22,\"s\":\"tok22\"}",
+    "{\"i\":23,\"s\":\"tok23\"}",
+    "{\"i\":24,\"s\":\"tok24\"}",
+    "{\"i\":25,\"s\":\"tok25\"}",
+    "{\"i\":26,\"s\":\"tok26\"}",
+    "{\"i\":27,\"s\":\"tok27\"}",
+    "{\"i\":28,\"s\":\"tok28\"}",
+    "{\"i\":29,\"s\":\"tok29\"}",
+    "{\"i\":30,\"s\":\"tok30\"}",
+    "{\"i\":31,\"s\":\"tok31\"}",
+    "{\"i\":32,\"s\":\"tok32\"}",
+    "{\"i\":33,\"s\":\"tok33\"}",
+    "{\"i\":34,\"s\":\"tok34\"}",
+    "{\"i\":35,\"s\":\"tok35\"}",
+    "{\"i\":36,\"s\":\"tok36\"}",
+    "{\"i\":37,\"s\":\"tok37\"}",
+    "{\"i\":38,\"s\":\"tok38\"}",
+    "{\"i\":39,\"s\":\"tok39\"}",
+    "{\"i\":40,\"s\":\"tok40\"}",
+    "{\"i\":41,\"s\":\"tok41\"}",
+    "{\"i\":42,\"s\":\"tok42\"}",
+    "{\"i\":43,\"s\":\"tok43\"}",
+    "{\"i\":44,\"s\":\"tok44\"}",
+    "{\"i\":45,\"s\":\"tok45\"}",
+    "{\"i\":46,\"s\":\"tok46\"}",
+    "{\"i\":47,\"s\":\"tok47\"}",
+    "{\"i\":48,\"s\":\"tok48\"}",
+    "{\"i\":49,\"s\":\"tok49\"}",
+    "{\"i\":50,\"s\":\"tok50\"}",
+    "{\"i\":51,\"s\":\"tok51\"}",
+    "{\"i\":52,\"s\":\"tok52\"}",
+    "{\"i\":53,\"s\":\"tok53\"}",
+    "{\"i\":54,\"s\":\"tok54\"}",
+    "{\"i\":55,\"s\":\"tok55\"}",
+    "{\"i\":56,\"s\":\"tok56\"}",
+    "{\"i\":57,\"s\":\"tok57\"}",
+    "{\"i\":58,\"s\":\"tok58\"}",
+    "{\"i\":59,\"s\":\"tok59\"}",
+    "{\"i\":60,\"s\":\"tok60\"}",
+    "{\"i\":61,\"s\":\"tok61\"}",
+    "{\"i\":62,\"s\":\"tok62\"}",
+    "{\"i\":63,\"s\":\"tok63\"}",
+    "{\"i\":64,\"s\":\"tok64\"}",
+    "{\"i\":65,\"s\":\"tok65\"}",
+    "{\"i\":66,\"s\":\"tok66\"}",
+    "{\"i\":67,\"s\":\"tok67\"}",
+    "{\"i\":68,\"s\":\"tok68\"}",
+    "{\"i\":69,\"s\":\"tok69\"}",
+    "{\"i\":70,\"s\":\"tok70\"}",
+    "{\"i\":71,\"s\":\"tok71\"}",
+    "{\"i\":72,\"s\":\"tok72\"}",
+    "{\"i\":73,\"s\":\"tok73\"}",
+    "{\"i\":74,\"s\":\"tok74\"}",
+    "{\"i\":75,\"s\":\"tok75\"}",
+    "{\"i\":76,\"s\":\"tok76\"}",
+    "{\"i\":77,\"s\":\"tok77\"}",
+    "{\"i\":78,\"s\":\"tok78\"}",
+    "{\"i\":79,\"s\":\"tok79\"}",
+    "{\"i\":80,\"s\":\"tok80\"}",
+    "{\"i\":81,\"s\":\"tok81\"}",
+    "{\"i\":82,\"s\":\"tok82\"}",
+    "{\"i\":83,\"s\":\"tok83\"}",
+    "{\"i\":84,\"s\":\"tok84\"}",
+    "{\"i\":85,\"s\":\"tok85\"}",
+    "{\"i\":86,\"s\":\"tok86\"}",
+    "{\"i\":87,\"s\":\"tok87\"}",
+    "{\"i\":88,\"s\":\"tok88\"}",
+    "{\"i\":89,\"s\":\"tok89\"}",
+    "{\"i\":90,\"s\":\"tok90\"}",
+    "{\"i\":91,\"s\":\"tok91\"}",
+    "{\"i\":92,\"s\":\"tok92\"}",
+    "{\"i\":93,\"s\":\"tok93\"}",
+    "{\"i\":94,\"s\":\"tok94\"}",
+    "{\"i\":95,\"s\":\"tok95\"}",
+    "{\"i\":96,\"s\":\"tok96\"}",
+    "{\"i\":97,\"s\":\"tok97\"}",
+    "{\"i\":98,\"s\":\"tok98\"}",
+    "{\"i\":99,\"s\":\"tok99\"}",
+    "{\"i\":100,\"s\":\"tok100\"}",
+    "{\"i\":101,\"s\":\"tok101\"}",
+    "{\"i\":102,\"s\":\"tok102\"}",
+    "{\"i\":103,\"s\":\"tok103\"}",
+    "{\"i\":104,\"s\":\"tok104\"}",
+    "{\"i\":105,\"s\":\"tok105\"}",
+    "{\"i\":106,\"s\":\"tok106\"}",
+    "{\"i\":107,\"s\":\"tok107\"}",
+    "{\"i\":108,\"s\":\"tok108\"}",
+    "{\"i\":109,\"s\":\"tok109\"}",
+    "{\"i\":110,\"s\":\"tok110\"}",
+    "{\"i\":111,\"s\":\"tok111\"}",
+    "{\"i\":112,\"s\":\"tok112\"}",
+    "{\"i\":113,\"s\":\"tok113\"}",
+    "{\"i\":114,\"s\":\"tok114\"}",
+    "{\"i\":115,\"s\":\"tok115\"}",
+    "{\"i\":116,\"s\":\"tok116\"}",
+    "{\"i\":117,\"s\":\"tok117\"}",
+    "{\"i\":118,\"s\":\"tok118\"}",
+    "{\"i\":119,\"s\":\"tok119\"}",
+    "{}",
+    "{\"action_name\":\"m1\"}",
+    "{\"action_name\":\"m2\"}",
+    "{\"action_name\":\"m3\"}",
+    "{}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     0,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     223,
+     2,
+     3,
+     4,
+     1000,
+     60000,
+     32,
+     40,
+     95,
+     96,
+     120,
+     159,
+     160,
+     200,
+     4,
+     224,
+     225,
+     226,
+     1
+    ],
+    "field_hash": [
+     1930,
+     2915,
+     3421,
+     3513,
+     241,
+     3916,
+     3164,
+     638,
+     1160,
+     541,
+     3469,
+     572,
+     3571,
+     2672,
+     382,
+     2727,
+     2923,
+     1670,
+     1340,
+     1043,
+     972,
+     324,
+     2381,
+     3393,
+     973,
+     1184,
+     3883,
+     150,
+     1970,
+     3693,
+     429,
+     1133,
+     99,
+     3814,
+     3493,
+     3760,
+     3475,
+     379,
+     3419,
+     3308,
+     729,
+     1813,
+     361,
+     1937,
+     1647,
+     987,
+     2400,
+     3557,
+     1902,
+     1940,
+     3628,
+     1917,
+     1311,
+     1156,
+     1271,
+     1574,
+     827,
+     2302,
+     3738,
+     841,
+     730,
+     1791,
+     619,
+     3634,
+     1582,
+     659,
+     3998,
+     1942,
+     3028,
+     2462,
+     3966,
+     1048,
+     3960,
+     3289,
+     2745,
+     2069,
+     3880,
+     865,
+     189,
+     2134,
+     2862,
+     3261,
+     3490,
+     811,
+     3680,
+     2217,
+     124,
+     68,
+     1518,
+     2699,
+     531,
+     1899,
+     782,
+     2714,
+     3185,
+     605,
+     2426,
+     3150,
+     1341,
+     1283,
+     3482,
+     3562,
+     1859,
+     2550,
+     1181,
+     593,
+     2902,
+     1385,
+     2012,
+     2252,
+     924,
+     3303,
+     25,
+     2456,
+     3336,
+     2514,
+     2011,
+     2313,
+     488,
+     2570,
+     1005,
+     1930,
+     838,
+     3791,
+     2443,
+     1930
+    ],
+    "name_hash": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     193,
+     405,
+     883,
+     0
+    ],
+    "menu_mask": [
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     true,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "id": "nested-deep",
+   "ids": [
+    32,
+    224
+   ],
+   "fields": [
+    "{\"a\": {\"b\": {\"c\": [1, 2.5, \"x\", null, true, {\"k\": \"v\"}]}}}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     32,
+     224
+    ],
+    "field_hash": [
+     2090,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "unsorted-keys",
+   "ids": [
+    33,
+    224
+   ],
+   "fields": [
+    "{\"z\":1,\"a\":2,\"m\":3,\"b\":{\"y\":1,\"x\":2}}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     33,
+     224
+    ],
+    "field_hash": [
+     3124,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "unicode-keys",
+   "ids": [
+    34,
+    224
+   ],
+   "fields": [
+    "{\"\\u00e9\": 1, \"\\u4e2d\": 2, \"\\ud83c\\udf89\": 3, \"plain\": 4}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     34,
+     224
+    ],
+    "field_hash": [
+     3724,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "key-order-astral-vs-bmp",
+   "ids": [
+    35,
+    224
+   ],
+   "fields": [
+    "{\"z\": 1, \"\\u00e9\": 2, \"\\ue000\": 3, \"\\ud83d\\ude00\": 4, \"\\u4e2d\": 5, \"a\": 6}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     35,
+     224
+    ],
+    "field_hash": [
+     2549,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "empty-containers",
+   "ids": [
+    36,
+    224
+   ],
+   "fields": [
+    "{\"a\":[],\"o\":{},\"s\":\"\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     36,
+     224
+    ],
+    "field_hash": [
+     827,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "ints",
+   "ids": [
+    37,
+    224
+   ],
+   "fields": [
+    "{\"big\": 10000000000000000000000000000000000000000, \"neg\": -7, \"zero\": 0, \"u16\": 65535, \"negzero_lit\": 0}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     37,
+     224
+    ],
+    "field_hash": [
+     1274,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "int-float-distinct",
+   "ids": [
+    38,
+    224
+   ],
+   "fields": [
+    "{\"as_int\":40,\"as_float\":40.0}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     38,
+     224
+    ],
+    "field_hash": [
+     2446,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "floats",
+   "ids": [
+    39,
+    224
+   ],
+   "fields": [
+    "{\"a\": 0.0, \"b\": 0.1, \"c\": 0.0001, \"d\": 1e-05, \"e\": 1000000000000000.0, \"f\": 1e+16, \"g\": 1.5e-07, \"h\": 123.456789, \"i\": 1e+51, \"j\": 2.5, \"k\": -3.25, \"l\": 0.30000000000000004, \"m\": 9999999999999998.0}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     39,
+     224
+    ],
+    "field_hash": [
+     2836,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "neg-zero-float",
+   "ids": [
+    40,
+    224
+   ],
+   "fields": [
+    "{\"v\":-0.0}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     40,
+     224
+    ],
+    "field_hash": [
+     1200,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "nan-inf-literals",
+   "ids": [
+    41,
+    224
+   ],
+   "fields": [
+    "{\"a\":NaN,\"b\":Infinity,\"c\":-Infinity}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     41,
+     224
+    ],
+    "field_hash": [
+     1274,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "escapes",
+   "ids": [
+    42,
+    224
+   ],
+   "fields": [
+    "{\"q\": \"a\\\"b\\\\c\", \"nl\": \"x\\ny\", \"tab\": \"p\\tq\", \"cr\": \"r\\rs\", \"bs\": \"s\\bs\", \"ff\": \"t\\fu\", \"ctl\": \"\\u0001\\u0002\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     42,
+     224
+    ],
+    "field_hash": [
+     453,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "del-and-c0",
+   "ids": [
+    43,
+    224
+   ],
+   "fields": [
+    "{\"d\":\"\\u007f\",\"c\":\"\\u0001\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     43,
+     224
+    ],
+    "field_hash": [
+     1606,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "astral-values",
+   "ids": [
+    44,
+    224
+   ],
+   "fields": [
+    "{\"emoji\": \"\\ud83c\\udf89\\ud83c\\udde8\\ud83c\\udde6\", \"music\": \"\\ud834\\udd1e\", \"mixed\": \"a\\ud83c\\udf89b\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     44,
+     224
+    ],
+    "field_hash": [
+     2065,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "long-strings",
+   "ids": [
+    45,
+    224
+   ],
+   "fields": [
+    "{\"label\": \"LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\", \"blob\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\", \"name\": \"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\"}",
+    "{\"action_name\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     45,
+     224
+    ],
+    "field_hash": [
+     961,
+     2658
+    ],
+    "name_hash": [
+     0,
+     667
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "ws-variant-a",
+   "ids": [
+    46,
+    224
+   ],
+   "fields": [
+    "{  \"b\" : 1 , \"a\" : [ 1 , 2 ] }",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     46,
+     224
+    ],
+    "field_hash": [
+     1982,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "ws-variant-b",
+   "ids": [
+    46,
+    224
+   ],
+   "fields": [
+    "{\"a\":[1,2],\"b\":1}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     46,
+     224
+    ],
+    "field_hash": [
+     1982,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "escape-vs-literal-e9-a",
+   "ids": [
+    47,
+    224
+   ],
+   "fields": [
+    "{\"city\":\"Montr\\u00e9al\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     47,
+     224
+    ],
+    "field_hash": [
+     3067,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "escape-vs-literal-e9-b",
+   "ids": [
+    47,
+    224
+   ],
+   "fields": [
+    "{\"city\": \"Montr\\u00e9al\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     47,
+     224
+    ],
+    "field_hash": [
+     3067,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "ensure-ascii-vs-raw-a",
+   "ids": [
+    48,
+    224
+   ],
+   "fields": [
+    "{\"city\": \"Qu\\u00e9bec \\u65e5\\u672c\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     48,
+     224
+    ],
+    "field_hash": [
+     3754,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "ensure-ascii-vs-raw-b",
+   "ids": [
+    48,
+    224
+   ],
+   "fields": [
+    "{\"city\": \"Québec 日本\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     48,
+     224
+    ],
+    "field_hash": [
+     3754,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "duplicate-keys-last-wins",
+   "ids": [
+    49,
+    224
+   ],
+   "fields": [
+    "{\"a\":1,\"a\":2}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     49,
+     224
+    ],
+    "field_hash": [
+     4045,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "numeric-string-keys",
+   "ids": [
+    50,
+    224
+   ],
+   "fields": [
+    "{\"10\":\"a\",\"2\":\"b\",\"1\":\"c\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     50,
+     224
+    ],
+    "field_hash": [
+     1212,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "uppercase-exponent",
+   "ids": [
+    51,
+    224
+   ],
+   "fields": [
+    "{\"v\":1E-5,\"w\":2.5E+3}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     51,
+     224
+    ],
+    "field_hash": [
+     1537,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "neg-zero-int-literal",
+   "ids": [
+    52,
+    224
+   ],
+   "fields": [
+    "{\"v\":-0}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     52,
+     224
+    ],
+    "field_hash": [
+     3645,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "huge-int-literal",
+   "ids": [
+    53,
+    224
+   ],
+   "fields": [
+    "{\"v\":12345678901234567890123456789012345678901234567890}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     53,
+     224
+    ],
+    "field_hash": [
+     2205,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "all-short-escapes",
+   "ids": [
+    54,
+    224
+   ],
+   "fields": [
+    "{\"s\":\"\\\"\\\\\\/\\b\\f\\n\\r\\t\"}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     54,
+     224
+    ],
+    "field_hash": [
+     3790,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "deep-arrays",
+   "ids": [
+    55,
+    224
+   ],
+   "fields": [
+    "{\"m\":[[[1]],[],[2,[3,[4]]]]}",
+    "{\"action_name\":\"n\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     55,
+     224
+    ],
+    "field_hash": [
+     2080,
+     2719
+    ],
+    "name_hash": [
+     0,
+     301
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "retention-payload",
+   "ids": [
+    160,
+    224
+   ],
+   "fields": [
+    "{\"kind\": 0, \"node_slot\": 2, \"payload\": {\"record_type\": \"invoices\", \"range_min_years\": 2, \"range_max_years\": 7, \"statute\": \"Tax Act s. 230(4)\", \"as_of\": \"2020-01-15\"}}",
+    "{\"action_name\":\"set_retention\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     160,
+     224
+    ],
+    "field_hash": [
+     2478,
+     3714
+    ],
+    "name_hash": [
+     0,
+     390
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "review-flag-payload",
+   "ids": [
+    161,
+    224
+   ],
+   "fields": [
+    "{\"kind\": 2, \"node_slot\": 0, \"payload\": {\"reason\": \"needs a human look\", \"item_index\": 3}}",
+    "{\"action_name\":\"flag_for_review\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     161,
+     224
+    ],
+    "field_hash": [
+     2218,
+     2605
+    ],
+    "name_hash": [
+     0,
+     807
+    ],
+    "menu_mask": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "unicode-labels",
+   "ids": [
+    32,
+    33,
+    224
+   ],
+   "fields": [
+    "{\"node_id\": \"n1\", \"label\": \"Donn\\u00e9es clients \\ud83c\\udf89\"}",
+    "{\"node_id\": \"n2\", \"label\": \"\\u0645\\u0634\\u062a\\u0631\\u06cc\\u0627\\u0646\"}",
+    "{\"action_name\": \"confirmer_n\\u0153ud\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     32,
+     33,
+     224
+    ],
+    "field_hash": [
+     1681,
+     1297,
+     1884
+    ],
+    "name_hash": [
+     0,
+     0,
+     413
+    ],
+    "menu_mask": [
+     false,
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "id": "unicode-action-names",
+   "ids": [
+    224,
+    225,
+    226,
+    227,
+    228
+   ],
+   "fields": [
+    "{\"action_name\": \"ajouter_n\\u0153ud\"}",
+    "{\"action_name\": \"\\u6dfb\\u52a0\\u8282\\u70b9\"}",
+    "{\"action_name\": \"add_node_\\ud83c\\udf89\"}",
+    "{\"action_name\": \"\\u06af\\u0631\\u0647\"}",
+    "{\"action_name\": \"nodo_\\u65e5\\u672c\\u8a9e\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224,
+     225,
+     226,
+     227,
+     228
+    ],
+    "field_hash": [
+     2293,
+     2642,
+     3200,
+     2721,
+     3348
+    ],
+    "name_hash": [
+     305,
+     550,
+     586,
+     580,
+     409
+    ],
+    "menu_mask": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "id": "special-char-action-names",
+   "ids": [
+    224,
+    225,
+    226,
+    227,
+    228,
+    229
+   ],
+   "fields": [
+    "{\"action_name\": \"a-b_c.d:e/f\"}",
+    "{\"action_name\": \"action with spaces\"}",
+    "{\"action_name\": \"quote\\\"test\"}",
+    "{\"action_name\": \"back\\\\slash\"}",
+    "{\"action_name\": \"semi;colon\"}",
+    "{\"action_name\": \"tab\\there\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224,
+     225,
+     226,
+     227,
+     228,
+     229
+    ],
+    "field_hash": [
+     3177,
+     3660,
+     2655,
+     3361,
+     1906,
+     3368
+    ],
+    "name_hash": [
+     796,
+     681,
+     347,
+     466,
+     953,
+     684
+    ],
+    "menu_mask": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "id": "long-action-name",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\": \"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224
+    ],
+    "field_hash": [
+     2011
+    ],
+    "name_hash": [
+     503
+    ],
+    "menu_mask": [
+     true
+    ]
+   }
+  },
+  {
+   "id": "action-name-case",
+   "ids": [
+    224,
+    225
+   ],
+   "fields": [
+    "{\"action_name\":\"Add_Node\"}",
+    "{\"action_name\":\"add_node\"}"
+   ],
+   "ok": true,
+   "expected": {
+    "tok_ids": [
+     224,
+     225
+    ],
+    "field_hash": [
+     3176,
+     3546
+    ],
+    "name_hash": [
+     822,
+     683
+    ],
+    "menu_mask": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "id": "err-length-mismatch",
+   "ids": [
+    0,
+    224,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "input_ids (3) and fields (2) differ in length"
+   }
+  },
+  {
+   "id": "err-empty-inputs",
+   "ids": [],
+   "fields": [],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "step has an empty action menu"
+   }
+  },
+  {
+   "id": "err-no-menu-token",
+   "ids": [
+    0,
+    1
+   ],
+   "fields": [
+    "{}",
+    "{}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "step has an empty action menu"
+   }
+  },
+  {
+   "id": "err-tid-negative",
+   "ids": [
+    -1,
+    224
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"x\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "token id out of range: -1"
+   }
+  },
+  {
+   "id": "err-tid-too-big",
+   "ids": [
+    65536,
+    224
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"x\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "token id out of range: 65536"
+   }
+  },
+  {
+   "id": "err-tid-float",
+   "ids": [
+    1.5,
+    224
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"x\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "token id out of range: 1.5"
+   }
+  },
+  {
+   "id": "err-tid-string",
+   "ids": [
+    "224"
+   ],
+   "fields": [
+    "{\"action_name\":\"x\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "token id out of range: '224'"
+   }
+  },
+  {
+   "id": "err-tid-null",
+   "ids": [
+    null,
+    224
+   ],
+   "fields": [
+    "{}",
+    "{\"action_name\":\"x\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "token id out of range: None"
+   }
+  },
+  {
+   "id": "err-field-not-json",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "not json"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "field entry is not JSON: 'not json'"
+   }
+  },
+  {
+   "id": "err-field-truncated",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{bad"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "field entry is not JSON: '{bad'"
+   }
+  },
+  {
+   "id": "err-field-truncated-array",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "[1,2"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "field entry is not JSON: '[1,2'"
+   }
+  },
+  {
+   "id": "err-menu-missing-name",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"a\":1}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "menu token missing action_name: '{\"a\":1}'"
+   }
+  },
+  {
+   "id": "err-menu-empty-name",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":\"\"}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "menu token missing action_name: '{\"action_name\":\"\"}'"
+   }
+  },
+  {
+   "id": "err-menu-numeric-name",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":7}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "menu token missing action_name: '{\"action_name\":7}'"
+   }
+  },
+  {
+   "id": "err-menu-null-name",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "{\"action_name\":null}"
+   ],
+   "ok": false,
+   "error": {
+    "name": "ValueError",
+    "message": "menu token missing action_name: '{\"action_name\":null}'"
+   }
+  },
+  {
+   "id": "err-menu-array-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "[1,2]"
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'list' object has no attribute 'get'"
+   }
+  },
+  {
+   "id": "err-menu-string-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "\"hi\""
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'str' object has no attribute 'get'"
+   }
+  },
+  {
+   "id": "err-menu-int-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "42"
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'int' object has no attribute 'get'"
+   }
+  },
+  {
+   "id": "err-menu-bool-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "true"
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'bool' object has no attribute 'get'"
+   }
+  },
+  {
+   "id": "err-menu-null-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "null"
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'NoneType' object has no attribute 'get'"
+   }
+  },
+  {
+   "id": "err-menu-float-field",
+   "ids": [
+    224
+   ],
+   "fields": [
+    "2.5"
+   ],
+   "ok": false,
+   "error": {
+    "name": "AttributeError",
+    "message": "'float' object has no attribute 'get'"
+   }
+  }
+ ]
+}
