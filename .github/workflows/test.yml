@@ -16,3 +16,5 @@ jobs:
           node-version: "20"
       - name: run the full unit + security suite
         run: node tests/run-all.js
+      - name: layer 1 fast linter (must be clean)
+        run: bash scanning/layer1/run.sh
