@@ -1,0 +1,574 @@
+[
+ {
+  "categories": [
+   "consent",
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "AppLovin Corporation (Nasdaq: APP) provides AI-powered advertising solutions for mobile app developers and advertisers. Its principal executive offices are at 1100 Page Mill Road, Palo Alto, California, per its SEC filings. Its Axon advertising platform operates across mobile applications worldwide, reaching over one billion daily active users, and the company also operates a portfolio of its own mobile apps.",
+  "headquarters": "Palo Alto, USA",
+  "id": "applovin",
+  "law25_relevance": "Quebec businesses embedding the AppLovin SDK or buying its ads route Quebec users' device and advertising identifiers to an adtech intermediary, so the SDK, its publishers, and advertising partners must appear in the organization's data map as recipients, with the consent flow documented.",
+  "mapping_features": [
+   "Its published US multistate privacy notice contains a table of personal information categories collected: identifiers such as IP address and advertising IDs (IDFA/GAID/Amazon FOSAID), email and phone identifiers, account records, and financial information, with sources (devices, publishers, advertising partners) and disclosure recipients (service providers, advertising partners, government and law enforcement).",
+   "Its MAX SDK support documentation describes a GDPR consent flow, including detecting whether a user is in a GDPR region and re-showing the consent-management-platform prompt to existing users to reset consent."
+  ],
+  "name": "AppLovin Corporation",
+  "pricing_model": "platform fees paid by advertisers; exact tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "US multistate privacy notice: personal information categories, sources, and disclosure recipients",
+    "url": "https://legal.applovin.com/multistate-privacy-notice/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "MAX SDK docs: GDPR consent flow and CMP re-prompt for existing users",
+    "url": "https://support.axon.ai/en/max/ios/overview/terms-and-privacy-policy-flow"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "AppLovin 10-Q for quarter ended June 30, 2025: principal executive offices and business description",
+    "url": "https://files.quartr.com/reports/0fbc2-2025-08-06-09-24-14.pdf?ref=dGlwcmFua3M="
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.applovin.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Arm Holdings plc (Nasdaq: ARM) is a British semiconductor and software design company headquartered in Cambridge, England, majority owned by SoftBank Group. It licenses processor designs (Cortex, Neoverse) and related intellectual property to chipmakers rather than manufacturing chips itself.",
+  "headquarters": "Cambridge, United Kingdom",
+  "id": "arm",
+  "law25_relevance": "Arm appears in Quebec data maps mainly as a vendor of licensed software and as the operator of its website and support channels, which collect professional contact and device information from Quebec licensees and visitors.",
+  "mapping_features": [
+   "Its privacy policy lists personal data collected directly (name, job title, company name, address, phone number, email address, credentials) and obtained from third-party providers of business contact information (professional contact details, job titles, IP addresses), used for targeted advertising and profiling.",
+   "Its Fixed Virtual Platforms end user license agreement discloses that Arm software may transmit computer information (IP address, hardware and operating system details, tool serial numbers) to Arm to verify license rights and monitor compliance."
+  ],
+  "name": "Arm Holdings plc",
+  "pricing_model": "IP licensing and royalty model; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Arm privacy policy: personal data collected directly and from third-party business-contact providers",
+    "url": "https://www.arm.com/company/policies/privacy"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Arm Fixed Virtual Platforms EULA: software transmits computer information to Arm for license verification",
+    "url": "https://documentation-service.arm.com/static/659816b8b52744113be62872?token="
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Arm Holdings: HQ Cambridge, licensing business, SoftBank ownership",
+    "url": "https://en.wikipedia.org/wiki/Arm_Holdings"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.arm.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "ASML Holding N.V. is a Dutch multinational headquartered in Veldhoven, Netherlands, that develops and manufactures photolithography machines used to produce integrated circuits. It is the sole producer of extreme ultraviolet (EUV) lithography systems, required for the most advanced chips, and is Europe's largest technology company by market capitalization.",
+  "headquarters": "Veldhoven, Netherlands",
+  "id": "asml",
+  "law25_relevance": "ASML is a business-to-business equipment vendor whose relevant personal data in a Quebec data map is limited to business-partner and recruitment data; its Binding Corporate Rules and impact-assessment program are the relevant transfer safeguards to record.",
+  "mapping_features": [
+   "Its annual filings describe a global privacy program whose Privacy Controls framework includes privacy impact assessments and data protection impact assessments, with privacy notices for business partners and recruitment explaining why personal data is collected and how ASML uses it.",
+   "The Dutch Data Protection Authority approved ASML's Controller Binding Corporate Rules as appropriate safeguards for intra-group personal data transfers under the GDPR."
+  ],
+  "name": "ASML Holding N.V.",
+  "pricing_model": "equipment sales and service contracts; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "ASML annual filing: global privacy program, Privacy Controls framework, PIAs and DPIAs",
+    "url": "https://www.sec.gov/Archives/edgar/data/937966/000093796622000013/asml-20211231.htm"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Dutch DPA decision approving ASML's Controller Binding Corporate Rules",
+    "url": "https://edpb-europa-eu.ezproxy.utas.edu.au/system/files/2025-09/asml-national-decision_en_0.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "ASML: HQ Veldhoven, photolithography business, EUV systems",
+    "url": "https://en.wikipedia.org/w/?title=ASML&printable=yes"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.asml.com/en"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Astera Labs, Inc. (Nasdaq: ALAB), founded in 2017 and headquartered in Santa Clara, California, develops semiconductor-based connectivity solutions for cloud computing and AI infrastructure. Its Intelligent Connectivity Platform includes PCIe retimers and CXL memory connectivity products, sold to hyperscalers and enterprises.",
+  "headquarters": "Santa Clara, USA",
+  "id": "astera-labs",
+  "law25_relevance": "Astera Labs is a component supplier whose privacy footprint is its corporate site and customer support channels; its disclosure that site data may be transferred to US servers is the relevant cross-border transfer to record in a Quebec data map.",
+  "mapping_features": [
+   "Its privacy policy states that personal data provided via its site may be transferred to Astera Labs offices and servers and authorized third parties in the United States.",
+   "Its privacy policy describes passive collection of non-identifiable site-usage information and the use of cookies, stating that cookies are not used to collect personal data without the visitor's permission."
+  ],
+  "name": "Astera Labs, Inc.",
+  "pricing_model": "semiconductor product sales; pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Astera Labs privacy policy: US transfers, cookies, non-identifiable data",
+    "url": "https://asteralabs.com/privacy-policy/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Astera Labs profile: Santa Clara HQ, business description, founding year",
+    "url": "https://stoculator.com/stock/ALAB/profile"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.asteralabs.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "CoreWeave, Inc. (Nasdaq: CRWV) is an AI-focused cloud infrastructure company headquartered in Roseland, New Jersey, founded in 2017, specializing in GPU-driven compute for artificial intelligence workloads. It operates a global fleet of data centers serving enterprise customers and AI innovators.",
+  "headquarters": "Roseland, USA",
+  "id": "coreweave",
+  "law25_relevance": "Quebec organizations training or running AI workloads on CoreWeave use it as a processor of customer data, so its Trust Center commitments and certifications belong in the vendor inventory, and the cross-border posture of any Quebec personal information involved must be assessed.",
+  "mapping_features": [
+   "Its Trust Center states CoreWeave processes customer data solely to deliver and operate its Cloud services, that customers retain ownership and control of their data, and that data handling is governed by contractual commitments.",
+   "Its Trust Center states its privacy and security program supports customer compliance with GDPR and CCPA, with CoreWeave acting in its role as service provider or processor.",
+   "It publishes a compliance certification status document listing SOC 2 Type I and II attestations and ISO 27001, 27017, 27018, and 27701 certifications, plus HIPAA and HITRUST attestations."
+  ],
+  "name": "CoreWeave, Inc.",
+  "pricing_model": "usage-based GPU cloud pricing; public list prices unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "CoreWeave Trust Center: data handling, customer ownership, GDPR and CCPA support as processor",
+    "url": "https://coreweave.com/trust"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "CoreWeave compliance certification status: SOC 2, ISO 27001/27017/27018/27701, HIPAA, HITRUST",
+    "url": "https://cdn.prod.website-files.com/62ba1fb86485b6d5029975c4/69e7feacac672c65dde1cdb9_Compliance_Certification_Status_TrustCenter_04142026.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "NJBIZ: CoreWeave founded 2017, HQ Roseland NJ, AI cloud business",
+    "url": "https://njbiz.com/roselands-coreweave-secures-7-5b-debt-financing-round/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.coreweave.com/"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "dsr_automation"
+  ],
+  "data_residency": "unverified",
+  "description": "DoorDash, Inc. (Nasdaq: DASH) is a food delivery, grocery delivery, and local commerce platform headquartered in San Francisco, California. It operates in more than 25 countries following its acquisition of Deliveroo, serving consumers, dashers, and merchants.",
+  "headquarters": "San Francisco, USA",
+  "id": "doordash",
+  "law25_relevance": "DoorDash operates consumer services in Canada and handles consumer, dasher, and merchant personal data, including identifiers, location, payment, and biometric data, making it a relevant data holder and processor in Quebec data maps, with its opt-out and rights mechanisms worth mapping for DSR workflows.",
+  "mapping_features": [
+   "Its US consumer privacy policy enumerates categories collected: identifiers (name, email, phone, address), age and date of birth, biometric information for identity confirmation, payment information, commercial and order information, device and IP usage data, and sensitive information including precise geolocation and government-issued IDs.",
+   "Its privacy documentation describes disclosure of consumer health data to dashers, merchants, service providers, and group companies for order facilitation and service delivery.",
+   "Its privacy policy describes privacy rights, including opt-out mechanisms for sales and sharing of personal information."
+  ],
+  "name": "DoorDash, Inc.",
+  "pricing_model": "consumer delivery fees, merchant commissions, and subscriptions; exact tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "DoorDash US consumer privacy policy: categories of personal information collected",
+    "url": "https://help.doordash.com/en-ca/consumers/article/privacy-policy-united-states?ctry=US&divcode=MO"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "DoorDash privacy policy mirror: disclosure of consumer health data to dashers, merchants, and service providers",
+    "url": "https://github.com/weitzman/difficode/blob/HEAD/agreements/doordash/privacy.md"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "DoorDash HQ San Francisco, global platform operating in 25+ countries",
+    "url": "https://headquarterlocation.com/california/doordash-headquarters-corporate-office/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.doordash.com/"
+ },
+ {
+  "categories": [
+   "consent",
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Meta Platforms, Inc. (Nasdaq: META), headquartered in Menlo Park, California, is the company behind Facebook, Instagram, and WhatsApp. Its business includes consumer social products and advertising services, and it processes data both from its own products and from advertisers' business tools.",
+  "headquarters": "Menlo Park, USA",
+  "id": "meta",
+  "law25_relevance": "Meta's products and advertising tools collect extensive user data and receive advertiser-provided customer data, so Quebec organizations using Meta ads, pixels, or business tools must map Meta as a recipient of personal information and document the consent basis for that sharing.",
+  "mapping_features": [
+   "Meta's help documentation states the information collected across its products includes what users do on the products, what users provide when creating an account, and data about users provided by others, and that users can view, manage, and download their information in Accounts Center.",
+   "Its managed-enterprise documentation for Meta Horizon describes customer data submitted by organizations (names, email addresses, work titles, billing and payment information) and states personal data associated with managed Meta accounts is never used for consumer product or advertising personalization."
+  ],
+  "name": "Meta Platforms, Inc.",
+  "pricing_model": "advertising revenue model; free consumer products; enterprise tool pricing unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Meta help page: categories of information collected across Meta products; Accounts Center management",
+    "url": "https://www.facebook.com/help/1371941690899641?locale=en_US"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Meta help page: managed Meta accounts, organizational customer data, no ad personalization for managed accounts",
+    "url": "https://www.facebook.com/help/1607858770065755?locale=en_US"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Meta LinkedIn profile: HQ Menlo Park, CA",
+    "url": "https://www.linkedin.com/company/meta?trk=public_jobs_jserp-result_job-search-card-subtitle"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.meta.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Nebius Group N.V. (Nasdaq: NBIS), headquartered in Amsterdam, is an AI cloud company building full-stack infrastructure for AI workloads: large-scale GPU clusters, an AI-native cloud platform, and developer tools. Its portfolio also includes Avride (autonomous driving) and TripleTen (edtech), with stakes in Toloka and ClickHouse.",
+  "headquarters": "Amsterdam, Netherlands",
+  "id": "nebius",
+  "law25_relevance": "Nebius acts as a processor for customers' AI workloads under its DPA, with published subprocessor lists and change-notice mechanics; Quebec users of Nebius services must record it as a processor in their data maps and track subprocessor changes.",
+  "mapping_features": [
+   "Nebius Token Factory terms state that when Nebius processes personal data on a customer's behalf and under its instructions, the published Data Processing Agreement applies and forms part of the terms.",
+   "Its DPA materials describe per-service subprocessor lists (AI Cloud and Token Factory) with locations and processing activities, at least 15 days' prior notice of subprocessor changes, and customer rights to object or terminate the affected services.",
+   "Nebius describes acting as data controller for personal data processed for its own purposes, including account administration, billing, service communications, and customer support."
+  ],
+  "name": "Nebius Group N.V.",
+  "pricing_model": "usage-based AI cloud pricing; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Snapshot quoting Nebius Token Factory terms: DPA applies when Nebius processes personal data under customer instructions",
+    "url": "https://github.com/arcships/zdr-monitor/blob/HEAD/snapshots/e8f3528cf9f61230.md"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Snapshot quoting Nebius DPA: per-service subprocessor lists, 15-day change notice, objection and termination rights",
+    "url": "https://github.com/arcships/zdr-monitor/blob/HEAD/snapshots/a03dd15c9182af7b.md"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Snapshot quoting Nebius terms: controller role for account, billing, and support data",
+    "url": "https://github.com/arcships/zdr-monitor/blob/HEAD/snapshots/fd20c58a72d5436e.md"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Nebius press release: AI cloud company, Nasdaq NBIS, HQ Amsterdam",
+    "url": "https://nebius.com/newsroom/nebius-acquires-inferize-to-strengthen-nebius-token-factorys-production-inference-stack"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://nebius.com/"
+ },
+ {
+  "categories": [
+   "data_mapping",
+   "consent"
+  ],
+  "data_residency": "unverified",
+  "description": "PDD Holdings Inc. (Nasdaq: PDD), formerly Pinduoduo Inc., is a multinational commerce group headquartered in Dublin, Ireland, with principal executive offices at First Floor, 25 St Stephen's Green, Dublin 2, per its SEC 20-F. It owns and operates Pinduoduo and Temu; its customers are third-party merchants selling on its platforms, and revenue comes from transaction and online marketing services.",
+  "headquarters": "Dublin, Ireland",
+  "id": "pdd-holdings",
+  "law25_relevance": "Temu operates in Canada and collects detailed consumer data, including identifiers, purchases, payment, device, and location data; PDD Holdings' Dublin domicile and the data flows to its platforms are relevant entries for Quebec data maps covering consumer transactions, with its consent notices worth recording.",
+  "mapping_features": [
+   "Temu's privacy policy enumerates collected categories: account and profile information, purchase and payment data, shipping addresses, customer support communications, device data, service usage information, IP-based general location, and California-notice categories including identifiers, commercial information, and inferences.",
+   "Its privacy documents describe data received from third-party sources (public authorities, public records, merchants, other parties) and automatic device collection (device model, operating system, language settings, unique device identifiers)."
+  ],
+  "name": "PDD Holdings Inc.",
+  "pricing_model": "transaction and marketing services revenue on marketplace platforms; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Temu privacy and cookie policy: categories of personal information collected and purposes",
+    "url": "https://www.temu.com/ch-en/privacy-and-cookie-policy.html?title=Privacy%20%26%20Cookie%20Policy&_bg_fs=0"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "PDD Holdings 20-F: principal executive offices Dublin, business overview",
+    "url": "https://www.sec.gov/Archives/edgar/data/1737806/000110465926050727/pdd-20251231x20f.htm?utm_source=chatgpt.com"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "PDD Holdings: multinational commerce group owning Pinduoduo and Temu",
+    "url": "https://www.stocktitan.net/news/PDD/pdd-holdings-announces-fourth-quarter-2022-and-fiscal-year-2022-win1in9oaxk0.html"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://pddholdings.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Shopify Inc. (NYSE/TSX: SHOP), founded in 2006, is a Canadian commerce platform company with its principal corporate office at 151 O'Connor Street, Ottawa, Ontario. It provides cloud-based storefront, payments, and fulfillment software hosting millions of merchant stores across more than 175 countries.",
+  "headquarters": "Ottawa, Canada",
+  "id": "shopify",
+  "law25_relevance": "Shopify is the commerce platform for many Quebec merchants and acts as processor of their customers' personal data under its DPA, with a published subprocessor list; merchants must map Shopify and its subprocessors in their own data inventories.",
+  "mapping_features": [
+   "Shopify publishes a Data Processing Addendum under which it processes merchants' customer personal data as processor, maintains an updated list of subprocessors, and provides a mechanism for notice of and objection to new subprocessors.",
+   "Its Processor Policy describes the contractual obligations imposed in writing on subprocessors (confidentiality, security, processing only on instructions) and Shopify's assistance to merchants in responding to data subjects' protection-rights requests."
+  ],
+  "name": "Shopify Inc.",
+  "pricing_model": "SaaS subscription tiers plus transaction fees; exact figures unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Shopify Data Processing Addendum: processor role, subprocessor list, notice and objection mechanism",
+    "url": "https://www.shopify.com/legal/dpa"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Shopify Processor Policy: subprocessor obligations, assistance with data subject rights requests",
+    "url": "https://cdn.shopify.com/static/Shopify-Processor-Policy.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Shopify corporate office: principal office Ottawa, Ontario",
+    "url": "https://corporateofficeheadquarters.com/shopify/"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.shopify.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Strategy Inc. (Nasdaq: MSTR), formerly MicroStrategy Incorporated (rebranded in 2025), is headquartered in Tysons Corner, Virginia. It provides enterprise analytics software, including Strategy Mosaic, a universal semantic layer for governed analytics, and Strategy One, an AI-powered analytics platform; it is also known as a large corporate holder of bitcoin.",
+  "headquarters": "Tysons Corner, USA",
+  "id": "strategy",
+  "law25_relevance": "Strategy's analytics software processes enterprise data inside customer environments, so in Quebec data maps it appears as a vendor with access to governed business data; its confidentiality commitments are the relevant contractual safeguards to record.",
+  "mapping_features": [
+   "Strategy's published privacy and security statement for its Health Center customer-experience program states that information received from customers is treated as confidential and not shared with other entities, and is returned on request when the program expires.",
+   "Its company profile describes Strategy Mosaic as a universal semantic layer that lets enterprises define business logic once and power governed insights across BI tools and AI agents."
+  ],
+  "name": "Strategy Inc.",
+  "pricing_model": "software licenses and subscriptions; pricing tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Strategy knowledge base: Health Center privacy and security statement, confidentiality of collected information",
+    "url": "https://community.strategy.com/article/KB36742-What-is-MicroStrategy-Health-Center-s-Customer"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Strategy LinkedIn profile: HQ Tysons Corner, Mosaic semantic layer, Strategy One platform",
+    "url": "https://www.linkedin.com/company/strategy/"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Strategy Inc.: formerly MicroStrategy, HQ Tysons Corner VA, BI software business",
+    "url": "https://en.wikipedia.org/wiki/MicroStrategy"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.strategy.com/"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "unverified",
+  "description": "Thomson Reuters Corporation is a Toronto-headquartered information services company (19 Duncan Street, Toronto), serving legal, tax, accounting, and compliance professionals with products including Westlaw and CLEAR. It aggregates content and data for professional workflows and risk, fraud, and compliance use cases.",
+  "headquarters": "Toronto, Canada",
+  "id": "thomson-reuters",
+  "law25_relevance": "Thomson Reuters aggregates and sells personal information through its public-records and risk products, sourcing from brokers and public records, so Quebec organizations using these products must map it as a data supplier; its own account data collection is also mappable.",
+  "mapping_features": [
+   "Its privacy statement lists purposes for collecting and using personal information, including fulfilling contracts, operating and improving services, annotating content, monitoring usage, and security.",
+   "Its Public Records Privacy Statement describes its Risk, Fraud, and Compliance products (CLEAR, Public Records on Westlaw) that obtain personal information from third-party business partners including data providers and brokers, publicly available sources including consumer reporting agencies and government entities, and other generally available sources.",
+   "Its account privacy notice lists information collected: account identifiers, names, email addresses, phone numbers, device details, IP addresses, and verification data including MFA phone numbers."
+  ],
+  "name": "Thomson Reuters Corporation",
+  "pricing_model": "subscription-based information products; pricing tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Thomson Reuters privacy statement: collection purposes",
+    "url": "https://www.thomsonreuters.com/en/privacy-statement"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Public Records Privacy Statement: data sources for CLEAR and Westlaw public-records products",
+    "url": "https://legal.thomsonreuters.com/en/legal-notices/privacy-records?CID=TRSite"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Thomson Reuters Account privacy notice: account, personal, technical, and verification data collected",
+    "url": "https://account.thomsonreuters.com/docs/Privacy-Notice.pdf"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Thomson Reuters locations: HQ Toronto, 19 Duncan St",
+    "url": "https://craft.co/thomson-reuters/locations"
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://www.thomsonreuters.com/en.html"
+ },
+ {
+  "categories": [
+   "data_mapping"
+  ],
+  "data_residency": "Google Cloud lets customers select a specific region or multi-region for listed services, and Google states it will store customer data at rest only within the selected region. Published regions include Montreal (northamerica-northeast1) in Quebec.",
+  "description": "Alphabet Inc. (Nasdaq: GOOGL/GOOG), headquartered at the Googleplex in Mountain View, California, is the parent company of Google. Google is its largest operating unit, covering advertising, Search, YouTube, Android, and Google Cloud; other subsidiaries include Waymo, Verily, and Google DeepMind.",
+  "headquarters": "Mountain View, USA",
+  "id": "alphabet",
+  "law25_relevance": "Google Cloud is a common processor for Quebec organizations, with selectable storage regions including Montreal and contractual data-at-rest commitments, so it belongs in vendor inventories as a processor; Alphabet's consumer ad products also collect user data, making it both a processor and a data recipient in Quebec data maps.",
+  "mapping_features": [
+   "Google Cloud's service terms include a data location clause: for listed services, the customer may select a region or multi-region and Google will store customer data at rest only within the selected region, with replication within the same country for backup and reliability purposes.",
+   "Google Cloud publishes per-service data residency documentation (for example, Agent Assist regionalization and Security Command Center data residency) describing data at rest staying within the selected region, and publishes a locations list including Montreal (northamerica-northeast1)."
+  ],
+  "name": "Alphabet Inc.",
+  "pricing_model": "advertising revenue plus Google Cloud usage-based pricing; tiers unverified",
+  "retention_features": {
+   "claims": [],
+   "notes": "No vendor-published statutory retention schedule found in the listed sources; retention is governed by contract and the company's published privacy documentation.",
+   "verify": true
+  },
+  "sources": [
+   {
+    "consulted": "2026-10-05",
+    "note": "Google Cloud service terms: data location clause, customer-selected region, data at rest",
+    "url": "https://cloud.google.com/legal/archive/terms/service-terms/index-20260129"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Google Cloud locations documentation: region list including Montreal (northamerica-northeast1)",
+    "url": "https://docs.cloud.google.com/workstations/docs/locations"
+   },
+   {
+    "consulted": "2026-10-05",
+    "note": "Alphabet Inc.: HQ Mountain View, parent of Google, GOOGL/GOOG",
+    "url": "https://en.wikipedia.org/wiki/Alphabet,_Inc."
+   }
+  ],
+  "verification": {
+   "checked_utc": "2026-10-05T03:43:27Z",
+   "status": "verified"
+  },
+  "website": "https://abc.xyz/"
+ }
+]
