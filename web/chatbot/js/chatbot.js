@@ -187,6 +187,7 @@
       chatAskCat: "What kind of data flows from {a} to {b}?",
       chatAskType: "What kind of item is {label}?",
       chatAmbiguous: "Which one do you mean?",
+      chatAmbiguousType: "Which {type} do you mean?",
       chatNotFound: "I could not find {name} on the map.",
       chatCloseNames: "Closest matches: {names}.",
       chatNoEdge: "I found no flow involving {name}.",
@@ -234,6 +235,8 @@
       chatAskCat: "Quel type de données circule de {a} vers {b}?",
       chatAskType: "Quel type d’élément est « {label} »?",
       chatAmbiguous: "Lequel voulez-vous dire?",
+      chatAmbiguousType: "De quel {type} parlez-vous ?",
+      chatAmbiguousTypeF: "De quelle {type} parlez-vous ?",
       chatNotFound: "Je n’ai pas trouvé « {name} » sur la carte.",
       chatCloseNames: "Ressemblances : {names}.",
       chatNoEdge: "Je n’ai trouvé aucun flux lié à « {name} ».",
@@ -613,6 +616,41 @@
     };
   }
 
+  /* Bare type words ("remove the system", "supprime le tiers"): the labels
+     never contain the word, so resolveName reports "none". When the query
+     itself names a node type, resolve against the nodes OF that type:
+     exactly one resolves silently, several ask with a type-specific
+     question, none falls through to the not-found plan. */
+  function resolveNameOrType(name, nodes) {
+    var res = resolveName(name, nodes);
+    if (res.status !== "none") return res;
+    var t = detectType(name);
+    if (!t) return res;
+    var ids = Object.keys(nodes || {}).filter(function (id) {
+      return nodes[id] && nodes[id].type === t;
+    });
+    if (ids.length === 1) return { status: "ok", id: ids[0] };
+    if (ids.length > 1) return { status: "ambiguous_type", ids: ids, type: t };
+    return res;
+  }
+
+  function typeDisambigPlan(field, res, parsed, st, lang) {
+    var L = lang === "fr" ? "fr" : "en";
+    var RS = refineStrings(lang);
+    var typeLabel = String((RS.typeName || {})[res.type] || res.type).toLowerCase();
+    /* French agreement: only "destruction sécurisée" is feminine. */
+    var key = (L === "fr" && res.type === "destruction") ? "chatAmbiguousTypeF" : "chatAmbiguousType";
+    return {
+      action: "ask",
+      askKey: key, askVars: { type: typeLabel },
+      options: res.ids.map(function (id) {
+        var l = labelOf(st.nodes, id);
+        return { value: l, label: l };
+      }),
+      resume: { kind: "disambig", field: field, parsed: parsed }
+    };
+  }
+
   /**
    * Turn a parsed intent plus live state into an execution plan.
    * Pure: no DOM, no executor calls. Destructive intents return
@@ -644,8 +682,9 @@
       }
       case "relabel": {
         if (!st) return { action: "nomap" };
-        var rr = resolveName(parsed.from, st.nodes);
+        var rr = resolveNameOrType(parsed.from, st.nodes);
         if (rr.status === "ambiguous") return disambigPlan("from", rr, parsed, st, L);
+        if (rr.status === "ambiguous_type") return typeDisambigPlan("from", rr, parsed, st, L);
         if (rr.status !== "ok") return notFoundPlan(parsed.from, rr, L);
         return {
           action: "apply",
@@ -656,8 +695,9 @@
       }
       case "retype": {
         if (!st) return { action: "nomap" };
-        var rt = resolveName(parsed.name, st.nodes);
+        var rt = resolveNameOrType(parsed.name, st.nodes);
         if (rt.status === "ambiguous") return disambigPlan("name", rt, parsed, st, L);
+        if (rt.status === "ambiguous_type") return typeDisambigPlan("name", rt, parsed, st, L);
         if (rt.status !== "ok") return notFoundPlan(parsed.name, rt, L);
         if (!parsed.type) {
           return {
@@ -673,18 +713,21 @@
       }
       case "remove_node": {
         if (!st) return { action: "nomap" };
-        var rn = resolveName(parsed.name, st.nodes);
+        var rn = resolveNameOrType(parsed.name, st.nodes);
         if (rn.status === "ambiguous") return disambigPlan("name", rn, parsed, st, L);
+        if (rn.status === "ambiguous_type") return typeDisambigPlan("name", rn, parsed, st, L);
         if (rn.status !== "ok") return notFoundPlan(parsed.name, rn, L);
         return planRemoveNodeConfirm(st, rn.id, L);
       }
       case "remove_edge": {
         if (!st) return { action: "nomap" };
         if (parsed.a && parsed.b) {
-          var ra = resolveName(parsed.a, st.nodes);
-          var rb = resolveName(parsed.b, st.nodes);
+          var ra = resolveNameOrType(parsed.a, st.nodes);
+          var rb = resolveNameOrType(parsed.b, st.nodes);
           if (ra.status === "ambiguous") return disambigPlan("a", ra, parsed, st, L);
           if (rb.status === "ambiguous") return disambigPlan("b", rb, parsed, st, L);
+          if (ra.status === "ambiguous_type") return typeDisambigPlan("a", ra, parsed, st, L);
+          if (rb.status === "ambiguous_type") return typeDisambigPlan("b", rb, parsed, st, L);
           if (ra.status !== "ok") return notFoundPlan(parsed.a, ra, L);
           if (rb.status !== "ok") return notFoundPlan(parsed.b, rb, L);
           var edge = findEdge(st.edges, ra.id, rb.id);
@@ -696,8 +739,9 @@
           }
           return planRemoveEdgeConfirm(st, edge, L);
         }
-        var re = resolveName(parsed.name, st.nodes);
+        var re = resolveNameOrType(parsed.name, st.nodes);
         if (re.status === "ambiguous") return disambigPlan("name", re, parsed, st, L);
+        if (re.status === "ambiguous_type") return typeDisambigPlan("name", re, parsed, st, L);
         if (re.status !== "ok") return notFoundPlan(parsed.name, re, L);
         var touching = st.edges.filter(function (e) { return e.a === re.id || e.b === re.id; });
         if (!touching.length) {
@@ -719,10 +763,12 @@
       }
       case "add_edge": {
         if (!st) return { action: "nomap" };
-        var aa = resolveName(parsed.a, st.nodes);
-        var ab = resolveName(parsed.b, st.nodes);
+        var aa = resolveNameOrType(parsed.a, st.nodes);
+        var ab = resolveNameOrType(parsed.b, st.nodes);
         if (aa.status === "ambiguous") return disambigPlan("a", aa, parsed, st, L);
         if (ab.status === "ambiguous") return disambigPlan("b", ab, parsed, st, L);
+        if (aa.status === "ambiguous_type") return typeDisambigPlan("a", aa, parsed, st, L);
+        if (ab.status === "ambiguous_type") return typeDisambigPlan("b", ab, parsed, st, L);
         if (aa.status !== "ok") return notFoundPlan(parsed.a, aa, L);
         if (ab.status !== "ok") return notFoundPlan(parsed.b, ab, L);
         if (findEdge(st.edges, aa.id, ab.id)) {
@@ -1163,6 +1209,11 @@
       var name = (lang === "fr") ? I18n.templateName(state.chips, "fr") : t.name;
       botMsg(fill(S.chatTemplateMatched, { name: name, n: t.items.length }));
       var labels = templateLabels(t);
+      /* Template item labels are authored in English; the French build log
+         shows the localized names (vendor proper nouns pass through). */
+      if (labels.length && lang === "fr" && Narr && typeof Narr.labelFr === "function") {
+        labels = labels.map(function (l) { return Narr.labelFr(l); });
+      }
       if (labels.length) botMsg(fill(S.chatTemplateNodes, { labels: labels.join(", ") }));
       recipeReady();
     }
@@ -1681,6 +1732,8 @@
       RECOVERY_INTENTS: Object.keys(RECOVERY_INTENTS),
       parseRefineIntent: parseRefineIntent,
       resolveName: resolveName,
+      resolveNameOrType: resolveNameOrType,
+      detectType: detectType,
       gapAnalysis: gapAnalysis,
       gapLines: gapLines,
       planRefine: planRefine,

@@ -130,6 +130,9 @@
     typeSystem: "System",
     typeThird: "Third party",
     typeDestroy: "Secure destruction",
+    canvasAriaBlank: "Blank mapping canvas",
+    canvasAriaOne: "Mapping canvas, 1 item",
+    canvasAriaMany: "Mapping canvas, {n} items",
     catContact: "Contact / identity",
     catPayment: "Payment",
     catMarketing: "Marketing / consent"
@@ -407,10 +410,17 @@
     function redraw() {
       /* The canvas header names the state: blank until the first node
          lands (hand-drawn or assistant-painted), draft map after, blank
-         again on wipe. */
+         again on wipe. The aria-label mirrors the same state so screen
+         readers hear the live node count, never a stale "blank". */
+      var nodeCount = Object.keys(nodes).length;
       var simHead = document.getElementById("builder-simhead");
-      if (simHead) simHead.textContent = Object.keys(nodes).length ?
+      if (simHead) simHead.textContent = nodeCount ?
         (T.canvasDraft || "Draft map") : (T.canvasBlank || "Blank canvas");
+      svg.setAttribute("aria-label", nodeCount ?
+        (nodeCount === 1
+          ? (T.canvasAriaOne || "Mapping canvas, 1 item")
+          : (T.canvasAriaMany || "Mapping canvas, {n} items").replace("{n}", String(nodeCount))) :
+        (T.canvasAriaBlank || "Blank mapping canvas"));
       while (svg.firstChild) svg.removeChild(svg.firstChild);
       edges.forEach(function (e) {
         var A = nodes[e.a], B = nodes[e.b];
@@ -436,11 +446,17 @@
       return { x: Math.max(40, Math.min(600, cx)), y: Math.max(40, Math.min(380, cy)) };
     }
 
+    /* Single-click empty canvas: add one node. This goes through commitOp
+       like every other add path (kind picker, double-click quick-add), so
+       a live assistant session learns the node immediately. The old direct
+       localAdd left the node local-only, and the next commitOp's
+       resyncFromExecutor repainted from executor state and silently
+       dropped it. */
     function addNode(pt) {
       var label = tx("untitled") || "Untitled node";
-      localAdd(pt, "collection", label);
-      markDirty();
-      redraw();
+      commitOp({ op: "add_node", type: "collection", label: label }, function () {
+        localAdd(pt, "collection", label);
+      });
       say((T.added || "Added") + ": " + label);
     }
 
@@ -469,6 +485,10 @@
        -------------------------------------------------------------- */
     var press = null;
     var LONG_PRESS_MS = 500, MOVE_CANCEL_PX = 10, DRAG_START_PX = 8, SNAP_PX = 6;
+    /* Double-tap window: a second tap on the same node inside it is the
+       first half of a double-click (rename), not a second single click,
+       so its tap-selection side effects are suppressed. */
+    var DBL_TAP_MS = 450, lastTapId = null, lastTapT = 0;
     var guideEls = [];
     var docMove = null, docUp = null;
 
@@ -582,8 +602,17 @@
         var id = target.getAttribute("data-node");
         if (!nodes[id]) return;
         var pt = svgPoint(evt);
+        /* Double-tap suppression: the two taps of a double-click each used
+           to fire activateNode, so a double-click toggled selection (or
+           armed a connection) instead of renaming. A second tap on the same
+           node inside DBL_TAP_MS skips the toggle; the dblclick handler
+           then opens the inline rename. Slower taps and taps on another
+           node keep the exact single-click select/connect behavior. */
+        var nowMs = Date.now();
+        var isDoubleTap = (lastTapId === id && nowMs - lastTapT < DBL_TAP_MS);
+        lastTapId = id; lastTapT = nowMs;
         var before = selected;
-        activateNode(id);
+        if (!isDoubleTap) activateNode(id);
         press = {
           id: id, sx: pt.x, sy: pt.y,
           cx: (evt.clientX || 0), cy: (evt.clientY || 0),
@@ -592,8 +621,10 @@
           timer: null, dragging: false, menuOpened: false
         };
         /* Long-press (touch): 500ms opens the context menu. Any real
-           movement cancels it and the gesture becomes a drag. */
-        if (evt.pointerType === "touch" || evt.pointerType === "pen") {
+           movement cancels it and the gesture becomes a drag. Skipped on
+           the second tap of a double-tap: the rename is about to open and
+           a menu landing on top of it would fight the editor. */
+        if ((evt.pointerType === "touch" || evt.pointerType === "pen") && !isDoubleTap) {
           press.timer = setTimeout(function () {
             var q = press;
             if (!q || q.dragging || q.menuOpened || !nodes[q.id]) return;
@@ -605,6 +636,7 @@
         addDocMoveUp();
       } else {
         press = null;
+        lastTapId = null;
         addNode(svgPoint(evt));
       }
     });
@@ -889,6 +921,10 @@
       if (!def) return;
       closeMenu(false);
       closeRename();
+      /* A rename never leaves the node armed for connection: the
+         double-click that opens it already tapped the node once, and a
+         lingering selection would turn the next tap into an edge. */
+      if (selected) { selected = null; redraw(); }
       var host = menuHost();
       var input = document.createElement("input");
       input.type = "text";
@@ -1434,9 +1470,11 @@
         longPressMs: LONG_PRESS_MS,
         moveCancelPx: MOVE_CANCEL_PX,
         dragStartPx: DRAG_START_PX,
-        snapPx: SNAP_PX
+        snapPx: SNAP_PX,
+        doubleTapMs: DBL_TAP_MS
       },
       pressActive: function () { return !!press; },
+      selected: function () { return selected; },
       longPressArmed: function () { return !!(press && press.timer); },
       menuOpen: function () { return !!openMenuRef; },
       menuNode: function () { return openMenuRef ? openMenuRef.nodeId : null; },
