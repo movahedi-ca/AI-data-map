@@ -48,6 +48,16 @@ a matching node token.
 
 Open spec question (flagged for the full Phase 4 run, not resolved here):
 whether the frozen specs should pin down the empty-canvas anchor rule.
+
+RESOLVED in the Phase 4 full run (2026-10-05): keep it teacher-local, do
+not pin it in specs/. Rationale: specs/ is frozen (Phase 0 rule: no
+changes without a version bump and retraining gate), and the anchor choice
+is a teacher labeling policy, not executor semantics or token meaning. The
+executor already implements and documents the rule in code
+(teacher/lib/executor.mjs, _doFlag: "Teacher encoding rule for this spec
+corner; the frozen specs do not pin it down"), and this file documents the
+union-slot rule the loader enforces. If a second teacher implementation
+ever appears, revisit: divergent anchor policies would poison supervision.
 - `step_index`: int, position of this step inside the episode, 0-based.
 - `input_ids`: array of uint16 token ids following the frozen
   `specs/token-schema.json`: BOS, node tokens, SNAPSHOT_SEP, edge tokens,
