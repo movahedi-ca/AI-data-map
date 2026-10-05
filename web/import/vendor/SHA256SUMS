@@ -1,0 +1,6 @@
+cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41  xlsx.full.min.js
+# SheetJS xlsx.full.min.js, version 0.20.3
+# Source: https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js
+# Pinned 2026-10-04. This pin keeps the hash-based CSP clean: the parser
+# layer loads this file from our own origin only, no new script-src host ever.
+# Named fallback if this build ever goes bad: ExcelJS (maintained, MIT).
