@@ -228,6 +228,20 @@
 
     function applyView() {
       viewport.setAttribute("transform", "translate(" + view.tx + "," + view.ty + ") scale(" + view.k + ")");
+      updateLabelScale();
+    }
+
+    /* Labels keep a constant screen size at every zoom: each label is
+       counter-scaled by 1/k around its anchor point (0,40 in node-local
+       coords). Without this, fit-to-view on a 45-node map lands near k=0.35
+       and 14px labels shrink to about 5px, unreadable. */
+    function labelTransform() {
+      return "translate(0,40) scale(" + (1 / view.k) + ")";
+    }
+    function updateLabelScale() {
+      var lt = labelTransform();
+      var labels = viewport.querySelectorAll(".node-label");
+      for (var i = 0; i < labels.length; i++) labels[i].setAttribute("transform", lt);
     }
 
     /* shapeFor: faithful port of the builder renderer. */
@@ -261,7 +275,7 @@
         s.appendChild(el("line", { x1: -13, y1: 13, x2: 13, y2: -13, stroke: "#b3401f", "stroke-width": 3 }));
       }
       g.appendChild(s);
-      var t = el("text", { "class": "node-label", y: 40, "text-anchor": "middle" });
+      var t = el("text", { "class": "node-label", "text-anchor": "middle", transform: labelTransform() });
       t.textContent = def.label;
       g.appendChild(t);
       return g;
@@ -518,14 +532,12 @@
 
     on(svg, "keydown", function (evt) {
       var nodeEl = evt.target && evt.target.closest ? evt.target.closest("[data-node]") : null;
-      if (nodeEl) {
-        if (evt.key === "Enter" || evt.key === " ") {
-          evt.preventDefault();
-          toggleSelect(nodeEl.getAttribute("data-node"));
-        }
+      if (nodeEl && (evt.key === "Enter" || evt.key === " ")) {
+        evt.preventDefault();
+        toggleSelect(nodeEl.getAttribute("data-node"));
         return;
       }
-      if (evt.target !== svg) return;
+      if (evt.target !== svg && !nodeEl) return;
       var handled = true;
       switch (evt.key) {
         case "+": case "=": zoomCentered(ZOOM_STEP); break;
