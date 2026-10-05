@@ -3,7 +3,8 @@
  *
  * Extends the Phase 1 SpreadsheetML exporter (window.DMEngine.
  * buildSpreadsheetML, which writes the Nodes/Noeuds and Connections/Liens
- * sheets) with two more sheets:
+ * sheets) with three more sheets:
+ *   - "Cover" / "Couverture": the final disclaimer wording (prod launch).
  *   - "Review" / "Révision": the review checklist (one row per artifact).
  *   - "Confirmations": the confirmation record (domain contract 6.2).
  * Every sheet carries draft-for-review labeling. The result re-imports
@@ -90,6 +91,27 @@
     return d.record_type + ": " + range + (d.statute ? " (" + d.statute + ")" : "");
   }
 
+  function coverSheet(lang) {
+    var rows = lang === "fr" ? [
+      ["BROUILLON À RÉVISER. Vérifiez chaque ligne avant usage. Pas un avis juridique."],
+      [""],
+      ["Ce fichier est un inventaire de départ pour votre travail de gouvernance et de calendrier de conservation lié à la Loi 25. Il ne constitue pas une déclaration de conformité de votre organisation."],
+      [""],
+      ["Les colonnes de conservation indiquent des plages avec la loi citée et une date de vérification, selon la règle de conservation documentée de l'outil. Les lignes marquées « à vérifier » exigent une révision humaine avant toute utilisation."],
+      [""],
+      ["Liste de révision incluse : confirmez ou corrigez chaque élément placé automatiquement, vérifiez chaque marque « à vérifier », faites réviser par un avocat avant de vous fier à ce fichier."]
+    ] : [
+      ["DRAFT FOR REVIEW. Verify every row before use. Not legal advice."],
+      [""],
+      ["This file is a starting inventory for Law 25 governance and retention-schedule work. It is not a statement that your organization is compliant."],
+      [""],
+      ["Retention columns show ranges with the cited statute and an as-of date, per the retention rule in the tool's documentation. Rows flagged \"verify\" need human review before you rely on them."],
+      [""],
+      ["Review checklist included: confirm or fix every auto-placed node, check each \"verify\" flag, have counsel review before relying on this file."]
+    ];
+    return sheet(lang === "fr" ? "Couverture" : "Cover", rows.map(function (r) { return row(r); }));
+  }
+
   function reviewSheet(checklist, lang) {
     var name = lang === "fr" ? "Révision" : "Review";
     var head = lang === "fr"
@@ -132,7 +154,7 @@
       base = minimalInventory(state, l);
     }
     var text = base.replace(/^﻿/, "");
-    var extra = reviewSheet(checklist, l) + confirmationsSheet(confirmations, l);
+    var extra = coverSheet(l) + reviewSheet(checklist, l) + confirmationsSheet(confirmations, l);
     text = text.replace(/<\/Workbook>\s*$/, extra + "</Workbook>");
     return "﻿" + text;
   }

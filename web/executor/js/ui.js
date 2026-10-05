@@ -278,22 +278,34 @@
       return { nodes: st.nodes, edges: st.edges };
     }
 
+    /* Paint the assistant's draft onto the real step-5 builder canvas via
+       the window.DMImport seam (builder.js). The view (viewBox / pan /
+       zoom) is captured before applyState and restored after, so painting
+       never refits or jumps the user's zoom. When the T&C gate has not
+       opened the canvas yet, DMImport queues the state and applies it on
+       boot, so no step's output is lost. */
     function paintCanvas() {
       try {
-        if (root.DMImport && typeof root.DMImport.applyState === "function") {
-          root.DMImport.applyState(canvasState());
+        var DMI = root.DMImport;
+        if (DMI && typeof DMI.applyState === "function") {
+          var v = (typeof DMI.getView === "function") ? DMI.getView() : null;
+          DMI.applyState(canvasState());
+          if (v && typeof DMI.setView === "function") DMI.setView(v);
         }
       } catch (e) { /* canvas is best-effort choreography */ }
     }
 
+    /* Bloom the just-added node on the builder canvas. Called AFTER
+       paintCanvas: applyState re-renders the canvas, so blooming before
+       would target detached elements. */
     function bloom(nodeId) {
       try {
-        var n = document.querySelector('[data-node="' + nodeId + '"]');
+        var n = document.querySelector('#builder-canvas [data-node="' + nodeId + '"]');
         if (n) {
           n.classList.add("s1-bloom");
           setTimeout(function () { n.classList.remove("s1-bloom"); }, 1200);
         }
-        var edges = document.querySelectorAll("#dm-viewport .edge");
+        var edges = document.querySelectorAll("#builder-canvas .edge");
         if (edges.length) {
           var last = edges[edges.length - 1];
           last.classList.add("s1-bloom-edge");
@@ -302,17 +314,24 @@
       } catch (e) { /* ignore */ }
     }
 
+    function bloomForStep(step) {
+      var p = step.params || {};
+      if (step.action_name === "add_node" || step.action_name === "add_collection_point") {
+        bloom(p.node_id);
+      } else if (step.action_name === "connect") {
+        bloom(p.b);
+      }
+    }
+
     function narrateStep(step) {
       var ex = H.controller.executor();
       var ctx = {};
       var p = step.params;
       if (step.action_name === "add_node" || step.action_name === "add_collection_point") {
         ctx.label = p.label;
-        bloom(p.node_id);
       } else if (step.action_name === "connect") {
         ctx.a_label = ex._nodes[p.a] ? ex._nodes[p.a].label : p.a;
         ctx.b_label = ex._nodes[p.b] ? ex._nodes[p.b].label : p.b;
-        bloom(p.b);
       } else if (step.action_name === "set_field") {
         ctx.label = ex._nodes[p.node_id] ? ex._nodes[p.node_id].label : p.node_id;
       } else if (step.action_name === "set_retention") {
@@ -334,13 +353,33 @@
 
     function logStep(text, cls) {
       var li = el("li", "s1-step" + (cls ? " " + cls : ""), text);
+      li.style.setProperty("--s1-i", String(stepLog.children.length % 5));
       stepLog.appendChild(li);
       li.scrollIntoView({ block: "nearest" });
+      pulseTrust();
       return li;
     }
 
+    function pulseTrust() {
+      try {
+        trustBar.classList.remove("s1-pulse");
+        void trustBar.offsetWidth;
+        trustBar.classList.add("s1-pulse");
+      } catch (e) { /* cosmetic only */ }
+    }
+
+    /* The run goes through the single page seam
+       window.execute_mapping_workflow (workflow.js): ready, start, and the
+       model step loop live there; this function owns the UI around it
+       (status, step log, canvas paint + bloom, flag pause). */
     async function startRun() {
       if (state.running || !state.template) return;
+      var wf = root.execute_mapping_workflow;
+      if (typeof wf !== "function") {
+        console.error("[s1] execute_mapping_workflow seam is not loaded.");
+        statusLine.textContent = S.engineFailed;
+        return;
+      }
       state.running = true;
       state.stopRequested = false;
       state.generation++;
@@ -352,79 +391,59 @@
       doneBox.hidden = true;
       logTitle.focus();
       statusLine.textContent = S.loadingModel;
-      /* Engine init (WASM + model load): never render raw engine errors,
-         stacks, or policy internals. Plain message for the user, technical
-         detail to the console only. */
-      try {
-        await H.ready();
-      } catch (e) {
-        console.error("[s1] engine init failed:", e);
-        statusLine.textContent = S.engineFailed;
-        state.running = false;
-        setModeLocked(false);
-        startOverBtn.focus();
-        return;
-      }
-      statusLine.textContent = S.modelReady;
-      try {
-        H.start(state.template);
-      } catch (e) {
-        console.error("[s1] run start failed:", e);
-        statusLine.textContent = S.engineFailed;
-        state.running = false;
-        setModeLocked(false);
-        startOverBtn.focus();
-        return;
-      }
-      paintCanvas();
-      refreshNet();
 
-      var aborted = false;
-      while (!aborted) {
-        if (myGen !== state.generation) return; /* torn down (Start over) */
-        if (state.stopRequested) {
-          try {
-            var ab = H.abort(null, lang);
-            var abTexts = Narr.narrate("abort_session", { reason: ab.reason || "" }, null, {});
-            logStep(lang === "fr" ? abTexts.fr : abTexts.en, "s1-aborted");
-          } catch (e) { /* already terminated */ }
-          statusLine.textContent = S.stopped;
-          aborted = true;
-          break;
-        }
-        var step;
-        try {
-          step = await H.stepOnce();
-        } catch (e) {
-          /* Per-step failure: plain message in the log and status line;
-             technical detail to the console only. */
-          console.error("[s1] step failed:", e);
-          logStep(S.stepFailed, "s1-error");
-          statusLine.textContent = S.stepFailed;
-          aborted = true;
-          break;
-        }
-        if (myGen !== state.generation) return; /* torn down (Start over) */
-        paintCanvas();
-        logStep(narrateStep(step));
-        refreshNet();
-        if (step.terminal === "flag_open") {
-          await pauseOnFlag();
-          if (myGen !== state.generation) return; /* torn down (Start over) */
-          continue;
-        }
-        if (step.terminal === "aborted") {
-          statusLine.textContent = S.stopped;
-          aborted = true;
-          break;
-        }
-        if (step.terminal === "complete") break;
-        await new Promise(function (r) { setTimeout(r, 550); });
+      var res;
+      try {
+        res = await wf(state.template, {
+          lang: lang,
+          paceMs: 550,
+          isCurrent: function () { return myGen === state.generation; },
+          shouldStop: function () { return state.stopRequested; },
+          onTicket: function () {
+            statusLine.textContent = S.modelReady;
+            paintCanvas();
+            refreshNet();
+          },
+          onStep: function (step) {
+            if (myGen !== state.generation) return;
+            /* Paint first (applyState re-renders), then bloom the new
+               node, then narrate. */
+            paintCanvas();
+            bloomForStep(step);
+            logStep(narrateStep(step));
+            refreshNet();
+          },
+          onFlag: pauseOnFlag,
+          onError: function (err, phase) {
+            /* Never render raw engine errors, stacks, or policy
+               internals. Plain message for the user, technical detail
+               to the console only. */
+            console.error("[s1] run failed (" + phase + "):", err);
+            logStep(phase === "step" ? S.stepFailed : S.engineFailed, "s1-error");
+            statusLine.textContent = phase === "step" ? S.stepFailed : S.engineFailed;
+          }
+        });
+      } catch (e) {
+        /* Engine or step failure already surfaced via onError. */
+        state.running = false;
+        stopBtn.disabled = false;
+        setModeLocked(false);
+        startOverBtn.focus();
+        return;
       }
       state.running = false;
       stopBtn.disabled = false;
-      if (!aborted) openReview();
-      else { paintCanvas(); setModeLocked(false); }
+      if (!res || res.abandoned) return; /* torn down (Start over) */
+      if (res.aborted) {
+        var abTexts = Narr.narrate("abort_session",
+          { reason: (res.abort && res.abort.reason) || "" }, null, {});
+        logStep(lang === "fr" ? abTexts.fr : abTexts.en, "s1-aborted");
+        statusLine.textContent = S.stopped;
+        paintCanvas();
+        setModeLocked(false);
+        return;
+      }
+      openReview();
     }
 
     function pauseOnFlag() {
@@ -757,16 +776,162 @@
       }
     }
 
-    /* ---------------- done: downloads + wipe ---------------- */
+    /* ---------------- done: map-first results ----------------
+       The results screen leads with the populated MAP (the same shapes,
+       styles, and node layout as the builder canvas), a Map/Table toggle,
+       then export. Excel is an export option, never the destination. The
+       DRAFT banner + cover sheet + review checklist behavior lives in the
+       exporter; the corrections download and the wipe button stay. */
     var doneBox = el("div", "s1-done");
     doneBox.hidden = true;
-    var doneTitle = el("h3", "s1-donetitle", S.reviewDone);
+    var doneTitle = el("h3", "s1-donetitle", S.resultsTitle);
     doneTitle.tabIndex = -1;
     doneBox.appendChild(doneTitle);
+    doneBox.appendChild(el("p", "s1-donelede", S.resultsLede));
+
+    /* Map/Table toggle: native radio group, keyboard-operable. */
+    var viewToggle = el("fieldset", "s1-viewtoggle");
+    viewToggle.appendChild(el("legend", "s1-viewlabel", S.viewLabel));
+    var viewName = (opts.rootId || "s1-assistant") + "-view";
+    var viewRadios = [];
+    [["map", S.viewMap], ["table", S.viewTable]].forEach(function (v, i) {
+      var label = el("label", "s1-viewopt");
+      var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = viewName;
+      radio.value = v[0];
+      radio.checked = i === 0;
+      label.appendChild(radio);
+      label.appendChild(el("span", null, v[1]));
+      radio.addEventListener("change", function () { setResultsView(v[0]); });
+      viewToggle.appendChild(label);
+      viewRadios.push(radio);
+    });
+    doneBox.appendChild(viewToggle);
+
+    var mapWrap = el("div", "s1-mapwrap");
+    var tableWrap = el("div", "s1-tablewrap");
+    tableWrap.hidden = true;
+    doneBox.appendChild(mapWrap);
+    doneBox.appendChild(tableWrap);
+
+    function setResultsView(v) {
+      mapWrap.hidden = v !== "map";
+      tableWrap.hidden = v !== "table";
+      viewRadios.forEach(function (r) { r.checked = (r.value === v); });
+    }
+
+    var RNS = "http://www.w3.org/2000/svg";
+    /* Results map: the same geometry as the builder canvas (builder.js
+       shapeFor), same 640x420 viewBox, same node layout from the executor
+       state. Page-level .edge / .node-label styles apply automatically
+       since the class names match. */
+    function renderResultMap(st) {
+      while (mapWrap.firstChild) mapWrap.removeChild(mapWrap.firstChild);
+      var svg = document.createElementNS(RNS, "svg");
+      svg.setAttribute("viewBox", "0 0 640 420");
+      svg.setAttribute("class", "s1-resultmap");
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", S.resultsMapLabel);
+      function mk(tag, attrs) {
+        var n = document.createElementNS(RNS, tag);
+        for (var k in attrs) n.setAttribute(k, attrs[k]);
+        return n;
+      }
+      (st.edges || []).forEach(function (e) {
+        var A = st.nodes[e.a], B = st.nodes[e.b];
+        if (!A || !B) return;
+        var dx = B.x - A.x, dy = B.y - A.y;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        svg.appendChild(mk("path", {
+          "class": "edge " + e.cat,
+          d: "M" + (A.x + dx / len * 28) + "," + (A.y + dy / len * 28) +
+             " L" + (B.x - dx / len * 32) + "," + (B.y - dy / len * 32)
+        }));
+      });
+      Object.keys(st.nodes || {}).forEach(function (id) {
+        var def = st.nodes[id];
+        var g = mk("g", { "class": "node", transform: "translate(" + def.x + "," + def.y + ")" });
+        var s;
+        if (def.type === "collection") {
+          s = mk("circle", { "class": "shape", r: "24", fill: "#ffffff", stroke: "#0f172a", "stroke-width": "2" });
+        } else if (def.type === "system") {
+          s = mk("rect", { "class": "shape", x: "-52", y: "-24", width: "104", height: "48", rx: "8", fill: "#ffffff", stroke: "#0f172a", "stroke-width": "2" });
+        } else if (def.type === "thirdparty") {
+          s = mk("polygon", { "class": "shape", points: "0,-27 31,0 0,27 -31,0", fill: "#ffffff", stroke: "#0f172a", "stroke-width": "2" });
+        } else {
+          s = mk("g", { "class": "shape" });
+          s.appendChild(mk("circle", { r: "24", fill: "none", stroke: "#b3401f", "stroke-width": "2", "stroke-dasharray": "5 4" }));
+          s.appendChild(mk("line", { x1: "-13", y1: "-13", x2: "13", y2: "13", stroke: "#b3401f", "stroke-width": "3" }));
+          s.appendChild(mk("line", { x1: "-13", y1: "13", x2: "13", y2: "-13", stroke: "#b3401f", "stroke-width": "3" }));
+        }
+        g.appendChild(s);
+        var t = mk("text", { "class": "node-label", y: "40", "text-anchor": "middle" });
+        t.textContent = def.label;
+        g.appendChild(t);
+        var title = mk("title", {});
+        title.textContent = def.label;
+        g.appendChild(title);
+        svg.appendChild(g);
+      });
+      mapWrap.appendChild(svg);
+    }
+
+    function renderResultTables(st) {
+      while (tableWrap.firstChild) tableWrap.removeChild(tableWrap.firstChild);
+      var typeNames = Narr.PLAIN_TYPE[lang] || Narr.PLAIN_TYPE.en;
+      var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
+      function table(caption, headers, rows) {
+        var wrap = el("div", "s1-resulttable");
+        wrap.appendChild(el("h4", "s1-resulttable-title", caption));
+        var tb = document.createElement("table");
+        var head = document.createElement("tr");
+        headers.forEach(function (h) {
+          var th = document.createElement("th");
+          th.textContent = h;
+          head.appendChild(th);
+        });
+        tb.appendChild(head);
+        rows.forEach(function (r) {
+          var tr = document.createElement("tr");
+          r.forEach(function (c) {
+            var td = document.createElement("td");
+            td.textContent = c;
+            tr.appendChild(td);
+          });
+          tb.appendChild(tr);
+        });
+        wrap.appendChild(tb);
+        return wrap;
+      }
+      var nodeIds = Object.keys(st.nodes || {});
+      var nodeRows = nodeIds.map(function (id) {
+        var n = st.nodes[id];
+        return [n.label, typeNames[n.type] || n.type];
+      });
+      var edgeRows = (st.edges || []).map(function (e) {
+        var A = st.nodes[e.a], B = st.nodes[e.b];
+        return [(A && A.label) || e.a, (B && B.label) || e.b, catNames[e.cat] || e.cat];
+      });
+      tableWrap.appendChild(table(S.tableNodes + " (" + nodeRows.length + ")", [S.thName, S.thType], nodeRows));
+      tableWrap.appendChild(table(S.tableConns + " (" + edgeRows.length + ")", [S.thFrom, S.thTo, S.thCategory], edgeRows));
+    }
+
     var dlRow = el("div", "s1-dlrow");
     var dlBtn = el("button", "btn s1-download", S.downloadExcel);
     dlBtn.type = "button";
     dlBtn.addEventListener("click", downloadExcel);
+    var viewMapBtn = el("button", "btn secondary s1-viewmap", S.viewOnMap);
+    viewMapBtn.type = "button";
+    viewMapBtn.addEventListener("click", function () {
+      /* The builder canvas holds the same draft map (painted live during
+         the run via DMImport); scroll the reader to it. */
+      var sec = document.getElementById("builder-section");
+      if (sec && typeof sec.scrollIntoView === "function") {
+        try { sec.scrollIntoView({ block: "start", behavior: "smooth" }); }
+        catch (e) { sec.scrollIntoView(); }
+      }
+    });
     var corrBtn = el("button", "btn secondary s1-corr", S.downloadCorrections);
     corrBtn.type = "button";
     corrBtn.addEventListener("click", downloadCorrections);
@@ -774,9 +939,20 @@
     wipeBtn.type = "button";
     wipeBtn.addEventListener("click", wipe);
     dlRow.appendChild(dlBtn);
+    dlRow.appendChild(viewMapBtn);
     dlRow.appendChild(corrBtn);
     dlRow.appendChild(wipeBtn);
     doneBox.appendChild(dlRow);
+
+    function openDone() {
+      var st = H.state();
+      renderResultMap(st);
+      renderResultTables(st);
+      setResultsView("map");
+      reviewBox.hidden = true;
+      doneBox.hidden = false;
+      doneTitle.focus();
+    }
 
     function downloadBlob(bytes, filename, mime) {
       var blob = new Blob([bytes], { type: mime });
@@ -887,12 +1063,6 @@
       statusLine.textContent = S.wipeDone;
       panelTitle.focus();
       refreshNet();
-    }
-
-    function openDone() {
-      reviewBox.hidden = true;
-      doneBox.hidden = false;
-      doneTitle.focus();
     }
 
     /* The conversational panel authors the recipe and narrates the run;

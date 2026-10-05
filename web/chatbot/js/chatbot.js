@@ -541,8 +541,18 @@
       });
     }
 
+    /* The run goes through the single page seam
+       window.execute_mapping_workflow (workflow.js): the chatbot authors
+       the recipe and narrates; the seam owns ready/start/stepping. */
     async function runRecipe() {
       if (state.running || !state.recipe) return;
+      var w = (typeof window !== "undefined") ? window : RT();
+      var wf = w.execute_mapping_workflow;
+      if (typeof wf !== "function") {
+        console.error("[s1] chat: execute_mapping_workflow seam is not loaded.");
+        botMsg(S.engineFailed, "s1c-error");
+        return;
+      }
       var live = null;
       try { live = H.state(); } catch (e) { live = null; }
       if (live && !live.done) {
@@ -562,77 +572,56 @@
       input.appendChild(stopBtn);
 
       botMsg(S.loadingModel, "s1c-status");
-      try {
-        await H.ready();
-      } catch (e) {
-        /* Engine init failure: plain message for the user, technical
-           detail to the console only (same treatment as the executor). */
-        console.error("[s1] chat engine init failed:", e);
-        botMsg(S.engineFailed, "s1c-error");
-        state.running = false;
-        lockModes(false);
-        clearInput();
-        recipeReady();
-        return;
-      }
-      botMsg(S.modelReady, "s1c-status");
-      var ticket;
-      try {
-        ticket = H.start(state.recipe);
-      } catch (e) {
-        /* Run start failure: plain message, detail to the console only. */
-        console.error("[s1] chat run start failed:", e);
-        botMsg(S.stepFailed, "s1c-error");
-        state.running = false;
-        lockModes(false);
-        clearInput();
-        recipeReady();
-        return;
-      }
-      botMsg(fill(S.chatTicket, { id: ticket.session_id, recipe: ticket.recipe_id, n: ticket.items }));
-      paintCanvas();
-      refreshNet();
       state.netTimer = setInterval(refreshNet, 1000);
 
-      var aborted = false;
-      while (!aborted) {
-        if (state.stopRequested) {
-          try {
-            var ab = H.abort(null, lang);
-            var abTexts = Narr.narrate("abort_session", { reason: (ab && ab.reason) || "" }, null, {});
-            botMsg(lang === "fr" ? abTexts.fr : abTexts.en, "s1c-status");
-          } catch (e) { /* already terminated */ }
-          aborted = true;
-          break;
-        }
-        var step;
-        try {
-          step = await H.stepOnce();
-        } catch (e) {
-          /* Per-step failure: plain message in the chat, technical
-             detail to the console only. */
-          console.error("[s1] chat step failed:", e);
-          botMsg(S.stepFailed, "s1c-error");
-          aborted = true;
-          break;
-        }
-        paintCanvas();
-        botMsg(fill(S.chatStepPrefix, { n: step.step_index + 1 }) + " " + narrateStep(step));
-        refreshNet();
-        if (step.terminal === "flag_open") {
-          await pauseOnFlag();
-          continue;
-        }
-        if (step.terminal === "aborted") { aborted = true; break; }
-        if (step.terminal === "complete") break;
-        await sleep(PACE_MS);
+      var res;
+      var sawStep = false;
+      var failPhase = null;
+      try {
+        res = await wf(state.recipe, {
+          lang: lang,
+          paceMs: PACE_MS,
+          shouldStop: function () { return state.stopRequested; },
+          onTicket: function (ticket) {
+            botMsg(S.modelReady, "s1c-status");
+            botMsg(fill(S.chatTicket, { id: ticket.session_id, recipe: ticket.recipe_id, n: ticket.items }));
+            paintCanvas();
+            refreshNet();
+          },
+          onStep: function (step) {
+            sawStep = true;
+            paintCanvas();
+            botMsg(fill(S.chatStepPrefix, { n: step.step_index + 1 }) + " " + narrateStep(step));
+            refreshNet();
+          },
+          onFlag: pauseOnFlag,
+          onError: function (err, phase) {
+            /* Engine or step failure: plain message in the chat,
+               technical detail to the console only. */
+            console.error("[s1] chat run failed (" + phase + "):", err);
+            failPhase = phase;
+            botMsg(phase === "step" ? S.stepFailed : S.engineFailed, "s1c-error");
+          }
+        });
+      } catch (e) {
+        /* surfaced via onError above */
       }
       if (state.netTimer) { clearInterval(state.netTimer); state.netTimer = null; }
       refreshNet();
       state.running = false;
       clearInput();
-      if (aborted) {
+      if (!res && !sawStep && (failPhase === "ready" || failPhase === "start")) {
+        /* The engine never got going: back to the ready state so the
+           reader can retry, same as before the seam. */
         lockModes(false);
+        recipeReady();
+      } else if (!res || res.aborted) {
+        lockModes(false);
+        if (res && res.aborted) {
+          var abTexts = Narr.narrate("abort_session",
+            { reason: (res.abort && res.abort.reason) || "" }, null, {});
+          botMsg(lang === "fr" ? abTexts.fr : abTexts.en, "s1c-status");
+        }
         botMsg(S.stopped, "s1c-status");
         actionRow([{ label: S.chatStartOver, secondary: true, onClick: reset }]);
       } else {

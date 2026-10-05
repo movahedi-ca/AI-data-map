@@ -251,6 +251,102 @@
   }
 }
 
+/* Results screen (2026-10-05): map-first. The results map reuses the
+   builder canvas geometry (same 640x420 viewBox, same .edge /
+   .node-label class names, so page styles apply); it scales to the
+   panel width with no horizontal scroll at 390px. */
+.s1-root .s1-donelede {
+  color: #334155;
+  margin: 0 0 0.75rem;
+}
+
+.s1-root .s1-viewtoggle {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.s1-root .s1-viewlabel {
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+.s1-root .s1-viewopt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #94a3b8;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  min-height: 44px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.s1-root .s1-viewopt input {
+  accent-color: #0e6e64;
+}
+
+.s1-root .s1-viewopt:has(input:checked) {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.s1-root .s1-viewopt:has(input:focus-visible) {
+  outline: 3px solid #0e6e64;
+  outline-offset: 2px;
+}
+
+.s1-root .s1-mapwrap {
+  margin: 0 0 0.75rem;
+}
+
+.s1-root .s1-resultmap {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fbfaf7;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+}
+
+.s1-root .s1-tablewrap {
+  margin: 0 0 0.75rem;
+}
+
+.s1-root .s1-resulttable {
+  margin-bottom: 0.75rem;
+}
+
+.s1-root .s1-resulttable-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.s1-root .s1-resulttable table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 0.9rem;
+}
+
+.s1-root .s1-resulttable th,
+.s1-root .s1-resulttable td {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #e2e8f0;
+}
+
+.s1-root .s1-resulttable th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
 /* Done row. */
 .s1-root .s1-dlrow {
   display: flex;
@@ -260,11 +356,11 @@
 }
 
 /* Canvas bloom for newly added nodes/edges. */
-#dm-viewport .s1-bloom .shape {
+#builder-canvas .s1-bloom .shape {
   animation: s1bloom 1.1s ease-out;
 }
 
-#dm-viewport .s1-bloom-edge {
+#builder-canvas .s1-bloom-edge {
   animation: s1bloomedge 1.1s ease-out;
 }
 
@@ -279,7 +375,7 @@
   100% { opacity: 1; }
 }
 
-/* The UA [hidden] rule loses to our display rules (e.g. .s1-rowbtns);
+/* The UA [hidden] rule loses to our display rules (e.g. .s1-cardbtns);
    re-assert it so hidden toggles always hide. */
 .s1-root [hidden] {
   display: none !important;
@@ -294,8 +390,69 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #dm-viewport .s1-bloom .shape,
-  #dm-viewport .s1-bloom-edge {
+  #builder-canvas .s1-bloom .shape,
+  #builder-canvas .s1-bloom-edge {
     animation: none;
   }
 }
+
+/* ---- Prod launch refinements: ledger palette, step stagger, trust pulse.
+   Signature micro-interaction is deliberately small; calm everywhere else.
+   Animations on transform/opacity only. No em dashes. ---- */
+
+/* Ledger palette: teal for focus, teal-wash trust bar. */
+.s1-root .s1-chip:has(input:focus-visible) { outline: 3px solid #0e6e64; outline-offset: 2px; }
+.s1-root button:focus-visible,
+.s1-root a:focus-visible,
+.s1-root input:focus-visible { outline: 3px solid #0e6e64; outline-offset: 2px; }
+.s1-root .s1-trust { background: #e2efec; border-color: #0e6e64; }
+
+/* 44px touch targets on chips and review buttons. */
+.s1-root .s1-chip { min-height: 44px; transition: transform 120ms ease-out; }
+.s1-root .s1-chip:active { transform: scale(0.97); }
+.s1-root .s1-cardbtns .btn,
+.s1-root .s1-dlrow .btn,
+.s1-root .s1-cardeditor .btn,
+.s1-root .s1-viewopt { min-height: 44px; }
+
+/* Step-log stagger: 60ms fade-slide as nodes bloom. */
+.s1-root .s1-step {
+  animation: s1stepin 200ms ease-out both;
+  animation-delay: calc(var(--s1-i, 0) * 60ms);
+}
+@keyframes s1stepin {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Trust badge pulse when a step completes. */
+.s1-root .s1-trust.s1-pulse { animation: s1pulse 300ms ease-out; }
+@keyframes s1pulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s1-root .s1-step { animation: none; }
+  .s1-root .s1-trust.s1-pulse { animation: none; }
+  .s1-root .s1-chip { transition: none; }
+  .s1-root .s1-chip:active { transform: none; }
+}
+
+@media (max-width: 24.375rem) {
+  .s1-root { padding: 1rem; }
+  .s1-root .s1-draftbadge { margin-left: 0; }
+}
+
+/* Single-panel mode toggle (Issue 8): native radios, ledger styling.
+   Keyboard-operable with a visible focus ring; short lines at 390px. */
+.s1-root .s1-modebar { border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 0.75rem 1rem; margin: 1rem 0; }
+.s1-root .s1-modelabel { font-weight: 600; padding: 0 0.5rem; }
+.s1-root .s1-mode { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.4rem 0; cursor: pointer; }
+.s1-root .s1-mode input { margin-top: 0.2rem; width: 1.1rem; height: 1.1rem; accent-color: #0e6e64; flex: none; }
+.s1-root .s1-mode input:focus-visible { outline: 3px solid #0e6e64; outline-offset: 2px; }
+.s1-root .s1-modetxt strong { display: block; }
+.s1-root .s1-modedesc { color: #475569; font-size: 0.9rem; }
+.s1-root .s1-modenote { color: #b3401f; font-size: 0.9rem; margin: 0.25rem 0 0; min-height: 1.2em; }
+.s1-root .s1-chatslot { margin-top: 0.5rem; }

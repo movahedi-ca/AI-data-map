@@ -180,3 +180,55 @@
     max-width: 95%;
   }
 }
+
+/* ---- Prod launch refinements: ledger palette, tactile chips, trust pulse.
+   Signature micro-interaction is deliberately small; calm everywhere else.
+   Animations on transform/opacity only. No em dashes. ---- */
+
+/* Ledger palette: teal for action/focus, paper/ink surfaces. */
+.s1c-chat .s1c-chip:hover { border-color: #0e6e64; color: #0a4f48; }
+.s1c-chat .s1c-chip:focus-visible,
+.s1c-chat .s1c-pastetoggle:focus-visible,
+.s1c-chat .s1c-textarea:focus-visible,
+.s1c-chat .btn:focus-visible { outline: 3px solid #0e6e64; outline-offset: 2px; }
+.s1c-chat .s1c-pastetoggle { color: #0a4f48; }
+.s1c-chat .s1c-trust { background: #e2efec; border-color: #0e6e64; }
+.s1c-chat .s1c-user .s1c-bubble { background: #e2efec; border-color: #0e6e64; }
+
+/* Tactile chips: 44px targets, sub-200ms press. */
+.s1c-chat .s1c-chip {
+  min-height: 44px;
+  transition: transform 120ms ease-out, border-color 120ms ease-out;
+}
+.s1c-chat .s1c-chip:active { transform: scale(0.97); }
+.s1c-chat .s1c-actions .btn { min-height: 44px; }
+
+/* Message stagger: 60ms fade-slide as the conversation grows. */
+.s1c-chat .s1c-msg {
+  animation: s1cmsgin 200ms ease-out both;
+  animation-delay: calc(var(--s1-i, 0) * 60ms);
+}
+@keyframes s1cmsgin {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Trust badge pulse when a step completes. */
+.s1c-chat .s1c-trust.s1-pulse { animation: s1cpulse 300ms ease-out; }
+@keyframes s1cpulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s1c-chat .s1c-msg { animation: none; }
+  .s1c-chat .s1c-trust.s1-pulse { animation: none; }
+  .s1c-chat .s1c-chip { transition: none; }
+  .s1c-chat .s1c-chip:active { transform: none; }
+}
+
+@media (max-width: 24.375rem) {
+  .s1c-chat { padding: 1rem; }
+  .s1c-chat .s1c-draftbadge { margin-left: 0; }
+}
