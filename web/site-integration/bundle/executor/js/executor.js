@@ -493,6 +493,17 @@
   /* ------------------------------------------------------------------ */
   var controller = new Controller();
 
+  /* State-change listeners: fired after every successful applyCorrection,
+     so views that paint from executor state (the results-screen preview)
+     can re-render without polling. Listeners must never break a
+     correction, so each runs guarded. */
+  var stateListeners = [];
+  function notifyStateChange() {
+    stateListeners.slice().forEach(function (fn) {
+      try { fn(); } catch (e) { /* listener-owned */ }
+    });
+  }
+
   var hooks = {
     ready: ready,
     start: function (recipe) { return controller.start(recipe); },
@@ -528,7 +539,19 @@
     applyCorrection: function (op) {
       var ex = controller.executor();
       if (!ex) throw new Error("no session started.");
-      return ex.applyCorrection(op);
+      var res = ex.applyCorrection(op);
+      notifyStateChange();
+      return res;
+    },
+    /* Subscribe to post-correction state changes. Returns an unsubscribe
+       function. A listener that throws is skipped, never fatal. */
+    onStateChange: function (fn) {
+      if (typeof fn !== "function") return function () {};
+      stateListeners.push(fn);
+      return function () {
+        var i = stateListeners.indexOf(fn);
+        if (i !== -1) stateListeners.splice(i, 1);
+      };
     },
     setLang: function (lang) { controller.setLang(lang); },
     state: function () { return controller.state(); },

@@ -1451,6 +1451,23 @@
       doneTitle.focus();
     }
 
+    /* The results preview used to freeze at openDone time: canvas edits,
+       chat refinements, and review edits after that never repainted it.
+       Every one of those paths funnels through H.applyCorrection, so one
+       subscription keeps the preview live. Guarded for hook shims that
+       predate onStateChange. */
+    function refreshResultsPreview() {
+      if (doneBox.hidden) return;
+      var st = null;
+      try { st = H.state(); } catch (e) { return; }
+      if (!st) return;
+      renderResultMap(st);
+      renderResultTables(st);
+    }
+    if (H && typeof H.onStateChange === "function") {
+      H.onStateChange(refreshResultsPreview);
+    }
+
     function downloadBlob(bytes, filename, mime) {
       var blob = new Blob([bytes], { type: mime });
       var a = document.createElement("a");
