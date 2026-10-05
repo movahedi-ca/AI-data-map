@@ -1,0 +1,112 @@
+# 0002-executor-wiring.patch
+#
+# What it does: wires the System-1 executor and chatbot into the guide page
+# (applies after 0001). It appends the <script> includes for the vendored
+# bundle (s1/executor/vendor/ort/ort.min.js, the 12 executor UMDs in load
+# order, s1/chatbot/js/chatbot.js) with a comment pointing at the CSP hashes
+# in web/site-integration/csp-hashes.txt, plus the DOMContentLoaded block
+# that mounts S1UI on #s1-assistant, S1Chatbot on #s1-chatbot (handed the UI
+# handle for the review handoff), and refreshes the page-level
+# #s1-page-netcount counter from window.__s1net. Every include is guarded,
+# so the page survives if a script is missing.
+# Rollback: reverse-apply with `patch -p1 -R` from the Tier B root (after
+# reversing 0001); the script tags and the init block are removed.
+#
+--- a/demo/index.html
++++ b/demo/index.html
+@@ -223,5 +223,46 @@
+ <script src="assets/js/walkthrough.js"></script>
+ <script src="assets/js/export.js"></script>
+ <script src="assets/js/builder.js"></script>
++<!-- S1 assistant scripts. CSP: each script's sha256-<base64> is listed in
++     web/site-integration/csp-hashes.txt; paste the values into the Worker's
++     script-src policy. Deploy: copy web/site-integration/bundle/ to s1/
++     next to this page, preserving the internal layout (executor.js resolves
++     vendor/model and vendor/ort relative to its own directory).
++     Load order: ort, then the executor UMDs, then the chatbot. -->
++<script src="s1/executor/vendor/ort/ort.min.js"></script>
++<script src="s1/executor/js/s1tokenize.js"></script>
++<script src="s1/executor/js/s1util.js"></script>
++<script src="s1/executor/js/menu.js"></script>
++<script src="s1/executor/js/apply.js"></script>
++<script src="s1/executor/js/narrate.js"></script>
++<script src="s1/executor/js/templates.js"></script>
++<script src="s1/executor/js/review.js"></script>
++<script src="s1/executor/js/exporter.js"></script>
++<script src="s1/executor/js/i18n.js"></script>
++<script src="s1/executor/js/executor.js"></script>
++<script src="s1/executor/js/ui.js"></script>
++<script src="s1/chatbot/js/chatbot.js"></script>
++<script>
++// S1 assistant wiring. CSP: hash this block's exact bytes (see the
++// "inline scripts" note in web/site-integration/csp-hashes.txt) into the
++// Worker's script-src; recompute from the final built page at deploy.
++document.addEventListener("DOMContentLoaded", function () {
++  var lang = window.LANG || "en";
++  var s1ui = null;
++  if (window.S1UI && typeof window.S1UI.init === "function") {
++    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: lang });
++  }
++  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
++    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: lang, uiHandle: s1ui });
++  }
++  var nc = document.getElementById("s1-page-netcount");
++  if (nc) {
++    setInterval(function () {
++      try { nc.textContent = String(window.__s1net ? window.__s1net.count() : 0); }
++      catch (e) { /* keep the last value */ }
++    }, 1000);
++  }
++});
++</script>
+ </body>
+ </html>
+--- a/demo/fr.html
++++ b/demo/fr.html
+@@ -223,5 +223,46 @@
+ <script src="assets/js/walkthrough.js"></script>
+ <script src="assets/js/export.js"></script>
+ <script src="assets/js/builder.js"></script>
++<!-- S1 assistant scripts. CSP: each script's sha256-<base64> is listed in
++     web/site-integration/csp-hashes.txt; paste the values into the Worker's
++     script-src policy. Deploy: copy web/site-integration/bundle/ to s1/
++     next to this page, preserving the internal layout (executor.js resolves
++     vendor/model and vendor/ort relative to its own directory).
++     Load order: ort, then the executor UMDs, then the chatbot. -->
++<script src="s1/executor/vendor/ort/ort.min.js"></script>
++<script src="s1/executor/js/s1tokenize.js"></script>
++<script src="s1/executor/js/s1util.js"></script>
++<script src="s1/executor/js/menu.js"></script>
++<script src="s1/executor/js/apply.js"></script>
++<script src="s1/executor/js/narrate.js"></script>
++<script src="s1/executor/js/templates.js"></script>
++<script src="s1/executor/js/review.js"></script>
++<script src="s1/executor/js/exporter.js"></script>
++<script src="s1/executor/js/i18n.js"></script>
++<script src="s1/executor/js/executor.js"></script>
++<script src="s1/executor/js/ui.js"></script>
++<script src="s1/chatbot/js/chatbot.js"></script>
++<script>
++// S1 assistant wiring. CSP: hash this block's exact bytes (see the
++// "inline scripts" note in web/site-integration/csp-hashes.txt) into the
++// Worker's script-src; recompute from the final built page at deploy.
++document.addEventListener("DOMContentLoaded", function () {
++  var lang = window.LANG || "en";
++  var s1ui = null;
++  if (window.S1UI && typeof window.S1UI.init === "function") {
++    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: lang });
++  }
++  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
++    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: lang, uiHandle: s1ui });
++  }
++  var nc = document.getElementById("s1-page-netcount");
++  if (nc) {
++    setInterval(function () {
++      try { nc.textContent = String(window.__s1net ? window.__s1net.count() : 0); }
++      catch (e) { /* keep the last value */ }
++    }, 1000);
++  }
++});
++</script>
+ </body>
+ </html>
