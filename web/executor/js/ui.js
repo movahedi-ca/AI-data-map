@@ -626,11 +626,25 @@
     host.appendChild(reviewBox);
     host.appendChild(doneBox);
 
+    /* Chatbot handoff (Phase 7): the conversational panel authors the
+       recipe and narrates the run; when the run completes it hands the
+       live session to this existing review/export/wipe UI. */
+    function enterReview() {
+      if (state.running) return false;
+      if (!H.controller.executor()) return false;
+      intake.hidden = true;
+      runBox.hidden = true;
+      doneBox.hidden = true;
+      openReview();
+      return true;
+    }
+
     return {
       state: state,
       startRun: startRun,
       wipe: wipe,
-      refreshNet: refreshNet
+      refreshNet: refreshNet,
+      enterReview: enterReview
     };
   }
 
