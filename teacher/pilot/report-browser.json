@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-10-05T03:29:48.252Z",
+  "scenarios": [
+    {
+      "name": "import-basic",
+      "domain": "data-mapping",
+      "steps": 15,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "import-broken",
+      "domain": "data-mapping",
+      "steps": 2,
+      "snapshots_valid": true,
+      "replay_ok": true
+    }
+  ]
+}
