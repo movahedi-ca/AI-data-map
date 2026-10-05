@@ -1,4 +1,4 @@
-# INTEGRATION-NOTE.md — Phase 1 import UI, how Phase 7 ships it
+# INTEGRATION-NOTE.md - Phase 1 import UI, how Phase 7 ships it
 
 ## What this is
 
@@ -9,30 +9,30 @@ framework, no external requests, parsing in a Web Worker.
 
 ## Layout of this work
 
-- `web-import/` — the shippable module tree. Committed to the repo under
+- `web-import/` - the shippable module tree. Committed to the repo under
   `web/import/`, served next to the guide page (the demo page loads it from
   the relative path `import/`, so the shipped page must serve the tree at
   `<page-dir>/import/`).
-- `site-demo/` — throwaway local verification copy of `demo/` + integration.
+- `site-demo/` - throwaway local verification copy of `demo/` + integration.
   Never deployed as-is.
-- `patches/0001-import-ui.patch` — import section HTML, `window.T.import`
+- `patches/0001-import-ui.patch` - import section HTML, `window.T.import`
   strings (EN + FR), CSS/JS includes. Applies to Tier B `demo/` with
   `patch -p1`.
-- `patches/0002-builder-import-hook.patch` — the additive
+- `patches/0002-builder-import-hook.patch` - the additive
   `window.DMImport.applyState` hook in `demo/assets/js/builder.js`.
-- `patches/0003-exporter-row-order.patch` — the `bn-xls` exporter wrote the
+- `patches/0003-exporter-row-order.patch` - the `bn-xls` exporter wrote the
   Nodes sheet as header, disclaimer, blank, data; the frozen format (freeze
   section 5, `buildSpreadsheetML`, the round-trip fixture) is disclaimer,
   blank, header, data. This patch moves the framing rows before the header
   so the site's own export round-trips with zero skipped rows. Without it,
   re-importing an export lists the disclaimer as a rejected "has no type"
   row. Verified via `tools/qa-accept.mjs` (captures the real download blob).
-- `tools/` — `bundle-engine.mjs` (regenerates
+- `tools/` - `bundle-engine.mjs` (regenerates
   `web-import/engine/engine-bundle.js`), `make-fixtures.mjs`,
   `qa-smoke.mjs` (localhost-qa smoke driver), `qa-accept.mjs` (the full
   Phase 1 acceptance run: real template in, download capture, round-trip,
   broken file, CSV, FR incl. FR round-trip, hygiene).
-- `fixtures/` — smoke-test files (not shipped).
+- `fixtures/` - smoke-test files (not shipped).
 
 ## How Phase 7 applies it
 
@@ -53,7 +53,7 @@ framework, no external requests, parsing in a Web Worker.
 5. Regenerate the CSP hashes for every new script at deploy. New hashed
    scripts: `import/engine/engine-bundle.js`, `import/worker/worker-client.js`,
    `import/import.js` (classic scripts), plus the worker's own
-   `importScripts("../vendor/xlsx.full.min.js", "parse-core.js")` — the
+   `importScripts("../vendor/xlsx.full.min.js", "parse-core.js")` - the
    worker script and its imports are same-origin local files, so no new
    `script-src` host enters the policy. No external requests anywhere.
    Recorded SHA-256 at Phase 1 verification (recompute at deploy if either
