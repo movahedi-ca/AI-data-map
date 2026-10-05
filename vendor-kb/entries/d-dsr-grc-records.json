@@ -1,0 +1,979 @@
+[
+  {
+    "id": "drata",
+    "name": "Drata",
+    "categories": [
+      "grc"
+    ],
+    "description": "Drata is a compliance automation platform that continuously monitors security controls and collects audit evidence for frameworks such as SOC 2, ISO 27001, HIPAA, GDPR and PCI DSS. Founded in 2020 and headquartered in San Diego, California, it offers vendor risk management, policy management and access reviews as part of a trust management platform.",
+    "website": "https://www.drata.com",
+    "headquarters": "San Diego, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Continuous control monitoring with automated evidence collection mapped to SOC 2, ISO 27001, HIPAA, GDPR and PCI DSS.",
+      "Vendor risk management with reminders when a vendor's SOC 2 report is expiring.",
+      "Access reviews and policy management workflows."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as control monitoring, risk registers and audit evidence for the inventory obligation. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.linkedin.com/company/drata/",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and platform scope"
+      },
+      {
+        "url": "https://www.cbinsights.com/company/drata",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and products"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "vanta",
+    "name": "Vanta",
+    "categories": [
+      "grc"
+    ],
+    "description": "Vanta is an automated compliance and trust management platform founded in 2018 and headquartered in San Francisco, California. It connects to cloud services and business tools to automate evidence collection, run continuous security checks, and manage compliance tasks across 35+ security, privacy and industry frameworks.",
+    "website": "https://www.vanta.com",
+    "headquarters": "San Francisco, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "375+ integrations powering 1,200+ automated hourly security tests for continuous compliance.",
+      "Pre-built policy templates across 35+ security, privacy and industry frameworks.",
+      "Vendor risk assessments, questionnaire automation and cookie consent management."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as control monitoring, evidence collection and vendor assessments. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.promptloop.com/directory/what-does-vanta-do",
+        "consulted": "2026-10-05",
+        "note": "product overview; headquarters and features"
+      },
+      {
+        "url": "https://www.linkedin.com/company/vanta-security",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and framework coverage"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "secureframe",
+    "name": "SecureFrame",
+    "categories": [
+      "grc"
+    ],
+    "description": "Secureframe is a security and compliance automation platform founded in 2020 and headquartered in San Francisco, California. It uses AI to collect and verify audit evidence, monitor security controls and generate audit documentation across frameworks including SOC 2, ISO 27001, HIPAA, PCI DSS, NIST, CMMC and FedRAMP.",
+    "website": "https://www.secureframe.com",
+    "headquarters": "San Francisco, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "AI-driven automated evidence collection and verification across 400+ integrations.",
+      "Continuous control monitoring across SOC 2, ISO 27001, HIPAA, PCI DSS, NIST, CMMC and FedRAMP.",
+      "Risk management and policy management with generated audit documentation."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as multi-framework control monitoring and audit readiness. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.linkedin.com/company/secureframe/",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and framework specialties"
+      },
+      {
+        "url": "https://secureframe.com/blog/series-b",
+        "consulted": "2026-10-05",
+        "note": "vendor announcement; company address and product scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "logicgate",
+    "name": "LogicGate",
+    "categories": [
+      "grc"
+    ],
+    "description": "LogicGate is an enterprise GRC platform founded in 2015 and headquartered in Chicago, Illinois. Its no-code Risk Cloud product offers 40+ purpose-built applications for cyber risk management, compliance, third-party risk, policy management and internal audit.",
+    "website": "https://www.logicgate.com",
+    "headquarters": "Chicago, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "No-code Risk Cloud platform with 40+ purpose-built GRC applications.",
+      "Automated workflows for cyber risk, third-party risk, policy management and internal audit.",
+      "Graph-based data model linking risks, controls and evidence."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as risk registers, control testing workflows and audit evidence. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://craft.co/logicgate",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and platform description"
+      },
+      {
+        "url": "https://www.linkedin.com/company/logic-gate",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and specialties"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "sai360",
+    "name": "SAI360",
+    "categories": [
+      "grc"
+    ],
+    "description": "SAI360 is a GRC software provider headquartered in Chicago, Illinois, formerly the risk and learning business of SAI Global. Its cloud-first platform covers integrated risk management, EHS and sustainability, and ethics and compliance learning. It was sold by BPEA EQT to Symphony Technology Group (STG).",
+    "website": "https://www.sai360.com",
+    "headquarters": "Chicago, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Cloud-first integrated risk management modules covering risk, compliance, audit and EHS.",
+      "Ethics and compliance learning solutions combined with the GRC platform.",
+      "Real-time analytics and configurable workflows for enterprise risk reporting."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as integrated risk reporting, audit management and compliance learning. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://eqtgroup.com/news/bpea-eqt-to-sell-sai360-a-leading-cloud-risk-management-and-compliance-software-provider",
+        "consulted": "2026-10-05",
+        "note": "sale announcement; headquarters and STG acquisition"
+      },
+      {
+        "url": "https://www.sai360.com/",
+        "consulted": "2026-10-05",
+        "note": "vendor site; platform scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "metricstream",
+    "name": "MetricStream",
+    "categories": [
+      "grc"
+    ],
+    "description": "MetricStream is a SaaS GRC provider headquartered in San Jose, California. Its ConnectedGRC platform, with BusinessGRC, CyberGRC and ESGRC product lines on a single low-code/no-code cloud platform, covers risk management, compliance, internal audit and third-party risk.",
+    "website": "https://www.metricstream.com",
+    "headquarters": "San Jose, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "ConnectedGRC platform with BusinessGRC, CyberGRC and ESGRC product lines on one low-code/no-code cloud.",
+      "Risk, compliance, audit, IT cyber risk and third-party risk management modules.",
+      "Preconfigured Prime, Premium and Enterprise packages."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as enterprise risk, compliance and audit program management. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.businesswire.com/news/home/20230131005550/en/5380529/MetricStream-Named-Leader-in-Enterprise-GRC-Internal-Audit-and-Operational-Risk-Solutions-by-Chartis-Research",
+        "consulted": "2026-10-05",
+        "note": "press release; headquarters and product lines"
+      },
+      {
+        "url": "https://www.metricstream.com/about-us/get-started.htm?field_event_type_target_id=10&",
+        "consulted": "2026-10-05",
+        "note": "vendor contact page; headquarters"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "ibm-openpages",
+    "name": "IBM OpenPages",
+    "categories": [
+      "grc"
+    ],
+    "description": "IBM OpenPages is an AI-driven governance, risk and compliance platform from IBM, headquartered in Armonk, New York. It centralizes risk management functions with modules for operational risk, regulatory compliance, IT governance, internal audit, policy management, data privacy and model risk.",
+    "website": "https://www.ibm.com",
+    "headquarters": "Armonk, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "AI-driven GRC suite covering operational risk, regulatory compliance, IT governance and model risk.",
+      "Internal audit management, policy management and data privacy management modules.",
+      "REST APIs and Watson integration for embedding GRC processes."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as data privacy management modules, policy management and audit workflows. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/OpenPages",
+        "consulted": "2026-10-05",
+        "note": "product overview; IBM brand and GRC scope"
+      },
+      {
+        "url": "https://www.ibm.com/docs/en/openpages/8.3.0?topic=guide-openpages-watson",
+        "consulted": "2026-10-05",
+        "note": "IBM docs; GRC use cases and platform scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "filetrail",
+    "name": "FileTrail",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "FileTrail provides information governance and records management software for law firms and regulated industries, headquartered in Austin, Texas after moving from San Jose in 2020. Its FileTrail GPS suite includes Policy Manager, Records Manager and Matter Mobility Manager.",
+    "website": "https://www.filetrail.com",
+    "headquarters": "Austin, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Policy Manager implements retention policies, legal holds and outside counsel guidelines for documents and records.",
+      "Records Manager creates, locates, tracks and audits physical records.",
+      "Matter Mobility Manager streamlines attorney transfers and client requests."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with configurable retention schedules, legal holds and disposition workflows. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.lawnext.com/2021/10/filetrail-names-veteran-business-exec-as-new-ceo.html",
+        "consulted": "2026-10-05",
+        "note": "news; product scope and headquarters move to Austin"
+      },
+      {
+        "url": "https://www.legalsupportnetwork.co.uk/news/filetrail-announces-expansion-relocation-of-headquarters-to-austin-texas/",
+        "consulted": "2026-10-05",
+        "note": "announcement; Austin headquarters and GPS modules"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "gimmal",
+    "name": "Gimmal",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Gimmal provides an end-to-end information governance and records management platform for physical and digital records, headquartered in Houston, Texas. In May 2025 it was acquired by Morae Global Corporation. Its software manages content across SharePoint, Microsoft 365, Box, file shares and physical formats.",
+    "website": "https://gimmal.com",
+    "headquarters": "Houston, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Federated records management across SharePoint, Microsoft 365, Box, OneDrive and file shares.",
+      "Hierarchical file plans with a visual rule builder for classification and retention rules.",
+      "Advanced disposition review with recurring, rule-based retention."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with file plans, retention rules and defensible disposition. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://leadiq.com/c/gimmal/5a1d8936240000240062b2fe",
+        "consulted": "2026-10-05",
+        "note": "company profile; Houston headquarters and Morae acquisition"
+      },
+      {
+        "url": "https://www.cuspera.com/products/gimmal-records-management-x-11092",
+        "consulted": "2026-10-05",
+        "note": "product profile; acquisition and records management scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "everteam",
+    "name": "Everteam",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Everteam is a records and information management software vendor based in Paris, France, with more than 30 years in the field. Its platform uses federated discovery and intelligent automation to manage digital and paper-based records through their full lifecycle.",
+    "website": "https://www.everteam.com",
+    "headquarters": "Paris, France",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Federated discovery across content systems with a unified records index.",
+      "Single-system dispositioning for both physical and digital records.",
+      "Intelligent automation for full-lifecycle records management."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with federated records discovery and lifecycle disposition. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.slideshare.net/EVERTEAM/key-records-management-considerations-during-a-life-sciences-merger-or-acquisition",
+        "consulted": "2026-10-05",
+        "note": "vendor presentation; Paris address and records management approach"
+      },
+      {
+        "url": "https://info.everteam.com/physical-digital-records-management",
+        "consulted": "2026-10-05",
+        "note": "vendor page; federated records management commitment"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "objective",
+    "name": "Objective Corporation",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Objective Corporation is an Australian software company headquartered in North Sydney, Australia, serving mainly public sector and regulated industries. Its products cover records compliance, document management, workflow automation and secure file sharing.",
+    "website": "https://objective.com.au",
+    "headquarters": "North Sydney, Australia",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Records compliance platform for public sector and regulated industries.",
+      "Document management and workflow automation modules.",
+      "Secure external file sharing via Objective Connect."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with records compliance and document management workflows. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://ghost.bitscale.ai/objective-corporation/",
+        "consulted": "2026-10-05",
+        "note": "company profile; North Sydney headquarters and product scope"
+      },
+      {
+        "url": "https://disfold.com/company/objective-corporation-limited/",
+        "consulted": "2026-10-05",
+        "note": "company profile; records management products"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "m-files",
+    "name": "M-Files",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "M-Files is a metadata-driven document and information management platform headquartered in Austin, Texas, founded in Tampere, Finland. It organizes content by what it is rather than where it is stored, with AI-assisted classification, workflows and audit trails.",
+    "website": "https://www.m-files.com",
+    "headquarters": "Austin, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Metadata-driven document management that organizes content by what it is, not where it is stored.",
+      "AI-assisted automatic classification and tagging of information.",
+      "Dynamic archiving rules, workflows and audit trails."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with metadata-based classification, archiving rules and audit trails. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/m-files",
+        "consulted": "2026-10-05",
+        "note": "company profile; Austin headquarters"
+      },
+      {
+        "url": "https://www.deep-analysis.net/mfiles-changes-ownership/",
+        "consulted": "2026-10-05",
+        "note": "analyst article; product background and ownership"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "laserfiche",
+    "name": "Laserfiche",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Laserfiche is an enterprise content and document management platform headquartered in Long Beach, California. It offers intelligent data capture, workflow automation, records management and AI-enabled capabilities used by government, education and commercial organizations.",
+    "website": "https://www.laserfiche.com",
+    "headquarters": "Long Beach, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Enterprise document management with AI-powered intelligent data capture.",
+      "No-code workflow automation and customizable forms.",
+      "Information governance and records management tools."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with document capture, workflow automation and records management. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.businesswire.com/news/home/20250723109668/en/Laserfiche-Named-a-Leader-in-Nucleus-Research-Content-Services-and-Collaboration-Value-Matrix-2025",
+        "consulted": "2026-10-05",
+        "note": "press release; Long Beach headquarters and platform scope"
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2025/02/11/3024290/0/en/Laserfiche-and-Carahsoft-Partner-to-Deliver-Document-Management-Solutions-to-the-Public-Sector.html",
+        "consulted": "2026-10-05",
+        "note": "press release; headquarters and document management scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "imanage",
+    "name": "iManage",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "iManage is a knowledge work platform for legal, accounting and financial services firms, headquartered in Chicago, Illinois. Its products include iManage Work for document and email management and iManage Records Manager for records governance.",
+    "website": "https://imanage.com",
+    "headquarters": "Chicago, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "iManage Work for document and email management with AI-powered organization.",
+      "iManage Records Manager for electronic and physical records with disposition workflows.",
+      "Legal holds and client/matter-level security controls."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with records management, legal holds and disposition workflows. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.legalitprofessionals.com/global-news/8329-imanage-launches-information-governance-and-records-management-center-of-excellence",
+        "consulted": "2026-10-05",
+        "note": "news; Chicago headquarters and records management scope"
+      },
+      {
+        "url": "https://www.cuspera.com/products/imanage-records-manager-x-9396",
+        "consulted": "2026-10-05",
+        "note": "product profile; records management features"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "egnyte",
+    "name": "Egnyte",
+    "categories": [
+      "grc"
+    ],
+    "description": "Egnyte is an AI-powered content cloud headquartered in Mountain View, California, focused on secure content collaboration, intelligence and governance. Its platform classifies content, applies governance policies and supports regulated industries.",
+    "website": "https://www.egnyte.com",
+    "headquarters": "Mountain View, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Content governance platform with data classification and policy enforcement.",
+      "Data intelligence features for sensitive-content discovery across cloud and on-premises.",
+      "AI-powered secure content collaboration for regulated industries."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as content classification, governance policies and data intelligence. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.linkedin.com/company/egnyte?trk=organization_guest_main-feed-card_reshare_feed-actor-name",
+        "consulted": "2026-10-05",
+        "note": "company profile; Mountain View headquarters and governance scope"
+      },
+      {
+        "url": "https://jobicy.com/company/egnyte",
+        "consulted": "2026-10-05",
+        "note": "company profile; headquarters and content governance description"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "box-governance",
+    "name": "Box Governance",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Box Governance is the content lifecycle management add-on to the Box cloud content platform, from Box, headquartered in Redwood City, California. It provides customizable retention schedules, legal holds and disposition management, with Box Zones for regional data residency.",
+    "website": "https://www.box.com",
+    "headquarters": "Redwood City, United States",
+    "data_residency": "Box Zones offers 10 selectable regions for data residency",
+    "mapping_features": [
+      "Flexible retention schedules with disposition actions at global, folder and file level.",
+      "Event-based retention triggered by business events such as employee departure or contract end.",
+      "Legal holds, advanced trash controls and Box Zones for regional data residency."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with customizable retention schedules, legal holds and disposition management. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.box.com/en-se/security/governance-and-compliance",
+        "consulted": "2026-10-05",
+        "note": "vendor product page; retention schedules, holds and disposition"
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20260630404789/en/Box-Announces-Expansion-of-Box-Zones-in-Three-New-Regions-to-Bring-Greater-Control-and-Data-Governance-to-Global-Organisations",
+        "consulted": "2026-10-05",
+        "note": "press release; Box Zones data residency and governance capabilities"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "truyo",
+    "name": "Truyo",
+    "categories": [
+      "dsr_automation",
+      "privacy_management"
+    ],
+    "description": "Truyo is a privacy platform from IntraEdge, based in Chandler, Arizona, built in partnership with Intel. It automates privacy rights management including subject access requests, consent management, vendor assessments and impact assessments under laws such as GDPR and CPRA.",
+    "website": "https://truyo.com",
+    "headquarters": "Chandler, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated handling of data subject requests for access, deletion, correction and Do Not Sell.",
+      "Consent management with cookie scanning, blocking and preference pages.",
+      "Privacy and vendor assessments with centralized audit trails."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 individual rights work: handling access and deletion requests, consent records and audit trails. Law 25 sets no retention periods itself; deletion workflows use periods defined by the organization.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.intel.com/content/www/us/en/partner/showcase/storefront/a5S3b0000016NcCEAU/truyo.html",
+        "consulted": "2026-10-05",
+        "note": "partner listing; IntraEdge/Intel product and DSAR automation"
+      },
+      {
+        "url": "https://truyo.com/privacy-policy-to-business-operations/",
+        "consulted": "2026-10-05",
+        "note": "vendor article; DSAR management, consent and audit trail"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "dporganizer",
+    "name": "DPOrganizer",
+    "categories": [
+      "dsr_automation",
+      "privacy_management"
+    ],
+    "description": "DPOrganizer is a privacy management software vendor founded in 2015 and headquartered in Stockholm, Sweden. Its SaaS platform covers data mapping and inventory, automated data subject request management, DPIA modules and audit reporting. It was acquired by DataGuard in June 2024.",
+    "website": "https://www.dporganizer.com",
+    "headquarters": "Stockholm, Sweden",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Data mapping and inventory tools showing personal data collection, processing and storage.",
+      "Automated data subject request management for timely responses under GDPR.",
+      "DPIA modules, reporting and audit trail capabilities."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 individual rights work: data mapping, automated subject request handling and DPIA modules. Law 25 sets no retention periods itself; deletion workflows use periods defined by the organization.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/dporganizer",
+        "consulted": "2026-10-05",
+        "note": "company profile; Stockholm headquarters and DataGuard acquisition"
+      },
+      {
+        "url": "https://mergr.com/company/dporganizer",
+        "consulted": "2026-10-05",
+        "note": "company profile; privacy management and DSR features"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "recordpoint",
+    "name": "RecordPoint",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "RecordPoint is a cloud-based records management company founded in Australia, with its APAC headquarters and AI/engineering hub in Melbourne. Its federated platform manages records across SharePoint, Microsoft 365, Box, Dropbox, Google Drive and file shares with retention rules and machine-learning classification.",
+    "website": "https://www.recordpoint.com",
+    "headquarters": "Melbourne, Australia",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Federated records management across SharePoint, OneDrive, Exchange Online, Box, Dropbox and Google Drive.",
+      "Retention rules applied consistently across cloud and on-premises repositories.",
+      "Machine-learning classification and records authority generation."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with federated retention rules and disposition across repositories. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.invest.vic.gov.au/jp/news-and-events/news/2019/july/recordpoint-establishes-apac-hq-and-engineering-hub-in-melbourne",
+        "consulted": "2026-10-05",
+        "note": "government release; Melbourne APAC HQ and records management scope"
+      },
+      {
+        "url": "https://www.technologydecisions.com.au/content/it-management/news/recordpoint-sets-up-melbourne-ai-and-engineering-hub-1101931259",
+        "consulted": "2026-10-05",
+        "note": "news; Melbourne hub and cloud records management"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "avepoint",
+    "name": "AvePoint",
+    "categories": [
+      "grc"
+    ],
+    "description": "AvePoint is a data management, governance and protection software company headquartered in Jersey City, New Jersey, founded in 2001. Its Confidence Platform provides backup, migration, governance and compliance for Microsoft 365, Google Workspace and Salesforce.",
+    "website": "https://www.avepoint.com",
+    "headquarters": "Jersey City, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Confidence Platform governance for Microsoft 365, Google Workspace and Salesforce.",
+      "Backup, migration, management and compliance reporting across collaboration data.",
+      "14 data centers supporting the SaaS platform."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as data governance, compliance reporting and records controls across collaboration platforms. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://ghost.bitscale.ai/avepoint/",
+        "consulted": "2026-10-05",
+        "note": "company profile; Jersey City headquarters and Confidence Platform"
+      },
+      {
+        "url": "https://www.nasdaq.com/press-release/avepoint-the-largest-microsoft-365-data-management-solutions-provider-announces-%242bn",
+        "consulted": "2026-10-05",
+        "note": "press release; headquarters and governance scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "proofpoint-archiving",
+    "name": "Proofpoint (archiving)",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Proofpoint is a cybersecurity and compliance company headquartered in Sunnyvale, California, taken private by Thoma Bravo in 2021. Its Enterprise Archive product captures email, instant messages, collaboration tools and social media for compliance, supervision and e-discovery.",
+    "website": "https://www.proofpoint.com",
+    "headquarters": "Sunnyvale, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Enterprise Archive captures email, instant messages, collaboration tools and social media.",
+      "Compliance supervision and e-discovery with fast search and retrieval.",
+      "Data integrity controls for regulated communications capture."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with compliant archiving, supervision and e-discovery. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-enters-definitive-agreement-be-acquired-thoma-bravo-123-billion?ref=hackernoon.com",
+        "consulted": "2026-10-05",
+        "note": "vendor press release; Thoma Bravo acquisition in 2021"
+      },
+      {
+        "url": "https://www.proofpoint.com/us/resources/webinars/enterprise-information-archiving",
+        "consulted": "2026-10-05",
+        "note": "vendor page; Enterprise Archive capture and compliance scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "mimecast-archiving",
+    "name": "Mimecast (archiving)",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Mimecast is an email security and archiving vendor headquartered in London, United Kingdom. Mimecast Cloud Archive provides long-term email retention with three tamper-proof encrypted copies and search via Outlook plugin or web.",
+    "website": "https://www.mimecast.com",
+    "headquarters": "London, United Kingdom",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Cloud Archive provides long-term email retention with three tamper-proof encrypted copies.",
+      "Self-service search via Outlook plugin and web access.",
+      "Bundled with email continuity and security on the Mimecast platform."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with long-term email archiving and retention policies. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.capterra.co.nz/software/168613/email-archive",
+        "consulted": "2026-10-05",
+        "note": "product listing; London headquarters and Cloud Archive scope"
+      },
+      {
+        "url": "https://www.channelweb.co.uk/news/2431009/partners-defend-mimecasts-decision-list-us",
+        "consulted": "2026-10-05",
+        "note": "news; UK-founded email security and archiving vendor"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "global-relay",
+    "name": "Global Relay",
+    "categories": [
+      "records_retention"
+    ],
+    "description": "Global Relay is a communications archiving and compliance company headquartered in Vancouver, British Columbia, Canada. Its platform archives email, instant messaging, social media and mobile communications, with AI surveillance and e-discovery, and operates Canadian data centres.",
+    "website": "https://www.globalrelay.com",
+    "headquarters": "Vancouver, Canada",
+    "data_residency": "Canadian data centres operated by Global Relay",
+    "mapping_features": [
+      "Unified archive for email, instant messaging, social media and mobile communications.",
+      "AI-enabled surveillance and supervision for regulated industries.",
+      "eDiscovery and regulatory reporting tools; operates Canadian data centres."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 records governance with unified archiving, surveillance and e-discovery; Canadian data centres help residency planning. Law 25 sets no retention periods itself; the tool configures schedules, it does not set statutory periods.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Global_Relay",
+        "consulted": "2026-10-05",
+        "note": "company overview; Vancouver headquarters and archiving products"
+      },
+      {
+        "url": "https://www.ourcommons.ca/Content/Committee/451/FINA/Brief/BR13582722/br-external/GlobalRelayCommunicationsInc-e.pdf",
+        "consulted": "2026-10-05",
+        "note": "company submission; Vancouver HQ and Canadian data centres"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "tugboat-logic",
+    "name": "Tugboat Logic",
+    "categories": [
+      "grc"
+    ],
+    "description": "Tugboat Logic is a security compliance automation platform founded in 2017 and based in Burlingame, California. It automates policy creation, evidence collection and audit readiness for frameworks such as SOC 2, ISO 27001 and HIPAA. It was acquired by OneTrust in September 2021 and folded into the OneTrust GRC platform.",
+    "website": "https://www.tugboatlogic.com",
+    "headquarters": "Burlingame, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Automated evidence collection from 100+ integrations for security compliance.",
+      "Policy management and audit readiness workflows for SOC 2, ISO 27001, HIPAA and PCI.",
+      "Library of standards and regulations with security questionnaire automation."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as automated evidence collection and policy management, now within the OneTrust platform. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.cbinsights.com/company/tugboat-logic",
+        "consulted": "2026-10-05",
+        "note": "company profile; Burlingame headquarters and OneTrust acquisition"
+      },
+      {
+        "url": "https://www.soc2certification.com/blog/vanta-vs-tugboat-logic-comparison",
+        "consulted": "2026-10-05",
+        "note": "comparison; OneTrust acquisition in 2021 and platform scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  },
+  {
+    "id": "thoropass",
+    "name": "Thoropass",
+    "categories": [
+      "grc"
+    ],
+    "description": "Thoropass, formerly Laika, is a compliance automation platform headquartered in New York, New York. It combines software with auditor services for SOC 2, ISO 27001, HIPAA, PCI DSS and HITRUST, with AI-powered evidence collection and continuous monitoring.",
+    "website": "https://www.thoropass.com",
+    "headquarters": "New York, United States",
+    "data_residency": "unverified",
+    "mapping_features": [
+      "Compliance automation with AI-powered evidence collection and continuous monitoring.",
+      "Policy templates and project management for SOC 2, ISO 27001, HIPAA, PCI DSS and HITRUST.",
+      "In-house audit delivery (Thoropass Assurance) across multiple frameworks."
+    ],
+    "retention_features": {
+      "claims": [],
+      "notes": "The vendor provides configurable retention rules, legal holds and disposition workflows; it configures schedules rather than setting statutory periods. No statutory retention period is cited on the consulted pages, so this entry is flagged verify.",
+      "verify": true
+    },
+    "law25_relevance": "Supports Law 25 governance work such as evidence collection, policy templates and audit delivery. Law 25 sets no retention periods itself, so any schedule numbers must come from other statutes.",
+    "pricing_model": "paid; tiers unverified",
+    "sources": [
+      {
+        "url": "https://www.highperformr.ai/company/thoropass",
+        "consulted": "2026-10-05",
+        "note": "company profile; New York headquarters and Laika rebrand"
+      },
+      {
+        "url": "https://www.thoropass.com/customers/wayleadr",
+        "consulted": "2026-10-05",
+        "note": "vendor case study; Thoropass formerly Laika, compliance platform scope"
+      }
+    ],
+    "verification": {
+      "status": "verified",
+      "checked_utc": "2026-10-05T03:30:00Z"
+    }
+  }
+]
