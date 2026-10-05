@@ -1,0 +1,20 @@
+rules:
+  - id: insecure-random
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      contract_severity: medium
+      category: security
+    message: >-
+      Math.random() in a deterministic path. The tokenizer, executor, menu,
+      apply, chatbot template selection, and MCP validation must replay
+      deterministically; randomness here breaks replay and the scripted
+      teacher. Use a seeded PRNG instead.
+    paths:
+      include:
+        - web/executor/js
+        - web/chatbot/js
+        - mcp
+    patterns:
+      - pattern: Math.random(...)
