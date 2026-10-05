@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* tools/qa-accept.mjs — Phase 1 acceptance run (verification worker).
+/* tools/qa-accept.mjs  -  Phase 1 acceptance run (verification worker).
  *
  * Serves nothing itself; expects `python3 -m http.server 8123` from ui/.
  * Drives the localhost-qa MCP server over stdio and executes the acceptance
