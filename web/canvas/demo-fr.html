@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Démonstration d'importation et de canevas : guide de cartographie des données</title>
+<meta name="description" content="Page de vérification : flux d'importation de chiffrier plus un canevas zoomable, déplaçable, avec plein écran. Tout se passe dans le navigateur.">
+<link rel="stylesheet" href="../import/import.css">
+<link rel="stylesheet" href="canvas.css">
+</head>
+<body class="cv-demo">
+<div class="cv-page">
+
+  <h1>Importation et canevas, branchés ensemble</h1>
+  <p class="cv-lede">Téléversez un inventaire de données rempli, suivez les étapes d'importation, et la carte s'affiche sur le canevas ci-dessous. La barre d'outils du canevas permet de zoomer, de déplacer par glisser, d'ajuster la carte à la vue et de passer en plein écran. Tout se passe dans votre navigateur; le fichier ne quitte jamais cette page.</p>
+  <p class="cv-disclaimer">Brouillon de travail illustratif seulement. Pas un avis juridique; vérifiez vos obligations de conservation de façon indépendante.</p>
+
+  <div class="cv-section">
+    <div class="builder-import" id="imp-sec">
+      <div class="sim-head">Importer un chiffrier</div>
+      <div style="padding:1.25rem">
+      <p class="imp-lede">Téléversez un inventaire de données rempli et transformez-le en carte. Tout se passe dans votre navigateur. Le fichier ne quitte jamais cette page.</p>
+      <p class="imp-note">Fonctionne avec le modèle d'inventaire de données de movahedi.ca et avec le fichier Excel que cet outil exporte.</p>
+
+      <div id="imp-step-file">
+        <label class="imp-drop" id="imp-drop">
+          <span class="imp-drop-text">Déposez votre fichier .xlsx, .xls ou .csv ici, ou</span>
+          <span class="btn secondary" aria-hidden="true">Choisir un fichier</span>
+          <input type="file" id="imp-file" class="imp-visually-hidden" accept=".xlsx,.xls,.csv" aria-label="Choisir un chiffrier à importer">
+        </label>
+        <p class="imp-status" id="imp-status" role="status"></p>
+      </div>
+
+      <div id="imp-step-sheets" hidden>
+        <h3>Choisissez les feuilles à importer</h3>
+        <div class="field"><label for="imp-sys-sheet">Feuille des systèmes</label><select id="imp-sys-sheet"></select></div>
+        <div class="field"><label for="imp-flows-sheet">Feuille des flux de données</label><select id="imp-flows-sheet"></select></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-sheets-back">Retour</button>
+          <button type="button" class="btn" id="imp-sheets-next">Continuer</button>
+        </div>
+      </div>
+
+      <div id="imp-step-map" hidden>
+        <h3>Associez les colonnes</h3>
+        <p class="imp-lede">Nous avons deviné quelle colonne correspond à quoi. Vérifiez chacune et corrigez les suppositions avant de continuer.</p>
+        <div id="imp-map-body"></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-map-back">Retour</button>
+          <button type="button" class="btn" id="imp-map-next">Réviser les données</button>
+        </div>
+      </div>
+
+      <div id="imp-step-review" hidden>
+        <h3>Révision avant de générer</h3>
+        <p class="imp-lede">Rien n'est corrigé automatiquement. Les lignes à problème sont signalées ci-dessous; elles sont exclues à la génération de la carte.</p>
+        <div id="imp-review-body"></div>
+        <p class="imp-note" id="imp-build-note" hidden></p>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-review-back">Retour</button>
+          <button type="button" class="btn" id="imp-build">Générer la carte</button>
+        </div>
+      </div>
+
+      <div id="imp-step-done" hidden>
+        <h3>Carte générée</h3>
+        <div id="imp-done-body"></div>
+        <div class="imp-row">
+          <button type="button" class="btn secondary" id="imp-again">Importer un autre fichier</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="sim-head">Canevas de la carte</div>
+    <div style="padding:1.25rem">
+      <div id="canvas-wrap">
+        <div id="cv-toolbar" role="toolbar" aria-label="Contrôles de la vue de la carte">
+          <button type="button" id="cv-zoom-in" aria-label="Zoom avant">+</button>
+          <button type="button" id="cv-zoom-out" aria-label="Zoom arrière">&#8722;</button>
+          <button type="button" id="cv-fit" aria-label="Ajuster à l'écran">Ajuster</button>
+          <button type="button" id="cv-full" aria-label="Plein écran">Plein écran</button>
+        </div>
+        <svg id="builder-canvas" aria-label="Canevas de cartographie vierge"></svg>
+        <p id="cv-status" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.LANG = "fr";
+window.T = {
+  canvas: {
+    zoomIn: "Zoom avant",
+    zoomOut: "Zoom arrière",
+    fitView: "Ajuster à l'écran",
+    fullscreen: "Plein écran",
+    exitFullscreen: "Quitter le plein écran",
+    selected: "Sélectionné",
+    deselected: "Désélectionné",
+    mapFitted: "Carte ajustée à l'écran.",
+    canvasLabel: "Canevas de cartographie vierge",
+    toolbarLabel: "Contrôles de la vue de la carte"
+  },
+  import: {
+    applied: "Carte importée affichée sur le canevas.",
+    parsing: "Lecture de votre fichier\u2026",
+    parseFail: "Impossible de lire ce fichier.",
+    noSystems: "Aucune feuille de systèmes dans ce fichier. Choisissez un fichier avec une liste de systèmes et réessayez.",
+    kindSystems: "modèle de systèmes",
+    kindFlows: "modèle de flux de données",
+    kindExporter: "export Excel de cet outil",
+    kindUnknown: "non importable",
+    flowsNone: "Aucune",
+    confidence: "confiance de l'association",
+    doNotUse: "Ne pas utiliser",
+    suggested: "Suggestion",
+    fromFile: "De votre fichier",
+    chooseCat: "Choisir\u2026",
+    buildBlocked: "Choisissez une catégorie pour chaque flux avant de générer la carte.",
+    row: "Ligne",
+    skipped: "Lignes ignorées",
+    error: "Erreur",
+    warning: "Avertissement",
+    systemsHead: "Systèmes",
+    flowsHead: "Flux de données",
+    doneCounts: "{n} systèmes placés, {e} liens tracés, {s} lignes ignorées.",
+    doneNote: "Les avertissements ont été conservés tels quels. Rien n'a été fusionné, renommé ou deviné au-delà de ce que vous avez confirmé.",
+    fields: {
+      systemName: "Nom du système", type: "Type", dataCategories: "Catégories de données",
+      purposes: "Fins d'utilisation", lawfulBasis: "Fondement juridique", retention: "Conservation",
+      storageLocation: "Emplacement de stockage", owner: "Propriétaire / service", notes: "Notes",
+      from: "De", to: "Vers", category: "Catégorie", purpose: "Objet du transfert",
+      crossBorder: "Transfrontalier?", destination: "Destination", safeguards: "Mesures de protection"
+    }
+  }
+};
+</script>
+<script src="../import/engine/engine-bundle.js"></script>
+<script src="../import/worker/worker-client.js"></script>
+<script src="../import/vendor/xlsx.full.min.js"></script>
+<script src="canvas.js"></script>
+<script src="../import/import.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.DMCanvas && typeof window.DMCanvas.init === "function") {
+    window.DMCanvas.init({
+      wrapId: "canvas-wrap",
+      svgId: "builder-canvas",
+      statusId: "cv-status",
+      strings: window.T.canvas
+    });
+  }
+});
+</script>
+</body>
+</html>
