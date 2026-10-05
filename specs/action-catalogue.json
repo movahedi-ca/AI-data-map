@@ -1,1 +1,312 @@
-{"actions":[{"effects":["Guide seq increments by one.","Node {type, x, y, label} appears under node_id, keyboard-focusable (tabindex=0, role=button)."],"idempotency":"Uniform mechanism (see idempotency_mechanism). Replaying returns the recorded node creation result.","name":"add_node","parameters":{"label":{"type":"string, 1-200 chars"},"node_id":{"type":"string, ^n[1-9]\\d*$"},"type":{"type":"enum: collection, system, thirdparty, destruction"},"x":{"type":"number, 40-600"},"y":{"type":"number, 40-380"}},"preconditions":["node_id equals n + (current guide seq + 1): ascending, no gaps.","type is one of the four frozen node types.","x in [40, 600], y in [40, 380].","label is 1-200 characters."],"undo_inverse":"Delete the node and any edges touching it."},{"effects":["Same as add_node, with type fixed to collection."],"idempotency":"Uniform mechanism. Replaying returns the recorded node creation result.","name":"add_collection_point","parameters":{"label":{"type":"string, 1-200 chars"},"node_id":{"type":"string, ^n[1-9]\\d*$"},"x":{"type":"number, 40-600"},"y":{"type":"number, 40-380"}},"preconditions":["Same as add_node.","type is implied collection and is not a parameter."],"undo_inverse":"Delete the node and any edges touching it."},{"effects":["Edge {a, b, cat} appended to the edges array and drawn on the canvas."],"idempotency":"Uniform mechanism. Replaying returns the recorded edge result; the duplicate-pair guard would also fire on a naive retry, but the key check runs first so replay is a clean no-op.","name":"connect","parameters":{"a":{"type":"string, source node id"},"b":{"type":"string, target node id"},"cat":{"type":"enum: contact, payment, marketing"}},"preconditions":["Both nodes exist.","a differs from b (no self-loops).","The pair is not already connected in either direction."],"undo_inverse":"Remove the edge."},{"effects":["The named field is updated in guide state; the node is redrawn."],"idempotency":"Uniform mechanism. Replaying returns the recorded set result; the recorded result includes the old value for audit.","name":"set_field","parameters":{"field":{"type":"enum: label, x, y"},"node_id":{"type":"string"},"value":{"type":"string for label (1-200 chars); number 40-600 for x; number 40-380 for y"}},"preconditions":["Node exists.","field is one of label, x, y. Unknown fields are rejected.","Value within the field's range. Out-of-range coordinates are rejected, not clamped."],"undo_inverse":"Restore the previous value of the field."},{"effects":["Annotation stored in the session layer under node_id.","Appears in run_check output as a cited range or a verify flag."],"idempotency":"Uniform mechanism. Replaying returns the recorded annotation result.","name":"set_retention","parameters":{"as_of":{"type":"string, YYYY-MM-DD, not in the future"},"node_id":{"type":"string"},"range_max_years":{"type":"number > 0"},"range_min_years":{"type":"number > 0"},"record_type":{"type":"string, 1-120 chars"},"statute":{"type":"string, min 8 chars, must name act and section"},"verify_only":{"default":false,"type":"boolean"}},"preconditions":["Node exists.","range_min_years < range_max_years (a single number is rejected).","statute names the act and the section, unless verify_only is true.","as_of is a real calendar date, not in the future.","Law 25 is never accepted as the source of a number: it sets no retention periods."],"undo_inverse":"Remove the annotation (restore the previous one if the node already had one)."},{"effects":["Confirmation recorded in the session layer with the current item index."],"idempotency":"Uniform mechanism. Replaying returns the recorded confirmation.","mutating":false,"name":"confirm_node","parameters":{"node_id":{"type":"string"},"note":{"type":"string, max 500 chars, optional"}},"preconditions":["Node exists."],"undo_inverse":"Remove the confirmation record."},{"effects":["Flag recorded in the session layer.","The executor pauses the recipe at the flagged point until the flag is cleared by a human or by a later flag-clearing action."],"idempotency":"Uniform mechanism. Replaying returns the recorded flag; it does not create a second flag.","name":"flag_for_review","parameters":{"item_index":{"type":"integer >= 0, optional"},"node_id":{"type":"string, optional"},"reason":{"type":"string, 1-500 chars"}},"preconditions":["At least one of node_id or item_index is present.","The referenced node or item index exists."],"undo_inverse":"Clear the flag."},{"effects":["A check report is produced: per-check pass/fail, per-node findings, verify flags. The report never contains a compliance verdict."],"idempotency":"Uniform mechanism, but this action is non-mutating: replay returns the recorded report without re-running the checks.","mutating":false,"name":"run_check","parameters":{"checks":{"type":"array of enum: label_coverage, connectivity, retention_cited, edge_categories; min 1, unique"}},"preconditions":["checks is non-empty.","Every check name is known."],"undo_inverse":"None (non-mutating). undo_last skips this action when scanning for the last mutating action."},{"effects":["The guide downloads data-map-inventory.xls (Sheets Nodes/Noeuds and Connections/Liens per the freeze doc)."],"idempotency":"Recorded under the uniform mechanism: replay returns the recorded result and does not trigger a second download.","mutating":false,"name":"export","parameters":{"format":{"type":"const xls"}},"preconditions":["format is xls; anything else is rejected loudly.","Canvas has at least one node."],"undo_inverse":"None (non-mutating for canvas state). undo_last skips this action."},{"effects":["The referenced recipe item is marked skipped; the executor advances past it without executing.","No canvas or annotation change."],"idempotency":"Uniform mechanism. Replaying returns the recorded skip marker; the item stays skipped, it is not skipped twice.","mutating":false,"name":"skip_recipe_item","parameters":{"item_index":{"type":"integer >= 0"},"reason":{"type":"string, 1-200 chars"}},"preconditions":["item_index is a valid recipe item.","The item has not already executed."],"undo_inverse":"Unmark the skip (edge case; normally skips stand)."},{"effects":["The most recent mutating applied action is reversed via its undo_inverse.","The undone action's idempotency key moves to a tombstone set so a stale replay can never resurrect it.","undo_last is itself recorded under its own idempotency key."],"idempotency":"Safe to replay: the recorded result names the action that was undone and its inverse outcome. A replay returns that recorded result instead of undoing a second action.","name":"undo_last","parameters":{},"preconditions":["At least one mutating action has been applied in this session."],"undo_inverse":"Re-apply the undone action only if its tombstone is cleared by an explicit operator command (not part of Phase 0 recipes)."},{"effects":["The session terminates immediately.","The snapshot is sealed with the abort reason; no further items execute."],"idempotency":"Uniform mechanism. Replaying returns the recorded abort; the session stays terminated.","mutating":false,"name":"abort_session","parameters":{"reason":{"type":"string, 1-500 chars"}},"preconditions":[],"undo_inverse":"None. A terminated session is never resumed."}],"catalogue_version":"1.0.0","description":"Every valid action at every step, enumerated like a command list. The recipe intents (add_node through export, confirm_node, flag_for_review) appear here as executable actions; the recovery actions (undo_last, skip_recipe_item, flag_for_review, abort_session) are available at every step. flag_for_review is both an intent and a recovery action.","idempotency_mechanism":{"definition":"Every action carries an idempotency key = SHA-256, hex-encoded, of the UTF-8 bytes of recipe_id + U+0000 + decimal item_index + U+0000 + action_name. The session keeps an applied-keys set mapping each key to its recorded result. If a key is already applied, the executor returns the recorded result and performs no work: replay is a no-op.","example":"Key for the connect at item 3 of recipe cafe-nord-sample-01: SHA-256(\"cafe-nord-sample-01\\x003\\x00connect\")."}}
+{
+  "actions": [
+    {
+      "effects": [
+        "Guide seq increments by one.",
+        "Node {type, x, y, label} appears under node_id, keyboard-focusable (tabindex=0, role=button).",
+        "Guide seq is monotonic: it never decrements, including after undo; undone ids leave gaps."
+      ],
+      "idempotency": "Uniform mechanism (see idempotency_mechanism). Replaying returns the recorded node creation result.",
+      "name": "add_node",
+      "parameters": {
+        "label": {
+          "type": "string, 1-200 chars"
+        },
+        "node_id": {
+          "type": "string, ^n[1-9]\\d*$"
+        },
+        "type": {
+          "type": "enum: collection, system, thirdparty, destruction"
+        },
+        "x": {
+          "type": "number, 40-600"
+        },
+        "y": {
+          "type": "number, 40-380"
+        }
+      },
+      "preconditions": [
+        "node_id equals n + (current guide seq + 1): ascending against the live seq, no gaps. After an undo, later recipe ids may no longer match the live seq; such items fail loudly instead of mis-assigning.",
+        "type is one of the four frozen node types.",
+        "x in [40, 600], y in [40, 380].",
+        "label is 1-200 characters."
+      ],
+      "undo_inverse": "Delete the node and any edges touching it."
+    },
+    {
+      "effects": [
+        "Same as add_node, with type fixed to collection."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded node creation result.",
+      "name": "add_collection_point",
+      "parameters": {
+        "label": {
+          "type": "string, 1-200 chars"
+        },
+        "node_id": {
+          "type": "string, ^n[1-9]\\d*$"
+        },
+        "x": {
+          "type": "number, 40-600"
+        },
+        "y": {
+          "type": "number, 40-380"
+        }
+      },
+      "preconditions": [
+        "Same as add_node.",
+        "type is implied collection and is not a parameter."
+      ],
+      "undo_inverse": "Delete the node and any edges touching it."
+    },
+    {
+      "effects": [
+        "Edge {a, b, cat} appended to the edges array and drawn on the canvas."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded edge result; the duplicate-pair guard would also fire on a naive retry, but the key check runs first so replay is a clean no-op.",
+      "name": "connect",
+      "parameters": {
+        "a": {
+          "type": "string, source node id"
+        },
+        "b": {
+          "type": "string, target node id"
+        },
+        "cat": {
+          "type": "enum: contact, payment, marketing"
+        }
+      },
+      "preconditions": [
+        "Both nodes exist.",
+        "a differs from b (no self-loops).",
+        "The pair is not already connected in either direction."
+      ],
+      "undo_inverse": "Remove the edge."
+    },
+    {
+      "effects": [
+        "The named field is updated in guide state; the node is redrawn."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded set result; the recorded result includes the old value for audit.",
+      "name": "set_field",
+      "parameters": {
+        "field": {
+          "type": "enum: label, x, y"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string for label (1-200 chars); number 40-600 for x; number 40-380 for y"
+        }
+      },
+      "preconditions": [
+        "Node exists.",
+        "field is one of label, x, y. Unknown fields are rejected.",
+        "Value within the field's range. Out-of-range coordinates are rejected, not clamped."
+      ],
+      "undo_inverse": "Restore the previous value of the field."
+    },
+    {
+      "effects": [
+        "Annotation stored in the session layer under node_id.",
+        "Appears in run_check output as a cited range or a verify flag.",
+        "Replaces any existing retention annotation on the node.",
+        "When anchor is present, the range is measured from the anchor event."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded annotation result.",
+      "name": "set_retention",
+      "parameters": {
+        "as_of": {
+          "type": "string, YYYY-MM-DD, not in the future"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "range_max_years": {
+          "type": "number > 0"
+        },
+        "range_min_years": {
+          "type": "number > 0"
+        },
+        "record_type": {
+          "type": "string, 1-120 chars"
+        },
+        "statute": {
+          "type": "string, min 8 chars, must name act and section"
+        },
+        "verify_only": {
+          "default": false,
+          "type": "boolean"
+        },
+        "anchor": {
+          "type": "string, max 120 chars, optional",
+          "description": "Event the range is measured from, e.g. 'after death', 'duration of services', 'after account closure'."
+        }
+      },
+      "preconditions": [
+        "Node exists.",
+        "range_min_years < range_max_years (a single number is rejected).",
+        "statute names the act and the section, unless verify_only is true.",
+        "as_of is a real calendar date, not in the future.",
+        "Law 25 is never accepted as the source of a number: it sets no retention periods."
+      ],
+      "undo_inverse": "Remove the annotation (restore the previous one if the node already had one)."
+    },
+    {
+      "effects": [
+        "Confirmation recorded in the session layer with the current item index."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded confirmation.",
+      "mutating": false,
+      "name": "confirm_node",
+      "parameters": {
+        "node_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string, max 500 chars, optional"
+        }
+      },
+      "preconditions": [
+        "Node exists."
+      ],
+      "undo_inverse": "Remove the confirmation record."
+    },
+    {
+      "effects": [
+        "Flag recorded in the session layer.",
+        "While any flag is open: item_index is frozen; the valid-action set is reduced to undo_last (if applicable), abort_session, and flag_for_review (to add further flags). The recipe does not advance.",
+        "A flag is cleared by a human out-of-band through the review UI, or by undo_last targeting the flag_for_review action (its undo_inverse clears the flag). On clear, item_index resumes from the flagged point."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded flag; it does not create a second flag.",
+      "name": "flag_for_review",
+      "parameters": {
+        "item_index": {
+          "type": "integer >= 0, optional"
+        },
+        "node_id": {
+          "type": "string, optional"
+        },
+        "reason": {
+          "type": "string, 1-500 chars"
+        }
+      },
+      "preconditions": [
+        "At least one of node_id or item_index is present.",
+        "The referenced node or item index exists."
+      ],
+      "undo_inverse": "Clear the flag."
+    },
+    {
+      "effects": [
+        "A check report is produced: per-check pass/fail, per-node findings, verify flags. The report never contains a compliance verdict."
+      ],
+      "idempotency": "Uniform mechanism, but this action is non-mutating: replay returns the recorded report without re-running the checks.",
+      "mutating": false,
+      "name": "run_check",
+      "parameters": {
+        "checks": {
+          "type": "array of enum: label_coverage, connectivity, retention_cited, edge_categories; min 1, unique"
+        }
+      },
+      "preconditions": [
+        "checks is non-empty.",
+        "Every check name is known."
+      ],
+      "undo_inverse": "None (non-mutating). undo_last skips this action when scanning for the last mutating action."
+    },
+    {
+      "effects": [
+        "The guide downloads data-map-inventory.xls (Sheets Nodes/Noeuds and Connections/Liens per the freeze doc)."
+      ],
+      "idempotency": "Recorded under the uniform mechanism: replay returns the recorded result and does not trigger a second download.",
+      "mutating": false,
+      "name": "export",
+      "parameters": {
+        "format": {
+          "type": "const xls"
+        }
+      },
+      "preconditions": [
+        "format is xls; anything else is rejected loudly.",
+        "Canvas has at least one node."
+      ],
+      "undo_inverse": "None (non-mutating for canvas state). undo_last skips this action."
+    },
+    {
+      "effects": [
+        "The current recipe item is marked skipped; the executor advances item_index by one and continues.",
+        "A failed item counts as current: skipping it resumes the recipe past the failure."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded skip marker; the item stays skipped, it is not skipped twice.",
+      "mutating": false,
+      "name": "skip_recipe_item",
+      "parameters": {
+        "item_index": {
+          "type": "integer, must equal the current item_index"
+        },
+        "reason": {
+          "type": "string, 1-200 chars"
+        }
+      },
+      "preconditions": [
+        "item_index equals the current item_index: only the current item may be skipped.",
+        "The current item has not already completed successfully."
+      ],
+      "undo_inverse": "Unmark the skip (edge case; normally skips stand)."
+    },
+    {
+      "effects": [
+        "The most recent applied mutating action is reversed via its undo_inverse. When scanning, undo_last actions themselves are skipped: a second consecutive undo_last undoes the next-earlier mutating action, never the first undo.",
+        "The undone action's idempotency key moves to a tombstone set so a stale replay can never resurrect it.",
+        "undo_last is itself recorded under its own idempotency key; replaying that key returns the recorded undo result instead of undoing a second action."
+      ],
+      "idempotency": "Safe to replay: the recorded result names the action that was undone and its inverse outcome. A replay returns that recorded result instead of undoing a second action.",
+      "name": "undo_last",
+      "parameters": {},
+      "preconditions": [
+        "At least one mutating action has been applied in this session."
+      ],
+      "undo_inverse": "None in Phase 0: there is no re-apply action. Replay of an undo_last key returns the recorded undo result (no-op). Re-applying an undone action requires an explicit operator command outside recipes."
+    },
+    {
+      "effects": [
+        "The session terminates immediately.",
+        "The snapshot is sealed with the abort reason; no further items execute."
+      ],
+      "idempotency": "Uniform mechanism. Replaying returns the recorded abort; the session stays terminated.",
+      "mutating": false,
+      "name": "abort_session",
+      "parameters": {
+        "reason": {
+          "type": "string, 1-500 chars"
+        }
+      },
+      "preconditions": [],
+      "undo_inverse": "None. A terminated session is never resumed."
+    }
+  ],
+  "catalogue_version": "1.0.0",
+  "description": "Every valid action at every step, enumerated like a command list. The recipe intents (add_node through export, confirm_node, flag_for_review) appear here as executable actions; the recovery actions (undo_last, skip_recipe_item, flag_for_review, abort_session) are available at every step. flag_for_review is both an intent and a recovery action. Absent 'mutating' on an action means mutating: true.",
+  "idempotency_mechanism": {
+    "definition": "Every action carries an idempotency key = SHA-256, hex-encoded, of the UTF-8 bytes of recipe_id + U+0000 + decimal item_index + U+0000 + action_name. The session keeps an applied-keys set mapping each key to its recorded result. If a key is already applied, the executor returns the recorded result and performs no work: replay is a no-op.",
+    "example": "Key for the connect at item 3 of recipe cafe-nord-sample-01: SHA-256(\"cafe-nord-sample-01\\x003\\x00connect\").",
+    "session_scope": "Keys are per-session. A session never spans a recipe edit: if the recipe bytes change, the session is aborted and a new session starts. Binding the key to a recipe content hash is reserved for a later phase."
+  },
+  "mutating_default": true,
+  "statute_validation": {
+    "description": "Normative matcher for the set_retention statute parameter. Applied case-insensitively: normalize the statute string to lowercase first.",
+    "law25_variants": [
+      "law 25",
+      "loi 25",
+      "bill 64",
+      "lprpsp",
+      "modernisant des dispositions legislatives en matiere de protection des renseignements personnels",
+      "renseignements personnels dans le secteur prive"
+    ],
+    "law25_rule": "If the normalized statute contains any variant as a substring, the entry is rejected as the source of a number (Law 25 sets no retention periods).",
+    "section_pattern": "([Ss][Ss]?\\.?\\s*[0-9]+|[Aa][Rr][Tt]\\.?\\s*[0-9]+|[Aa][Rr][Tt][Ii][Cc][Ll][Ee]\\s+[0-9]+|[Rr]\\.?\\s*[0-9]+(\\.[0-9]+)*|\\u00a7\\s*[0-9]+)",
+    "section_rule": "Non-verify_only entries must match section_pattern (act + section, e.g. 's. 230(4)(b)', 'ss. 34, 35.3', 'art. 23'). A bare act name with no section is rejected."
+  }
+}
