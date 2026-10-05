@@ -214,20 +214,40 @@ of the recipe contract.
   confirmation record (`session_id, recipe_id, item_index, ref, label,
   note, by: "reviewer", at`).
 - Correct: `applyCorrection(op)` applies `relabel`, `retype`, `remove_node`,
-  `reconnect`, `remove_edge`, or `verify_only` out-of-band, returns
-  `{op, before, after}`. Every correction is also appended as a JSONL line
-  (`S1Review.correctionLine`) for future training; the correction log is
-  never folded into the export, it downloads separately as
-  `corrections.jsonl`.
+  `reconnect`, `remove_edge`, `verify_only`, `add_node`, `add_edge`,
+  `set_meta`, or `remove_retention` out-of-band, returns
+  `{op, before, after}`. `add_node {type, label}` allocates the next free
+  node id (max numeric suffix + 1) and a free canvas spot inside x 40..600,
+  y 40..380; it never touches the guide seq. `add_edge {a, b, cat}`
+  validates like `reconnect` without replacing an existing edge.
+  `set_meta {node_id | (a, b), meta}` merges whitelisted string fields
+  (`sys_kind`, `holds`, `region`, `collect_how`, `notes`, `service`,
+  `data_shared`, `why`; 60-500 chars) into `node.meta` / `edge.meta`
+  (plain object, created on demand); a field set to `""` deletes the key.
+  `remove_retention {node_id}` drops the retention annotation. Every
+  correction is also appended as a JSONL line (`S1Review.correctionLine`)
+  for future training; the correction log is never folded into the
+  export, it downloads separately as `corrections.jsonl`.
+  The review screen re-renders from a fresh `deriveChecklist` after every
+  mutation (confirm statuses preserved by ref), so retyped cards move
+  groups and renames propagate to flow labels; the review loop's
+  `detail` carries `meta` for the table and export.
 - Download: `S1Exporter.buildDraftWorkbook({nodes, edges}, checklist,
   confirmations, lang)` returns SpreadsheetML 2003 XML (BOM-prefixed) with
-  Nodes/Noeuds, Connections/Liens, Review/Revision, and Confirmations
-  sheets, all draft-for-review labeled. The Review sheet always reflects the
-  corrected state: after a fix, the checklist row is re-derived from the
-  executor, and rows for removed artifacts render "removed during review"
-  instead of stale detail.
+  Nodes/Noeuds, Connections/Liens, Details/Détails, Review/Revision, and
+  Confirmations sheets, all draft-for-review labeled. The Details sheet
+  lists the review setup-editor fields (`S1Exporter.metaText(meta, lang)`)
+  per artifact; the results Table view carries the same Details column.
+  The inventory sheets keep their Phase 1 shape (still re-importable);
+  the Review sheet always reflects the corrected state: after a fix, the
+  checklist row is re-derived from the executor, and rows for removed
+  artifacts render "removed during review" instead of stale detail.
 - Wipe: `__s1executor.reset()` plus the UI clears its checklist,
-  confirmations, and corrections buffers. One click, no leftovers.
+  confirmations, and corrections buffers, and the builder canvas is
+  cleared through the `DMImport.applyState({nodes: {}, edges: []})` seam.
+  The teardown is stage-guarded so a failure in one stage (e.g. the chat
+  reset) can never strand the rest. One click, no leftovers, meta
+  included (`node.meta` / `edge.meta` die with the executor).
 
 ### Chatbot delivery: recipe in, session out
 

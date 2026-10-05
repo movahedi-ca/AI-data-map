@@ -422,11 +422,12 @@
         var row = el("div", "s1c-actions");
         clearInput();
         Tmpl.authoredTemplates().slice(0, 12).forEach(function (a) {
-          var b = el("button", "btn secondary", a.name);
+          var aname = (lang === "fr") ? I18n.templateName(a.chips, "fr") : a.name;
+          var b = el("button", "btn secondary", aname);
           b.type = "button";
           b.addEventListener("click", function () {
             Object.keys(a.chips).forEach(function (cid) { state.chips[cid] = a.chips[cid]; });
-            userMsg(a.name);
+            userMsg(aname);
             var full = Tmpl.selectTemplate(state.chips);
             state.recipe = full;
             templateMatched(full);
@@ -451,7 +452,10 @@
     }
 
     function templateMatched(t) {
-      botMsg(fill(S.chatTemplateMatched, { name: t.name, n: t.items.length }));
+      /* FR composes from the localized chip names; the authored template
+         names are English (2026-10-05). */
+      var name = (lang === "fr") ? I18n.templateName(state.chips, "fr") : t.name;
+      botMsg(fill(S.chatTemplateMatched, { name: name, n: t.items.length }));
       var labels = templateLabels(t);
       if (labels.length) botMsg(fill(S.chatTemplateNodes, { labels: labels.join(", ") }));
       recipeReady();

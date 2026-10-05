@@ -203,6 +203,14 @@
     var templateBox = el("div", "s1-templatebox");
     quickPane.appendChild(templateBox);
 
+    function templateSummary(t) {
+      /* FR composes from the localized chip names (i18n.js templateName);
+         the authored template names are English and must not leak into
+         the FR path (2026-10-05). */
+      var name = (lang === "fr") ? I18n.templateName(state.chips, "fr") : t.name;
+      return name + " (" + t.items.length + " " + S.templateSteps + ")";
+    }
+
     function resolveTemplate() {
       while (templateBox.firstChild) templateBox.removeChild(templateBox.firstChild);
       state.template = null;
@@ -211,7 +219,7 @@
       var t = Tmpl.selectTemplate(state.chips);
       if (t) {
         state.template = t;
-        var p = el("p", "s1-templateok", t.name + " (" + t.items.length + " steps)");
+        var p = el("p", "s1-templateok", templateSummary(t));
         templateBox.appendChild(p);
         var go = el("button", "btn s1-go", S.startRun);
         go.type = "button";
@@ -223,7 +231,8 @@
         var listTitle = el("p", "s1-readytitle", S.readyTemplates + ":");
         templateBox.appendChild(listTitle);
         Tmpl.authoredTemplates().forEach(function (a) {
-          var b = el("button", "btn secondary s1-tmplpick", a.name);
+          var aname = (lang === "fr") ? I18n.templateName(a.chips, "fr") : a.name;
+          var b = el("button", "btn secondary s1-tmplpick", aname);
           b.type = "button";
           b.addEventListener("click", function () {
             Object.keys(a.chips).forEach(function (cid) {
@@ -469,20 +478,23 @@
       });
     }
 
-    /* ---------------- review: grouped cards ----------------
+    /* ---------------- review: an editing workspace ----------------
        The old interrogation rows ("I put X here as Y. Right?") are gone:
        their nested template fill leaked raw {placeholders} (narrate.js).
-       Each artifact now gets a calm card: a shape icon in the builder's
-       visual language, the item name, its type in plain words, and
-       Confirm / Fix. Cards group under headings by kind. Fix opens a real
-       inline editor on the card. */
+       Each artifact gets a calm card: a shape icon in the builder's visual
+       language, the item name, its type in plain words, and Confirm /
+       Rename / Set up / Remove. Type chips (nodes) and category chips
+       (flows) sit on the card and change the artifact in place. Cards group
+       under headings by kind; every group carries a one-sentence intro.
+       After any mutation the whole review list re-renders from a fresh
+       deriveChecklist (statuses preserved by ref), so retyped cards move
+       groups and renamed nodes propagate to flow labels. */
     var reviewBox = el("div", "s1-review");
     reviewBox.hidden = true;
     var reviewTitle = el("h3", "s1-reviewtitle", S.reviewTitle);
     reviewTitle.tabIndex = -1;
     reviewBox.appendChild(reviewTitle);
-    reviewBox.appendChild(el("p", "s1-reviewlede", S.reviewLede));
-    reviewBox.appendChild(el("p", "s1-reviewexplain", S.reviewExplain));
+    reviewBox.appendChild(el("p", "s1-reviewintro", S.reviewIntro));
     var reviewList = el("div", "s1-reviewlist");
     reviewBox.appendChild(reviewList);
 
@@ -564,9 +576,26 @@
       paintCanvas();
     }
 
+    /* Group titles for the always-rendered addable groups, resolved once
+       through the same card-text path as real cards (no duplicated
+       strings). */
+    function groupTitleFor(key) {
+      var probe = key === "flow"
+        ? Narr.reviewCardText("edge", { aLabel: "x", bLabel: "y", cat: "contact" }, lang)
+        : Narr.reviewCardText("node", { label: "x", type: key }, lang);
+      return probe.group;
+    }
+
     function renderReviewCards() {
       var ex = H.controller.executor();
       var buckets = {}, order = [];
+      /* The four addable groups always render their header (intro + Add
+         button), even when empty, so an Add action is never unreachable
+         after removing every card in a group. */
+      ["collection", "system", "thirdparty", "flow"].forEach(function (key) {
+        buckets[key] = { title: groupTitleFor(key), cards: [] };
+        order.push(key);
+      });
       state.checklist.forEach(function (row, i) {
         var card = Narr.reviewCardText(row.kind, cardDataFor(ex, row), lang);
         var key = card.groupKey;
@@ -580,12 +609,94 @@
       order.forEach(function (key) {
         var section = el("section", "s1-cardgroup");
         section.setAttribute("aria-label", buckets[key].title);
-        section.appendChild(el("h4", "s1-cardgroup-title", buckets[key].title));
+        var headRow = el("div", "s1-cardgroup-head");
+        headRow.appendChild(el("h4", "s1-cardgroup-title", buckets[key].title));
+        var addBtn = addButtonFor(key, section);
+        if (addBtn) headRow.appendChild(addBtn);
+        section.appendChild(headRow);
+        var introKey = "groupIntro" + key.charAt(0).toUpperCase() + key.slice(1);
+        if (S[introKey]) section.appendChild(el("p", "s1-cardgroup-intro", S[introKey]));
         buckets[key].cards.forEach(function (c) {
           section.appendChild(renderCard(ex, c.row, c.i, c.card));
         });
         reviewList.appendChild(section);
       });
+    }
+
+    /* Re-render the whole review list after any mutation (add, remove,
+       retype, relabel, set_meta): the checklist is re-derived from the
+       executor, per-row statuses are preserved by ref, and the DOM is
+       rebuilt. This keeps grouping honest (a retyped card moves groups)
+       and propagates renames to flow labels. Returns the rebuilt list. */
+    function refreshReviewList() {
+      var ex = H.controller.executor();
+      var statusByRef = {};
+      state.checklist.forEach(function (r) { statusByRef[r.ref] = r.status; });
+      state.checklist = Rev.deriveChecklist(ex);
+      state.checklist.forEach(function (r) {
+        if (statusByRef[r.ref]) r.status = statusByRef[r.ref];
+      });
+      while (reviewList.firstChild) reviewList.removeChild(reviewList.firstChild);
+      renderReviewCards();
+    }
+
+    function findCardEl(ref) {
+      var row = null;
+      state.checklist.forEach(function (r) { if (r.ref === ref) row = r; });
+      return row && row._el ? row._el : null;
+    }
+
+    /* Add buttons live on the collection/system/thirdparty/flow group
+       headers. Add node: allocates the id, paints, and opens the new
+       card's Set up editor so the reader names it properly right away. */
+    function addButtonFor(key, section) {
+      var cfg = {
+        collection: { label: S.addCollection, type: "collection", defName: S.newCollectionName },
+        system: { label: S.addSystem, type: "system", defName: S.newSystemName },
+        thirdparty: { label: S.addThirdparty, type: "thirdparty", defName: S.newThirdpartyName }
+      }[key];
+      if (cfg) {
+        var b = el("button", "btn secondary s1-add", cfg.label);
+        b.type = "button";
+        b.addEventListener("click", function () { addNode(cfg.type, cfg.defName, b); });
+        return b;
+      }
+      if (key === "flow") {
+        var wrap = el("span", "s1-addflowwrap");
+        var fb = el("button", "btn secondary s1-add", S.addFlow);
+        fb.type = "button";
+        var nodeCount = Object.keys(H.controller.executor()._nodes).length;
+        if (nodeCount < 2) {
+          fb.disabled = true;
+          var why = el("span", "s1-addwhy", S.addFlowNeedNodes);
+          why.id = "s1-addflow-why";
+          fb.setAttribute("aria-describedby", "s1-addflow-why");
+          wrap.appendChild(fb);
+          wrap.appendChild(why);
+        } else {
+          fb.addEventListener("click", function () { openAddFlow(section, fb); });
+          wrap.appendChild(fb);
+        }
+        return wrap;
+      }
+      return null;
+    }
+
+    function addNode(type, defName, backTo) {
+      var res = H.applyCorrection({ op: "add_node", type: type, label: defName });
+      logCorrection("add_node", "node:" + res.after.node_id, null, res.after);
+      refreshReviewList();
+      paintCanvas();
+      bloom(res.after.node_id);
+      var msg = Narr.correctionConfirm("add_node", { label: res.after.label }, lang);
+      logStep(msg, "s1-corrected");
+      /* Open the new card's Set up editor: the reader gives it a real
+         name and fills the details immediately. */
+      var cardEl = findCardEl("node:" + res.after.node_id);
+      var setupBtn = cardEl ? cardEl.querySelector(".s1-setup") : null;
+      if (setupBtn) setupBtn.click();
+      else if (backTo && typeof backTo.focus === "function") backTo.focus();
+      maybeFinishReview();
     }
 
     function renderCard(ex, row, i, card) {
@@ -598,21 +709,202 @@
       item.appendChild(body);
       var status = el("p", "s1-cardstatus " + row.status, S[row.status] || row.status);
       item.appendChild(status);
+      /* Change chips: type chips on every node card (retype), category
+         chips on every flow card (reconnect). Nothing the assistant
+         decided is locked. */
+      if (row.kind === "node") {
+        item.appendChild(typeChips(row, ex, item));
+      } else if (row.kind === "edge") {
+        item.appendChild(catChips(row, ex, item));
+      }
       var btnRow = el("div", "s1-cardbtns");
       var confirmBtn = el("button", "btn s1-confirm", S.confirm);
       confirmBtn.type = "button";
-      var fixBtn = el("button", "btn secondary s1-fix", S.fix);
-      fixBtn.type = "button";
       confirmBtn.addEventListener("click", function () { confirmRow(row, i, null); });
-      fixBtn.addEventListener("click", function () { openCardEditor(item, row, i, fixBtn); });
       btnRow.appendChild(confirmBtn);
-      btnRow.appendChild(fixBtn);
+      if (row.kind === "node") {
+        var renameBtn = el("button", "btn secondary s1-rename", S.rename);
+        renameBtn.type = "button";
+        renameBtn.addEventListener("click", function () { openRename(item, row, i, renameBtn); });
+        btnRow.appendChild(renameBtn);
+        if (["collection", "system", "thirdparty"].indexOf(row.detail.type) !== -1) {
+          var setupBtn = el("button", "btn secondary s1-setup", S.setup);
+          setupBtn.type = "button";
+          setupBtn.addEventListener("click", function () { openSetup(item, row, i, setupBtn); });
+          btnRow.appendChild(setupBtn);
+        }
+      } else if (row.kind === "edge") {
+        var flowSetupBtn = el("button", "btn secondary s1-setup", S.setup);
+        flowSetupBtn.type = "button";
+        flowSetupBtn.addEventListener("click", function () { openSetup(item, row, i, flowSetupBtn); });
+        btnRow.appendChild(flowSetupBtn);
+      } else if (row.kind === "retention") {
+        var verifyBtn = el("button", "btn secondary s1-verify", S.fixVerify);
+        verifyBtn.type = "button";
+        verifyBtn.addEventListener("click", function () {
+          var res = H.applyCorrection({ op: "verify_only", node_id: row.node_id });
+          logCorrection("verify_only", row.ref, res.before, res.after);
+          refreshReviewList();
+          paintCanvas();
+          logStep(Narr.correctionConfirm("relabel", { label: row.label }, lang), "s1-corrected");
+          confirmRow(row, i, null);
+        });
+        btnRow.appendChild(verifyBtn);
+      }
+      var removeBtn = el("button", "btn secondary s1-remove", S.remove);
+      removeBtn.type = "button";
+      removeBtn.addEventListener("click", function () { openRemoveConfirm(item, row, i, removeBtn, btnRow); });
+      btnRow.appendChild(removeBtn);
       item.appendChild(btnRow);
+      /* Confirmed cards keep their confirmed state across re-renders:
+         the action row stays hidden (chips remain changeable anytime). */
+      if (row.status === "confirmed") btnRow.hidden = true;
       row._el = item;
       row._statusEl = status;
       row._btnRow = btnRow;
-      row._fixBtn = fixBtn;
       return item;
+    }
+
+    /* Type chips for a node card: single-select, aria-pressed on the
+       current type; a tap applies the retype op and re-renders. */
+    function typeChips(row, ex, item) {
+      var wrap = el("div", "s1-typechips");
+      wrap.setAttribute("role", "group");
+      wrap.setAttribute("aria-label", S.chooseType);
+      var typeNames = Narr.PLAIN_TYPE[lang] || Narr.PLAIN_TYPE.en;
+      ["collection", "system", "thirdparty", "destruction"].forEach(function (t) {
+        var b = el("button", "s1-typechip" + (row.detail.type === t ? " s1-on" : ""), typeNames[t] || t);
+        b.type = "button";
+        b.setAttribute("aria-pressed", row.detail.type === t ? "true" : "false");
+        b.addEventListener("click", function () {
+          if (row.detail.type === t) return;
+          var res = H.applyCorrection({ op: "retype", node_id: row.node_id, type: t });
+          logCorrection("retype", row.ref, res.before, res.after);
+          refreshReviewList();
+          paintCanvas();
+          var msg = Narr.correctionConfirm("retype",
+            { label: ex._nodes[row.node_id] ? ex._nodes[row.node_id].label : row.node_id, type: t }, lang);
+          logStep(msg, "s1-corrected");
+          maybeFinishReview();
+        });
+        wrap.appendChild(b);
+      });
+      return wrap;
+    }
+
+    /* Category chips for a flow card: single-select via reconnect. */
+    function catChips(row, ex, item) {
+      var wrap = el("div", "s1-catchips");
+      wrap.setAttribute("role", "group");
+      wrap.setAttribute("aria-label", S.chooseCategory);
+      var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
+      ["contact", "payment", "marketing"].forEach(function (c) {
+        var b = el("button", "s1-catchip" + (row.cat === c ? " s1-on" : ""), catNames[c] || c);
+        b.type = "button";
+        b.setAttribute("aria-pressed", row.cat === c ? "true" : "false");
+        b.addEventListener("click", function () {
+          if (row.cat === c) return;
+          var res = H.applyCorrection({ op: "reconnect", a: row.a, b: row.b, cat: c });
+          logCorrection("reconnect", row.ref, res.before, res.after);
+          refreshReviewList();
+          paintCanvas();
+          var msg = Narr.correctionConfirm("reconnect",
+            { b_label: ex._nodes[row.b] ? ex._nodes[row.b].label : row.b }, lang);
+          logStep(msg, "s1-corrected");
+          maybeFinishReview();
+        });
+        wrap.appendChild(b);
+      });
+      return wrap;
+    }
+
+    /* Rename: the name line swaps for an inline field (prefilled) with
+       Save/Cancel. Save applies relabel; Escape cancels. Focus returns to
+       the Rename button. */
+    function openRename(item, row, i, renameBtn) {
+      var nameEl = item.querySelector(".s1-cardname");
+      if (!nameEl || item.querySelector(".s1-renamebox")) return;
+      var box = el("div", "s1-renamebox");
+      box.setAttribute("role", "group");
+      box.setAttribute("aria-label", S.rename);
+      var inp = document.createElement("input");
+      inp.type = "text";
+      inp.maxLength = 200;
+      inp.value = row.label;
+      inp.setAttribute("aria-label", S.newLabel);
+      box.appendChild(inp);
+      function close(focusBack) {
+        box.remove();
+        nameEl.hidden = false;
+        if (focusBack && typeof renameBtn.focus === "function") renameBtn.focus();
+      }
+      var save = el("button", "btn secondary s1-renamesave", S.save);
+      save.type = "button";
+      save.addEventListener("click", function () {
+        var v = inp.value.trim();
+        if (!v) { inp.focus(); return; }
+        var res = H.applyCorrection({ op: "relabel", node_id: row.node_id, label: v });
+        logCorrection("relabel", row.ref, res.before, res.after);
+        refreshReviewList();
+        paintCanvas();
+        logStep(Narr.correctionConfirm("relabel", { label: v }, lang), "s1-corrected");
+        maybeFinishReview();
+        if (typeof renameBtn.focus === "function") renameBtn.focus();
+      });
+      var cancel = el("button", "btn secondary s1-renamecancel", S.fixCancel);
+      cancel.type = "button";
+      cancel.addEventListener("click", function () { close(true); });
+      box.appendChild(save);
+      box.appendChild(cancel);
+      box.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); close(true); }
+        else if (evt.key === "Enter") { evt.preventDefault(); save.click(); }
+      });
+      nameEl.hidden = true;
+      item.querySelector(".s1-cardbody").appendChild(box);
+      inp.focus();
+      try { inp.select(); } catch (e) { /* select() is best-effort */ }
+    }
+
+    /* Remove: the button row swaps for an inline confirm
+       ("Remove this item? Yes, remove / Keep it"). Yes applies the op and
+       the card is gone on re-render; Keep restores the row and returns
+       focus to Remove. */
+    function openRemoveConfirm(item, row, i, removeBtn, btnRow) {
+      if (item.querySelector(".s1-removebox")) return;
+      btnRow.hidden = true;
+      var box = el("div", "s1-removebox");
+      box.setAttribute("role", "group");
+      box.setAttribute("aria-label", S.remove);
+      box.appendChild(el("span", "s1-removeask", S.removeAsk));
+      var yes = el("button", "btn secondary s1-removeyes", S.removeYes);
+      yes.type = "button";
+      var keep = el("button", "btn secondary s1-removekeep", S.removeKeep);
+      keep.type = "button";
+      yes.addEventListener("click", function () {
+        var op = row.kind === "node" ? { op: "remove_node", node_id: row.node_id }
+          : row.kind === "edge" ? { op: "remove_edge", a: row.a, b: row.b }
+          : { op: "remove_retention", node_id: row.node_id };
+        var opName = op.op;
+        var res = H.applyCorrection(op);
+        logCorrection(opName, row.ref, res.before, res.after);
+        refreshReviewList();
+        paintCanvas();
+        logStep(Narr.correctionConfirm(opName, { label: row.label }, lang), "s1-corrected");
+        maybeFinishReview();
+      });
+      keep.addEventListener("click", function () {
+        box.remove();
+        btnRow.hidden = false;
+        if (typeof removeBtn.focus === "function") removeBtn.focus();
+      });
+      box.appendChild(yes);
+      box.appendChild(keep);
+      box.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); keep.click(); }
+      });
+      btnRow.parentNode.insertBefore(box, btnRow.nextSibling);
+      yes.focus();
     }
 
     function confirmRow(row, i, note) {
@@ -639,128 +931,276 @@
        buttons, remove. Native inputs and buttons, so Tab / Space / Enter
        work; Escape cancels. Focus moves into the editor on open and back
        to the card's Fix button on close. */
-    function openCardEditor(item, row, i, fixBtn) {
-      var ex = H.controller.executor();
-      var old = item.querySelector(".s1-cardeditor");
-      if (old) { closeEditor(old, fixBtn); return; }
-      var editor = el("div", "s1-cardeditor");
-      editor.setAttribute("role", "group");
-      editor.setAttribute("aria-label", S.fix);
-      function closeEditor(ed, backTo) {
-        ed.remove();
-        if (backTo && typeof backTo.focus === "function") backTo.focus();
-      }
-      function addBtn(text, fn) {
-        var b = el("button", "btn secondary s1-fixopt", text);
+    /* ---------------- Set up editors ----------------
+       Every collection/system/third-party card and every flow card gets a
+       "Set up" button opening a detail editor. All fields are optional and
+       empty never blocks confirming. Save persists to node.meta / edge.meta
+       via the set_meta op (whitelisted string fields); the name field saves
+       via relabel; flow from/to/category save via reconnect. Escape
+       cancels; focus returns to the Set up button. */
+    function fieldLabel(text) { return el("span", "s1-fieldlabel", text); }
+
+    function textField(labelText, value, maxLen) {
+      var wrap = el("div", "s1-field");
+      var lab = el("label", null, labelText);
+      var inp = document.createElement("input");
+      inp.type = "text";
+      inp.maxLength = maxLen || 500;
+      inp.value = value || "";
+      lab.appendChild(inp);
+      wrap.appendChild(lab);
+      return { wrap: wrap, input: inp };
+    }
+
+    function chipGroup(labelText, opts, current) {
+      var wrap = el("div", "s1-field");
+      wrap.appendChild(fieldLabel(labelText));
+      var btns = el("div", "s1-chipset");
+      btns.setAttribute("role", "group");
+      btns.setAttribute("aria-label", labelText);
+      var val = current || null;
+      opts.forEach(function (o) {
+        var b = el("button", "s1-chipopt" + (val === o.v ? " s1-on" : ""), o.label);
         b.type = "button";
-        b.addEventListener("click", fn);
-        editor.appendChild(b);
-        return b;
-      }
-      function doneFix(opName, op, confirmKind, ctx) {
-        var res = H.applyCorrection(op);
-        logCorrection(opName, row.ref, res.before, res.after);
-        refreshCard(row, ex, item);
-        paintCanvas();
-        var msg = Narr.correctionConfirm(confirmKind, ctx || {}, lang);
-        logStep(msg, "s1-corrected");
-        closeEditor(editor, fixBtn);
-        confirmRow(row, i, null);
-      }
-      /* After a correction mutates the executor, re-derive the affected
-         checklist row so the card and the exported Review sheet describe
-         the corrected state, not the pre-fix state. Rows for removed
-         artifacts keep a marker so the sheet stays honest instead of
-         stale. */
-      function refreshCard(row, ex, item) {
-        var fresh = Rev.deriveChecklist(ex), k;
-        for (k = 0; k < fresh.length; k++) {
-          if (fresh[k].ref === row.ref) {
-            row.label = fresh[k].label;
-            row.detail = fresh[k].detail;
-            row.removed = false;
-            if (fresh[k].kind === "edge") { row.a = fresh[k].a; row.b = fresh[k].b; row.cat = fresh[k].cat; }
-            if (fresh[k].kind === "node") { row.node_id = fresh[k].node_id; }
-            break;
+        b.setAttribute("aria-pressed", val === o.v ? "true" : "false");
+        b.addEventListener("click", function () {
+          val = o.v;
+          var all = btns.querySelectorAll("button");
+          for (var k = 0; k < all.length; k++) {
+            var on = all[k] === b;
+            all[k].setAttribute("aria-pressed", on ? "true" : "false");
+            all[k].className = "s1-chipopt" + (on ? " s1-on" : "");
           }
-        }
-        if (k === fresh.length) row.removed = true;
-        if (item && !row.removed) {
-          var c = Narr.reviewCardText(row.kind, cardDataFor(ex, row), lang);
-          var nameEl = item.querySelector(".s1-cardname");
-          var typeEl = item.querySelector(".s1-cardtype");
-          if (nameEl) nameEl.textContent = c.name;
-          if (typeEl) typeEl.textContent = c.typeLine;
-          var iconEl = item.querySelector(".s1-cardicon");
-          if (iconEl && typeof iconEl.replaceWith === "function") {
-            iconEl.replaceWith(cardIcon(row.kind, row.kind === "node" && row.detail ? row.detail.type : null));
-          }
-        }
-      }
+        });
+        btns.appendChild(b);
+      });
+      wrap.appendChild(btns);
+      return { wrap: wrap, get: function () { return val; } };
+    }
+
+    function nodeSelect(labelText, currentId) {
+      var ex = H.controller.executor();
+      var wrap = el("div", "s1-field");
+      var lab = el("label", null, labelText);
+      var sel = document.createElement("select");
+      Object.keys(ex._nodes).sort(function (a, b) {
+        return (parseInt(a.slice(1), 10) || 0) - (parseInt(b.slice(1), 10) || 0);
+      }).forEach(function (id) {
+        var o = document.createElement("option");
+        o.value = id;
+        o.textContent = (ex._nodes[id] && ex._nodes[id].label) || id;
+        if (id === currentId) o.selected = true;
+        sel.appendChild(o);
+      });
+      lab.appendChild(sel);
+      wrap.appendChild(lab);
+      return { wrap: wrap, select: sel };
+    }
+
+    function openSetup(item, row, i, setupBtn) {
+      var old = item.querySelector(".s1-setupbox");
+      if (old) { old.remove(); if (typeof setupBtn.focus === "function") setupBtn.focus(); return; }
+      var ex = H.controller.executor();
+      var editor = el("div", "s1-setupbox");
+      editor.setAttribute("role", "group");
+      editor.setAttribute("aria-label", S.setup);
+      var meta = (row.detail && row.detail.meta) || {};
+      var fields = [];
+      var nameField = null, fromSel = null, toSel = null, catGroup = null;
+      var metaCollectors = [];
+
+      function addField(f) { fields.push(f); editor.appendChild(f.wrap); }
+
       if (row.kind === "node") {
-        var lab = el("label", "s1-fixlabel", S.newLabel + ": ");
-        var inp = document.createElement("input");
-        inp.type = "text";
-        inp.maxLength = 200;
-        inp.value = row.label;
-        inp.setAttribute("aria-label", S.newLabel);
-        lab.appendChild(inp);
-        editor.appendChild(lab);
-        addBtn(S.fixRelabel, function () {
-          var v = inp.value.trim();
-          if (!v) { inp.focus(); return; }
-          doneFix("relabel", { op: "relabel", node_id: row.node_id, label: v }, "relabel", { label: v });
-        });
-        var typeNames = Narr.PLAIN_TYPE[lang] || Narr.PLAIN_TYPE.en;
-        ["collection", "system", "thirdparty", "destruction"].forEach(function (t) {
-          addBtn(typeNames[t] || t, function () {
-            doneFix("retype", { op: "retype", node_id: row.node_id, type: t }, "retype",
-              { label: ex._nodes[row.node_id] ? ex._nodes[row.node_id].label : row.node_id, type: t });
+        nameField = textField(S.setupName, row.label, 200);
+        addField(nameField);
+        var t = row.detail.type;
+        if (t === "system") {
+          var kg = chipGroup(S.setupSysKind, [
+            { v: "internal", label: S.sysKindInternal },
+            { v: "cloud", label: S.sysKindCloud },
+            { v: "saas", label: S.sysKindSaas }
+          ], meta.sys_kind || null);
+          addField(kg);
+          var holdsF = textField(S.setupHolds, meta.holds, 500); addField(holdsF);
+          var regionF = textField(S.setupRegion, meta.region, 120); addField(regionF);
+          metaCollectors.push(function (m) {
+            if (kg.get()) m.sys_kind = kg.get();
+            m.holds = holdsF.input.value.trim();
+            m.region = regionF.input.value.trim();
           });
-        });
-        addBtn(S.fixRemove, function () {
-          doneFix("remove_node", { op: "remove_node", node_id: row.node_id }, "relabel", { label: row.label });
-          row._el.hidden = true;
-        });
-      } else if (row.kind === "edge") {
-        var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
-        ["contact", "payment", "marketing"].forEach(function (c) {
-          addBtn(catNames[c] || c, function () {
-            doneFix("reconnect", { op: "reconnect", a: row.a, b: row.b, cat: c }, "reconnect",
-              { b_label: ex._nodes[row.b] ? ex._nodes[row.b].label : row.b });
+        } else if (t === "collection") {
+          var cg = chipGroup(S.setupCollectHow, [
+            { v: "online", label: S.methodOnline },
+            { v: "phone", label: S.methodPhone },
+            { v: "inperson", label: S.methodInPerson },
+            { v: "paper", label: S.methodPaper }
+          ], meta.collect_how || null);
+          addField(cg);
+          var notesF = textField(S.setupNotes, meta.notes, 500); addField(notesF);
+          metaCollectors.push(function (m) {
+            if (cg.get()) m.collect_how = cg.get();
+            m.notes = notesF.input.value.trim();
           });
-        });
-        addBtn(S.fixRemove, function () {
-          var res = H.applyCorrection({ op: "remove_edge", a: row.a, b: row.b });
-          logCorrection("remove_edge", row.ref, res.before, res.after);
-          refreshCard(row, ex, item);
-          paintCanvas();
-          closeEditor(editor, fixBtn);
-          row._el.hidden = true;
-          maybeFinishReview();
-        });
-      } else if (row.kind === "retention") {
-        addBtn(S.fixVerify, function () {
-          var res = H.applyCorrection({ op: "verify_only", node_id: row.node_id });
-          logCorrection("verify_only", row.ref, res.before, res.after);
-          refreshCard(row, ex, item);
-          paintCanvas();
-          closeEditor(editor, fixBtn);
-          confirmRow(row, i, null);
-        });
-      }
-      var cancel = el("button", "btn secondary s1-fixcancel", S.fixCancel);
-      cancel.type = "button";
-      cancel.addEventListener("click", function () { closeEditor(editor, fixBtn); });
-      editor.appendChild(cancel);
-      editor.addEventListener("keydown", function (evt) {
-        if (evt.key === "Escape") {
-          evt.preventDefault();
-          closeEditor(editor, fixBtn);
+        } else if (t === "thirdparty") {
+          var serviceF = textField(S.setupService, meta.service, 500); addField(serviceF);
+          var sharedF = textField(S.setupDataShared, meta.data_shared, 500); addField(sharedF);
+          metaCollectors.push(function (m) {
+            m.service = serviceF.input.value.trim();
+            m.data_shared = sharedF.input.value.trim();
+          });
         }
+      } else if (row.kind === "edge") {
+        fromSel = nodeSelect(S.setupFrom, row.a); addField(fromSel);
+        toSel = nodeSelect(S.setupTo, row.b); addField(toSel);
+        var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
+        catGroup = chipGroup(S.setupCats, ["contact", "payment", "marketing"].map(function (c) {
+          return { v: c, label: catNames[c] || c };
+        }), row.cat);
+        addField(catGroup);
+        var whyF = textField(S.setupWhy, meta.why, 500); addField(whyF);
+        metaCollectors.push(function (m) { m.why = whyF.input.value.trim(); });
+      }
+
+      var errLine = el("p", "s1-fielderr", "");
+      errLine.setAttribute("role", "alert");
+      errLine.hidden = true;
+      editor.appendChild(errLine);
+
+      function close(focusBack) {
+        editor.remove();
+        if (focusBack && typeof setupBtn.focus === "function") setupBtn.focus();
+      }
+      var save = el("button", "btn secondary s1-setupsave", S.save);
+      save.type = "button";
+      save.addEventListener("click", function () {
+        errLine.hidden = true;
+        var m = {};
+        metaCollectors.forEach(function (fn) { fn(m); });
+        if (row.kind === "node") {
+          var newName = nameField.input.value.trim();
+          if (newName && newName !== row.label) {
+            var rres = H.applyCorrection({ op: "relabel", node_id: row.node_id, label: newName });
+            logCorrection("relabel", row.ref, rres.before, rres.after);
+          }
+          var hadMeta = Object.keys(meta).length > 0;
+          var hasMeta = hadMeta || Object.keys(m).some(function (k) { return m[k]; });
+          if (hasMeta) {
+            var mres = H.applyCorrection({ op: "set_meta", node_id: row.node_id, meta: m });
+            logCorrection("set_meta", row.ref, mres.before, mres.after);
+          }
+          logStep(Narr.correctionConfirm("set_meta", {}, lang), "s1-corrected");
+        } else if (row.kind === "edge") {
+          var a = fromSel.select.value, b = toSel.select.value, c = catGroup.get() || row.cat;
+          if (a === b) {
+            errLine.textContent = S.addFlowNeedNodes;
+            errLine.hidden = false;
+            return;
+          }
+          if (a !== row.a || b !== row.b || c !== row.cat) {
+            var cres = H.applyCorrection({ op: "reconnect", a: a, b: b, cat: c });
+            logCorrection("reconnect", row.ref, cres.before, cres.after);
+          }
+          var mres2 = H.applyCorrection({ op: "set_meta", a: a, b: b, meta: m });
+          logCorrection("set_meta", row.ref, mres2.before, mres2.after);
+          logStep(Narr.correctionConfirm("set_meta", {}, lang), "s1-corrected");
+        }
+        refreshReviewList();
+        paintCanvas();
+        maybeFinishReview();
+        close(true);
+      });
+      var cancel = el("button", "btn secondary s1-setupcancel", S.fixCancel);
+      cancel.type = "button";
+      cancel.addEventListener("click", function () { close(true); });
+      var btnRow = el("div", "s1-setupbtns");
+      btnRow.appendChild(save);
+      btnRow.appendChild(cancel);
+      editor.appendChild(btnRow);
+      editor.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); close(true); }
       });
       item.appendChild(editor);
-      var first = editor.querySelector("input, button");
+      var first = editor.querySelector("input, select, button");
+      if (first) first.focus();
+    }
+
+    /* Add data flow: an inline form in the flow group (from/to selects,
+       category chips, why). The header button stays disabled with a plain
+       reason while fewer than two nodes exist. */
+    function openAddFlow(section, backTo) {
+      if (section.querySelector(".s1-addflowbox")) return;
+      var ex = H.controller.executor();
+      var form = el("div", "s1-addflowbox");
+      form.setAttribute("role", "group");
+      form.setAttribute("aria-label", S.addFlow);
+      var fromSel = nodeSelect(S.setupFrom, null);
+      var toSel = nodeSelect(S.setupTo, null);
+      form.appendChild(fromSel.wrap);
+      form.appendChild(toSel.wrap);
+      var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
+      var catGroup = chipGroup(S.setupCats, ["contact", "payment", "marketing"].map(function (c) {
+        return { v: c, label: catNames[c] || c };
+      }), "contact");
+      form.appendChild(catGroup.wrap);
+      var whyF = textField(S.setupWhy, "", 500);
+      form.appendChild(whyF.wrap);
+      var errLine = el("p", "s1-fielderr", "");
+      errLine.setAttribute("role", "alert");
+      errLine.hidden = true;
+      form.appendChild(errLine);
+      function close(focusBack) {
+        form.remove();
+        if (focusBack && backTo && typeof backTo.focus === "function") backTo.focus();
+      }
+      var add = el("button", "btn secondary s1-addflowsave", S.addFlow);
+      add.type = "button";
+      add.addEventListener("click", function () {
+        var a = fromSel.select.value, b = toSel.select.value, c = catGroup.get() || "contact";
+        errLine.hidden = true;
+        if (!a || !b || a === b) {
+          errLine.textContent = S.addFlowNeedNodes;
+          errLine.hidden = false;
+          return;
+        }
+        var dup = ex._edges.some(function (e) {
+          return (e.a === a && e.b === b) || (e.a === b && e.b === a);
+        });
+        if (dup) {
+          errLine.textContent = S.addFlowNeedNodes;
+          errLine.hidden = false;
+          return;
+        }
+        var res = H.applyCorrection({ op: "add_edge", a: a, b: b, cat: c });
+        var why = whyF.input.value.trim();
+        if (why) {
+          var mres = H.applyCorrection({ op: "set_meta", a: a, b: b, meta: { why: why } });
+          logCorrection("set_meta", "edge:" + a + "->" + b, mres.before, mres.after);
+        }
+        logCorrection("add_edge", "edge:" + a + "->" + b, null, res.after);
+        refreshReviewList();
+        paintCanvas();
+        var msg = Narr.correctionConfirm("add_edge", {
+          a_label: ex._nodes[a] ? ex._nodes[a].label : a,
+          b_label: ex._nodes[b] ? ex._nodes[b].label : b
+        }, lang);
+        logStep(msg, "s1-corrected");
+        close(true);
+        maybeFinishReview();
+      });
+      var cancel = el("button", "btn secondary s1-addflowcancel", S.fixCancel);
+      cancel.type = "button";
+      cancel.addEventListener("click", function () { close(true); });
+      var btnRow = el("div", "s1-setupbtns");
+      btnRow.appendChild(add);
+      btnRow.appendChild(cancel);
+      form.appendChild(btnRow);
+      form.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); close(true); }
+      });
+      var firstCard = section.querySelector(".s1-card");
+      section.insertBefore(form, firstCard);
+      var first = form.querySelector("select, button");
       if (first) first.focus();
     }
 
@@ -907,14 +1347,17 @@
       var nodeIds = Object.keys(st.nodes || {});
       var nodeRows = nodeIds.map(function (id) {
         var n = st.nodes[id];
-        return [n.label, typeNames[n.type] || n.type];
+        return [n.label, typeNames[n.type] || n.type, Exp.metaText(n.meta || {}, lang)];
       });
       var edgeRows = (st.edges || []).map(function (e) {
         var A = st.nodes[e.a], B = st.nodes[e.b];
-        return [(A && A.label) || e.a, (B && B.label) || e.b, catNames[e.cat] || e.cat];
+        return [(A && A.label) || e.a, (B && B.label) || e.b, catNames[e.cat] || e.cat,
+          Exp.metaText(e.meta || {}, lang)];
       });
-      tableWrap.appendChild(table(S.tableNodes + " (" + nodeRows.length + ")", [S.thName, S.thType], nodeRows));
-      tableWrap.appendChild(table(S.tableConns + " (" + edgeRows.length + ")", [S.thFrom, S.thTo, S.thCategory], edgeRows));
+      tableWrap.appendChild(table(S.tableNodes + " (" + nodeRows.length + ")",
+        [S.thName, S.thType, S.thDetails], nodeRows));
+      tableWrap.appendChild(table(S.tableConns + " (" + edgeRows.length + ")",
+        [S.thFrom, S.thTo, S.thCategory, S.thDetails], edgeRows));
     }
 
     var dlRow = el("div", "s1-dlrow");
@@ -1002,13 +1445,17 @@
        title. Bumps the run generation so a stale run loop exits quietly
        (no console errors) instead of writing into the cleared panels.
        Shared by the Steps-panel "Start over" button (both flows reach this
-       panel) and the "Wipe everything" button. */
+       panel) and the "Wipe everything" button.
+       2026-10-05 (wipe hardening): every stage is guarded so a failure in
+       one (e.g. the chat reset touching live chat DOM) can never strand
+       the teardown: the executor reset, panel restore, and canvas clear
+       always run. */
     function teardownToIntake() {
       state.generation++;
       if (state.flagResolve) {
         try { state.flagResolve(); } catch (e) { /* ignore */ }
       }
-      H.reset();
+      try { H.reset(); } catch (e) { console.error("[s1] wipe: executor reset failed:", e); }
       state.chips = { size: null, sector: null, region: null, types: null };
       state.template = null;
       state.checklist = [];
@@ -1017,33 +1464,41 @@
       state.reviewed = false;
       state.running = false;
       state.stopRequested = false;
-      stopBtn.disabled = false;
-      Object.keys(chipInputs).forEach(function (cid) {
-        var radios = chipInputs[cid].querySelectorAll("input");
-        for (var i = 0; i < radios.length; i++) radios[i].checked = false;
-      });
-      while (templateBox.firstChild) templateBox.removeChild(templateBox.firstChild);
-      while (stepLog.firstChild) stepLog.removeChild(stepLog.firstChild);
-      while (reviewList.firstChild) reviewList.removeChild(reviewList.firstChild);
-      flagBox.hidden = true;
-      statusLine.textContent = "";
-      runBox.hidden = true;
-      reviewBox.hidden = true;
-      doneBox.hidden = true;
-      modeWrap.hidden = false;
-      setModeLocked(false);
-      modeNote.textContent = "";
+      try {
+        stopBtn.disabled = false;
+        Object.keys(chipInputs).forEach(function (cid) {
+          var radios = chipInputs[cid].querySelectorAll("input");
+          for (var i = 0; i < radios.length; i++) radios[i].checked = false;
+        });
+        while (templateBox.firstChild) templateBox.removeChild(templateBox.firstChild);
+        while (stepLog.firstChild) stepLog.removeChild(stepLog.firstChild);
+        while (reviewList.firstChild) reviewList.removeChild(reviewList.firstChild);
+        flagBox.hidden = true;
+        statusLine.textContent = "";
+        runBox.hidden = true;
+        reviewBox.hidden = true;
+        doneBox.hidden = true;
+        modeWrap.hidden = false;
+        setModeLocked(false);
+        modeNote.textContent = "";
+      } catch (e) { console.error("[s1] wipe: panel restore failed:", e); }
       /* The guided pane may hold a stale handoff; restart its conversation
-         so a return to that mode starts clean. */
+         so a return to that mode starts clean. Guarded: a chat failure
+         must not strand the wipe. */
       if (chatApi) {
-        chatApi.show();
-        chatApi.reset();
+        try {
+          chatApi.show();
+          chatApi.reset();
+        } catch (e) { console.error("[s1] wipe: chat reset failed:", e); }
       }
+      /* Canvas clear runs unconditionally (executor state is already
+         gone, including node/edge meta): the builder canvas must end up
+         empty even if an earlier stage threw. */
       try {
         if (root.DMImport && typeof root.DMImport.applyState === "function") {
           root.DMImport.applyState({ nodes: {}, edges: [] });
         }
-      } catch (e) { /* ignore */ }
+      } catch (e) { console.error("[s1] wipe: canvas clear failed:", e); }
     }
 
     /* Recovery path for a failed or abandoned run: no confirmation, so one
@@ -1062,7 +1517,7 @@
       teardownToIntake();
       statusLine.textContent = S.wipeDone;
       panelTitle.focus();
-      refreshNet();
+      try { refreshNet(); } catch (e) { /* counter reset is best-effort */ }
     }
 
     /* The conversational panel authors the recipe and narrates the run;

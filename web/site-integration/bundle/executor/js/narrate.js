@@ -135,8 +135,13 @@
         break;
       }
       case "export":
-        en = "Downloaded the Excel inventory.";
-        fr = "Inventaire Excel téléchargé.";
+        /* The export step never downloads on its own: the file downloads
+           only when the reader clicks the download button on the results
+           screen. The narration says exactly that (2026-10-05: the old
+           "Downloaded the Excel inventory." claimed a download that never
+           happened). */
+        en = "Export step complete. Download the Excel file from the results screen.";
+        fr = "Étape d'exportation terminée. Téléchargez le fichier Excel depuis l'écran des résultats.";
         break;
       case "skip_recipe_item":
         en = fill("Skipped step {item_index}: {reason}.", { item_index: params.item_index, reason: params.reason });
@@ -268,6 +273,24 @@
       return fr
         ? fill("Corrigé : reconnecté à « {b_label} ».", { b_label: ctx.b_label })
         : fill("Fixed: reconnected to {b_label}.", { b_label: ctx.b_label });
+    }
+    if (kind === "add_node") {
+      return fr
+        ? fill("« {label} » ajouté.", { label: ctx.label })
+        : fill("Added {label}.", { label: ctx.label });
+    }
+    if (kind === "add_edge") {
+      return fr
+        ? fill("« {a_label} » connecté à « {b_label} ».", { a_label: ctx.a_label, b_label: ctx.b_label })
+        : fill("Connected {a_label} to {b_label}.", { a_label: ctx.a_label, b_label: ctx.b_label });
+    }
+    if (kind === "set_meta") {
+      return fr ? "Détails enregistrés." : "Details saved.";
+    }
+    if (kind === "remove_node" || kind === "remove_edge" || kind === "remove_retention") {
+      return fr
+        ? fill("« {label} » retiré.", { label: ctx.label })
+        : fill("Removed {label}.", { label: ctx.label });
     }
     return fr ? "Corrigé." : "Fixed.";
   }

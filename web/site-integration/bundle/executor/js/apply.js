@@ -672,17 +672,132 @@
     return { cleared: before - this._annotations.length };
   };
 
+  /* UI-layer extension: find a free canvas spot for a review-added node.
+     Scans a coarse grid inside the legal canvas area (x 40..600, y 40..380)
+     for the first cell whose center is at least 70px from every existing
+     node; falls back to the canvas center. */
+  Executor.prototype._freeSpot = function () {
+    var xs = [80, 200, 320, 440, 560], ys = [80, 170, 260, 350];
+    var ids = Object.keys(this._nodes);
+    for (var yi = 0; yi < ys.length; yi++) {
+      for (var xi = 0; xi < xs.length; xi++) {
+        var ok = true;
+        for (var k = 0; k < ids.length; k++) {
+          var n = this._nodes[ids[k]];
+          if (Math.abs(n.x - xs[xi]) < 70 && Math.abs(n.y - ys[yi]) < 70) { ok = false; break; }
+        }
+        if (ok) return { x: xs[xi], y: ys[yi] };
+      }
+    }
+    return { x: 320, y: 210 };
+  };
+
   /**
    * Out-of-band: apply a human correction instantly. op is one of:
    *  {op:"relabel", node_id, label} | {op:"retype", node_id, type} |
    *  {op:"move", node_id, x, y} | {op:"reconnect", a, b, cat} |
    *  {op:"remove_edge", a, b} | {op:"verify_only", node_id} |
-   *  {op:"remove_node", node_id}
+   *  {op:"remove_node", node_id} |
+   *  {op:"add_node", type, label} | {op:"add_edge", a, b, cat} |
+   *  {op:"set_meta", node_id | (a, b), meta} | {op:"remove_retention", node_id}
+   * add_node allocates the next free node id (max numeric suffix + 1) and
+   * a free canvas spot; it never touches the guide seq (the recipe run is
+   * over by review time). set_meta merges whitelisted string fields into
+   * node.meta / edge.meta (plain object, created on demand).
    * Returns a correction record {op, before, after} for the JSONL log.
    */
   Executor.prototype.applyCorrection = function (op) {
     var before = null, after = null;
     switch (op.op) {
+      case "add_node": {
+        if (U.NODE_TYPES.indexOf(op.type) === -1) {
+          throw new Error("add_node rejected: unknown node type \"" + op.type + "\".");
+        }
+        if (typeof op.label !== "string" || op.label.length < 1 || op.label.length > 200) {
+          throw new Error("add_node rejected: label must be 1-200 characters.");
+        }
+        if (Object.keys(this._nodes).length >= U.MAX_NODES) {
+          throw new Error("add_node rejected: the canvas already holds " + U.MAX_NODES + " nodes (the frozen limit).");
+        }
+        var maxN = 0;
+        Object.keys(this._nodes).forEach(function (id) {
+          var n = U.nodeNum(id);
+          if (n > maxN) maxN = n;
+        });
+        var nid = "n" + (maxN + 1);
+        var spot = this._freeSpot();
+        this._nodes[nid] = { type: op.type, x: spot.x, y: spot.y, label: op.label };
+        after = { node_id: nid, type: op.type, label: op.label, x: spot.x, y: spot.y };
+        break;
+      }
+      case "add_edge": {
+        this._requireNode(op.a, "add_edge");
+        this._requireNode(op.b, "add_edge");
+        if (op.a === op.b) throw new Error("add_edge rejected: self-loops are not allowed.");
+        if (U.EDGE_CATS.indexOf(op.cat) === -1) {
+          throw new Error("add_edge rejected: unknown edge category \"" + op.cat + "\".");
+        }
+        var dup = this._edges.some(function (e) {
+          return (e.a === op.a && e.b === op.b) || (e.a === op.b && e.b === op.a);
+        });
+        if (dup) throw new Error("add_edge rejected: " + op.a + " and " + op.b + " are already connected.");
+        if (this._edges.length >= U.MAX_EDGES) {
+          throw new Error("add_edge rejected: the canvas already holds " + U.MAX_EDGES + " edges (the frozen limit).");
+        }
+        this._edges.push({ a: op.a, b: op.b, cat: op.cat });
+        after = { a: op.a, b: op.b, cat: op.cat };
+        break;
+      }
+      case "set_meta": {
+        var target = null;
+        if (op.node_id !== undefined && op.node_id !== null) {
+          this._requireNode(op.node_id, "set_meta");
+          target = this._nodes[op.node_id];
+        } else {
+          this._requireNode(op.a, "set_meta");
+          this._requireNode(op.b, "set_meta");
+          for (var mi = 0; mi < this._edges.length; mi++) {
+            var me = this._edges[mi];
+            if ((me.a === op.a && me.b === op.b) || (me.a === op.b && me.b === op.a)) { target = me; break; }
+          }
+          if (!target) throw new Error("set_meta rejected: no such edge.");
+        }
+        if (!op.meta || typeof op.meta !== "object" || Array.isArray(op.meta)) {
+          throw new Error("set_meta rejected: meta must be an object.");
+        }
+        var META_MAX = {
+          sys_kind: 60, holds: 500, region: 120, collect_how: 60,
+          notes: 500, service: 500, data_shared: 500, why: 500
+        };
+        before = U.deepCopy(target.meta || {});
+        var merged = U.deepCopy(target.meta || {});
+        Object.keys(op.meta).forEach(function (k) {
+          if (!Object.prototype.hasOwnProperty.call(META_MAX, k)) {
+            throw new Error("set_meta rejected: unknown meta field \"" + k + "\".");
+          }
+          var v = op.meta[k];
+          if (typeof v !== "string" || v.length > META_MAX[k]) {
+            throw new Error("set_meta rejected: field \"" + k + "\" must be a string of at most " + META_MAX[k] + " characters.");
+          }
+          if (v.length === 0) delete merged[k];
+          else merged[k] = v;
+        });
+        target.meta = merged;
+        after = U.deepCopy(merged);
+        break;
+      }
+      case "remove_retention": {
+        this._requireNode(op.node_id, "remove_retention");
+        var ri2 = -1;
+        for (var r2 = 0; r2 < this._annotations.length; r2++) {
+          if (this._annotations[r2].kind === "retention" && this._annotations[r2].node_id === op.node_id) { ri2 = r2; break; }
+        }
+        if (ri2 < 0) throw new Error("remove_retention rejected: no retention note on node \"" + op.node_id + "\".");
+        before = U.deepCopy(this._annotations[ri2].payload);
+        this._annotations.splice(ri2, 1);
+        after = null;
+        break;
+      }
       case "relabel": {
         this._requireNode(op.node_id, "relabel");
         if (typeof op.label !== "string" || op.label.length < 1 || op.label.length > 200) {

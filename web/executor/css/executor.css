@@ -159,6 +159,180 @@
   margin: 0 0 0.75rem;
 }
 
+/* Review editing workspace (2026-10-05): top explainer, group intros,
+   Add buttons on group headers, type/category chips on cards, inline
+   rename / remove-confirm / setup editors. Single column at 390px;
+   every button 44px; visible focus everywhere. */
+.s1-root .s1-reviewintro {
+  color: #334155;
+  margin: 0 0 1rem;
+}
+
+.s1-root .s1-cardgroup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 0.35rem;
+}
+
+.s1-root .s1-cardgroup-head .s1-cardgroup-title {
+  margin: 0;
+}
+
+.s1-root .s1-cardgroup-intro {
+  color: #475569;
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+}
+
+.s1-root .s1-addflowwrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.s1-root .s1-addwhy {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.s1-root .s1-typechips,
+.s1-root .s1-catchips {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.s1-root .s1-typechip,
+.s1-root .s1-catchip,
+.s1-root .s1-chipopt {
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  min-height: 44px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.s1-root .s1-typechip.s1-on,
+.s1-root .s1-catchip.s1-on,
+.s1-root .s1-chipopt.s1-on {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.s1-root .s1-renamebox,
+.s1-root .s1-removebox,
+.s1-root .s1-setupbox,
+.s1-root .s1-addflowbox {
+  grid-column: 1 / -1;
+  margin-top: 0.25rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.s1-root .s1-renamebox,
+.s1-root .s1-removebox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.s1-root .s1-removeask {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-right: 0.25rem;
+}
+
+.s1-root .s1-renamebox input[type="text"] {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #94a3b8;
+  border-radius: 0.35rem;
+  min-width: 12rem;
+  min-height: 44px;
+  flex: 1;
+}
+
+.s1-root .s1-setupbox .s1-field,
+.s1-root .s1-addflowbox .s1-field {
+  margin-bottom: 0.55rem;
+}
+
+.s1-root .s1-setupbox .s1-field label,
+.s1-root .s1-addflowbox .s1-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.25rem;
+}
+
+.s1-root .s1-setupbox .s1-field input[type="text"],
+.s1-root .s1-addflowbox .s1-field input[type="text"],
+.s1-root .s1-addflowbox .s1-field select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #94a3b8;
+  border-radius: 0.35rem;
+  min-height: 44px;
+  font-size: 0.95rem;
+}
+
+.s1-root .s1-fieldlabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.25rem;
+}
+
+.s1-root .s1-chipset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.s1-root .s1-fielderr {
+  color: #b3401f;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.s1-root .s1-setupbtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.s1-root .s1-cardbtns .btn,
+.s1-root .s1-renamebox .btn,
+.s1-root .s1-removebox .btn,
+.s1-root .s1-setupbtns .btn,
+.s1-root .s1-addflowbox .btn,
+.s1-root .s1-cardgroup-head .btn {
+  min-height: 44px;
+}
+
+@media (max-width: 24.375rem) {
+  .s1-root .s1-cardgroup-head {
+    align-items: flex-start;
+  }
+  .s1-root .s1-renamebox input[type="text"] {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}
+
 .s1-root .s1-cardgroup {
   margin: 0 0 1rem;
 }
@@ -404,7 +578,8 @@
 .s1-root .s1-chip:has(input:focus-visible) { outline: 3px solid #0e6e64; outline-offset: 2px; }
 .s1-root button:focus-visible,
 .s1-root a:focus-visible,
-.s1-root input:focus-visible { outline: 3px solid #0e6e64; outline-offset: 2px; }
+.s1-root input:focus-visible,
+.s1-root select:focus-visible { outline: 3px solid #0e6e64; outline-offset: 2px; }
 .s1-root .s1-trust { background: #e2efec; border-color: #0e6e64; }
 
 /* 44px touch targets on chips and review buttons. */

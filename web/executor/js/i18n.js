@@ -68,6 +68,52 @@
       reviewTitle: "Review",
       reviewLede: "One tap per row. Confirm what is right, fix what is not.",
       reviewExplain: "Review each item below. Confirm keeps it as is. Fix lets you correct its name or change its type.",
+      /* Review as an editing workspace (2026-10-05): the top explainer
+         replaces reviewLede/reviewExplain above (kept for compatibility);
+         each group carries a one-sentence intro. */
+      reviewIntro: "This is your draft map, built from your answers. Everything below is editable: add what is missing, fix names and types, remove what does not belong. Confirm each item when it looks right. Nothing is final until you confirm it.",
+      groupIntroCollection: "Where personal data first comes in: forms, booking pages, sign-up sheets, anything people fill out or hand over.",
+      groupIntroSystem: "The systems and tools where the data lives day to day: your CRM, data warehouse, file shares, email.",
+      groupIntroThirdparty: "Outside companies that receive or process the data for you: payment processors, analytics, cloud hosting.",
+      groupIntroDestruction: "Places where data is securely deleted when it is no longer needed.",
+      groupIntroFlow: "How data moves between the items above: who sends what to whom, and why.",
+      groupIntroRetention: "How long each set of records is kept, and the rule it follows. Mark anything you are unsure about as verify-only.",
+      addCollection: "Add collection point",
+      addSystem: "Add system",
+      addThirdparty: "Add third party",
+      addFlow: "Add data flow",
+      addFlowNeedNodes: "Add at least two items above first, then draw a flow between them.",
+      newCollectionName: "New collection point",
+      newSystemName: "New system",
+      newThirdpartyName: "New third party",
+      remove: "Remove",
+      removeAsk: "Remove this item?",
+      removeYes: "Yes, remove",
+      removeKeep: "Keep it",
+      rename: "Rename",
+      save: "Save",
+      setup: "Set up",
+      setupName: "Name",
+      setupSysKind: "System type",
+      sysKindInternal: "Internal",
+      sysKindCloud: "Cloud",
+      sysKindSaas: "SaaS",
+      setupHolds: "What data it holds",
+      setupRegion: "Where it lives",
+      setupCollectHow: "How data is collected",
+      methodOnline: "Online form",
+      methodPhone: "Phone call",
+      methodInPerson: "In person",
+      methodPaper: "Paper form",
+      setupNotes: "Notes",
+      setupService: "Service provided",
+      setupDataShared: "What data goes to them",
+      setupFrom: "From",
+      setupTo: "To",
+      setupCats: "Data categories",
+      setupWhy: "Why it flows",
+      thDetails: "Details",
+      templateSteps: "steps",
       resultsTitle: "Your draft map is ready.",
       resultsLede: "This is the map the assistant built from your answers. Flip between the map and the table, then export when it looks right.",
       viewLabel: "View",
@@ -193,6 +239,50 @@
       reviewTitle: "Révision",
       reviewLede: "Un choix par ligne. Confirmez ce qui est bon, corrigez le reste.",
       reviewExplain: "Révisez chaque élément ci-dessous. Confirmer garde l’élément tel quel. Corriger vous permet de changer son nom ou son type.",
+      /* Review as an editing workspace (2026-10-05): see the EN block. */
+      reviewIntro: "Voici votre brouillon de carte, construit à partir de vos réponses. Tout ce qui suit est modifiable : ajoutez ce qui manque, corrigez les noms et les types, retirez ce qui n’a pas sa place. Confirmez chaque élément quand il vous semble juste. Rien n’est définitif tant que vous ne l’avez pas confirmé.",
+      groupIntroCollection: "Là où les données personnelles arrivent en premier : formulaires, pages de réservation, feuilles d’inscription, tout ce que les gens remplissent ou remettent.",
+      groupIntroSystem: "Les systèmes et outils où les données vivent au quotidien : votre CRM, votre entrepôt de données, vos partages de fichiers, vos courriels.",
+      groupIntroThirdparty: "Les entreprises externes qui reçoivent ou traitent les données pour vous : processeurs de paiement, services d’analyse, hébergement infonuagique.",
+      groupIntroDestruction: "Les endroits où les données sont supprimées de façon sécuritaire quand elles ne sont plus nécessaires.",
+      groupIntroFlow: "La façon dont les données circulent entre les éléments ci-dessus : qui envoie quoi à qui, et pourquoi.",
+      groupIntroRetention: "La durée de conservation de chaque ensemble de dossiers, et la règle qui s’applique. Marquez « à vérifier » tout ce dont vous n’êtes pas certain.",
+      addCollection: "Ajouter un point de collecte",
+      addSystem: "Ajouter un système",
+      addThirdparty: "Ajouter un tiers",
+      addFlow: "Ajouter un flux de données",
+      addFlowNeedNodes: "Ajoutez d’abord au moins deux éléments ci-dessus, puis tracez un flux entre eux.",
+      newCollectionName: "Nouveau point de collecte",
+      newSystemName: "Nouveau système",
+      newThirdpartyName: "Nouveau tiers",
+      remove: "Retirer",
+      removeAsk: "Retirer cet élément?",
+      removeYes: "Oui, retirer",
+      removeKeep: "Le garder",
+      rename: "Renommer",
+      save: "Enregistrer",
+      setup: "Configurer",
+      setupName: "Nom",
+      setupSysKind: "Type de système",
+      sysKindInternal: "Interne",
+      sysKindCloud: "Infonuagique",
+      sysKindSaas: "SaaS",
+      setupHolds: "Données qu’il contient",
+      setupRegion: "Où il se trouve",
+      setupCollectHow: "Mode de collecte",
+      methodOnline: "Formulaire en ligne",
+      methodPhone: "Appel téléphonique",
+      methodInPerson: "En personne",
+      methodPaper: "Formulaire papier",
+      setupNotes: "Notes",
+      setupService: "Service fourni",
+      setupDataShared: "Données qui leur sont transmises",
+      setupFrom: "De",
+      setupTo: "Vers",
+      setupCats: "Catégories de données",
+      setupWhy: "Pourquoi ce flux",
+      thDetails: "Détails",
+      templateSteps: "étapes",
       resultsTitle: "Votre brouillon de carte est prêt.",
       resultsLede: "Voici la carte que l'assistant a bâtie à partir de vos réponses. Passez de la carte au tableau, puis exportez quand ça vous convient.",
       viewLabel: "Affichage",
@@ -278,5 +368,22 @@
     return STRINGS[lang === "fr" ? "fr" : "en"];
   }
 
-  return { strings: strings, STRINGS: STRINGS };
+  /* Template display name (2026-10-05, FR i18n fix): the authored template
+     names are English ("Small retailer, Quebec, contact plus payments plus
+     marketing"). In French the summary composes from the already-localized
+     chip names instead, so no English leaks into the FR path. Size bands
+     stay numeric ("1-10 employés"). */
+  function templateName(chips, lang) {
+    var S = strings(lang);
+    chips = chips || {};
+    var parts = [
+      chips.size ? chips.size + (lang === "fr" ? " employés" : " employees") : "",
+      (S.sectorNames || {})[chips.sector] || "",
+      (S.regionNames || {})[chips.region] || "",
+      (S.typesNames || {})[chips.types] || ""
+    ].filter(function (p) { return p.length > 0; });
+    return parts.join(", ");
+  }
+
+  return { strings: strings, STRINGS: STRINGS, templateName: templateName };
 });

@@ -38,6 +38,34 @@
     fr: { contact: "Contact / identité", payment: "Paiement", marketing: "Marketing / consentement" }
   };
 
+  /* Detail-field labels for the review setup editors (node.meta /
+     edge.meta, written by the set_meta correction op). Shared by the
+     results Table view (ui.js) and the Details export sheet below. */
+  var META_LABELS = {
+    en: {
+      sys_kind: "Type", holds: "Holds", region: "Region",
+      collect_how: "Collects via", notes: "Notes",
+      service: "Service", data_shared: "Data sent", why: "Why"
+    },
+    fr: {
+      sys_kind: "Type", holds: "Contient", region: "Région",
+      collect_how: "Collecte via", notes: "Notes",
+      service: "Service", data_shared: "Données transmises", why: "Pourquoi"
+    }
+  };
+  var META_ORDER = ["sys_kind", "holds", "region", "collect_how", "service", "data_shared", "why", "notes"];
+
+  function metaText(meta, lang) {
+    var l = lang === "fr" ? "fr" : "en";
+    var labels = META_LABELS[l];
+    var parts = [];
+    META_ORDER.forEach(function (k) {
+      var v = meta && meta[k];
+      if (typeof v === "string" && v.length > 0) parts.push(labels[k] + ": " + v);
+    });
+    return parts.join("; ");
+  }
+
   function escapeXml(s) {
     return String(s)
       .replace(/&/g, "&amp;")
@@ -124,6 +152,25 @@
     return sheet(name, rows);
   }
 
+  /* Details sheet (2026-10-05): surfaces the review setup-editor fields
+     (node.meta / edge.meta, written by the set_meta correction op) in the
+     export. The inventory sheets keep their Phase 1 shape so the workbook
+     still re-imports; the Review sheet is untouched. */
+  function detailsSheet(checklist, lang) {
+    var l = lang === "fr" ? "fr" : "en";
+    var name = l === "fr" ? "Détails" : "Details";
+    var head = l === "fr" ? ["Réf", "Élément", "Détails"] : ["Ref", "Artifact", "Details"];
+    var rows = [row([draftBanner(l)]), row([""]), row(head)];
+    (checklist || []).forEach(function (r) {
+      if (r.removed) return;
+      var meta = (r.detail && r.detail.meta) || {};
+      var text = metaText(meta, l);
+      if (!text) return;
+      rows.push(row([r.ref, r.label, text]));
+    });
+    return sheet(name, rows);
+  }
+
   function confirmationsSheet(confirmations, lang) {
     var head = lang === "fr"
       ? ["Session", "Recette", "Étape", "Réf", "Élément", "Note", "Par", "Le"]
@@ -154,7 +201,8 @@
       base = minimalInventory(state, l);
     }
     var text = base.replace(/^﻿/, "");
-    var extra = coverSheet(l) + reviewSheet(checklist, l) + confirmationsSheet(confirmations, l);
+    var extra = coverSheet(l) + reviewSheet(checklist, l) + detailsSheet(checklist, l) +
+      confirmationsSheet(confirmations, l);
     text = text.replace(/<\/Workbook>\s*$/, extra + "</Workbook>");
     return "﻿" + text;
   }
@@ -205,6 +253,7 @@
 
   return {
     buildDraftWorkbook: buildDraftWorkbook,
-    draftBanner: draftBanner
+    draftBanner: draftBanner,
+    metaText: metaText
   };
 });

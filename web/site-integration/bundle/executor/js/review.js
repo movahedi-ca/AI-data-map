@@ -50,7 +50,7 @@
         kind: "node",
         node_id: id,
         label: n.label,
-        detail: { type: n.type, x: U.roundHalfUp(n.x), y: U.roundHalfUp(n.y) },
+        detail: { type: n.type, x: U.roundHalfUp(n.x), y: U.roundHalfUp(n.y), meta: U.deepCopy(n.meta || {}) },
         status: confirmedNodes[id] ? "confirmed" : "unconfirmed"
       });
     });
@@ -65,7 +65,7 @@
         kind: "edge",
         a: e.a, b: e.b, cat: e.cat,
         label: labelOf(ex._nodes, e.a) + " -> " + labelOf(ex._nodes, e.b),
-        detail: { cat: e.cat },
+        detail: { cat: e.cat, meta: U.deepCopy(e.meta || {}) },
         status: "unconfirmed"
       });
     });
