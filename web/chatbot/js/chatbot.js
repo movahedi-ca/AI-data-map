@@ -218,9 +218,13 @@
 
     host.appendChild(chat);
 
+    /* All counter writes go through window.__s1net.setNetCount so the
+       element always holds a plain count string from the first paint. */
     function refreshNet() {
       var w = (typeof window !== "undefined") ? window : RT();
-      netCount.textContent = String(w.__s1net ? w.__s1net.count() : 0);
+      var api = w.__s1net;
+      if (api && typeof api.setNetCount === "function") api.setNetCount(netCount);
+      else netCount.textContent = "0";
     }
     refreshNet();
 
