@@ -1,15 +1,22 @@
 /**
- * ui.js - the Assistant UI: 4-chip intake, narrated build, review loop,
- * draft Excel download, trust counter, one-click wipe.
+ * ui.js - the Assistant UI: one panel, two modes (quick 4-tap intake and
+ * guided chat), narrated build, review loop, draft Excel download, trust
+ * counter, one-click wipe.
  *
- * Flow: intake (4 chips, zero typing) -> model run (step log narrates every
- * action, canvas choreography) -> review loop (node-by-node one-tap
+ * Flow: pick a mode (Quick setup: 4 chips, zero typing; Guided chat: four
+ * questions in a chat, or a pasted recipe) -> model run (step log narrates
+ * every action, canvas choreography) -> review loop (node-by-node one-tap
  * approve/fix) -> draft Excel download -> wipe. Everything runs in the
- * browser; nothing is sent anywhere (live counter proves it).
+ * browser; nothing is sent anywhere (live counter proves it). The guided
+ * chat is the chatbot module mounted embedded (embed:true) into the
+ * panel's chat slot; the panel owns the single title, lede, and trust
+ * line. The mode toggle locks while either mode has a run in progress so
+ * a switch can never strand a live session.
  *
  * Depends on (load order): net-guard.js, s1tokenize.js, s1util.js, menu.js,
  * apply.js, narrate.js, templates.js, review.js, exporter.js, i18n.js,
- * executor.js. Exposes window.S1UI.init({rootId, lang}).
+ * executor.js, and (for the guided mode) chatbot.js. Exposes
+ * window.S1UI.init({rootId, lang}).
  * No em dashes.
  */
 (function (root, factory) {
@@ -45,6 +52,7 @@
     if (!host) return null;
 
     var state = {
+      mode: "quick",
       chips: { size: null, sector: null, region: null, types: null },
       template: null,
       running: false,
@@ -77,12 +85,86 @@
     setInterval(refreshNet, 1000);
     refreshNet();
 
-    /* ---------------- intake ---------------- */
-    var intake = el("div", "s1-intake");
-    var h2 = el("h2", "s1-title", S.entryTitle);
-    h2.tabIndex = -1;
-    intake.appendChild(h2);
-    intake.appendChild(el("p", "s1-lede", S.entryBody));
+    /* ---------------- single panel: title, mode toggle, mode panes ----------------
+       One panel, one entry point. The quick 4-tap intake and the guided
+       chat are two modes of the same assistant; the toggle switches which
+       pane is visible. Native radio inputs: keyboard-operable with a
+       browser-default visible focus ring. */
+    var chatApi = null; /* chatbot handle once the guided pane is mounted */
+    var modeWrap = el("div", "s1-modes");
+    var panelTitle = el("h2", "s1-title", S.assistantTitle);
+    panelTitle.tabIndex = -1;
+    modeWrap.appendChild(panelTitle);
+    modeWrap.appendChild(el("p", "s1-lede", S.assistantLede));
+
+    var radioName = (opts.rootId || "s1-assistant") + "-mode";
+    var modeBar = el("fieldset", "s1-modebar");
+    modeBar.appendChild(el("legend", "s1-modelabel", S.modeLabel));
+    var modeRadios = [];
+    var modeLabels = [];
+    [["quick", S.modeQuick, S.modeQuickDesc], ["guided", S.modeGuided, S.modeGuidedDesc]].forEach(function (m, i) {
+      var label = el("label", "s1-mode");
+      var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = radioName;
+      radio.value = m[0];
+      radio.checked = i === 0;
+      label.appendChild(radio);
+      var txt = el("span", "s1-modetxt");
+      txt.appendChild(el("strong", null, m[1]));
+      txt.appendChild(el("span", "s1-modedesc", " " + m[2]));
+      label.appendChild(txt);
+      radio.addEventListener("change", function () { setMode(m[0]); });
+      modeBar.appendChild(label);
+      modeRadios.push(radio);
+      modeLabels.push(label);
+    });
+    var modeNote = el("p", "s1-modenote", "");
+    modeNote.setAttribute("role", "status");
+    modeBar.appendChild(modeNote);
+    modeWrap.appendChild(modeBar);
+
+    var modePane = el("div", "s1-modepane");
+    modeWrap.appendChild(modePane);
+
+    function syncModeRadios() {
+      modeRadios.forEach(function (r) { r.checked = (r.value === state.mode); });
+    }
+
+    /* A mode switch mid-run would strand a live session, so the toggle
+       refuses while either mode has a run in progress and says why. */
+    function setMode(mode) {
+      if (state.mode !== mode) {
+        if (state.running || (chatApi && chatApi.state.running)) {
+          modeNote.textContent = S.chatBusy;
+        } else {
+          modeNote.textContent = "";
+          state.mode = mode;
+          quickPane.hidden = mode !== "quick";
+          chatSlot.hidden = mode !== "guided";
+          if (mode === "guided") {
+            var f = chatSlot.querySelector("button");
+            if (f) f.focus();
+          } else {
+            panelTitle.focus();
+          }
+        }
+      }
+      syncModeRadios();
+    }
+
+    function setModeLocked(locked) {
+      modeRadios.forEach(function (r) { r.disabled = !!locked; });
+    }
+
+    /* ---------------- quick mode: 4-chip intake ---------------- */
+    var quickPane = el("div", "s1-intake");
+    modePane.appendChild(quickPane);
+
+    var chatSlot = el("div", "s1-chatslot");
+    chatSlot.id = (opts.rootId || "s1-assistant") + "-chat";
+    chatSlot.hidden = true;
+    modePane.appendChild(chatSlot);
 
     var chipWrap = el("div", "s1-chips");
     var chipInputs = {};
@@ -112,10 +194,10 @@
       group.appendChild(opts);
       chipWrap.appendChild(group);
     });
-    intake.appendChild(chipWrap);
+    quickPane.appendChild(chipWrap);
 
     var templateBox = el("div", "s1-templatebox");
-    intake.appendChild(templateBox);
+    quickPane.appendChild(templateBox);
 
     function resolveTemplate() {
       while (templateBox.firstChild) templateBox.removeChild(templateBox.firstChild);
@@ -259,7 +341,8 @@
       state.stopRequested = false;
       state.generation++;
       var myGen = state.generation;
-      intake.hidden = true;
+      setModeLocked(true);
+      modeWrap.hidden = true;
       runBox.hidden = false;
       reviewBox.hidden = true;
       doneBox.hidden = true;
@@ -274,6 +357,7 @@
         console.error("[s1] engine init failed:", e);
         statusLine.textContent = S.engineFailed;
         state.running = false;
+        setModeLocked(false);
         startOverBtn.focus();
         return;
       }
@@ -284,6 +368,7 @@
         console.error("[s1] run start failed:", e);
         statusLine.textContent = S.engineFailed;
         state.running = false;
+        setModeLocked(false);
         startOverBtn.focus();
         return;
       }
@@ -335,7 +420,7 @@
       state.running = false;
       stopBtn.disabled = false;
       if (!aborted) openReview();
-      else paintCanvas();
+      else { paintCanvas(); setModeLocked(false); }
     }
 
     function pauseOnFlag() {
@@ -654,7 +739,15 @@
       runBox.hidden = true;
       reviewBox.hidden = true;
       doneBox.hidden = true;
-      intake.hidden = false;
+      modeWrap.hidden = false;
+      setModeLocked(false);
+      modeNote.textContent = "";
+      /* The guided pane may hold a stale handoff; restart its conversation
+         so a return to that mode starts clean. */
+      if (chatApi) {
+        chatApi.show();
+        chatApi.reset();
+      }
       try {
         if (root.DMImport && typeof root.DMImport.applyState === "function") {
           root.DMImport.applyState({ nodes: {}, edges: [] });
@@ -670,14 +763,14 @@
         if (root.__s1net && typeof root.__s1net.reset === "function") root.__s1net.reset();
       } catch (e) { /* counter reset is best-effort */ }
       refreshNet();
-      h2.focus();
+      panelTitle.focus();
     }
 
     function wipe() {
       if (!window.confirm(S.wipeConfirm)) return;
       teardownToIntake();
       statusLine.textContent = S.wipeDone;
-      h2.focus();
+      panelTitle.focus();
       refreshNet();
     }
 
@@ -687,32 +780,47 @@
       doneTitle.focus();
     }
 
-    host.appendChild(trustBar);
-    host.appendChild(intake);
-    host.appendChild(runBox);
-    host.appendChild(reviewBox);
-    host.appendChild(doneBox);
-
-    /* Chatbot handoff (Phase 7): the conversational panel authors the
-       recipe and narrates the run; when the run completes it hands the
-       live session to this existing review/export/wipe UI. */
+    /* The conversational panel authors the recipe and narrates the run;
+       when the run completes it hands the live session to this panel's
+       review/export/wipe UI. Hiding the whole mode chrome keeps one
+       panel, one flow: the review is the same screen either mode lands on. */
     function enterReview() {
       if (state.running) return false;
       if (!H.controller.executor()) return false;
-      intake.hidden = true;
+      modeWrap.hidden = true;
       runBox.hidden = true;
       doneBox.hidden = true;
       openReview();
       return true;
     }
 
-    return {
+    host.appendChild(trustBar);
+    host.appendChild(modeWrap);
+    host.appendChild(runBox);
+    host.appendChild(reviewBox);
+    host.appendChild(doneBox);
+
+    /* Guided-chat mode: the chatbot module mounts embedded into the chat
+       slot. Its standalone chrome is skipped (embed:true); the panel owns
+       the title, lede, and trust line. The run handoff still lands in this
+       panel's review/export/wipe UI via enterReview. When the chatbot
+       script is absent, the guided option is hidden and the quick mode
+       stands alone. */
+    var handle = {
       state: state,
       startRun: startRun,
       wipe: wipe,
       refreshNet: refreshNet,
-      enterReview: enterReview
+      enterReview: enterReview,
+      setModeLocked: setModeLocked
     };
+    if (root.S1Chatbot && typeof root.S1Chatbot.init === "function") {
+      chatApi = root.S1Chatbot.init({ rootId: chatSlot.id, lang: lang, embed: true, uiHandle: handle });
+    } else {
+      modeLabels[1].hidden = true;
+    }
+
+    return handle;
   }
 
   return { init: init };
