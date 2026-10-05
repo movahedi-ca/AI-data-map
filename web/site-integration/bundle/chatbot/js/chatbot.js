@@ -13,6 +13,13 @@
  * naming the problem. The chatbot never executes; it authors recipes and
  * narrates. The executor does the running.
  *
+ * Embed mode (opts.embed): the chatbot mounts inside the single S1UI panel
+ * (one assistant, one panel). The standalone trust line, title, and lede
+ * are skipped because the panel already renders one of each; the run
+ * handoff still lands in the panel's review/export/wipe UI. Engine
+ * failures surface as plain human messages; raw detail goes to the
+ * console only, the same treatment the executor's error boundary gives.
+ *
  * Depends on (load order): narrate.js, templates.js, i18n.js, executor.js,
  * and ui.js for the handoff (S1UI handle passed to init).
  * UMD: runs in browsers and Node (pure validator is DOM-free). No network,
@@ -173,6 +180,10 @@
     var S = I18n.strings(lang);
     var H = Exec.hooks;
     var uiHandle = opts.uiHandle || null;
+    /* embed:true mounts the conversation inside the single S1UI panel: the
+       standalone trust line, title, and lede are skipped because the panel
+       already renders one of each. */
+    var embed = !!opts.embed;
 
     var host = document.getElementById(opts.rootId || "s1-chatbot");
     if (!host) return null;
@@ -193,19 +204,24 @@
     var chat = el("div", "s1c-chat");
     chat.setAttribute("lang", lang);
 
-    /* Trust line: counter next to the guarantee copy. */
-    var trust = el("div", "s1c-trust");
-    var netCount = el("strong", "s1c-netcount", "0");
-    trust.appendChild(netCount);
-    trust.appendChild(el("span", null, " " + S.requestsSent + ". "));
-    trust.appendChild(el("span", "s1c-trustcopy", S.trustCopy));
-    trust.appendChild(el("span", "s1c-draftbadge", S.draftBadge));
-    chat.appendChild(trust);
+    /* Trust line: counter next to the guarantee copy. Skipped in embed
+       mode; the hosting panel renders the single trust line. */
+    var netCount = null;
+    var title = null;
+    if (!embed) {
+      var trust = el("div", "s1c-trust");
+      netCount = el("strong", "s1c-netcount", "0");
+      trust.appendChild(netCount);
+      trust.appendChild(el("span", null, " " + S.requestsSent + ". "));
+      trust.appendChild(el("span", "s1c-trustcopy", S.trustCopy));
+      trust.appendChild(el("span", "s1c-draftbadge", S.draftBadge));
+      chat.appendChild(trust);
 
-    var title = el("h2", "s1c-title", S.chatTitle);
-    title.tabIndex = -1;
-    chat.appendChild(title);
-    chat.appendChild(el("p", "s1c-lede", S.chatLede));
+      title = el("h2", "s1c-title", S.chatTitle);
+      title.tabIndex = -1;
+      chat.appendChild(title);
+      chat.appendChild(el("p", "s1c-lede", S.chatLede));
+    }
 
     var log = el("ol", "s1c-log");
     log.setAttribute("role", "log");
@@ -221,6 +237,7 @@
     /* All counter writes go through window.__s1net.setNetCount so the
        element always holds a plain count string from the first paint. */
     function refreshNet() {
+      if (!netCount) return; /* embed mode: the panel owns the counter */
       var w = (typeof window !== "undefined") ? window : RT();
       var api = w.__s1net;
       if (api && typeof api.setNetCount === "function") api.setNetCount(netCount);
@@ -463,12 +480,23 @@
       state.recipe = null;
       state.running = false;
       state.stopRequested = false;
+      lockModes(false);
       clearInput();
+      chat.hidden = false;
       greet();
-      title.focus();
+      if (!embed && title) title.focus();
     }
 
     /* ---------------- run + narration ---------------- */
+
+    /* The single panel locks its mode toggle while a run is live; the
+       chatbot reports its own run state through the ui handle so the
+       toggle cannot strand a live session. No-op without a ui handle. */
+    function lockModes(locked) {
+      if (uiHandle && typeof uiHandle.setModeLocked === "function") {
+        try { uiHandle.setModeLocked(locked); } catch (e) { /* cosmetic */ }
+      }
+    }
 
     function paintCanvas() {
       try {
@@ -532,6 +560,7 @@
       }
       state.running = true;
       state.stopRequested = false;
+      lockModes(true);
       clearInput();
       var stopBtn = el("button", "btn secondary", S.stop);
       stopBtn.type = "button";
@@ -545,8 +574,12 @@
       try {
         await H.ready();
       } catch (e) {
-        botMsg(shortErr(e), "s1c-error");
+        /* Engine init failure: plain message for the user, technical
+           detail to the console only (same treatment as the executor). */
+        console.error("[s1] chat engine init failed:", e);
+        botMsg(S.engineFailed, "s1c-error");
         state.running = false;
+        lockModes(false);
         clearInput();
         recipeReady();
         return;
@@ -556,8 +589,11 @@
       try {
         ticket = H.start(state.recipe);
       } catch (e) {
-        botMsg(shortErr(e), "s1c-error");
+        /* Run start failure: plain message, detail to the console only. */
+        console.error("[s1] chat run start failed:", e);
+        botMsg(S.stepFailed, "s1c-error");
         state.running = false;
+        lockModes(false);
         clearInput();
         recipeReady();
         return;
@@ -582,7 +618,10 @@
         try {
           step = await H.stepOnce();
         } catch (e) {
-          botMsg(shortErr(e), "s1c-error");
+          /* Per-step failure: plain message in the chat, technical
+             detail to the console only. */
+          console.error("[s1] chat step failed:", e);
+          botMsg(S.stepFailed, "s1c-error");
           aborted = true;
           break;
         }
@@ -602,6 +641,7 @@
       state.running = false;
       clearInput();
       if (aborted) {
+        lockModes(false);
         botMsg(S.stopped, "s1c-status");
         actionRow([{ label: S.chatStartOver, secondary: true, onClick: reset }]);
       } else {
@@ -639,6 +679,7 @@
       state: state,
       reset: reset,
       validateRecipeText: validateRecipeText,
+      show: function () { chat.hidden = false; },
       _host: host
     };
   }
