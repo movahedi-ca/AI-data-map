@@ -1,6 +1,6 @@
-# AI-data-map
+# AI-data-map: client-side AI for Law 25 data mapping
 
-A Taiga-style System-1 executor that builds Law 25 data-mapping canvases step by step, entirely in the visitor's browser.
+AI-data-map is a client-side AI workflow executor whose first use case is Quebec Law 25 data mapping: answer four intake questions and it builds your privacy inventory canvas step by step, entirely in the visitor's browser. No servers, no accounts, no telemetry, zero third-party scripts. A tiny System-1 transformer model (about 1.2M parameters, ONNX format, running in the browser with onnxruntime-web) picks each next action from a versioned action catalogue, so your data mapping never leaves your device. A chatbot asks the intake questions and drafts a recipe from deterministic templates, zero LLM tokens in v1. An MCP tool validates the recipe before anything runs. The mapping-guide canvas and the Excel importer and exporter do the clicking. Every auto-placed node gets a one-tap confirm or fix, every output is a draft inventory for human review (never legal advice), retention values are ranges that cite the statute plus an as-of date, and one click wipes the session. Open source under the MIT license.
 
 Four layers, each in its lane:
 
@@ -25,7 +25,7 @@ The planner writes the recipe. The executor does the clicking. That is the Taiga
 
 ## Status
 
-Phase 0 (freeze and spec) in progress. Full 7-phase build plan in the playbook.
+Specs frozen (Phase 0), teacher data built (Phase 4), model trained (Phase 5), in-browser executor shipped (Phase 6). Phase 7 (visibility stack) in progress. Full 7-phase build plan in the playbook.
 
 ## The bar
 
