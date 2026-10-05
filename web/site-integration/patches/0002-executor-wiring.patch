@@ -5,16 +5,20 @@
 # bundle (s1/executor/vendor/ort/ort.min.js, the 12 executor UMDs in load
 # order, s1/chatbot/js/chatbot.js) with a comment pointing at the CSP hashes
 # in web/site-integration/csp-hashes.txt, plus the DOMContentLoaded block
-# that mounts S1UI on #s1-assistant, S1Chatbot on #s1-chatbot (handed the UI
-# handle for the review handoff), and refreshes the page-level
-# #s1-page-netcount counter from window.__s1net. Every include is guarded,
-# so the page survives if a script is missing.
+# that mounts the single S1UI assistant panel on #s1-panel (the quick 4-tap
+# intake and the guided chat are two modes inside that one panel; the
+# chatbot mounts embedded, so no separate S1Chatbot.init call is needed),
+# and refreshes the page-level #s1-page-netcount counter from
+# window.__s1net. Every include is guarded, so the page survives if a
+# script is missing. The target page must provide the single mount div
+# <div id="s1-panel"></div> (it replaces the old #s1-chatbot/#s1-assistant
+# pair); the patch does not add it.
 # Rollback: reverse-apply with `patch -p1 -R` from the Tier B root (after
 # reversing 0001); the script tags and the init block are removed.
 #
 --- a/demo/index.html
 +++ b/demo/index.html
-@@ -223,5 +223,46 @@
+@@ -223,5 +223,54 @@
  <script src="assets/js/walkthrough.js"></script>
  <script src="assets/js/export.js"></script>
  <script src="assets/js/builder.js"></script>
@@ -38,17 +42,16 @@
 +<script src="s1/executor/js/ui.js"></script>
 +<script src="s1/chatbot/js/chatbot.js"></script>
 +<script>
-+// S1 assistant wiring. CSP: hash this block's exact bytes (see the
++// S1 assistant wiring: one panel, one entry point. S1UI mounts the single
++// assistant panel (quick 4-tap intake and guided chat as two modes) on
++// #s1-panel; the chatbot mounts embedded, so no separate S1Chatbot.init
++// call is needed. CSP: hash this block's exact bytes (see the
 +// "inline scripts" note in web/site-integration/csp-hashes.txt) into the
 +// Worker's script-src; recompute from the final built page at deploy.
 +document.addEventListener("DOMContentLoaded", function () {
 +  var lang = window.LANG || "en";
-+  var s1ui = null;
 +  if (window.S1UI && typeof window.S1UI.init === "function") {
-+    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: lang });
-+  }
-+  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
-+    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: lang, uiHandle: s1ui });
++    window.S1UI.init({ rootId: "s1-panel", lang: lang });
 +  }
 +  var nc = document.getElementById("s1-page-netcount");
 +  if (nc) {
@@ -72,7 +75,7 @@
  </html>
 --- a/demo/fr.html
 +++ b/demo/fr.html
-@@ -223,5 +223,46 @@
+@@ -223,5 +223,54 @@
  <script src="assets/js/walkthrough.js"></script>
  <script src="assets/js/export.js"></script>
  <script src="assets/js/builder.js"></script>
@@ -96,17 +99,16 @@
 +<script src="s1/executor/js/ui.js"></script>
 +<script src="s1/chatbot/js/chatbot.js"></script>
 +<script>
-+// S1 assistant wiring. CSP: hash this block's exact bytes (see the
++// S1 assistant wiring: one panel, one entry point. S1UI mounts the single
++// assistant panel (quick 4-tap intake and guided chat as two modes) on
++// #s1-panel; the chatbot mounts embedded, so no separate S1Chatbot.init
++// call is needed. CSP: hash this block's exact bytes (see the
 +// "inline scripts" note in web/site-integration/csp-hashes.txt) into the
 +// Worker's script-src; recompute from the final built page at deploy.
 +document.addEventListener("DOMContentLoaded", function () {
 +  var lang = window.LANG || "en";
-+  var s1ui = null;
 +  if (window.S1UI && typeof window.S1UI.init === "function") {
-+    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: lang });
-+  }
-+  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
-+    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: lang, uiHandle: s1ui });
++    window.S1UI.init({ rootId: "s1-panel", lang: lang });
 +  }
 +  var nc = document.getElementById("s1-page-netcount");
 +  if (nc) {
