@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../import/import.css">
 <link rel="stylesheet" href="canvas.css">
 <link rel="stylesheet" href="../executor/css/executor.css">
+<link rel="stylesheet" href="../chatbot/css/chatbot.css">
 <script src="../executor/js/net-guard.js"></script>
 </head>
 <body class="cv-demo">
@@ -17,6 +18,12 @@
   <h1>Importation et canevas, branchés ensemble</h1>
   <p class="cv-lede">Téléversez un inventaire de données rempli, suivez les étapes d'importation, et la carte s'affiche sur le canevas ci-dessous. La barre d'outils du canevas permet de zoomer, de déplacer par glisser, d'ajuster la carte à la vue et de passer en plein écran. Tout se passe dans votre navigateur; le fichier ne quitte jamais cette page.</p>
   <p class="cv-disclaimer">Brouillon de travail illustratif seulement. Pas un avis juridique; vérifiez vos obligations de conservation de façon indépendante.</p>
+
+  <div class="cv-section">
+    <div style="padding:1.25rem">
+      <div id="s1-chatbot"></div>
+    </div>
+  </div>
 
   <div class="cv-section">
     <div style="padding:1.25rem">
@@ -166,6 +173,7 @@ window.T = {
 <script src="../executor/js/i18n.js"></script>
 <script src="../executor/js/executor.js"></script>
 <script src="../executor/js/ui.js"></script>
+<script src="../chatbot/js/chatbot.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   if (window.DMCanvas && typeof window.DMCanvas.init === "function") {
@@ -176,8 +184,12 @@ document.addEventListener("DOMContentLoaded", function () {
       strings: window.T.canvas
     });
   }
+  var s1ui = null;
   if (window.S1UI && typeof window.S1UI.init === "function") {
-    window.S1UI.init({ rootId: "s1-assistant", lang: window.LANG || "fr" });
+    s1ui = window.S1UI.init({ rootId: "s1-assistant", lang: window.LANG || "fr" });
+  }
+  if (window.S1Chatbot && typeof window.S1Chatbot.init === "function") {
+    window.S1Chatbot.init({ rootId: "s1-chatbot", lang: window.LANG || "fr", uiHandle: s1ui });
   }
 });
 </script>
