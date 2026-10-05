@@ -72,6 +72,7 @@
          replaces reviewLede/reviewExplain above (kept for compatibility);
          each group carries a one-sentence intro. */
       reviewIntro: "This is your draft map, built from your answers. Everything below is editable: add what is missing, fix names and types, remove what does not belong. Confirm each item when it looks right. Nothing is final until you confirm it.",
+      reviewProgress: "{done} of {total} confirmed. Confirm everything to see your results.",
       groupIntroCollection: "Where personal data first comes in: forms, booking pages, sign-up sheets, anything people fill out or hand over.",
       groupIntroSystem: "The systems and tools where the data lives day to day: your CRM, data warehouse, file shares, email.",
       groupIntroThirdparty: "Outside companies that receive or process the data for you: payment processors, analytics, cloud hosting.",
@@ -151,6 +152,9 @@
       wipe: "Wipe everything",
       wipeDone: "Wiped. Nothing persists.",
       wipeConfirm: "Wipe everything? The map, the log, and the review are cleared and nothing is kept.",
+      wipeAsk: "Wipe everything? The map, the log, and the review are cleared and nothing is kept.",
+      wipeYes: "Yes, wipe it",
+      wipeKeep: "Keep it",
       requestsSent: "requests sent",
       trustCopy: "Everything runs in your browser. Nothing is sent anywhere.",
       draftBadge: "Draft for review",
@@ -241,6 +245,7 @@
       reviewExplain: "Révisez chaque élément ci-dessous. Confirmer garde l’élément tel quel. Corriger vous permet de changer son nom ou son type.",
       /* Review as an editing workspace (2026-10-05): see the EN block. */
       reviewIntro: "Voici votre brouillon de carte, construit à partir de vos réponses. Tout ce qui suit est modifiable : ajoutez ce qui manque, corrigez les noms et les types, retirez ce qui n’a pas sa place. Confirmez chaque élément quand il vous semble juste. Rien n’est définitif tant que vous ne l’avez pas confirmé.",
+      reviewProgress: "{done} sur {total} confirmés. Confirmez tout pour voir vos résultats.",
       groupIntroCollection: "Là où les données personnelles arrivent en premier : formulaires, pages de réservation, feuilles d’inscription, tout ce que les gens remplissent ou remettent.",
       groupIntroSystem: "Les systèmes et outils où les données vivent au quotidien : votre CRM, votre entrepôt de données, vos partages de fichiers, vos courriels.",
       groupIntroThirdparty: "Les entreprises externes qui reçoivent ou traitent les données pour vous : processeurs de paiement, services d’analyse, hébergement infonuagique.",
@@ -320,6 +325,9 @@
       wipe: "Tout effacer",
       wipeDone: "Effacé. Rien n’est conservé.",
       wipeConfirm: "Tout effacer? La carte, le journal et la révision sont effacés, rien n’est conservé.",
+      wipeAsk: "Tout effacer ? La carte, le journal et la révision sont effacés, rien n’est conservé.",
+      wipeYes: "Oui, tout effacer",
+      wipeKeep: "Garder",
       requestsSent: "requêtes envoyées",
       trustCopy: "Tout se passe dans votre navigateur. Rien n’est envoyé nulle part.",
       draftBadge: "Brouillon à réviser",
