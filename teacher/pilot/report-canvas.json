@@ -1,0 +1,26 @@
+{
+  "generated_utc": "2026-10-05T04:38:41.854Z",
+  "scenarios": [
+    {
+      "name": "canvas-view-session",
+      "domain": "data-mapping/canvas-view-session",
+      "steps": 18,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "canvas-keyboard-build",
+      "domain": "data-mapping/canvas-keyboard-build",
+      "steps": 16,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "canvas-zoom-preserve",
+      "domain": "data-mapping/canvas-zoom-preserve",
+      "steps": 14,
+      "snapshots_valid": true,
+      "replay_ok": true
+    }
+  ]
+}
