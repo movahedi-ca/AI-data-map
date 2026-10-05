@@ -1,0 +1,276 @@
+{
+  "dataset": "movahedi-ca/ai-data-map-teacher",
+  "shard_format": "1.0.0",
+  "created_utc": "2026-10-05T04:42:04Z",
+  "shards": [
+    {
+      "name": "canvas-keyboard-build",
+      "file": "shards/canvas-keyboard-build.jsonl",
+      "steps": 16,
+      "sha256": "c01ceb6b80afe9aebc5560a1520bbeea24cb95b9543a02aceba6b88ad6372b97",
+      "domain": "data-mapping/canvas-keyboard-build",
+      "recipe_id": "p4-canvas-keyboard-build-01"
+    },
+    {
+      "name": "canvas-view-session",
+      "file": "shards/canvas-view-session.jsonl",
+      "steps": 18,
+      "sha256": "0f0edfce1954783cc971397e68ad9a325983bd6694f6515ee56abc677a999a0f",
+      "domain": "data-mapping/canvas-view-session",
+      "recipe_id": "p4-canvas-view-session-01"
+    },
+    {
+      "name": "canvas-zoom-preserve",
+      "file": "shards/canvas-zoom-preserve.jsonl",
+      "steps": 14,
+      "sha256": "2e264eb1e57aba37f86cc34cee13ca6aa64e3198774e3dbc5705527d432a447e",
+      "domain": "data-mapping/canvas-zoom-preserve",
+      "recipe_id": "p4-canvas-zoom-preserve-01"
+    },
+    {
+      "name": "dm-adv-abort",
+      "file": "shards/dm-adv-abort.jsonl",
+      "steps": 12,
+      "sha256": "c7268a16ec7abc92c329d3d257ca0b6d679e6c8dacfdb9c79ba293a5d0bd29ef",
+      "domain": "data-mapping/dm-adv-abort",
+      "recipe_id": "p4-dm-adv-abort-01"
+    },
+    {
+      "name": "dm-adv-checkfix",
+      "file": "shards/dm-adv-checkfix.jsonl",
+      "steps": 16,
+      "sha256": "c4714d24ebb890e5632539f73d50e36c12a8d940b5c350fb4c4a534d8cbe851b",
+      "domain": "data-mapping/dm-adv-checkfix",
+      "recipe_id": "p4-dm-adv-checkfix-01"
+    },
+    {
+      "name": "dm-adv-dangle",
+      "file": "shards/dm-adv-dangle.jsonl",
+      "steps": 18,
+      "sha256": "7812c24b0fcd59a9ff2340956b51def92ce2c231a257a7235d4dbd402b34d8cf",
+      "domain": "data-mapping/dm-adv-dangle",
+      "recipe_id": "p4-dm-adv-dangle-01"
+    },
+    {
+      "name": "dm-adv-doubleflag",
+      "file": "shards/dm-adv-doubleflag.jsonl",
+      "steps": 17,
+      "sha256": "76fca54c9251228ead10805de634dbd334be6ca807bf8cd3ba750ca45a2f3117",
+      "domain": "data-mapping/dm-adv-doubleflag",
+      "recipe_id": "p4-dm-adv-doubleflag-01"
+    },
+    {
+      "name": "dm-adv-flagstorm",
+      "file": "shards/dm-adv-flagstorm.jsonl",
+      "steps": 17,
+      "sha256": "d07f318002ffc48b3203f10aae8a2a25c61d40934f12176605cf1c249c974e88",
+      "domain": "data-mapping/dm-adv-flagstorm",
+      "recipe_id": "p4-dm-adv-flagstorm-01"
+    },
+    {
+      "name": "dm-adv-retention-conflict",
+      "file": "shards/dm-adv-retention-conflict.jsonl",
+      "steps": 14,
+      "sha256": "b5f39787ef87c2a9545e17d0eff0a87b48937a05c1cb32d4222a33fe2136a2e1",
+      "domain": "data-mapping/dm-adv-retention-conflict",
+      "recipe_id": "p4-dm-adv-retention-conflict-01"
+    },
+    {
+      "name": "dm-adv-wronglabel",
+      "file": "shards/dm-adv-wronglabel.jsonl",
+      "steps": 14,
+      "sha256": "4996ee70d16f6e3b22ecae0c9dffbff570c073aa543ff9529caa653d71cf05b5",
+      "domain": "data-mapping/dm-adv-wronglabel",
+      "recipe_id": "p4-dm-adv-wronglabel-01"
+    },
+    {
+      "name": "dm-destruction-audit",
+      "file": "shards/dm-destruction-audit.jsonl",
+      "steps": 14,
+      "sha256": "ec9106fc62121e808a2dbec5c329316c3d54ad8a53aa552afcfb966e1f2ba731",
+      "domain": "data-mapping/dm-destruction-audit",
+      "recipe_id": "p4-dm-destruction-audit-01"
+    },
+    {
+      "name": "dm-export-roundtrip",
+      "file": "shards/dm-export-roundtrip.jsonl",
+      "steps": 15,
+      "sha256": "0abefa0f2643cf69fc77032a9ab521ca1db4c6e823df37b616c5d60c161d50f5",
+      "domain": "data-mapping/dm-export-roundtrip",
+      "recipe_id": "p4-dm-export-roundtrip-01"
+    },
+    {
+      "name": "dm-hr-workbook",
+      "file": "shards/dm-hr-workbook.jsonl",
+      "steps": 16,
+      "sha256": "5614258cb9346167d9ead73d4dde2d7ab04a5eb2ecd2cb9b92fde5c617bbc9b8",
+      "domain": "data-mapping/dm-hr-workbook",
+      "recipe_id": "p4-dm-hr-workbook-01"
+    },
+    {
+      "name": "dm-multi-sheet",
+      "file": "shards/dm-multi-sheet.jsonl",
+      "steps": 20,
+      "sha256": "98d3e7316a98ee0336dda6ddc301a839d785393c2169b2bcf7bc3ebe11364f15",
+      "domain": "data-mapping/dm-multi-sheet",
+      "recipe_id": "p4-dm-multi-sheet-01"
+    },
+    {
+      "name": "dm-payment-flows",
+      "file": "shards/dm-payment-flows.jsonl",
+      "steps": 18,
+      "sha256": "5dd57685713f27dc333d4d5c917362c764662fe5c3b421e764b6c7479f162911",
+      "domain": "data-mapping/dm-payment-flows",
+      "recipe_id": "p4-dm-payment-flows-01"
+    },
+    {
+      "name": "dm-repair-cols",
+      "file": "shards/dm-repair-cols.jsonl",
+      "steps": 19,
+      "sha256": "222aca5ca1f391964a03c3efca8dcf40b6dfc53ae3d6dd3ad5183348325a1a17",
+      "domain": "data-mapping/dm-repair-cols",
+      "recipe_id": "p4-dm-repair-cols-01"
+    },
+    {
+      "name": "dm-review-loop",
+      "file": "shards/dm-review-loop.jsonl",
+      "steps": 16,
+      "sha256": "ffdfa15fc94c8e359ca01e3e2c4a90603c54189b8e8945669d6acd8ce54c57f5",
+      "domain": "data-mapping/dm-review-loop",
+      "recipe_id": "p4-dm-review-loop-01"
+    },
+    {
+      "name": "dm-saas-scale",
+      "file": "shards/dm-saas-scale.jsonl",
+      "steps": 28,
+      "sha256": "df47bab6a3e3c61a1af117f76214c593a3bc81f19d01f6ee50491ee6326fcc51",
+      "domain": "data-mapping/dm-saas-scale",
+      "recipe_id": "p4-dm-saas-scale-01"
+    },
+    {
+      "name": "ood-adv-abort",
+      "file": "shards/ood-adv-abort.jsonl",
+      "steps": 12,
+      "sha256": "ca1949e13a1d149f522b77fd82a4fd0911488539f4ec3711479fd026507e1a43",
+      "domain": "ood-asset-inventory",
+      "recipe_id": "p4-ood-adv-abort-01"
+    },
+    {
+      "name": "ood-adv-dangle",
+      "file": "shards/ood-adv-dangle.jsonl",
+      "steps": 16,
+      "sha256": "69d1b8dabd69dfed552ef63a93d46489b506c5c595747493f0908537fa4e6fba",
+      "domain": "ood-conference-planning",
+      "recipe_id": "p4-ood-adv-dangle-01"
+    },
+    {
+      "name": "ood-adv-wrongnode",
+      "file": "shards/ood-adv-wrongnode.jsonl",
+      "steps": 16,
+      "sha256": "f1042580b648a5c8759056b7054eb0e7a0aa8ff7c110ea2b42b565101911bbc6",
+      "domain": "ood-incident-response",
+      "recipe_id": "p4-ood-adv-wrongnode-01"
+    },
+    {
+      "name": "ood-hiring",
+      "file": "shards/ood-hiring.jsonl",
+      "steps": 18,
+      "sha256": "60a36046e5bbb64c3e6b25bd5c3b5f2436d8a58123b37a4fbbc0f593b93c176d",
+      "domain": "ood-hiring",
+      "recipe_id": "p4-ood-hiring-01"
+    },
+    {
+      "name": "ood-lab",
+      "file": "shards/ood-lab.jsonl",
+      "steps": 17,
+      "sha256": "536d15b1bcf0f1dc88f855d655fc59097346bc55998c2abe683a7b5c47ccc3af",
+      "domain": "ood-lab",
+      "recipe_id": "p4-ood-lab-01"
+    },
+    {
+      "name": "ood-library",
+      "file": "shards/ood-library.jsonl",
+      "steps": 15,
+      "sha256": "9fccae943bd0891899538631dae27e4577a2c30ac01067307362ae3dab9ef41f",
+      "domain": "ood-library",
+      "recipe_id": "p4-ood-library-01"
+    },
+    {
+      "name": "ood-rota",
+      "file": "shards/ood-rota.jsonl",
+      "steps": 17,
+      "sha256": "1e695936b2b27ffd7e945df78de9fe1d06b244fb411abf9ed279d8be5922970b",
+      "domain": "ood-rota",
+      "recipe_id": "p4-ood-rota-01"
+    },
+    {
+      "name": "ood-ticketing",
+      "file": "shards/ood-ticketing.jsonl",
+      "steps": 16,
+      "sha256": "c675b7e4dbfaab6aab7f0c09ac6fd195791843c41c832b8c0deccfa74916bec9",
+      "domain": "ood-ticketing",
+      "recipe_id": "p4-ood-ticketing-01"
+    },
+    {
+      "name": "ood-warehouse",
+      "file": "shards/ood-warehouse.jsonl",
+      "steps": 18,
+      "sha256": "6d58b465a40b935ccb7db25a75e9c0548c5ca5829601d92fc8b27abdc0ad54ae",
+      "domain": "ood-warehouse",
+      "recipe_id": "p4-ood-warehouse-01"
+    },
+    {
+      "name": "ood-asset",
+      "file": "shards/ood-asset.jsonl",
+      "steps": 18,
+      "sha256": "9a9b1744bd5d63bbb6a84393a9509756fb19b6178887c2e2017426f99058d386",
+      "domain": "ood-asset-inventory",
+      "recipe_id": "pilot-ood-asset-01"
+    },
+    {
+      "name": "ood-conference",
+      "file": "shards/ood-conference.jsonl",
+      "steps": 15,
+      "sha256": "a328041a2bdabbe6042ecfb8a3749945840853986d18b56fd7d0537a0907eda8",
+      "domain": "ood-conference-planning",
+      "recipe_id": "pilot-ood-conference-01"
+    },
+    {
+      "name": "ood-content",
+      "file": "shards/ood-content.jsonl",
+      "steps": 13,
+      "sha256": "96c1cbc65e4262eb9899cd598c461193be7440599afa47aa69a05c8a0ec84a0e",
+      "domain": "ood-content-pipeline",
+      "recipe_id": "pilot-ood-content-01"
+    },
+    {
+      "name": "ood-incident",
+      "file": "shards/ood-incident.jsonl",
+      "steps": 16,
+      "sha256": "49d3ea3b856ac9814c773f9eae8f6177728a7c5e0fa5d76fafcf60bbdb8b2267",
+      "domain": "ood-incident-response",
+      "recipe_id": "pilot-ood-incident-01"
+    },
+    {
+      "name": "pilot-import-basic",
+      "file": "shards/pilot-import-basic.jsonl",
+      "steps": 15,
+      "sha256": "7a7d63131ba32754a7d8aa72be7a42e38bd668e891b0c2f287cd3ff8c48e5989",
+      "domain": "data-mapping/pilot-import-basic",
+      "recipe_id": "pilot-import-basic-01"
+    },
+    {
+      "name": "pilot-import-broken",
+      "file": "shards/pilot-import-broken.jsonl",
+      "steps": 2,
+      "sha256": "3ba98cf4373442f8841e8b96f45361efe997d8e0d6be9e6c4b7d7b46e3c2e762",
+      "domain": "data-mapping/pilot-import-broken",
+      "recipe_id": "pilot-import-broken-01"
+    }
+  ],
+  "total_steps": 526,
+  "in_domain_steps": 319,
+  "ood_steps": 207,
+  "generator": "AI-data-map scripted teacher (Phase 4 full run)",
+  "license": "MIT"
+}
