@@ -306,7 +306,17 @@
         skipWs();
         if (text[pos] !== ":") fail("expected ':' after key");
         pos++;
-        obj[key] = parseValue();
+        var val = parseValue();
+        if (key === "__proto__") {
+          /* defineProperty creates an own data property instead of invoking
+             the prototype setter: {"__proto__": x} must not rewire the
+             object's prototype chain. */
+          Object.defineProperty(obj, key, {
+            value: val, writable: true, enumerable: true, configurable: true
+          });
+        } else {
+          obj[key] = val;
+        }
         skipWs();
         var c = text[pos];
         if (c === ",") { pos++; continue; }
