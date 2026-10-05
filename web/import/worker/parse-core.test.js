@@ -8,7 +8,7 @@ const { test, describe } = require("node:test");
 const assert = require("node:assert/strict");
 
 const ParseCore = require("./parse-core.js");
-const XLSX = require("./vendor/xlsx.full.min.js");
+const XLSX = require("../vendor/xlsx.full.min.js");
 
 /* ------------------------------------------------------------------ */
 /* helpers                                                             */
