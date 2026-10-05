@@ -1,0 +1,22 @@
+rules:
+  - id: formula-injection
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      contract_severity: medium
+      category: security
+    message: >-
+      SpreadsheetML cell value interpolated without a formula-injection guard.
+      escapeXml stops XML injection, but a value starting with = + - or @ is
+      still evaluated as a formula when the workbook opens in Excel. Strip or
+      prefix a leading = + - @, or route the value through a sanitizeFormula
+      helper. Textual heuristic: flags <Data> cell construction joined to a
+      value by concatenation or ${} interpolation.
+    patterns:
+      - pattern-either:
+          # "...<Data ss:Type=\"String\">" + value + ...
+          - pattern-regex: (?m)^[^\n]*<Data\b[^>]*>"\s*\+
+          # `<Cell><Data ...>${value}</Data></Cell>`
+          - pattern-regex: (?m)`[^`\n]*<Data\b[^`\n]*\$\{
+      - pattern-not-regex: (?i)formula[-_ ]?guard|sanitizeformula|neutralizeformula|csvsafe
