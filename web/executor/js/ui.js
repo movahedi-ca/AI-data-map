@@ -50,6 +50,10 @@
 
     var host = $(opts.rootId || "s1-assistant");
     if (!host) return null;
+    /* Stable styling hook: the panel CSS scopes to .s1-root (and the chat
+       to .s1c-chat), never to the mount id, so the single panel keeps its
+       styling whatever id the integrator mounts it on. */
+    try { host.classList.add("s1-root"); } catch (e) { /* cosmetic */ }
 
     var state = {
       mode: "quick",
