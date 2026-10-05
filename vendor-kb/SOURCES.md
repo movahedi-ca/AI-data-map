@@ -1,6 +1,6 @@
 # Vendor KB source index
 
-204 unique source URLs across 100 entries. All consulted 2026-10-05.
+208 unique source URLs across 100 entries. All consulted 2026-10-05.
 
 - https://2b-advice.com/en/about-2b-advice/ (via 2b-advice)
 - https://7wdata.be/tool/okera-data-access-governance/ (via okera)
@@ -56,10 +56,12 @@
 - https://inspicker.com/wiz-ai-cloud-security-pricing-critical-2026-roi-breakdown/ (via wiz)
 - https://jobicy.com/company/egnyte (via egnyte)
 - https://klaro.org/pricing (via klaro)
+- https://leadiq.com/c/dasera/5db1e30b408f0cc3d9319573 (via dasera)
 - https://leadiq.com/c/exterro/5a1d8e2954000059007482a1 (via exterro)
 - https://leadiq.com/c/gimmal/5a1d8936240000240062b2fe (via gimmal)
 - https://leadiq.com/c/privacycheq/5a1dac3f2300005200a172ca (via privacycheq)
 - https://leadiq.com/c/smart-global-governance/5e9a12f860fe5627506b0f6f (via smart-global-governance)
+- https://legaltechnology.com/litera-acquires-filetrail-to-expand-information-governance-capabilities/ (via filetrail)
 - https://markets.financialcontent.com/gatehouse.rrstar/article/bizwire-2025-10-28-privadoai-launches-ai-agents-to-automate-manual-privacy-assessments-and-data-maps (via privado)
 - https://markets.financialcontent.com/stocks/article/bizwire-2022-1-27-transcend-introduces-first-actionable-data-mapping-product-along-with-privacy-compliance-survey-data (via transcend)
 - https://mergr.com/company/dporganizer (via dporganizer)
@@ -159,6 +161,7 @@
 - https://www.invest.vic.gov.au/jp/news-and-events/news/2019/july/recordpoint-establishes-apac-hq-and-engineering-hub-in-melbourne (via recordpoint)
 - https://www.itpro.com/business/acquisition/proofpoint-acquires-data-security-posture-management-firm-normalyze (via normalyze)
 - https://www.ketch.com (via ketch)
+- https://www.kmworld.com/Articles/ReadArticle.aspx?ArticleID=172592 (via crownpeak)
 - https://www.lawnext.com/2021/10/filetrail-names-veteran-business-exec-as-new-ceo.html (via filetrail)
 - https://www.legalitprofessionals.com/global-news/8329-imanage-launches-information-governance-and-records-management-center-of-excellence (via imanage)
 - https://www.legalsupportnetwork.co.uk/news/filetrail-announces-expansion-relocation-of-headquarters-to-austin-texas/ (via filetrail)
@@ -201,6 +204,7 @@
 - https://www.techtarget.com/data-technologies/news/366649478/Data-observability-specialist-Bigeye-puts-focus-on-AI-spend (via bigeye)
 - https://www.techtarget.com/it-infrastructure/news/366636012/Atlassians-Secoda-acquisition-adds-data-catalog-for-Rovo-AI (via secoda)
 - https://www.termsfeed.com/blog/real-cookie-banner-review/ (via real-cookie-banner)
+- https://www.thesaasnews.com/news/dasera-raises-12-million-in-series-a (via dasera)
 - https://www.thetechoutlook.com/press-release/alation-named-a-leader-in-idc-marketscape-worldwide-data-intelligence-platform-software-2024/ (via alation)
 - https://www.thoropass.com/customers/wayleadr (via thoropass)
 - https://www.upwind.io/feed/upwind-now-secures-snowflake-from-ai-down-to-the-storage-underneath-it (via upwind)
