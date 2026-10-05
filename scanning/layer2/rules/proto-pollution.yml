@@ -1,0 +1,40 @@
+rules:
+  - id: proto-pollution
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      contract_severity: high
+      category: security
+    message: >-
+      Possible prototype-pollution sink: merging JSON.parse output into an
+      object, or writing to __proto__. The codebase parses untrusted JSON in
+      several places (imported files, recipes); merges must go through a
+      hardened path. The guarded parser in web/executor/js/s1tokenize.js
+      (explicit __proto__ check) is intentionally not flagged.
+    patterns:
+      - pattern-either:
+          # Object.assign(dst, JSON.parse(...))
+          - patterns:
+              - pattern: Object.assign($DST, $SRC)
+              - metavariable-pattern:
+                  metavariable: $SRC
+                  patterns:
+                    - pattern: JSON.parse(...)
+          # merge(dst, JSON.parse(...)) and common variants; Object.assign is
+          # covered by the branch above and excluded here to avoid doubles.
+          - patterns:
+              - pattern: $MERGE($DST, $SRC)
+              - metavariable-regex:
+                  metavariable: $MERGE
+                  regex: ^(merge|mergeDeep|deepMerge|_.merge|extend|defaultsDeep|deepExtend|_.extend)$
+              - metavariable-pattern:
+                  metavariable: $SRC
+                  patterns:
+                    - pattern: JSON.parse(...)
+          # __proto__ used as an assignment target or object-literal key.
+          # Guard comparisons (key === "__proto__") and Object.defineProperty
+          # do not match these patterns.
+          - pattern: $O["__proto__"] = $V
+          - pattern: $O.__proto__ = $V
+          - pattern: '{ "__proto__": $V, ... }'
