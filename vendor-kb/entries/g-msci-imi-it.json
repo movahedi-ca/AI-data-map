@@ -2691,7 +2691,8 @@
   "id": "belden",
   "law25_relevance": "Belden connectivity products do not process personal information themselves, so Law 25 relevance is limited to asset-level documentation in a Quebec organization's data map. No vendor-published Law 25 retention guidance exists.",
   "mapping_features": [
-   "Belden networking and connectivity hardware forms the physical network layer; enterprise data maps record it in infrastructure asset inventories that support data flow documentation"
+   "Belden networking and connectivity hardware forms the physical network layer; enterprise data maps record it in infrastructure asset inventories that support data flow documentation",
+   "RUCKUS Wi-Fi, enterprise switching, and network management operations (acquired from Vistance Networks on July 1, 2026) create network asset inventories for enterprise data maps"
   ],
   "name": "Belden, Inc.",
   "pricing_model": "unverified",
@@ -2705,6 +2706,11 @@
     "consulted": "2026-10-05",
     "note": "Supports company name, St. Louis headquarters, and networking, connectivity, and cable product lines",
     "url": "https://en.wikipedia.org/wiki/Belden_(electronics_company)"
+   },
+   {
+    "url": "https://www.businesswire.com/news/home/20260806737046/en/Vistance-Networks-Reports-Second-Quarter-2026-Results",
+    "consulted": "2026-10-05",
+    "note": "Vistance Networks Q2 2026 results: completed the sale of its RUCKUS segment to Belden Inc. on July 1, 2026 for approximately $1.846B cash; continuing operations are the Aurora segment."
    }
   ],
   "verification": {
@@ -3729,13 +3735,13 @@
    "data_mapping"
   ],
   "data_residency": "unverified",
-  "description": "Vistance Networks, formerly CommScope Holding Company, Inc. and renamed in January 2026, provides intelligent network solutions through its RUCKUS segment, covering Wi-Fi, switching, an IoT suite, and cloud network management, and its Aurora Networks segment.",
+  "description": "Vistance Networks, formerly CommScope Holding Company, Inc. and renamed in January 2026, provides broadband access network solutions through its Aurora Networks segment. On July 1, 2026 it completed the sale of its RUCKUS segment (Wi-Fi, switching, IoT, cloud network management) to Belden Inc. for approximately $1.846 billion in cash.",
   "headquarters": "Richardson, United States",
   "id": "vistance-networks",
   "law25_relevance": "Vistance's network and IoT management platforms process connectivity data that may include personal information, so a Quebec enterprise deploying them must conduct a privacy impact assessment when acquiring or overhauling the system. Where network data is communicated outside Quebec, the enterprise must assess privacy-related factors including the legal regime of the destination jurisdiction.",
   "mapping_features": [
-   "RUCKUS Wi-Fi, switching, and cloud network management create network asset inventories for data maps",
-   "IoT suite and cloud network management data support device inventories in enterprise data maps"
+   "Aurora Networks broadband access solutions create network asset inventories for enterprise data maps",
+   "Broadband network equipment and subscriber-access infrastructure support data flow documentation in enterprise data maps"
   ],
   "name": "Vistance Networks, Inc.",
   "pricing_model": "unverified",
@@ -3754,6 +3760,11 @@
     "consulted": "2026-10-05",
     "note": "Law 25 privacy impact assessment requirement for information systems involving personal information",
     "url": "https://www.gtlaw-dataprivacydish.com/2023/08/preparing-for-quebecs-law-25-employee-privacy-training/"
+   },
+   {
+    "url": "https://www.businesswire.com/news/home/20260806737046/en/Vistance-Networks-Reports-Second-Quarter-2026-Results",
+    "consulted": "2026-10-05",
+    "note": "Vistance Networks Q2 2026 results: completed the sale of its RUCKUS segment to Belden Inc. on July 1, 2026 for approximately $1.846B cash; continuing operations are the Aurora segment."
    }
   ],
   "verification": {
