@@ -5,20 +5,20 @@
 # Inline scripts (window.T strings object, s1 init block): hash the final
 # built page bytes at deploy; see DEPLOY-NOTE.md section 3.
 
-sha256-Er7qagp4HWP0qsrfLNMKeQjZdtpBChb+1ujEum5euvY=  # s1/executor/js/net-guard.js
+sha256-0Db3NxnaaCi1DzpvukloNH9x4y1QtkjyRgj+rlvy3PQ=  # s1/executor/js/net-guard.js
 sha256-vm5WC2TAPJklLu3A4ZienlHkTZ8ZHnZVyb8BG/n1dsg=  # s1/executor/vendor/ort/ort.min.js
 sha256-UH8oMV+FEY/Af7gLvKk+LL57RUh4h3iOxVX5hTuBjYg=  # s1/executor/js/s1tokenize.js
 sha256-dipgQ4HJqwfL6w6z4noeXdGod91YFHcThbfSiiM4zZE=  # s1/executor/js/s1util.js
 sha256-WDcKLFqMXYePZny93aSnN33yB3pOH29akuCxgUF1sKk=  # s1/executor/js/menu.js
 sha256-s4emJ3QhrwGjOlWIcc+uCis5SvvHEwkjAATPcRDZ3pM=  # s1/executor/js/apply.js
 sha256-YwOYQv/CGz+9EP3Aboj/V3pnlkMrvDJwvwsTIcs8gng=  # s1/executor/js/narrate.js
-sha256-dhJOV+f/becCP47MhxNdxTcvdZC1XtVeQPNG39IuVis=  # s1/executor/js/templates.js
+sha256-q25PX1XFRR7dDqQJUtbn0tZPywZHMXQ7E2+RZZrLPwA=  # s1/executor/js/templates.js
 sha256-+xO+93vfmrqAbOjl/p7qfBkD0IQHV4jMfoNgdDZY6eM=  # s1/executor/js/review.js
 sha256-6KddR+fWj2+F/YuPRrRV5LxyHtpHi1XlHvhKGPocUj0=  # s1/executor/js/exporter.js
-sha256-8tCEKTPmv2BhHkLv7Qnc5QeXRzpcbRxas4imk0byuB8=  # s1/executor/js/i18n.js
+sha256-3/wS6sWunaU4hx8n9DNxde8+7cD1Zbjb0WifpkmuMVk=  # s1/executor/js/i18n.js
 sha256-GE9ziO/OeB9SMFrcpj/LDcVfjgkg/DH5QzNKNGGrz7U=  # s1/executor/js/executor.js
-sha256-UCHCjq6HDltrcMCQdCUAVFWT8SnPeno8Y6FFPpM0KOA=  # s1/executor/js/ui.js
-sha256-aW4TI78fqkvwoc398xcYmfvGPTWy/AUAWmV3tQY5ieM=  # s1/chatbot/js/chatbot.js
+sha256-VqgAn2dytA5EoGFQ3Y6rX88erm2xkK/BAr1tGbxZZNU=  # s1/executor/js/ui.js
+sha256-t9dhVPuNsum+V0h1tn7EIGV0G7KfqW3r6vSHRgC1tOQ=  # s1/chatbot/js/chatbot.js
 
 # --- inline scripts (hash the final built page bytes at deploy) ---
 # The S1 init block added by patches/0002-executor-wiring.patch. Hash below
