@@ -187,7 +187,7 @@ function buildPools(kb) {
       systems: [kb("HubSpot", "HubSpot"), kb("Salesforce, Inc.", "Salesforce"), "Product database"].concat(genericSystems),
       contactThird: [kb("Amazon Web Services", "Amazon Web Services"), kb("Zendesk", "Zendesk")].concat(genericContactThird),
       paymentThird: ["Payment processor", "Billing platform"],
-      marketingThird: [kb("Mailchimp", "Mailchimp"), kb("Intercom Inc.", "Intercom"), kb("AppLovin Corporation", "AppLovin")]
+      marketingThird: [kb("Mailchimp", "Mailchimp"), kb("Intercom Inc.", "Intercom"), "Example marketing platform"]
     },
     manufacturing: {
       collection: ["Customer order form", "Quote request form", "Dealer signup form"],
