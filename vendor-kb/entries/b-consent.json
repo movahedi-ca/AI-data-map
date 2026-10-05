@@ -941,7 +941,7 @@
       "consent"
     ],
     "data_residency": "unverified",
-    "description": "Denver-based digital experience platform whose consent capability comes from the 2017 acquisition of Evidon. Offers the Universal Consent Platform plus website monitoring and tag governance for enterprise compliance.",
+    "description": "Denver-based digital experience platform acquired by Rezolve Ai in December 2025; the Crownpeak brand now operates as part of Rezolve Ai. Its consent capability comes from the 2017 acquisition of Evidon: the Universal Consent Platform plus website monitoring and tag governance for enterprise compliance.",
     "headquarters": "Denver, United States",
     "id": "crownpeak",
     "law25_relevance": "Law 25 requires organizations to obtain consent before collecting personal information and to be able to demonstrate that consent was given. Crownpeak's consent platform manages the consent lifecycle with an audit trail, supporting that accountability requirement.",
@@ -968,10 +968,15 @@
         "consulted": "2026-10-05",
         "note": "Crownpeak is Denver-based; acquired Evidon's SaaS consent, monitoring and compliance solutions",
         "url": "https://www.cmswire.com/digital-experience/crownpeak-acquires-evidon-to-boost-digital-quality-management/"
+      },
+      {
+        "url": "https://www.kmworld.com/Articles/ReadArticle.aspx?ArticleID=172592",
+        "consulted": "2026-10-05",
+        "note": "Rezolve Ai acquiring Crownpeak, announced 1 December 2025"
       }
     ],
     "verification": {
-      "checked_utc": "2026-10-05T03:35:00Z",
+      "checked_utc": "2026-10-05T03:40:00Z",
       "status": "verified"
     },
     "website": "https://www.crownpeak.com"
