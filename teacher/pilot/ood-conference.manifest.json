@@ -1,0 +1,137 @@
+{
+  "shard": "ood-conference",
+  "domain": "ood-conference-planning",
+  "recipe_id": "pilot-ood-conference-01",
+  "recipe": {
+    "name": "Pilot OOD: conference planning map (desks, AV, catering, shred bin)",
+    "recipe_id": "pilot-ood-conference-01",
+    "schema_version": "1.0.0",
+    "items": [
+      {
+        "intent": "add_collection_point",
+        "params": {
+          "node_id": "n1",
+          "x": 80,
+          "y": 90,
+          "label": "Main registration desk"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n2",
+          "type": "system",
+          "x": 320,
+          "y": 80,
+          "label": "Venue AV control booth"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n3",
+          "type": "thirdparty",
+          "x": 520,
+          "y": 140,
+          "label": "Catering vendor"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n4",
+          "type": "destruction",
+          "x": 520,
+          "y": 300,
+          "label": "Badge shred bin"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n5",
+          "type": "collection",
+          "x": 580,
+          "y": 350,
+          "label": "Satellite desk"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n6",
+          "type": "collection",
+          "x": 110,
+          "y": 300,
+          "label": "Satellite check-in desk"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n2",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n3",
+          "cat": "payment"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n6",
+          "b": "n2",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n3",
+          "cat": "marketing"
+        }
+      },
+      {
+        "intent": "set_field",
+        "params": {
+          "node_id": "n4",
+          "field": "label",
+          "value": "Badge shred bin (lobby)"
+        }
+      },
+      {
+        "intent": "confirm_node",
+        "params": {
+          "node_id": "n1",
+          "note": "Registration desk placement confirmed with venue map."
+        }
+      },
+      {
+        "intent": "run_check",
+        "params": {
+          "checks": [
+            "label_coverage",
+            "connectivity"
+          ]
+        }
+      },
+      {
+        "intent": "export",
+        "params": {
+          "format": "xls"
+        }
+      }
+    ]
+  },
+  "steps": 15,
+  "first_state_hash": "7458342a56680445d13fbcbd776972df18f7b41b3d17cd29fa9ba1b945a42df6",
+  "last_state_hash": "48d5ed8df0822281794a4373185a9e9351f84a9e8d29c4e85a71864645d5819e",
+  "created_utc": "2026-10-05T03:28:40.488Z"
+}
