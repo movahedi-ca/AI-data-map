@@ -1,0 +1,281 @@
+/* canvas.css: Phase 2 zoom/pan/fullscreen canvas module for the data mapping guide.
+ *
+ * Palette matches the guide's archival ledger (ledger.css: paper #f8fafc,
+ * ink #0f172a, teal #0e6e64, vermilion #b3401f) and its night-ledger dark
+ * variant. Every palette use reads the ledger variables with a light-mode
+ * fallback, so this file also renders standalone on the throwaway demo
+ * pages that do not load ledger.css.
+ *
+ * IDs (#canvas-wrap, #builder-canvas, #cv-toolbar, #cv-status) are the Phase 2
+ * DOM contract; Worker 1's canvas.js wires them. Demo-only page chrome is
+ * scoped to .cv-demo so it never fires on the guide page.
+ */
+
+/* ---------- canvas frame ---------- */
+#canvas-wrap { position: relative; }
+
+#builder-canvas {
+  width: 100%;
+  height: 420px;
+  max-height: 70vh;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    var(--paper, #f8fafc);
+  border: 1.5px solid var(--line-dark, #cbd5e1);
+  border-radius: 3px;
+}
+
+/* ---------- toolbar overlay ---------- */
+#cv-toolbar {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  max-width: calc(100% - 1rem);
+}
+
+#cv-toolbar button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.65rem;
+  font-family: var(--mono, ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink, #0f172a);
+  background: var(--card, #ffffff);
+  border: 1.5px solid var(--line-dark, #cbd5e1);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
+
+#cv-toolbar button:hover {
+  border-color: var(--teal, #0e6e64);
+  color: var(--teal-dark, #0a4f48);
+}
+
+#cv-toolbar button:focus-visible {
+  outline: 3px solid var(--teal, #0e6e64);
+  outline-offset: 2px;
+}
+
+/* ---------- status line ---------- */
+#cv-status {
+  font-family: var(--mono, ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace);
+  font-size: 0.78rem;
+  color: var(--ink-soft, #475569);
+  padding: 0.5rem 0.25rem;
+  min-height: 1.9em;
+  margin: 0;
+}
+
+/* ---------- pseudo-fullscreen fallback (no Fullscreen API) ---------- */
+.cv-pseudo-full {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    var(--paper, #f8fafc);
+}
+
+.cv-pseudo-full svg {
+  height: 100%;
+  max-height: 100vh;
+}
+
+/* ---------- native fullscreen ---------- */
+#canvas-wrap:fullscreen {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(15, 23, 42, 0.05) 24px),
+    var(--paper, #f8fafc);
+}
+
+#canvas-wrap:fullscreen #builder-canvas {
+  height: 100vh;
+  max-height: 100vh;
+  border: 0;
+  border-radius: 0;
+}
+
+/* ---------- nodes: focus ring, selection, label legibility ---------- */
+.node { cursor: pointer; }
+.node:focus { outline: none; }
+.node:focus-visible { filter: drop-shadow(0 0 5px rgba(27, 94, 94, 0.85)); }
+.node:focus-visible .shape {
+  stroke: var(--teal-dark, #0a4f48);
+  stroke-width: 4.5;
+}
+.node.selected .shape {
+  stroke: var(--teal-dark, #0a4f48);
+  stroke-width: 4;
+  fill: var(--teal-wash, #e2efec);
+}
+.node text { pointer-events: none; }
+
+/* 14px + a paint-order halo in the canvas background color: stays readable
+   at the 0.35 minimum zoom (an unhaloed 12px label dissolves there). */
+.node-label {
+  font-family: var(--sans, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  font-size: 14px;
+  fill: var(--ink, #0f172a);
+  paint-order: stroke;
+  stroke: var(--paper, #f8fafc);
+  stroke-width: 3.5px;
+}
+
+/* ---------- edges: one color, meaning in the dash pattern ---------- */
+.edge {
+  fill: none;
+  stroke: var(--ink-soft, #475569);
+  stroke-width: 1.8;
+}
+.edge.contact { stroke-dasharray: none; }
+.edge.payment { stroke-dasharray: 7 4; }
+.edge.marketing { stroke-dasharray: 2 4; }
+
+/* ---------- night ledger (dark mode), mirrors ledger.css ---------- */
+html.dark .dm #builder-canvas {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(236, 226, 204, 0.07) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(236, 226, 204, 0.07) 24px),
+    var(--paper);
+  border-color: var(--line-dark);
+}
+html.dark .dm #canvas-wrap:fullscreen,
+html.dark .dm .cv-pseudo-full {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(236, 226, 204, 0.07) 24px),
+    repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(236, 226, 204, 0.07) 24px),
+    var(--paper);
+}
+html.dark .dm #cv-toolbar button {
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--line-dark);
+}
+html.dark .dm #cv-toolbar button:hover {
+  color: var(--teal-dark);
+  border-color: var(--teal);
+}
+html.dark .dm .node:focus-visible .shape { stroke: var(--teal); }
+html.dark .dm .node.selected .shape {
+  stroke: var(--teal-dark);
+  fill: var(--teal-wash);
+}
+/* --paper is redefined inside .dm, so the label halo follows automatically. */
+
+/* ---------- small screens: toolbar must not cover the map ---------- */
+@media (max-width: 480px) {
+  #cv-toolbar { top: 0.35rem; left: 0.35rem; gap: 0.25rem; }
+  #builder-canvas { height: 320px; }
+}
+
+@media print {
+  #cv-toolbar { display: none; }
+}
+
+/* ================================================================
+   Throwaway demo-page chrome (.cv-demo). Not shipped to the guide.
+   ================================================================ */
+.cv-demo {
+  margin: 0;
+  background: var(--paper, #f8fafc);
+  color: var(--ink, #0f172a);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cv-page { max-width: 60rem; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; }
+
+.cv-page h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.15;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.cv-lede { color: var(--ink-soft, #475569); max-width: 62ch; margin: 0 0 1rem; }
+
+.cv-disclaimer {
+  border-left: 4px solid var(--verm, #b3401f);
+  color: var(--verm, #b3401f);
+  font-style: italic;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin: 1rem 0 2rem;
+  max-width: 62ch;
+}
+
+.cv-demo .btn {
+  font-family: var(--sans, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--teal, #0e6e64);
+  border: 1.5px solid var(--teal-dark, #0a4f48);
+  border-radius: 3px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+}
+
+.cv-demo .btn.secondary {
+  color: var(--ink, #0f172a);
+  background: var(--card, #ffffff);
+  border-color: var(--line-dark, #cbd5e1);
+}
+
+.cv-demo .btn:focus-visible { outline: 3px solid var(--teal, #0e6e64); outline-offset: 2px; }
+
+.cv-demo .sim-head {
+  background: var(--ink, #0f172a);
+  color: var(--paper, #f8fafc);
+  padding: 0.8rem 1.25rem;
+  font-family: var(--mono, ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cv-demo .field { margin-bottom: 1.1rem; }
+.cv-demo .field label {
+  display: block;
+  font-family: var(--mono, ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  color: var(--ink-soft, #475569);
+}
+.cv-demo .field select,
+.cv-demo .field input[type="text"] {
+  width: 100%;
+  font-family: var(--sans, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  font-size: 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid var(--line-dark, #cbd5e1);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink, #0f172a);
+}
+.cv-demo .field select:focus-visible,
+.cv-demo .field input:focus-visible { outline: 3px solid var(--teal, #0e6e64); outline-offset: 2px; }
+
+.cv-section {
+  border: 2px solid var(--ink, #0f172a);
+  border-radius: 4px;
+  background: var(--card, #ffffff);
+  margin: 2rem 0;
+  overflow: hidden;
+  padding-bottom: 1.25rem;
+}
+.cv-section .builder-import { border: 0; margin-top: 0; padding-top: 0; }
