@@ -2,25 +2,25 @@
    Classic stylesheet, no dependencies. Visible focus everywhere, logical
    tab order follows the DOM order. */
 
-#s1-assistant {
+.s1-root {
   border: 1px solid #cbd5e1;
   border-radius: 0.75rem;
   padding: 1.25rem;
   background: #f8fafc;
 }
 
-#s1-assistant .s1-title {
+.s1-root .s1-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
 }
 
-#s1-assistant .s1-lede {
+.s1-root .s1-lede {
   margin: 0 0 1rem;
   color: #334155;
 }
 
 /* Trust bar: live counter next to the guarantee copy. */
-#s1-assistant .s1-trust {
+.s1-root .s1-trust {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -33,11 +33,11 @@
   font-size: 0.9rem;
 }
 
-#s1-assistant .s1-netcount {
+.s1-root .s1-netcount {
   font-variant-numeric: tabular-nums;
 }
 
-#s1-assistant .s1-draftbadge {
+.s1-root .s1-draftbadge {
   margin-left: auto;
   background: #fef3c7;
   border: 1px solid #f59e0b;
@@ -48,25 +48,25 @@
 }
 
 /* Chips: real radio inputs, keyboard navigable. */
-#s1-assistant .s1-chipgroup {
+.s1-root .s1-chipgroup {
   border: none;
   padding: 0;
   margin: 0 0 0.9rem;
 }
 
-#s1-assistant .s1-chipname {
+.s1-root .s1-chipname {
   font-weight: 600;
   margin-bottom: 0.4rem;
   padding: 0;
 }
 
-#s1-assistant .s1-chipoptions {
+.s1-root .s1-chipoptions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-#s1-assistant .s1-chip {
+.s1-root .s1-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -77,41 +77,41 @@
   background: #ffffff;
 }
 
-#s1-assistant .s1-chip input {
+.s1-root .s1-chip input {
   accent-color: #0f172a;
 }
 
-#s1-assistant .s1-chip:has(input:checked) {
+.s1-root .s1-chip:has(input:checked) {
   background: #0f172a;
   color: #ffffff;
   border-color: #0f172a;
 }
 
-#s1-assistant .s1-chip:has(input:focus-visible) {
+.s1-root .s1-chip:has(input:focus-visible) {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
 
-#s1-assistant .s1-templatebox {
+.s1-root .s1-templatebox {
   margin-top: 0.5rem;
 }
 
-#s1-assistant .s1-tmplpick {
+.s1-root .s1-tmplpick {
   margin: 0.25rem 0.5rem 0.25rem 0;
 }
 
 /* Step log. */
-#s1-assistant .s1-runhead {
+.s1-root .s1-runhead {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-#s1-assistant .s1-logtitle {
+.s1-root .s1-logtitle {
   margin: 0;
 }
 
-#s1-assistant .s1-steplog {
+.s1-root .s1-steplog {
   max-height: 16rem;
   overflow-y: auto;
   background: #ffffff;
@@ -121,28 +121,28 @@
   margin: 0.75rem 0;
 }
 
-#s1-assistant .s1-step {
+.s1-root .s1-step {
   padding: 0.25rem 0;
 }
 
-#s1-assistant .s1-step.s1-error {
+.s1-root .s1-step.s1-error {
   color: #b91c1c;
 }
 
-#s1-assistant .s1-step.s1-aborted {
+.s1-root .s1-step.s1-aborted {
   color: #92400e;
 }
 
-#s1-assistant .s1-step.s1-corrected {
+.s1-root .s1-step.s1-corrected {
   color: #065f46;
 }
 
-#s1-assistant .s1-status {
+.s1-root .s1-status {
   min-height: 1.5em;
   color: #334155;
 }
 
-#s1-assistant .s1-flagbox {
+.s1-root .s1-flagbox {
   border: 1px solid #f59e0b;
   background: #fffbeb;
   border-radius: 0.5rem;
@@ -151,7 +151,7 @@
 }
 
 /* Review rows. */
-#s1-assistant .s1-reviewrow {
+.s1-root .s1-reviewrow {
   border: 1px solid #cbd5e1;
   border-radius: 0.5rem;
   background: #ffffff;
@@ -159,27 +159,27 @@
   margin-bottom: 0.6rem;
 }
 
-#s1-assistant .s1-reviewprompt {
+.s1-root .s1-reviewprompt {
   margin: 0 0 0.25rem;
   font-weight: 600;
 }
 
-#s1-assistant .s1-rowstatus {
+.s1-root .s1-rowstatus {
   margin: 0 0 0.5rem;
   font-size: 0.85rem;
   color: #64748b;
 }
 
-#s1-assistant .s1-rowstatus.confirmed {
+.s1-root .s1-rowstatus.confirmed {
   color: #065f46;
 }
 
-#s1-assistant .s1-rowbtns {
+.s1-root .s1-rowbtns {
   display: flex;
   gap: 0.5rem;
 }
 
-#s1-assistant .s1-fixpanel {
+.s1-root .s1-fixpanel {
   margin-top: 0.6rem;
   padding-top: 0.6rem;
   border-top: 1px dashed #cbd5e1;
@@ -189,7 +189,7 @@
   align-items: center;
 }
 
-#s1-assistant .s1-fixpanel input[type="text"] {
+.s1-root .s1-fixpanel input[type="text"] {
   padding: 0.35rem 0.5rem;
   border: 1px solid #94a3b8;
   border-radius: 0.35rem;
@@ -197,7 +197,7 @@
 }
 
 /* Done row. */
-#s1-assistant .s1-dlrow {
+.s1-root .s1-dlrow {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -226,14 +226,14 @@
 
 /* The UA [hidden] rule loses to our display rules (e.g. .s1-rowbtns);
    re-assert it so hidden toggles always hide. */
-#s1-assistant [hidden] {
+.s1-root [hidden] {
   display: none !important;
 }
 
 /* Buttons reuse the demo .btn styles; visible focus for all interactives. */
-#s1-assistant button:focus-visible,
-#s1-assistant a:focus-visible,
-#s1-assistant input:focus-visible {
+.s1-root button:focus-visible,
+.s1-root a:focus-visible,
+.s1-root input:focus-visible {
   outline: 3px solid #2563eb;
   outline-offset: 2px;
 }
