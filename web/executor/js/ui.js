@@ -1618,6 +1618,7 @@
       wipe: wipe,
       refreshNet: refreshNet,
       enterReview: enterReview,
+      refreshReviewList: refreshReviewList,
       setModeLocked: setModeLocked
     };
     if (root.S1Chatbot && typeof root.S1Chatbot.init === "function") {
