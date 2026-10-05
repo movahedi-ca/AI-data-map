@@ -1,4 +1,4 @@
-/* import.js — Phase 1 spreadsheet import UI for the data mapping guide.
+/* import.js - Phase 1 spreadsheet import UI for the data mapping guide.
  *
  * Classic script, no framework. Load order (before this file):
  *   import/engine/engine-bundle.js  -> window.DMEngine
@@ -13,6 +13,17 @@
  */
 (function () {
   "use strict";
+
+  /* B1 fix: document.currentScript is only valid during script evaluation.
+     workerUrl() used to read it lazily from the file-input change handler,
+     where it is always null, so the worker URL fell back to a page-relative
+     path and 404d on any page not sitting next to an import/ directory.
+     Capture the script URL once, up front. */
+  var SCRIPT_SRC = "";
+  try {
+    var _cs = document.currentScript;
+    if (_cs && _cs.src) SCRIPT_SRC = _cs.src;
+  } catch (e) { /* older browsers: fall through to the page-relative fallback */ }
 
   var T = (window.T && window.T.import) || {};
   var E = window.DMEngine;
@@ -59,8 +70,10 @@
   function setStatus(msg) { $("imp-status").textContent = msg || ""; }
 
   function workerUrl() {
-    var src = (document.currentScript && document.currentScript.src) || "";
-    try { return new URL("worker/import-worker.js", src).toString(); }
+    /* Resolve relative to this script's own directory, not the page URL:
+       the demo pages live at web/canvas/ while the worker ships at
+       web/import/worker/import-worker.js. */
+    try { return new URL("worker/import-worker.js", SCRIPT_SRC).toString(); }
     catch (e) { return "import/worker/import-worker.js"; }
   }
 
