@@ -1,0 +1,32 @@
+--- a/demo/assets/js/builder.js
++++ b/demo/assets/js/builder.js
+@@ -263,13 +263,18 @@
+       v = String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+       return '<Cell' + (style ? ' ss:StyleID="' + style + '"' : "") + '><Data ss:Type="String">' + v + "</Data></Cell>";
+     }
+-    function xlsSheet(name, headers, rows) {
++    function xlsSheet(name, headers, rows, leading) {
+       var h = "<Row>" + headers.map(function (x) { return xlsCell(x, "h"); }).join("") + "</Row>";
+       var b = rows.map(function (r) {
+         return "<Row>" + r.map(function (x) { return xlsCell(x); }).join("") + "</Row>";
+       }).join("");
++      // leading: framing rows (e.g. the disclaimer) that must precede the
++      // header, per the frozen exporter format (freeze section 5).
++      var lead = (leading || []).map(function (r) {
++        return "<Row>" + r.map(function (x) { return xlsCell(x); }).join("") + "</Row>";
++      }).join("");
+       return '<Worksheet ss:Name="' + String(name).replace(/[<>&"]/g, "") +
+-        '"><Table>' + h + b + "</Table></Worksheet>";
++        '"><Table>' + lead + h + b + "</Table></Worksheet>";
+     }
+     if (xlsBtn) xlsBtn.addEventListener("click", function () {
+       if (!Object.keys(nodes).length) { say(T.nothingSel || "Nothing selected."); return; }
+@@ -281,7 +286,7 @@
+       var doc = '<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?>' +
+         '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
+         '<Styles><Style ss:ID="h"><Font ss:Bold="1"/><Interior ss:Color="#EFE9DA" ss:Pattern="Solid"/></Style></Styles>' +
+-        xlsSheet(T.xlsNodes || "Nodes", T.xlsNodeH || ["Label", "Type"], framing.concat(inv.nodeRows)) +
++        xlsSheet(T.xlsNodes || "Nodes", T.xlsNodeH || ["Label", "Type"], inv.nodeRows, framing) +
+         xlsSheet(T.xlsConns || "Connections", T.xlsEdgeH || ["From", "To", "Category"], inv.edgeRows) +
+         "</Workbook>";
+       var blob = new Blob(["\uFEFF" + doc], { type: "application/vnd.ms-excel;charset=utf-8" });
