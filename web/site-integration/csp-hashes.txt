@@ -22,7 +22,13 @@ sha256-aW4TI78fqkvwoc398xcYmfvGPTWy/AUAWmV3tQY5ieM=  # s1/chatbot/js/chatbot.js
 
 # --- inline scripts (hash the final built page bytes at deploy) ---
 # The S1 init block added by patches/0002-executor-wiring.patch. Hash below
-# is computed from the patched Tier B bytes; build_astro.py may reformat, so
-# recompute from the final Tier A page before launch. The pre-existing
-# window.T strings block needs the same treatment (see Tier B INTEGRATION.md).
-sha256-DJ1dShm65lGOA4TYnVd2qNIA3kyJ34TtiInxFeL11GA=  # inline S1 init block (Tier B bytes; recompute from final build)
+# is the script element's exact text content between <script> and </script>,
+# INCLUDING the leading newline after <script> and the trailing newline
+# before </script> (per CSP, the hash covers the element's full text).
+# Verified: sha256-7O2U7vzMl1O4AQO844mfF+Nhq5ivxyOCNYm3KXBjJpI=
+# Recompute from the final Tier A page before launch: extract the text
+# between the <script> and </script> tags of the S1 wiring block and hash
+# those exact bytes. build_astro.py may reformat, so never reuse this value
+# blindly. The pre-existing window.T strings block needs the same treatment
+# (see Tier B INTEGRATION.md).
+sha256-7O2U7vzMl1O4AQO844mfF+Nhq5ivxyOCNYm3KXBjJpI=  # inline S1 init block (exact element text; recompute from final build)
