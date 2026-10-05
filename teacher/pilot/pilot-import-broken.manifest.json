@@ -1,0 +1,29 @@
+{
+  "shard": "pilot-import-broken",
+  "domain": "data-mapping",
+  "recipe_id": "pilot-import-broken-01",
+  "recipe": {
+    "name": "Pilot import: broken template flagged at review, session aborted",
+    "recipe_id": "pilot-import-broken-01",
+    "schema_version": "1.0.0",
+    "items": [
+      {
+        "intent": "flag_for_review",
+        "params": {
+          "item_index": 0,
+          "reason": "Broken template rejected at review. Observed flags: Warning: Systems 'Acme CRM' and 'Acme CRM' look like the same system. Merge them or rename one. // Warning: Flow 'Acme CRM' to 'Beacon Analytics' has a suggested category (contact) waiting for your confirmation. Confirm or change it before // Warning: Flow 'Acme CRM' to 'Phantom Vendor' has a suggested category (contact) waiting for your confirmation. Confirm or change it before t // Warning: Flow 'Beacon Analytics' to 'Acme CRM' has a sugge..."
+        }
+      },
+      {
+        "intent": "abort_session",
+        "params": {
+          "reason": "broken template rejected by user"
+        }
+      }
+    ]
+  },
+  "steps": 2,
+  "first_state_hash": "7458342a56680445d13fbcbd776972df18f7b41b3d17cd29fa9ba1b945a42df6",
+  "last_state_hash": "e9214ecaa0931a05c0ed0068ea303173ca6e97870cb0b962527bef1851f70172",
+  "created_utc": "2026-10-05T03:29:47.478Z"
+}
