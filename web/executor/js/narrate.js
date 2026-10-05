@@ -24,18 +24,50 @@
     thirdparty: "tiers",
     destruction: "destruction"
   };
-  var TYPE_ARTICLE_FR = {
+  var CAT_FR = { contact: "contact", payment: "paiement", marketing: "marketing" };
+  var FIELD_FR = { label: "nom", x: "position X", y: "position Y" };
+  /* Indefinite-article type names for the correctionConfirm "retype"
+     sentence ("est maintenant un système"). */
+  var ARTICLE_FR = {
     collection: "un point de collecte",
     system: "un système",
     thirdparty: "un tiers",
     destruction: "une destruction"
   };
-  var CAT_FR = { contact: "contact", payment: "paiement", marketing: "marketing" };
-  var FIELD_FR = { label: "nom", x: "position X", y: "position Y" };
+
+  /* Fail-closed placeholder fill for narration.
+   *
+   * Root cause of the review-screen bug (2026-10-05): reviewPrompt did a
+   * NESTED fill. It first filled the inner template
+   * "{cat} flow from {a_label} to {b_label}", then embedded that into
+   * "I drew this as {category}. Right?". When the context lacked
+   * cat/a_label/b_label, the inner fill returned the raw template (the old
+   * code returned the match unchanged on a missing variable), and the
+   * outer fill produced the leaked placeholder string verbatim.
+   *
+   * The fail-closed rule: a template must NEVER render with an unfilled
+   * {placeholder}. A missing variable substitutes "" and fires a one-time
+   * dev console warning naming the key, so the caller that forgot to
+   * resolve a display value is visible during development while the
+   * reader never sees template syntax. Callers resolve user-facing
+   * fallbacks (labels, node ids) before calling fill; "" is the last
+   * resort, not the display strategy. */
+  var _warnedKeys = {};
+  function warnMissing(key) {
+    if (_warnedKeys[key]) return;
+    _warnedKeys[key] = true;
+    try {
+      if (typeof console !== "undefined" && typeof console.warn === "function") {
+        console.warn("[s1] narrate: no value for placeholder {" + key + "}; substituting \"\".");
+      }
+    } catch (e) { /* dev-time signal only */ }
+  }
 
   function fill(template, vars) {
     return template.replace(/\{([a-zA-Z_]+)\}/g, function (m, k) {
-      return vars[k] !== undefined && vars[k] !== null ? String(vars[k]) : m;
+      if (vars[k] !== undefined && vars[k] !== null) return String(vars[k]);
+      warnMissing(k);
+      return "";
     });
   }
 
@@ -125,22 +157,91 @@
     return { en: en, fr: fr };
   }
 
-  /* Review prompt per artifact (domain contract 5, "Review prompt"). */
-  function reviewPrompt(kind, ctx, lang) {
-    var fr = lang === "fr";
-    if (kind === "node") {
-      var cat = fr ? TYPE_ARTICLE_FR[ctx.type] : articleEn(ctx.type);
-      return fr
-        ? fill("« {label} » est placé ici comme {category_fr}. C'est bien ça ?", { label: ctx.label, category_fr: cat })
-        : fill("I put {label} here as {category}. Right?", { label: ctx.label, category: cat });
+  /* Review cards (replaces the old interrogation-pattern reviewPrompt,
+   * removed 2026-10-05: "I put X here as Y. Right?" leaked raw
+   * {placeholders} when its nested fill met an incomplete context).
+   *
+   * reviewCardText(kind, data, lang) is the assert-safe card renderer.
+   * It builds every string by concatenation from resolved values, never
+   * from a {placeholder} template, so an unfilled placeholder is
+   * impossible by construction: every lookup has a hard fallback and a
+   * missing label degrades to "Unnamed item", never to "{label}".
+   *
+   * kind: "node" | "edge" | "retention".
+   * data: node -> {label, type}; edge -> {aLabel, bLabel, cat};
+   *       retention -> {label, verify} or {label, min, max} (years).
+   * Returns {groupKey, group, name, typeLine}, all plain strings. */
+
+  var PLAIN_TYPE = {
+    en: {
+      collection: "Collection point", system: "System",
+      thirdparty: "Third party", destruction: "Secure destruction"
+    },
+    fr: {
+      collection: "Point de collecte", system: "Système",
+      thirdparty: "Tiers", destruction: "Destruction sécurisée"
     }
-    /* edge */
-    var flow = fr
-      ? fill("flux {cat_fr} de « {a_label} » vers « {b_label} »", { cat_fr: CAT_FR[ctx.cat] || ctx.cat, a_label: ctx.a_label, b_label: ctx.b_label })
-      : fill("{cat} flow from {a_label} to {b_label}", { cat: ctx.cat, a_label: ctx.a_label, b_label: ctx.b_label });
-    return fr
-      ? fill("Ce lien est un {category_fr}. C'est bien ça ?", { category_fr: flow })
-      : fill("I drew this as {category}. Right?", { category: flow });
+  };
+  var PLAIN_CAT = {
+    en: { contact: "Contact / identity", payment: "Payment", marketing: "Marketing / consent" },
+    fr: { contact: "Contact / identité", payment: "Paiement", marketing: "Marketing / consentement" }
+  };
+  var PLAIN_GROUP = {
+    en: {
+      collection: "Collection points", system: "Systems",
+      thirdparty: "Third parties", destruction: "Secure destruction",
+      flow: "Data flows", retention: "Retention notes"
+    },
+    fr: {
+      collection: "Points de collecte", system: "Systèmes",
+      thirdparty: "Tiers", destruction: "Destruction sécurisée",
+      flow: "Flux de données", retention: "Notes de conservation"
+    }
+  };
+
+  function reviewCardText(kind, data, lang) {
+    var fr = lang === "fr";
+    var L = fr ? "fr" : "en";
+    data = data || {};
+    function name(v) {
+      if (v !== undefined && v !== null && String(v).length > 0) return String(v);
+      return fr ? "Élément sans nom" : "Unnamed item";
+    }
+    if (kind === "edge") {
+      var cat = PLAIN_CAT[L][data.cat];
+      return {
+        groupKey: "flow",
+        group: PLAIN_GROUP[L].flow,
+        name: name(data.aLabel) + " → " + name(data.bLabel),
+        typeLine: (fr ? "Flux de données" : "Data flow") + (cat ? " · " + cat : "")
+      };
+    }
+    if (kind === "retention") {
+      var range = null;
+      if (data.verify === true) {
+        range = fr ? "à vérifier" : "to verify";
+      } else if (data.min !== undefined && data.min !== null &&
+                 data.max !== undefined && data.max !== null) {
+        range = fr
+          ? "de " + data.min + " à " + data.max + " ans"
+          : data.min + " to " + data.max + " years";
+      }
+      return {
+        groupKey: "retention",
+        group: PLAIN_GROUP[L].retention,
+        name: name(data.label),
+        typeLine: (fr ? "Note de conservation" : "Retention note") +
+          (range ? " · " + range : "")
+      };
+    }
+    /* node (default): the group follows the node type. */
+    var t = data.type;
+    return {
+      groupKey: ["collection", "system", "thirdparty", "destruction"].indexOf(t) !== -1 ? t : "node",
+      group: PLAIN_GROUP[L][t] || (fr ? "Éléments" : "Items"),
+      name: name(data.label),
+      typeLine: PLAIN_TYPE[L][t] || (fr ? "Élément" : "Item")
+    };
   }
 
   function articleEn(type) {
@@ -152,7 +253,7 @@
     var fr = lang === "fr";
     if (kind === "retype") {
       return fr
-        ? fill("Corrigé : « {label} » est maintenant {category_fr}.", { label: ctx.label, category_fr: TYPE_ARTICLE_FR[ctx.type] })
+        ? fill("Corrigé : « {label} » est maintenant {category_fr}.", { label: ctx.label, category_fr: ARTICLE_FR[ctx.type] })
         : fill("Fixed: {label} is now {category}.", { label: ctx.label, category: articleEn(ctx.type) });
     }
     if (kind === "relabel") {
@@ -173,9 +274,11 @@
 
   return {
     narrate: narrate,
-    reviewPrompt: reviewPrompt,
+    reviewCardText: reviewCardText,
     correctionConfirm: correctionConfirm,
     TYPE_FR: TYPE_FR,
-    CAT_FR: CAT_FR
+    CAT_FR: CAT_FR,
+    PLAIN_TYPE: PLAIN_TYPE,
+    PLAIN_CAT: PLAIN_CAT
   };
 });

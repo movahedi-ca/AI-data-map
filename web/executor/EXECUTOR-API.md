@@ -183,6 +183,27 @@ step's menu, never scripted). `narration_en`/`narration_fr` come from
 per-item completion map. When a step is terminal, the caller stops stepping
 and moves to review.
 
+### Page seam parity: `window.execute_mapping_workflow`
+
+The movahedi.ca page exposes a single page-side seam,
+`window.execute_mapping_workflow(recipe, opts)` (site bundle, not this
+repo), so the assistant's two intake modes share one execution path.
+The seam speaks the same recipe contract as the MCP
+`execute_mapping_workflow` tool:
+
+- `recipe`: `{recipe_id, schema_version, items[]}`; each item is
+  `{intent, params}` with the authoring intents from the action
+  catalogue (recovery intents stay executor-only, as the MCP enforces).
+- Execution runs through the in-browser executor (`H.ready()`,
+  `H.start(recipe)`, `H.stepOnce()` per step); `opts.onStep(step)` fires
+  per executed step so the page can narrate and paint the canvas.
+- The returned Promise resolves to the final executor state
+  `{nodes, edges, annotations, ...}` (the `H.state()` shape).
+
+Parity rule: if the MCP recipe schema gains a field, the page seam
+accepts it; if the page seam gains an option, it stays UI-only and out
+of the recipe contract.
+
 ### Review, correct, download, wipe
 
 - Review entry: the review loop reads the checklist via

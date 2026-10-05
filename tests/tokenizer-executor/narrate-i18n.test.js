@@ -3,9 +3,9 @@
  * and UI chrome strings.
  *
  * Covers: every narrate() template renders without throwing for EN and FR
- * with no unfilled placeholders; reviewPrompt and correctionConfirm in both
- * languages; FR key-set equality vs EN; Quebec French spot checks; no em
- * dashes; XSS safety by construction (templates are plain text: hostile
+ * with no unfilled placeholders; reviewCardText and correctionConfirm in
+ * both languages; FR key-set equality vs EN; Quebec French spot checks; no
+ * em dashes; XSS safety by construction (templates are plain text: hostile
  * input passes through verbatim, templates introduce no markup).
  *
  * Run: node narrate-i18n.test.js   (from tests/tokenizer-executor/)
@@ -94,21 +94,31 @@ check(N.narrate("export", {}, null, {}).fr === "Inventaire Excel téléchargé."
 check(N.narrate("confirm_node", {}, null, { label: "CRM" }).fr === "« CRM » confirmé.",
   "FR confirm wording");
 
-/* ---- reviewPrompt ---- */
+/* ---- reviewCardText (replaces the removed interrogation reviewPrompt) ---- */
+check(typeof N.reviewPrompt === "undefined",
+  "reviewPrompt is removed from the narrate API");
 ["collection", "system", "thirdparty", "destruction"].forEach(function (t) {
-  var en = N.reviewPrompt("node", { label: "CRM", type: t }, "en");
-  var fr = N.reviewPrompt("node", { label: "CRM", type: t }, "fr");
-  check(en.length > 0 && !LEFTOVER.test(en), "reviewPrompt node/" + t + " EN");
-  check(fr.length > 0 && !LEFTOVER.test(fr), "reviewPrompt node/" + t + " FR");
+  var en = N.reviewCardText("node", { label: "CRM", type: t }, "en");
+  var fr = N.reviewCardText("node", { label: "CRM", type: t }, "fr");
+  ["group", "name", "typeLine"].forEach(function (f) {
+    check(typeof en[f] === "string" && en[f].length > 0 && !LEFTOVER.test(en[f]),
+      "reviewCardText node/" + t + " EN " + f);
+    check(typeof fr[f] === "string" && fr[f].length > 0 && !LEFTOVER.test(fr[f]),
+      "reviewCardText node/" + t + " FR " + f);
+  });
 });
-var edgeEn = N.reviewPrompt("edge",
-  { cat: "contact", a_label: "A", b_label: "B" }, "en");
-var edgeFr = N.reviewPrompt("edge",
-  { cat: "contact", a_label: "A", b_label: "B" }, "fr");
-check(edgeEn === "I drew this as contact flow from A to B. Right?",
-  "reviewPrompt edge EN wording");
-check(edgeFr === "Ce lien est un flux contact de « A » vers « B ». C'est bien ça ?",
-  "reviewPrompt edge FR wording");
+var edgeCardEn = N.reviewCardText("edge",
+  { aLabel: "A", bLabel: "B", cat: "contact" }, "en");
+var edgeCardFr = N.reviewCardText("edge",
+  { aLabel: "A", bLabel: "B", cat: "contact" }, "fr");
+check(edgeCardEn.name === "A → B", "reviewCardText edge EN name");
+check(edgeCardEn.typeLine === "Data flow · Contact / identity",
+  "reviewCardText edge EN type line");
+check(edgeCardFr.typeLine === "Flux de données · Contact / identité",
+  "reviewCardText edge FR type line");
+var retCard = N.reviewCardText("retention", { label: "CRM", min: 2, max: 7 }, "en");
+check(!LEFTOVER.test(retCard.group + retCard.name + retCard.typeLine),
+  "reviewCardText retention EN has no placeholder");
 
 /* ---- correctionConfirm ---- */
 [

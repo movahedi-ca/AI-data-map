@@ -150,8 +150,29 @@
   margin: 0.75rem 0;
 }
 
-/* Review rows. */
-.s1-root .s1-reviewrow {
+/* Review cards (2026-10-05): grouped under headings, calm and monochrome.
+   One card per artifact: shape icon, name, type in plain words, Confirm /
+   Fix. The inline Fix editor sits on the card. Single column at 390px
+   with touch-size buttons. */
+.s1-root .s1-reviewexplain {
+  color: #334155;
+  margin: 0 0 0.75rem;
+}
+
+.s1-root .s1-cardgroup {
+  margin: 0 0 1rem;
+}
+
+.s1-root .s1-cardgroup-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.s1-root .s1-card {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
   border: 1px solid #cbd5e1;
   border-radius: 0.5rem;
   background: #ffffff;
@@ -159,28 +180,44 @@
   margin-bottom: 0.6rem;
 }
 
-.s1-root .s1-reviewprompt {
-  margin: 0 0 0.25rem;
+.s1-root .s1-cardicon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+}
+
+.s1-root .s1-cardname {
+  margin: 0;
   font-weight: 600;
 }
 
-.s1-root .s1-rowstatus {
-  margin: 0 0 0.5rem;
+.s1-root .s1-cardtype {
+  margin: 0.15rem 0 0;
   font-size: 0.85rem;
-  color: #64748b;
+  color: #475569;
 }
 
-.s1-root .s1-rowstatus.confirmed {
+.s1-root .s1-cardstatus {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+  grid-column: 2;
+}
+
+.s1-root .s1-cardstatus.confirmed {
   color: #065f46;
 }
 
-.s1-root .s1-rowbtns {
+.s1-root .s1-cardbtns {
   display: flex;
   gap: 0.5rem;
+  grid-column: 3;
+  grid-row: 1 / span 2;
 }
 
-.s1-root .s1-fixpanel {
-  margin-top: 0.6rem;
+.s1-root .s1-cardeditor {
+  grid-column: 1 / -1;
+  margin-top: 0.25rem;
   padding-top: 0.6rem;
   border-top: 1px dashed #cbd5e1;
   display: flex;
@@ -189,11 +226,29 @@
   align-items: center;
 }
 
-.s1-root .s1-fixpanel input[type="text"] {
+.s1-root .s1-cardeditor input[type="text"] {
   padding: 0.35rem 0.5rem;
   border: 1px solid #94a3b8;
   border-radius: 0.35rem;
   min-width: 12rem;
+}
+
+.s1-root .s1-cardeditor .btn {
+  min-height: 44px;
+}
+
+@media (max-width: 24.375rem) {
+  .s1-root .s1-card {
+    grid-template-columns: 2.25rem 1fr;
+  }
+  .s1-root .s1-cardbtns {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .s1-root .s1-cardbtns .btn {
+    flex: 1;
+    min-height: 44px;
+  }
 }
 
 /* Done row. */

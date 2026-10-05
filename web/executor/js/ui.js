@@ -450,15 +450,85 @@
       });
     }
 
-    /* ---------------- review ---------------- */
+    /* ---------------- review: grouped cards ----------------
+       The old interrogation rows ("I put X here as Y. Right?") are gone:
+       their nested template fill leaked raw {placeholders} (narrate.js).
+       Each artifact now gets a calm card: a shape icon in the builder's
+       visual language, the item name, its type in plain words, and
+       Confirm / Fix. Cards group under headings by kind. Fix opens a real
+       inline editor on the card. */
     var reviewBox = el("div", "s1-review");
     reviewBox.hidden = true;
     var reviewTitle = el("h3", "s1-reviewtitle", S.reviewTitle);
     reviewTitle.tabIndex = -1;
     reviewBox.appendChild(reviewTitle);
     reviewBox.appendChild(el("p", "s1-reviewlede", S.reviewLede));
+    reviewBox.appendChild(el("p", "s1-reviewexplain", S.reviewExplain));
     var reviewList = el("div", "s1-reviewlist");
     reviewBox.appendChild(reviewList);
+
+    /* Fixed group order; the card text carries a stable groupKey so the
+       localized heading never drives the ordering. */
+    var GROUP_ORDER = ["collection", "system", "thirdparty", "destruction", "node", "flow", "retention"];
+
+    function cardDataFor(ex, row) {
+      if (row.kind === "edge") {
+        return {
+          aLabel: ex._nodes[row.a] ? ex._nodes[row.a].label : row.a,
+          bLabel: ex._nodes[row.b] ? ex._nodes[row.b].label : row.b,
+          cat: row.cat
+        };
+      }
+      if (row.kind === "retention") {
+        var d = row.detail || {};
+        if (d.range === "verify" || d.verify === true) {
+          return { label: row.label, verify: true };
+        }
+        var m = /(\d+(?:\.\d+)?)\D+(\d+(?:\.\d+)?)/.exec(d.range || "");
+        return m
+          ? { label: row.label, min: Number(m[1]), max: Number(m[2]) }
+          : { label: row.label };
+      }
+      return { label: row.label, type: row.detail && row.detail.type };
+    }
+
+    var SVGNS = "http://www.w3.org/2000/svg";
+    /* Card icons reuse the builder's visual language: circle = collection
+       point, rectangle = system, diamond = third party, dashed circle + X =
+       secure destruction, arrow glyph = data flow, clock glyph = retention.
+       Monochrome ink; nothing red, nothing log-like. */
+    function cardIcon(kind, type) {
+      var svg = document.createElementNS(SVGNS, "svg");
+      svg.setAttribute("viewBox", "0 0 28 28");
+      svg.setAttribute("class", "s1-cardicon");
+      svg.setAttribute("aria-hidden", "true");
+      svg.setAttribute("focusable", "false");
+      function shape(tag, attrs) {
+        var n = document.createElementNS(SVGNS, tag);
+        for (var k in attrs) n.setAttribute(k, attrs[k]);
+        svg.appendChild(n);
+      }
+      var ink = "#0f172a";
+      if (kind === "edge") {
+        shape("line", { x1: "5", y1: "21", x2: "19", y2: "9", stroke: ink, "stroke-width": "2" });
+        shape("polygon", { points: "19,9 12,9 15,15", fill: ink });
+      } else if (kind === "retention") {
+        shape("circle", { cx: "14", cy: "14", r: "10", fill: "none", stroke: ink, "stroke-width": "2" });
+        shape("line", { x1: "14", y1: "14", x2: "14", y2: "8", stroke: ink, "stroke-width": "2" });
+        shape("line", { x1: "14", y1: "14", x2: "18", y2: "14", stroke: ink, "stroke-width": "2" });
+      } else if (type === "system") {
+        shape("rect", { x: "5", y: "8", width: "18", height: "12", rx: "2", fill: "#ffffff", stroke: ink, "stroke-width": "2" });
+      } else if (type === "thirdparty") {
+        shape("polygon", { points: "14,4 24,14 14,24 4,14", fill: "#ffffff", stroke: ink, "stroke-width": "2" });
+      } else if (type === "destruction") {
+        shape("circle", { cx: "14", cy: "14", r: "10", fill: "none", stroke: ink, "stroke-width": "2", "stroke-dasharray": "3 2" });
+        shape("line", { x1: "9", y1: "9", x2: "19", y2: "19", stroke: ink, "stroke-width": "2" });
+        shape("line", { x1: "9", y1: "19", x2: "19", y2: "9", stroke: ink, "stroke-width": "2" });
+      } else {
+        shape("circle", { cx: "14", cy: "14", r: "10", fill: "#ffffff", stroke: ink, "stroke-width": "2" });
+      }
+      return svg;
+    }
 
     function openReview() {
       var ex = H.controller.executor();
@@ -470,45 +540,60 @@
       doneBox.hidden = true;
       reviewBox.hidden = false;
       statusLine.textContent = S.runComplete;
-      state.checklist.forEach(function (row, i) { renderReviewRow(row, i); });
+      renderReviewCards();
       reviewTitle.focus();
       paintCanvas();
     }
 
-    function renderReviewRow(row, i) {
+    function renderReviewCards() {
       var ex = H.controller.executor();
-      var item = el("div", "s1-reviewrow");
-      item.id = "s1-reviewrow-" + i;
-      var prompt = Narr.reviewPrompt(row.kind, reviewPromptCtx(ex, row), lang);
-      item.appendChild(el("p", "s1-reviewprompt", prompt));
-      var status = el("p", "s1-rowstatus " + row.status, S[row.status] || row.status);
+      var buckets = {}, order = [];
+      state.checklist.forEach(function (row, i) {
+        var card = Narr.reviewCardText(row.kind, cardDataFor(ex, row), lang);
+        var key = card.groupKey;
+        if (!buckets[key]) {
+          buckets[key] = { title: card.group, cards: [] };
+          order.push(key);
+        }
+        buckets[key].cards.push({ row: row, i: i, card: card });
+      });
+      order.sort(function (a, b) { return GROUP_ORDER.indexOf(a) - GROUP_ORDER.indexOf(b); });
+      order.forEach(function (key) {
+        var section = el("section", "s1-cardgroup");
+        section.setAttribute("aria-label", buckets[key].title);
+        section.appendChild(el("h4", "s1-cardgroup-title", buckets[key].title));
+        buckets[key].cards.forEach(function (c) {
+          section.appendChild(renderCard(ex, c.row, c.i, c.card));
+        });
+        reviewList.appendChild(section);
+      });
+    }
+
+    function renderCard(ex, row, i, card) {
+      var item = el("div", "s1-card");
+      item.id = "s1-reviewcard-" + i;
+      item.appendChild(cardIcon(row.kind, row.kind === "node" && row.detail ? row.detail.type : null));
+      var body = el("div", "s1-cardbody");
+      body.appendChild(el("p", "s1-cardname", card.name));
+      body.appendChild(el("p", "s1-cardtype", card.typeLine));
+      item.appendChild(body);
+      var status = el("p", "s1-cardstatus " + row.status, S[row.status] || row.status);
       item.appendChild(status);
-      var btnRow = el("div", "s1-rowbtns");
+      var btnRow = el("div", "s1-cardbtns");
       var confirmBtn = el("button", "btn s1-confirm", S.confirm);
       confirmBtn.type = "button";
       var fixBtn = el("button", "btn secondary s1-fix", S.fix);
       fixBtn.type = "button";
       confirmBtn.addEventListener("click", function () { confirmRow(row, i, null); });
-      fixBtn.addEventListener("click", function () { openFixPanel(item, row, i); });
+      fixBtn.addEventListener("click", function () { openCardEditor(item, row, i, fixBtn); });
       btnRow.appendChild(confirmBtn);
       btnRow.appendChild(fixBtn);
       item.appendChild(btnRow);
-      reviewList.appendChild(item);
       row._el = item;
       row._statusEl = status;
       row._btnRow = btnRow;
-    }
-
-    function reviewPromptCtx(ex, row) {
-      if (row.kind === "node") return { label: row.label, type: row.detail.type };
-      if (row.kind === "edge") {
-        return {
-          cat: row.cat,
-          a_label: ex._nodes[row.a] ? ex._nodes[row.a].label : row.a,
-          b_label: ex._nodes[row.b] ? ex._nodes[row.b].label : row.b
-        };
-      }
-      return { label: row.label };
+      row._fixBtn = fixBtn;
+      return item;
     }
 
     function confirmRow(row, i, note) {
@@ -521,7 +606,7 @@
       state.confirmations.push(rec);
       row.status = "confirmed";
       row._statusEl.textContent = S.confirmed;
-      row._statusEl.className = "s1-rowstatus confirmed";
+      row._statusEl.className = "s1-cardstatus confirmed";
       row._btnRow.hidden = true;
       maybeFinishReview();
     }
@@ -531,32 +616,44 @@
       state.corrections.push(Rev.correctionLine(st.session_id, st.recipe_id, op, ref, before, after));
     }
 
-    function openFixPanel(item, row, i) {
+    /* The Fix editor lives on the card itself: rename field, retype
+       buttons, remove. Native inputs and buttons, so Tab / Space / Enter
+       work; Escape cancels. Focus moves into the editor on open and back
+       to the card's Fix button on close. */
+    function openCardEditor(item, row, i, fixBtn) {
       var ex = H.controller.executor();
-      var old = item.querySelector(".s1-fixpanel");
-      if (old) { old.remove(); return; }
-      var panel = el("div", "s1-fixpanel");
+      var old = item.querySelector(".s1-cardeditor");
+      if (old) { closeEditor(old, fixBtn); return; }
+      var editor = el("div", "s1-cardeditor");
+      editor.setAttribute("role", "group");
+      editor.setAttribute("aria-label", S.fix);
+      function closeEditor(ed, backTo) {
+        ed.remove();
+        if (backTo && typeof backTo.focus === "function") backTo.focus();
+      }
       function addBtn(text, fn) {
         var b = el("button", "btn secondary s1-fixopt", text);
         b.type = "button";
         b.addEventListener("click", fn);
-        panel.appendChild(b);
+        editor.appendChild(b);
         return b;
       }
       function doneFix(opName, op, confirmKind, ctx) {
         var res = H.applyCorrection(op);
         logCorrection(opName, row.ref, res.before, res.after);
-        refreshReviewRow(row, ex, item);
+        refreshCard(row, ex, item);
         paintCanvas();
         var msg = Narr.correctionConfirm(confirmKind, ctx || {}, lang);
         logStep(msg, "s1-corrected");
+        closeEditor(editor, fixBtn);
         confirmRow(row, i, null);
       }
       /* After a correction mutates the executor, re-derive the affected
-         checklist row so the exported Review sheet describes the corrected
-         state, not the pre-fix state. Rows for removed artifacts keep a
-         marker so the sheet stays honest instead of stale. */
-      function refreshReviewRow(row, ex, item) {
+         checklist row so the card and the exported Review sheet describe
+         the corrected state, not the pre-fix state. Rows for removed
+         artifacts keep a marker so the sheet stays honest instead of
+         stale. */
+      function refreshCard(row, ex, item) {
         var fresh = Rev.deriveChecklist(ex), k;
         for (k = 0; k < fresh.length; k++) {
           if (fresh[k].ref === row.ref) {
@@ -569,9 +666,16 @@
           }
         }
         if (k === fresh.length) row.removed = true;
-        if (item) {
-          var p = item.querySelector(".s1-reviewprompt");
-          if (p && !row.removed) p.textContent = Narr.reviewPrompt(row.kind, reviewPromptCtx(ex, row), lang);
+        if (item && !row.removed) {
+          var c = Narr.reviewCardText(row.kind, cardDataFor(ex, row), lang);
+          var nameEl = item.querySelector(".s1-cardname");
+          var typeEl = item.querySelector(".s1-cardtype");
+          if (nameEl) nameEl.textContent = c.name;
+          if (typeEl) typeEl.textContent = c.typeLine;
+          var iconEl = item.querySelector(".s1-cardicon");
+          if (iconEl && typeof iconEl.replaceWith === "function") {
+            iconEl.replaceWith(cardIcon(row.kind, row.kind === "node" && row.detail ? row.detail.type : null));
+          }
         }
       }
       if (row.kind === "node") {
@@ -582,19 +686,17 @@
         inp.value = row.label;
         inp.setAttribute("aria-label", S.newLabel);
         lab.appendChild(inp);
-        panel.appendChild(lab);
+        editor.appendChild(lab);
         addBtn(S.fixRelabel, function () {
           var v = inp.value.trim();
           if (!v) { inp.focus(); return; }
           doneFix("relabel", { op: "relabel", node_id: row.node_id, label: v }, "relabel", { label: v });
         });
-        var typeNames = lang === "fr"
-          ? { collection: "Point de collecte", system: "Système", thirdparty: "Tiers", destruction: "Destruction" }
-          : { collection: "Collection point", system: "System", thirdparty: "Third party", destruction: "Destruction" };
+        var typeNames = Narr.PLAIN_TYPE[lang] || Narr.PLAIN_TYPE.en;
         ["collection", "system", "thirdparty", "destruction"].forEach(function (t) {
-          addBtn(typeNames[t], function () {
+          addBtn(typeNames[t] || t, function () {
             doneFix("retype", { op: "retype", node_id: row.node_id, type: t }, "retype",
-              { label: ex._nodes[row.node_id].label, type: t });
+              { label: ex._nodes[row.node_id] ? ex._nodes[row.node_id].label : row.node_id, type: t });
           });
         });
         addBtn(S.fixRemove, function () {
@@ -602,8 +704,9 @@
           row._el.hidden = true;
         });
       } else if (row.kind === "edge") {
+        var catNames = Narr.PLAIN_CAT[lang] || Narr.PLAIN_CAT.en;
         ["contact", "payment", "marketing"].forEach(function (c) {
-          addBtn(c, function () {
+          addBtn(catNames[c] || c, function () {
             doneFix("reconnect", { op: "reconnect", a: row.a, b: row.b, cat: c }, "reconnect",
               { b_label: ex._nodes[row.b] ? ex._nodes[row.b].label : row.b });
           });
@@ -611,8 +714,9 @@
         addBtn(S.fixRemove, function () {
           var res = H.applyCorrection({ op: "remove_edge", a: row.a, b: row.b });
           logCorrection("remove_edge", row.ref, res.before, res.after);
-          refreshReviewRow(row, ex, item);
+          refreshCard(row, ex, item);
           paintCanvas();
+          closeEditor(editor, fixBtn);
           row._el.hidden = true;
           maybeFinishReview();
         });
@@ -620,17 +724,24 @@
         addBtn(S.fixVerify, function () {
           var res = H.applyCorrection({ op: "verify_only", node_id: row.node_id });
           logCorrection("verify_only", row.ref, res.before, res.after);
-          refreshReviewRow(row, ex, item);
+          refreshCard(row, ex, item);
           paintCanvas();
+          closeEditor(editor, fixBtn);
           confirmRow(row, i, null);
         });
       }
       var cancel = el("button", "btn secondary s1-fixcancel", S.fixCancel);
       cancel.type = "button";
-      cancel.addEventListener("click", function () { panel.remove(); });
-      panel.appendChild(cancel);
-      item.appendChild(panel);
-      var first = panel.querySelector("input, button");
+      cancel.addEventListener("click", function () { closeEditor(editor, fixBtn); });
+      editor.appendChild(cancel);
+      editor.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") {
+          evt.preventDefault();
+          closeEditor(editor, fixBtn);
+        }
+      });
+      item.appendChild(editor);
+      var first = editor.querySelector("input, button");
       if (first) first.focus();
     }
 

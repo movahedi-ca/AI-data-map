@@ -11,13 +11,13 @@ sha256-UH8oMV+FEY/Af7gLvKk+LL57RUh4h3iOxVX5hTuBjYg=  # s1/executor/js/s1tokenize
 sha256-dipgQ4HJqwfL6w6z4noeXdGod91YFHcThbfSiiM4zZE=  # s1/executor/js/s1util.js
 sha256-WDcKLFqMXYePZny93aSnN33yB3pOH29akuCxgUF1sKk=  # s1/executor/js/menu.js
 sha256-s4emJ3QhrwGjOlWIcc+uCis5SvvHEwkjAATPcRDZ3pM=  # s1/executor/js/apply.js
-sha256-YwOYQv/CGz+9EP3Aboj/V3pnlkMrvDJwvwsTIcs8gng=  # s1/executor/js/narrate.js
+sha256-cZTN4ZYngHFWUTDeS+FlTjYirhpXcnnm9w8xOMVwxMo=  # s1/executor/js/narrate.js
 sha256-q25PX1XFRR7dDqQJUtbn0tZPywZHMXQ7E2+RZZrLPwA=  # s1/executor/js/templates.js
 sha256-+xO+93vfmrqAbOjl/p7qfBkD0IQHV4jMfoNgdDZY6eM=  # s1/executor/js/review.js
 sha256-6KddR+fWj2+F/YuPRrRV5LxyHtpHi1XlHvhKGPocUj0=  # s1/executor/js/exporter.js
-sha256-brXspaI7KuIYEzDM1E0SkbBR73CPw5kTX05duhlvNVY=  # s1/executor/js/i18n.js
+sha256-bfaU/wEtVmCwcbFfXm6CY7CLZ/Z7FkY7Lbo0edd53Js=  # s1/executor/js/i18n.js
 sha256-GE9ziO/OeB9SMFrcpj/LDcVfjgkg/DH5QzNKNGGrz7U=  # s1/executor/js/executor.js
-sha256-fO0tw379x3dUcivB3/7bCPNxWJIfeWG8tWtasWf29LE=  # s1/executor/js/ui.js
+sha256-maEPRjKsx3ejCKrlUPVZ5nrgnXtPlB2gNzsGYQ7sBgk=  # s1/executor/js/ui.js
 sha256-3aMLIAjAEvJDyyPgk32tyLP9hyIaPEu1IfGAR5KchSA=  # s1/chatbot/js/chatbot.js
 
 # --- inline scripts (hash the final built page bytes at deploy) ---
