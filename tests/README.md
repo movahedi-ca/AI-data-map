@@ -1,0 +1,1 @@
+1000+ unit and security tests. Later track: written once the core stabilizes. Covers the recipe validator, action catalogue idempotency, schema compatibility, retention-rule enforcement, and the executor.
