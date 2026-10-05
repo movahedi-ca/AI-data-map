@@ -79,7 +79,11 @@
 
   function shortErr(e) {
     var m = String((e && e.message) || e).split("\n")[0];
-    return m.length > 160 ? m.slice(0, 157) + "..." : m;
+    if (m.length <= 160) return m;
+    /* Cut at the last space at or before the 157 budget so the ellipsis
+       never lands mid-word; hard cut only when one token is huge. */
+    var cut = m.lastIndexOf(" ", 157);
+    return (cut > 0 ? m.slice(0, cut) : m.slice(0, 157)) + "...";
   }
 
   /**
@@ -175,6 +179,10 @@
 
     var state = {
       stage: "greet",
+      /* qIndex tracks which question the conversation is actually on
+         (index into CHIP_ORDER). The paste-view Back handler uses it to
+         restore the right question's chips instead of hardcoded Q1. */
+      qIndex: 0,
       chips: { size: null, sector: null, region: null, types: null },
       recipe: null,
       running: false,
@@ -322,6 +330,7 @@
       if (i >= CHIP_ORDER.length) { resolveTemplate(); return; }
       var chipId = CHIP_ORDER[i];
       state.stage = "q-" + chipId;
+      state.qIndex = i;
       botMsg(questionText(chipId));
       renderChips(chipId, function (opt) {
         state.chips[chipId] = opt;
@@ -367,9 +376,11 @@
       var cancel = el("button", "btn secondary", S.back);
       cancel.type = "button";
       cancel.addEventListener("click", function () {
+        /* Back restores the chips and prompt for the question the
+           conversation is actually on (state.qIndex), keeping the
+           answers already given. Never hardcoded to Q1. */
         state.recipe = null;
-        state.chips = { size: null, sector: null, region: null, types: null };
-        greet();
+        askChip(state.qIndex);
       });
       row.appendChild(use);
       row.appendChild(cancel);
