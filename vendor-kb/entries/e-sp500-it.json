@@ -2093,8 +2093,7 @@
   "data_residency": "unverified",
   "mapping_features": [
    "Per-product privacy datasheets describe personal data processed as a processor (customer-provided user data, firewall logs and telemetry, third-party integration data, packet captures).",
-   "Privacy policy enumerates controller-side personal information categories (identifiers, commercial, network, geolocation, professional, AI analytics).",
-   "Privacy policy lists controller-side personal information categories (identifiers, commercial, network, geolocation, professional, AI analytics)."
+   "Privacy policy enumerates controller-side personal information categories (identifiers, commercial, network, geolocation, professional, AI analytics)."
   ],
   "retention_features": {
    "notes": "No vendor-published statutory retention schedule was found in the sources used. Call recordings are retained up to 180 days per the privacy policy; verify log and telemetry retention against the product documentation and your contract before recording any period in the data map.",
