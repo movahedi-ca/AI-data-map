@@ -1,0 +1,33 @@
+{
+  "generated_utc": "2026-10-05T03:28:50.182Z",
+  "scenarios": [
+    {
+      "name": "ood-asset",
+      "domain": "ood-asset-inventory",
+      "steps": 18,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "ood-conference",
+      "domain": "ood-conference-planning",
+      "steps": 15,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "ood-content",
+      "domain": "ood-content-pipeline",
+      "steps": 13,
+      "snapshots_valid": true,
+      "replay_ok": true
+    },
+    {
+      "name": "ood-incident",
+      "domain": "ood-incident-response",
+      "steps": 16,
+      "snapshots_valid": true,
+      "replay_ok": true
+    }
+  ]
+}
