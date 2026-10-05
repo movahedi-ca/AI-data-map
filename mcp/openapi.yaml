@@ -72,13 +72,20 @@ components:
       name: sessionId
       in: path
       required: true
-      schema: { type: string, pattern: '^s1-[0-9a-f]{12}$' }
-      description: Session ticket id minted by execute_mapping_workflow
+      schema: { type: string, minLength: 1 }
+      description: >-
+        Session id. Tickets minted by execute_mapping_workflow match
+        ^s1-[0-9a-f]{12}$. The HTTP bridge also accepts any non-empty id
+        and lazily creates a session record for it on first POST or
+        stream subscribe; such lazy sessions carry no recipe.
   schemas:
     StepEvent:
       type: object
       required: [action]
-      additionalProperties: false
+      description: >-
+        Step event posted by the page. Unknown properties are ignored on
+        ingest; only the documented fields are stored. The server injects
+        `at` (ISO 8601 timestamp) at storage time.
       properties:
         action: { type: string, description: Applied action name, always the model argmax }
         narration_en: { type: string }
@@ -88,6 +95,7 @@ components:
           description: Map of recipe item index to its completion predicate
           additionalProperties: { type: boolean }
         terminal: { type: boolean, description: True when the run reached a terminal step }
+        at: { type: string, format: date-time, description: Server-injected storage timestamp }
     SessionRecord:
       type: object
       required: [session_id, status, results]
