@@ -1,0 +1,27 @@
+# AI-data-map
+
+A Taiga-style System-1 executor that builds Quebec Law 25 data-mapping canvases in the browser.
+
+- Repo: https://github.com/movahedi-ca/AI-data-map
+- License: MIT
+- Status: Phase 0 (freeze and spec) in progress, October 2026
+
+## What it is
+
+Four layers: a chatbot that asks four questions and writes recipes from deterministic
+templates (zero LLM tokens in v1), an MCP tool (`execute_mapping_workflow`) that validates
+recipes, the mapping-guide canvas and Excel tools, and a tiny custom transformer
+(~1.2M params, ONNX, onnxruntime-web) that picks the next action from a versioned
+action catalogue.
+
+## Key facts
+
+- Retention values are ranges only, never single numbers, each citing the actual
+  statute plus an as-of date. Done-heads emit "verify" flags, never compliance verdicts.
+- Every output is a draft inventory for review, not legal advice.
+- Everything runs client-side. No server inference, no telemetry, no accounts.
+- Training data comes from a scripted Playwright teacher (zero tokens), trained on
+  free Kaggle GPUs, published to Hugging Face under MIT.
+- Eval targets: 95%+ task success on held-out synthetic orgs, 90%+ length
+  generalization, 90%+ unseen vendor combos, 85%+ recovery after injected wrong
+  actions, under 5 ms per action in-browser.
