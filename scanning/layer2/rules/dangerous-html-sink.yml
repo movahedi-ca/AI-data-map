@@ -1,0 +1,23 @@
+rules:
+  - id: dangerous-html-sink
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      contract_severity: high
+      category: security
+    message: >-
+      HTML sink with a non-constant argument. Prefer textContent, or build DOM
+      nodes; a dynamic value needs sanitizing first. Constant string literals
+      (including template literals without ${}) are not flagged.
+    patterns:
+      - pattern-either:
+          - pattern: $EL.innerHTML = $ARG
+          - pattern: $EL.insertAdjacentHTML($POS, $ARG)
+          - pattern: document.write($ARG)
+      # Flag only when the argument is NOT a pure string literal. A template
+      # literal counts as constant only when it has no ${} interpolation.
+      - metavariable-regex:
+          metavariable: $ARG
+          regex: >-
+            (?s)^(?!(\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:(?!\$\{)[^`\\]|\\.)*`)\s*)$).*$
