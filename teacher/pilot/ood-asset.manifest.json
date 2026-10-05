@@ -1,0 +1,148 @@
+{
+  "shard": "ood-asset",
+  "domain": "ood-asset-inventory",
+  "recipe_id": "pilot-ood-asset-01",
+  "recipe": {
+    "name": "Pilot OOD: IT asset inventory map (intake, MDM, leasing, decommissioned)",
+    "recipe_id": "pilot-ood-asset-01",
+    "schema_version": "1.0.0",
+    "items": [
+      {
+        "intent": "add_collection_point",
+        "params": {
+          "node_id": "n1",
+          "x": 70,
+          "y": 90,
+          "label": "Procurement intake"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n2",
+          "type": "system",
+          "x": 300,
+          "y": 80,
+          "label": "MDM asset database"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n3",
+          "type": "thirdparty",
+          "x": 540,
+          "y": 120,
+          "label": "Leasing vendor Northline"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n4",
+          "type": "destruction",
+          "x": 540,
+          "y": 300,
+          "label": "Decommissioned devices"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n5",
+          "type": "system",
+          "x": 300,
+          "y": 220,
+          "label": "Helpdesk ticket queue"
+        }
+      },
+      {
+        "intent": "add_node",
+        "params": {
+          "node_id": "n6",
+          "type": "system",
+          "x": 300,
+          "y": 240,
+          "label": "Helpdesk ticket queue (ITSM)"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n1",
+          "b": "n2",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n3",
+          "cat": "payment"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n2",
+          "b": "n6",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "connect",
+        "params": {
+          "a": "n6",
+          "b": "n4",
+          "cat": "contact"
+        }
+      },
+      {
+        "intent": "set_retention",
+        "params": {
+          "node_id": "n2",
+          "record_type": "Capital asset acquisition records",
+          "range_min_years": 6,
+          "range_max_years": 7,
+          "statute": "Income Tax Act, R.S.C., 1985, c. 1 (5th Supp.), s. 230(4)(b)",
+          "as_of": "2026-09-15"
+        }
+      },
+      {
+        "intent": "set_retention",
+        "params": {
+          "node_id": "n6",
+          "record_type": "IT support ticket records",
+          "range_min_years": 2,
+          "range_max_years": 3,
+          "statute": "Limitation Act, 2002, S.O. 2002, c. 24, Sched. B, s. 5",
+          "as_of": "2026-09-15"
+        }
+      },
+      {
+        "intent": "set_retention",
+        "params": {
+          "node_id": "n3",
+          "record_type": "Lease agreement records",
+          "range_min_years": 6,
+          "range_max_years": 7,
+          "statute": "Income Tax Act, R.S.C., 1985, c. 1 (5th Supp.), s. 230(4)(b)",
+          "as_of": "2026-09-15"
+        }
+      },
+      {
+        "intent": "run_check",
+        "params": {
+          "checks": [
+            "retention_cited"
+          ]
+        }
+      }
+    ]
+  },
+  "steps": 18,
+  "first_state_hash": "7458342a56680445d13fbcbd776972df18f7b41b3d17cd29fa9ba1b945a42df6",
+  "last_state_hash": "0f778f620ba63c5bfcbc14d684c40c828aea57a0c87fd8835beb731c5972eb21",
+  "created_utc": "2026-10-05T03:28:35.054Z"
+}
