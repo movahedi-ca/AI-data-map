@@ -1,0 +1,29 @@
+rules:
+  - id: exfiltration-sink
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      contract_severity: high
+      category: security
+    message: >-
+      Network exfiltration sink in first-party JS. The tool pages must issue
+      zero external requests (the trust UI depends on it). Allowed cases are
+      documented, not silent: web/executor/js/net-guard.js is the request
+      instrumenter itself (excluded below, covered by
+      tests/security/no-exfiltration.test.js); a same-origin vendored model
+      load carries an inline scan-allow; mcp/http-bridge.js is the optional
+      local bridge and is reported as info, not high.
+    paths:
+      exclude:
+        # The instrumenter wraps the primitives to COUNT cross-origin requests
+        # for the trust UI; it never originates one. Excluded here, asserted
+        # by tests/security/no-exfiltration.test.js instead.
+        - web/executor/js/net-guard.js
+    patterns:
+      - pattern-either:
+          - pattern: fetch(...)
+          - pattern: new XMLHttpRequest(...)
+          - pattern: new WebSocket(...)
+          - pattern: navigator.sendBeacon(...)
+          - pattern: new EventSource(...)
