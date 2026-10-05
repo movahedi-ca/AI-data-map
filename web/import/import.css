@@ -1,0 +1,181 @@
+/* import.css — styles for the Phase 1 spreadsheet import panel.
+   Class prefix: imp-. Reuses the guide's .btn, .btn.secondary, .field,
+   .sim-head classes; everything else is scoped here. */
+
+.builder-import {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #d8d2c2;
+}
+
+.builder-import .imp-lede {
+  margin: 0.5rem 0;
+  max-width: 60ch;
+}
+
+.builder-import .imp-note {
+  font-size: 0.85rem;
+  color: #5b564a;
+  margin: 0.35rem 0;
+  max-width: 70ch;
+}
+
+.builder-import h3 {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.builder-import h4 {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+/* Dropzone */
+.imp-drop {
+  display: block;
+  border: 2px dashed #a89f88;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  margin: 0.75rem 0;
+  background: #faf8f2;
+}
+
+.imp-drop.imp-over {
+  border-color: #0f172a;
+  background: #f1ede1;
+}
+
+.imp-drop-text {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.imp-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.imp-status {
+  min-height: 1.4em;
+  font-size: 0.9rem;
+}
+
+/* Step rows of buttons */
+.imp-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.builder-import .field {
+  margin: 0.5rem 0;
+  max-width: 34rem;
+}
+
+.builder-import .field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.builder-import .field select,
+.builder-import select {
+  max-width: 100%;
+}
+
+/* Mapping / review tables */
+.imp-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.9rem;
+}
+
+.imp-table th,
+.imp-table td {
+  border: 1px solid #d8d2c2;
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.imp-table th {
+  background: #efe9da;
+}
+
+.imp-table select {
+  max-width: 16rem;
+}
+
+.imp-map-sheet {
+  margin-bottom: 1rem;
+}
+
+/* Inline validation flags: never auto-fixed, always visible */
+.imp-flag td {
+  font-size: 0.85rem;
+}
+
+.imp-flag-error td {
+  background: #fbeae5;
+  border-left: 4px solid #b3401f;
+}
+
+.imp-flag-warning td {
+  background: #fdf6e3;
+  border-left: 4px solid #a8842c;
+}
+
+/* Suggestion badges: every inferred value is marked until confirmed */
+.imp-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  margin-left: 0.4rem;
+  white-space: nowrap;
+}
+
+.imp-badge-suggested {
+  background: #e8eefb;
+  color: #1e3a8a;
+  border: 1px dashed #1e3a8a;
+}
+
+.imp-badge-file {
+  background: #e9f5ec;
+  color: #1d5c2e;
+  border: 1px solid #1d5c2e;
+}
+
+.imp-skipped {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.imp-skipped li {
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 560px) {
+  .imp-table th,
+  .imp-table td {
+    padding: 0.3rem 0.35rem;
+    font-size: 0.82rem;
+  }
+  .imp-table select {
+    max-width: 10rem;
+  }
+}
