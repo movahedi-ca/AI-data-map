@@ -495,6 +495,18 @@
     reviewTitle.tabIndex = -1;
     reviewBox.appendChild(reviewTitle);
     reviewBox.appendChild(el("p", "s1-reviewintro", S.reviewIntro));
+    /* Progress toward the results screen: always visible so the reader
+       sees that confirming every item is what opens the map-first results. */
+    var progressLine = el("p", "s1-reviewprogress", "");
+    progressLine.setAttribute("role", "status");
+    reviewBox.appendChild(progressLine);
+    function updateProgress() {
+      var total = state.checklist.length;
+      var done = state.checklist.filter(function (r) { return r.status === "confirmed"; }).length;
+      progressLine.textContent = total
+        ? S.reviewProgress.replace("{done}", String(done)).replace("{total}", String(total))
+        : "";
+    }
     var reviewList = el("div", "s1-reviewlist");
     reviewBox.appendChild(reviewList);
 
@@ -621,6 +633,7 @@
         });
         reviewList.appendChild(section);
       });
+      updateProgress();
     }
 
     /* Re-render the whole review list after any mutation (add, remove,
@@ -644,6 +657,16 @@
       var row = null;
       state.checklist.forEach(function (r) { if (r.ref === ref) row = r; });
       return row && row._el ? row._el : null;
+    }
+
+    /* The live row for a ref: refreshReviewList rebuilds the checklist, so
+       handlers that mutate then confirm must re-resolve instead of using
+       a detached row object. */
+    function findRow(ref) {
+      for (var k = 0; k < state.checklist.length; k++) {
+        if (state.checklist[k].ref === ref) return state.checklist[k];
+      }
+      return null;
     }
 
     /* Add buttons live on the collection/system/thirdparty/flow group
@@ -747,7 +770,10 @@
           refreshReviewList();
           paintCanvas();
           logStep(Narr.correctionConfirm("relabel", { label: row.label }, lang), "s1-corrected");
-          confirmRow(row, i, null);
+          /* refreshReviewList rebuilt the cards: confirm the live row, not
+             the detached one, so the status updates on the visible card. */
+          var live = findRow(row.ref);
+          if (live) confirmRow(live, state.checklist.indexOf(live), null);
         });
         btnRow.appendChild(verifyBtn);
       }
@@ -756,9 +782,10 @@
       removeBtn.addEventListener("click", function () { openRemoveConfirm(item, row, i, removeBtn, btnRow); });
       btnRow.appendChild(removeBtn);
       item.appendChild(btnRow);
-      /* Confirmed cards keep their confirmed state across re-renders:
-         the action row stays hidden (chips remain changeable anytime). */
-      if (row.status === "confirmed") btnRow.hidden = true;
+      /* Confirmed cards keep every action (Confirm / Rename / Set up /
+         Remove): the row stays fully operable, only visually quieter, so
+         a confirmed item can always be corrected. */
+      if (row.status === "confirmed") btnRow.classList.add("s1-confirmed-actions");
       row._el = item;
       row._statusEl = status;
       row._btnRow = btnRow;
@@ -918,7 +945,8 @@
       row.status = "confirmed";
       row._statusEl.textContent = S.confirmed;
       row._statusEl.className = "s1-cardstatus confirmed";
-      row._btnRow.hidden = true;
+      row._btnRow.classList.add("s1-confirmed-actions");
+      updateProgress();
       maybeFinishReview();
     }
 
@@ -1068,9 +1096,20 @@
       editor.appendChild(errLine);
 
       function close(focusBack) {
+        if (closed) return;
+        closed = true;
+        document.removeEventListener("keydown", onDocKey);
         editor.remove();
         if (focusBack && typeof setupBtn.focus === "function") setupBtn.focus();
       }
+      /* Document-level Escape: closing must not depend on which control
+         inside the editor holds focus or on bubbling quirks in the host
+         page. Removed on every close path (save, cancel, Escape). */
+      function onDocKey(evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); close(true); }
+      }
+      var closed = false;
+      document.addEventListener("keydown", onDocKey);
       var save = el("button", "btn secondary s1-setupsave", S.save);
       save.type = "button";
       save.addEventListener("click", function () {
@@ -1117,9 +1156,6 @@
       btnRow.appendChild(save);
       btnRow.appendChild(cancel);
       editor.appendChild(btnRow);
-      editor.addEventListener("keydown", function (evt) {
-        if (evt.key === "Escape") { evt.preventDefault(); close(true); }
-      });
       item.appendChild(editor);
       var first = editor.querySelector("input, select, button");
       if (first) first.focus();
@@ -1512,12 +1548,42 @@
       panelTitle.focus();
     }
 
+    /* One-click wipe, confirmed inline. Native window.confirm is not used:
+       automation (and the managed browser QA) auto-dismisses native
+       dialogs, which silently aborted the wipe and left every node, card,
+       and meta field in place. The inline confirm works the same for a
+       human and for automation. */
     function wipe() {
-      if (!window.confirm(S.wipeConfirm)) return;
-      teardownToIntake();
-      statusLine.textContent = S.wipeDone;
-      panelTitle.focus();
-      try { refreshNet(); } catch (e) { /* counter reset is best-effort */ }
+      if (dlRow.parentNode.querySelector(".s1-wipebox")) return;
+      dlRow.hidden = true;
+      var box = el("div", "s1-wipebox");
+      box.setAttribute("role", "group");
+      box.setAttribute("aria-label", S.wipe);
+      box.appendChild(el("span", "s1-wipeask", S.wipeAsk));
+      var yes = el("button", "btn secondary s1-wipeyes", S.wipeYes);
+      yes.type = "button";
+      var keep = el("button", "btn secondary s1-wipekeep", S.wipeKeep);
+      keep.type = "button";
+      function closeBox(restoreFocus) {
+        box.remove();
+        dlRow.hidden = false;
+        if (restoreFocus && typeof wipeBtn.focus === "function") wipeBtn.focus();
+      }
+      yes.addEventListener("click", function () {
+        closeBox(false);
+        teardownToIntake();
+        statusLine.textContent = S.wipeDone;
+        panelTitle.focus();
+        try { refreshNet(); } catch (e) { /* counter reset is best-effort */ }
+      });
+      keep.addEventListener("click", function () { closeBox(true); });
+      box.appendChild(yes);
+      box.appendChild(keep);
+      box.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") { evt.preventDefault(); closeBox(true); }
+      });
+      dlRow.parentNode.insertBefore(box, dlRow.nextSibling);
+      yes.focus();
     }
 
     /* The conversational panel authors the recipe and narrates the run;
@@ -1559,6 +1625,15 @@
     } else {
       modeLabels[1].hidden = true;
     }
+
+    /* The step-5 builder's "Wipe canvas" button calls this after clearing
+       its own nodes: the whole assistant session (review cards, executor
+       state including meta, panels) dies with the canvas, so a later
+       review action cannot repaint the cleared map from stale state. */
+    root.__s1ExternalWipe = function () {
+      teardownToIntake();
+      try { refreshNet(); } catch (e) { /* counter reset is best-effort */ }
+    };
 
     return handle;
   }
