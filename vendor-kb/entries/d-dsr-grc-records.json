@@ -239,9 +239,9 @@
     "categories": [
       "grc"
     ],
-    "description": "IBM OpenPages is an AI-driven governance, risk and compliance platform from IBM, headquartered in Armonk, New York. It centralizes risk management functions with modules for operational risk, regulatory compliance, IT governance, internal audit, policy management, data privacy and model risk.",
-    "website": "https://www.ibm.com",
-    "headquarters": "Armonk, United States",
+    "description": "IBM OpenPages is an AI-driven governance, risk and compliance platform from IBM. OpenPages was founded in Waltham, Massachusetts and acquired by IBM in 2010. It centralizes risk management functions with modules for operational risk, regulatory compliance, IT governance, internal audit, policy management, data privacy and model risk.",
+    "website": "https://www.ibm.com/openpages",
+    "headquarters": "Waltham, United States (brand origin; IBM corporate HQ in Armonk)",
     "data_residency": "unverified",
     "mapping_features": [
       "AI-driven GRC suite covering operational risk, regulatory compliance, IT governance and model risk.",
@@ -269,7 +269,7 @@
     ],
     "verification": {
       "status": "verified",
-      "checked_utc": "2026-10-05T03:30:00Z"
+      "checked_utc": "2026-10-05T03:40:00Z"
     }
   },
   {
@@ -278,9 +278,9 @@
     "categories": [
       "records_retention"
     ],
-    "description": "FileTrail provides information governance and records management software for law firms and regulated industries, headquartered in Austin, Texas after moving from San Jose in 2020. Its FileTrail GPS suite includes Policy Manager, Records Manager and Matter Mobility Manager.",
+    "description": "FileTrail is an information governance and records management platform for law firms and regulated industries. The company moved its headquarters to Austin, Texas in 2020 and was acquired by Litera in July 2024, becoming FileTrail by Litera within Litera's GRC portfolio. Its FileTrail GPS suite includes Policy Manager, Records Manager and Matter Mobility Manager.",
     "website": "https://www.filetrail.com",
-    "headquarters": "Austin, United States",
+    "headquarters": "Austin, United States (at acquisition; brand now part of Litera)",
     "data_residency": "unverified",
     "mapping_features": [
       "Policy Manager implements retention policies, legal holds and outside counsel guidelines for documents and records.",
@@ -304,11 +304,16 @@
         "url": "https://www.legalsupportnetwork.co.uk/news/filetrail-announces-expansion-relocation-of-headquarters-to-austin-texas/",
         "consulted": "2026-10-05",
         "note": "announcement; Austin headquarters and GPS modules"
+      },
+      {
+        "url": "https://legaltechnology.com/litera-acquires-filetrail-to-expand-information-governance-capabilities/",
+        "consulted": "2026-10-05",
+        "note": "Legal IT Insider: Litera acquired FileTrail on 29 July 2024; filetrail.com now redirects to Litera"
       }
     ],
     "verification": {
       "status": "verified",
-      "checked_utc": "2026-10-05T03:30:00Z"
+      "checked_utc": "2026-10-05T03:40:00Z"
     }
   },
   {
