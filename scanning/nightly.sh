@@ -14,11 +14,14 @@ echo "nightly deep scan $TS"
 run_layer() {
   local n="$1"
   local out="$REPORT_DIR/layer$n.json"
-  if [ -x "$ROOT/scanning/layer$n/run.sh" ]; then
-    SCAN_OUT="$out" bash "$ROOT/scanning/layer$n/run.sh" > "$REPORT_DIR/layer$n.log" 2>&1
+  local runner="$ROOT/scanning/layer$n/run.sh"
+  if [ -f "$runner" ]; then
+    # Invoked via bash explicitly: never depend on the executable bit, which
+    # the GitHub Contents API does not preserve on commit.
+    SCAN_OUT="$out" bash "$runner" > "$REPORT_DIR/layer$n.log" 2>&1
     echo "layer$n exit=$? findings=$(node -e "console.log((require('$out').findings||[]).length)" 2>/dev/null || echo '?')"
   else
-    echo "layer$n MISSING: scanning/layer$n/run.sh not found or not executable"
+    echo "layer$n MISSING: $runner not found"
   fi
 }
 
