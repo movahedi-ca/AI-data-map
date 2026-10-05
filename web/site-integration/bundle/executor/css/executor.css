@@ -631,3 +631,14 @@
 .s1-root .s1-modedesc { color: #475569; font-size: 0.9rem; }
 .s1-root .s1-modenote { color: #b3401f; font-size: 0.9rem; margin: 0.25rem 0 0; min-height: 1.2em; }
 .s1-root .s1-chatslot { margin-top: 0.5rem; }
+
+/* Wipe-fix (2026-10-05): confirmed cards keep every action; the row just
+   sits quieter so it reads as done without losing operability. */
+.s1-root .s1-cardbtns.s1-confirmed-actions { opacity: 0.72; }
+.s1-root .s1-cardbtns.s1-confirmed-actions:hover,
+.s1-root .s1-cardbtns.s1-confirmed-actions:focus-within { opacity: 1; }
+/* Review progress toward the results screen. */
+.s1-root .s1-reviewprogress { font-size: 0.9rem; color: #475569; margin: 0.5rem 0 0; }
+/* Inline wipe confirm (replaces window.confirm). */
+.s1-root .s1-wipebox { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.75rem 0; }
+.s1-root .s1-wipeask { font-size: 0.92rem; }
