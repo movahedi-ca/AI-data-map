@@ -194,9 +194,12 @@ function isPastOrToday(s) {
   const parts = s.split("-").map(Number);
   if (d.getUTCFullYear() !== parts[0] || d.getUTCMonth() + 1 !== parts[1] || d.getUTCDate() !== parts[2])
     return false;
+  // Compare calendar dates, not instants: parsing at noon UTC while comparing
+  // against UTC midnight used to reject "today". Normalize both to UTC midnight.
+  const dUtc = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
   const today = new Date();
   const todayUtc = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
-  return d.getTime() <= todayUtc;
+  return dUtc <= todayUtc;
 }
 
 const SECTION_RE = /([Ss][Ss]?\.?\s*[0-9]+|[Aa][Rr][Tt]\.?\s*[0-9]+|[Aa][Rr][Tt][Ii][Cc][Ll][Ee]\s+[0-9]+|[Rr]\.?\s*[0-9]+(\.[0-9]+)*|§\s*[0-9]+)/;
