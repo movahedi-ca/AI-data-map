@@ -588,7 +588,10 @@
 .s1-root .s1-cardbtns .btn,
 .s1-root .s1-dlrow .btn,
 .s1-root .s1-cardeditor .btn,
+.s1-root .s1-confirmall,
 .s1-root .s1-viewopt { min-height: 44px; }
+/* Confirm all sits under the progress line; hidden while nothing is unconfirmed. */
+.s1-root .s1-confirmall { margin-top: 0.75rem; }
 
 /* Step-log stagger: 60ms fade-slide as nodes bloom. */
 .s1-root .s1-step {

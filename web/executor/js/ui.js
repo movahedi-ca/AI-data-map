@@ -500,12 +500,30 @@
     var progressLine = el("p", "s1-reviewprogress", "");
     progressLine.setAttribute("role", "status");
     reviewBox.appendChild(progressLine);
+    /* Confirm all: one tap confirms every visible unconfirmed card through
+       the same per-card path, so canvas/table/export stay consistent. The
+       last confirmRow triggers maybeFinishReview, which opens the results
+       screen and moves focus to its heading. */
+    var confirmAllBtn = el("button", "btn s1-confirmall", S.confirmAll);
+    confirmAllBtn.type = "button";
+    confirmAllBtn.addEventListener("click", function () {
+      state.checklist
+        .filter(function (r) { return r.status !== "confirmed" && r._el && !r._el.hidden; })
+        .forEach(function (r) { confirmRow(r, state.checklist.indexOf(r), null); });
+    });
+    reviewBox.appendChild(confirmAllBtn);
     function updateProgress() {
       var total = state.checklist.length;
       var done = state.checklist.filter(function (r) { return r.status === "confirmed"; }).length;
       progressLine.textContent = total
         ? S.reviewProgress.replace("{done}", String(done)).replace("{total}", String(total))
         : "";
+      /* Confirm all only makes sense while something is unconfirmed;
+         hidden cards (removed items) never count as pending. */
+      var pending = state.checklist.filter(function (r) {
+        return r.status !== "confirmed" && r._el && !r._el.hidden;
+      }).length;
+      confirmAllBtn.hidden = pending === 0;
     }
     var reviewList = el("div", "s1-reviewlist");
     reviewBox.appendChild(reviewList);
