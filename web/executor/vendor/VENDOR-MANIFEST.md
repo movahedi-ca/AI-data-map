@@ -7,8 +7,8 @@ Generated: 2026-10-05. onnxruntime-web version: **1.20.1** (MIT license, Microso
 
 | File | Source URL | Size (bytes) | SHA-256 | Requested by |
 |---|---|---|---|---|
-| `model.onnx` | https://huggingface.co/movahedi-ca/s1-workflow-tiny/resolve/main/model.onnx | 35378 | `f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62` | Phase 6 web loader (first fetch; SHA-256 verified in-browser before first use, mismatch refuses to run) |
-| `model.onnx.data` | https://huggingface.co/movahedi-ca/s1-workflow-tiny/resolve/main/model.onnx.data | 5570560 | `a2cdac628fedd2c98c2c304493a78ea2637fe8d20eb3149e271807a1e479ecad` | `model.onnx` (external data reference) |
+| `model.onnx` | https://huggingface.co/movahedi-ca/s1-workflow-tiny/resolve/main/model.onnx | 35378 | `cdec483f6b4525ddcd03900350a0cbec037a3fab4e1913a7d22804cdebc6a042` | Phase 6 web loader (first fetch; SHA-256 verified in-browser before first use, mismatch refuses to run) |
+| `model.onnx.data` | https://huggingface.co/movahedi-ca/s1-workflow-tiny/resolve/main/model.onnx.data | 5570560 | `b425a53ad54ce5be3b1a29bcee41c2738cbc5478d4245ad7d93c88ca6bd64541` | `model.onnx` (external data reference) |
 
 Both model hashes were verified EXACTLY against the pinned values before vendoring.
 

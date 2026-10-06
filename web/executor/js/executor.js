@@ -36,7 +36,7 @@
   }
 
   /* Pinned model identity (vendor/VENDOR-MANIFEST.md). Mismatch refuses to run. */
-  var MODEL_SHA256 = "f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62";
+  var MODEL_SHA256 = "cdec483f6b4525ddcd03900350a0cbec037a3fab4e1913a7d22804cdebc6a042";
   var ENCODING_VERSION = "1.0.0";
   var MAX_STEPS = 512;
 

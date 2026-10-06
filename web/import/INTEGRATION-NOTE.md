@@ -91,11 +91,11 @@ before first use; a hash mismatch refuses to run.
 Pinned artifact hashes (verify at Phase 7 deploy; re-pin if retrained):
 
 - `model.onnx`:
-  `f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62`
+  `cdec483f6b4525ddcd03900350a0cbec037a3fab4e1913a7d22804cdebc6a042`
 - `model.onnx.data` (external weights, keep next to model.onnx):
-  `a2cdac628fedd2c98c2c304493a78ea2637fe8d20eb3149e271807a1e479ecad`
+  `b425a53ad54ce5be3b1a29bcee41c2738cbc5478d4245ad7d93c88ca6bd64541`
 - `checkpoint.pt` (PyTorch training checkpoint, not shipped):
-  `f54b8a2b430519fa1f5c7642c89a5aca406fbc037ba19855450b20b0886459dc`
+  `e0af643cb2bec0181c70b4ce2fbaac7c98b106aff72035940ac19d04d917c6bd`
 
 Eval gates at train time (see `training/eval.py`; report in the HF repo as
 `eval-report.json`): in-domain 0.9561 (gate 0.85), out-of-domain 0.9420

@@ -40,8 +40,8 @@ onnxruntime-web 1.20.1 (MIT, Microsoft). Source: npm package onnxruntime-web@1.2
 | ort.min.js | be6e560b64c03c99252eedc0e1989e9e51e44d9f191e7655c9bf011bf9f576c8 |
 | ort-wasm-simd-threaded.mjs | 745eb7c0ce6f18a6aa521971b2877babc7ffb27eecb58ab3bc6e5ef4692672e8 |
 | ort-wasm-simd-threaded.wasm | 207d02be4591c156b0a98f024f3d58005b5b04c92274d759fb390338c63559ea |
-| model.onnx | f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62 |
-| model.onnx.data | a2cdac628fedd2c98c2c304493a78ea2637fe8d20eb3149e271807a1e479ecad |
+| model.onnx | cdec483f6b4525ddcd03900350a0cbec037a3fab4e1913a7d22804cdebc6a042 |
+| model.onnx.data | b425a53ad54ce5be3b1a29bcee41c2738cbc5478d4245ad7d93c88ca6bd64541 |
 
 The WebGPU backend bundle (ort.webgpu.bundle.min.mjs and its sidecars) is NOT vendored. The executor runs the WASM SIMD-threaded path, which requires COOP/COEP headers for SharedArrayBuffer on the host page. If the headers are absent the threaded wasm path fails; this is a functionality issue, not a data one.
 

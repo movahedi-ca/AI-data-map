@@ -79,9 +79,9 @@ The browser refuses to run the model on a hash mismatch
 anyway; a mismatch here means the bundle copy is corrupt or stale.
 
 - `s1/executor/vendor/model/model.onnx`:
-  `f5f15612c294b37955d416aafdfccd127361ee2bddc509d3c6ea3eefdbe1de62`
+  `cdec483f6b4525ddcd03900350a0cbec037a3fab4e1913a7d22804cdebc6a042`
 - `s1/executor/vendor/model/model.onnx.data`:
-  `a2cdac628fedd2c98c2c304493a78ea2637fe8d20eb3149e271807a1e479ecad`
+  `b425a53ad54ce5be3b1a29bcee41c2738cbc5478d4245ad7d93c88ca6bd64541`
 - `s1/executor/vendor/ort/ort.min.js`:
   `be6e560b64c03c99252eedc0e1989e9e51e44d9f191e7655c9bf011bf9f576c8`
 - `s1/executor/vendor/ort/ort-wasm-simd-threaded.mjs`:
