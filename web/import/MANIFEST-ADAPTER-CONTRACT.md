@@ -184,3 +184,17 @@ These choices are inside this contract and are what G-MANIFEST approves:
 4. One visitor-chosen category for all edges (C-6). The manifest carries no category; per-edge invention is not allowed, and per-edge confirmation of dozens of edges is not usable.
 5. Fail-closed release tie (T-6). No verified tie, no render.
 6. Whole-file rejection on every limit (section 5). No truncation, no partial render, matching exporter failure behaviour.
+
+## 14. Related system documentation
+
+- dbt repository backend documentation: `docs/BACKEND.md` in the
+  `movahedi-ca/dbt-privacy-inventory` repository. It records the system
+  map, file map, invariants, and change protocol for the nightly build
+  and release system that publishes the releases this contract ties to.
+- Site backend documentation: `docs/dbt-backend.md` in the
+  `movahedi-ca/movahedi-ca` repository. It records the site side of the
+  same release system.
+- Editors of this contract must read those documents before changing
+  the release tie, the projection, or the public graph format. A change
+  on either side must keep the shared invariants in section 8 and
+  section 9 of this contract consistent with the dbt system documents.
