@@ -7,6 +7,9 @@
  * this worker posts back one of:
  *   { ok: true, format: "xlsx"|"xls-binary"|"spreadsheetml"|"csv",
  *     sheets: [{ name: string, rows: string[][] }] }
+ *   { ok: true, format: "manifest", manifest: <adapter summary> }
+ *     (dbt manifest adapter, MANIFEST-ADAPTER-CONTRACT.md; the summary
+ *     carries the Stage A projection, never the raw manifest)
  *   { ok: false, error: "<plain-language message>" }
  *
  * sheets rows are RAW rows including the header row. Header detection and
@@ -21,7 +24,7 @@
  * clean (no new script-src host, ever).
  */
 
-importScripts("../vendor/xlsx.full.min.js", "parse-core.js");
+importScripts("../vendor/xlsx.full.min.js", "manifest-core.js", "parse-core.js");
 
 self.onmessage = function (e) {
   var data = (e && e.data) || {};

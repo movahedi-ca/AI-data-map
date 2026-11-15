@@ -34,9 +34,9 @@
 
       <div id="imp-step-file">
         <label class="imp-drop" id="imp-drop">
-          <span class="imp-drop-text">Drop your .xlsx, .xls, or .csv file here, or</span>
+          <span class="imp-drop-text">Drop your .xlsx, .xls, or .csv file here, or a dbt manifest .json file, or</span>
           <span class="btn secondary" aria-hidden="true">Choose a file</span>
-          <input type="file" id="imp-file" class="imp-visually-hidden" accept=".xlsx,.xls,.csv" aria-label="Choose a spreadsheet file to import">
+          <input type="file" id="imp-file" class="imp-visually-hidden" accept=".xlsx,.xls,.csv,.json" aria-label="Choose a spreadsheet file or a dbt manifest to import">
         </label>
         <p class="imp-status" id="imp-status" role="status"></p>
       </div>
@@ -152,6 +152,8 @@ window.T = {
 </script>
 <script src="../import/engine/engine-bundle.js"></script>
 <script src="../import/worker/worker-client.js"></script>
+<script src="../import/worker/manifest-core.js"></script>
+<script src="../import/manifest-tie.js"></script>
 <script src="../import/vendor/xlsx.full.min.js"></script>
 <script src="canvas.js"></script>
 <script src="../import/import.js"></script>

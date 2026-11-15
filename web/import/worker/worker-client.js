@@ -3,6 +3,10 @@
  * Main-thread wrapper for import-worker.js.
  *
  *   ImportClient.parseFile(file, workerScriptUrl) -> Promise<sheets>
+ *     Spreadsheet files resolve to the sheets array, as before. A dbt
+ *     manifest file resolves to { format: "manifest", manifest } (the
+ *     adapter summary from manifest-core.js). Rejections are Errors
+ *     with a .code when the worker reported a contract error code.
  *
  * Spawns the worker, transfers the file's ArrayBuffer to it, and terminates
  * the worker as soon as the result (or an error) comes back. Rejections
@@ -63,9 +67,15 @@
         cleanup();
         var d = (e && e.data) || {};
         if (d.ok) {
-          resolve(d.sheets);
+          if (d.format === "manifest") {
+            resolve({ format: "manifest", manifest: d.manifest });
+          } else {
+            resolve(d.sheets);
+          }
         } else {
-          reject(new Error(d.error || "We could not read this file."));
+          var err = new Error(d.error || "We could not read this file.");
+          if (d.code) err.code = d.code;
+          reject(err);
         }
       };
 

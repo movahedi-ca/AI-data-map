@@ -7,11 +7,20 @@
  * Exports:
  *   parseCSV(text)                        -> string[][]
  *   detectFormat(filename, headBytes)     -> "xlsx" | "xls-binary" |
- *                                            "spreadsheetml" | "csv" | "unknown"
+ *                                            "spreadsheetml" | "csv" |
+ *                                            "json" | "unknown"
  *   sheetsFromWorkbook(XLSX, wb)          -> [{ name, rows: string[][] }]
  *   readWorkbook(XLSX, buffer, format, sheetName) -> SheetJS workbook object
  *   parseFileBuffer(XLSX, buffer, filename) -> { ok: true, format, sheets } |
+ *                                              { ok: true, format: "manifest",
+ *                                                manifest } |
  *                                              { ok: false, error }
+ *
+ * The "json" branch is the dbt manifest adapter (MANIFEST-ADAPTER-
+ * CONTRACT.md rules D-1 to D-3): a .json file is handed to ManifestCore
+ * (manifest-core.js, loaded before this file in the worker), which owns
+ * manifest validation and projection. Spreadsheet detection and
+ * behaviour are unchanged; spreadsheet files never enter that branch.
  *
  * Contract with the engine worker: sheets arrive as [{ name, rows }] where
  * rows are RAW string rows including the header row. Header detection and
@@ -203,6 +212,11 @@
       if (ole) return "xls-binary";
     }
 
+    // Manifest adapter (contract D-1): a .json file enters the manifest
+    // branch. Content checks in manifest-core decide whether it really
+    // is a manifest; the extension alone never proves it (rule A-2).
+    if (ext === ".json") return "json";
+
     // Extension is only a tiebreaker: CSV has no magic bytes, so a .csv
     // extension is the only way to claim CSV for otherwise plain text.
     if (ext === ".csv") return "csv";
@@ -278,6 +292,18 @@
     var format = detectFormat(filename, head);
     if (format === "unknown") {
       return { ok: false, error: ERR_UNKNOWN };
+    }
+    if (format === "json") {
+      // dbt manifest branch (contract section 4). ManifestCore is a
+      // sibling module: a global in the worker, an injected global in
+      // Node tests. Its results already carry plain-language errors
+      // plus the contract error code.
+      var MC = typeof ManifestCore !== "undefined" ? ManifestCore
+        : (typeof globalThis !== "undefined" ? globalThis.ManifestCore : null);
+      if (!MC || typeof MC.parseManifestBuffer !== "function") {
+        return { ok: false, error: ERR_READ };
+      }
+      return MC.parseManifestBuffer(buffer, filename);
     }
     var wb;
     try {

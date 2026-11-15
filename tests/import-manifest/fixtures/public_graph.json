@@ -1,0 +1,687 @@
+{
+  "counts": {
+    "edges": 55,
+    "nodes": 45
+  },
+  "edges": [
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "model.dbt_privacy_inventory.int_demo_risk_flags"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "model.dbt_privacy_inventory.mart_demo_ropa"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "model.dbt_privacy_inventory.mart_demo_vendor_risk"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "test.dbt_privacy_inventory.not_null_int_demo_activity_links_activity_id.007edb1fbc"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "to": "test.dbt_privacy_inventory.unique_int_demo_activity_links_activity_id.86ebc1d7d7"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_risk_flags",
+      "to": "model.dbt_privacy_inventory.mart_demo_ropa"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_risk_flags",
+      "to": "test.dbt_privacy_inventory.accepted_values_int_demo_risk_flags_risk_flag__none__vendor_high_risk__restricted_data__unresolved_reference.2aad7f7ee7"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_risk_flags",
+      "to": "test.dbt_privacy_inventory.not_null_int_demo_risk_flags_activity_id.0efd5770fe"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.int_demo_risk_flags",
+      "to": "test.dbt_privacy_inventory.unique_int_demo_risk_flags_activity_id.2f887c13ac"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_activity_id.0ea1551941"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_asset_id.bd91b28a98"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_purpose.0bddae256c"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_retention_rule_id.7dc0a5499c"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.ropa_has_no_unresolved_references"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.ropa_row_count_matches_activities"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "to": "test.dbt_privacy_inventory.unique_mart_demo_ropa_activity_id.e2781fe317"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_vendor_risk",
+      "to": "test.dbt_privacy_inventory.not_null_mart_demo_vendor_risk_vendor_id.8a8e13f79b"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.mart_demo_vendor_risk",
+      "to": "test.dbt_privacy_inventory.unique_mart_demo_vendor_risk_vendor_id.03859b1560"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "model.dbt_privacy_inventory.int_demo_activity_links"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.accepted_values_stg_demo_activities_status__active__paused__retired.34dabb73ae"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_activities_activity_id.4a5e0848f9"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_activities_asset_id.4f90202d3e"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_activities_purpose.52fdd56196"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_activities_retention_rule_id.cbef00072d"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_asset_id__asset_id__ref_stg_demo_assets_.d67a230b37"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_retention_rule_id__rule_id__ref_stg_demo_retention_.63f73a3b15"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_vendor_id__vendor_id__ref_stg_demo_vendors_.f180de5f72"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.ropa_row_count_matches_activities"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_activities",
+      "to": "test.dbt_privacy_inventory.unique_stg_demo_activities_activity_id.efa930605c"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "model.dbt_privacy_inventory.int_demo_activity_links"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "test.dbt_privacy_inventory.accepted_values_stg_demo_assets_classification__public__internal__confidential__restricted.aee77e8eec"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_assets_asset_id.36b77d4405"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_asset_id__asset_id__ref_stg_demo_assets_.d67a230b37"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_assets",
+      "to": "test.dbt_privacy_inventory.unique_stg_demo_assets_asset_id.853d5db9d5"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "model.dbt_privacy_inventory.int_demo_activity_links"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "test.dbt_privacy_inventory.accepted_values_stg_demo_retention_period_unit__days__months__years.e2ae60ef8e"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_retention_rule_id.404717a47c"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_retention_rule_id__rule_id__ref_stg_demo_retention_.63f73a3b15"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_retention",
+      "to": "test.dbt_privacy_inventory.unique_stg_demo_retention_rule_id.1577ae408e"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "model.dbt_privacy_inventory.int_demo_activity_links"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "model.dbt_privacy_inventory.mart_demo_inventory_summary"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "model.dbt_privacy_inventory.mart_demo_vendor_risk"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "test.dbt_privacy_inventory.accepted_values_stg_demo_vendors_risk_tier__low__medium__high.7381b89126"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "test.dbt_privacy_inventory.not_null_stg_demo_vendors_vendor_id.fff635df47"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "test.dbt_privacy_inventory.relationships_stg_demo_activities_vendor_id__vendor_id__ref_stg_demo_vendors_.f180de5f72"
+    },
+    {
+      "from": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "to": "test.dbt_privacy_inventory.unique_stg_demo_vendors_vendor_id.ab6b7a6d20"
+    },
+    {
+      "from": "seed.dbt_privacy_inventory.assets",
+      "to": "model.dbt_privacy_inventory.stg_demo_assets"
+    },
+    {
+      "from": "seed.dbt_privacy_inventory.processing_activities",
+      "to": "model.dbt_privacy_inventory.stg_demo_activities"
+    },
+    {
+      "from": "seed.dbt_privacy_inventory.retention_rules",
+      "to": "model.dbt_privacy_inventory.stg_demo_retention"
+    },
+    {
+      "from": "seed.dbt_privacy_inventory.vendors",
+      "to": "model.dbt_privacy_inventory.stg_demo_vendors"
+    }
+  ],
+  "nodes": [
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities",
+        "model.dbt_privacy_inventory.stg_demo_assets",
+        "model.dbt_privacy_inventory.stg_demo_retention",
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "Derived activity-to-asset/vendor dependencies. Left joins keep unresolved references visible.",
+      "id": "model.dbt_privacy_inventory.int_demo_activity_links",
+      "name": "int_demo_activity_links",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links"
+      ],
+      "description": "Explicit, explainable demo risk rules. Deterministic, not inferred.",
+      "id": "model.dbt_privacy_inventory.int_demo_risk_flags",
+      "name": "int_demo_risk_flags",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links",
+        "model.dbt_privacy_inventory.mart_demo_ropa",
+        "model.dbt_privacy_inventory.stg_demo_activities",
+        "model.dbt_privacy_inventory.stg_demo_assets",
+        "model.dbt_privacy_inventory.stg_demo_retention",
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "Counts and public demo QA. Counts reconcile to upstream.",
+      "id": "model.dbt_privacy_inventory.mart_demo_inventory_summary",
+      "name": "mart_demo_inventory_summary",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links",
+        "model.dbt_privacy_inventory.int_demo_risk_flags"
+      ],
+      "description": "One fictional ROPA-like report for the article. Teaching example, not a statutory ROPA.",
+      "id": "model.dbt_privacy_inventory.mart_demo_ropa",
+      "name": "mart_demo_ropa",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links",
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "Synthetic vendor risk examples.",
+      "id": "model.dbt_privacy_inventory.mart_demo_vendor_risk",
+      "name": "mart_demo_vendor_risk",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "seed.dbt_privacy_inventory.processing_activities"
+      ],
+      "description": "Fictional processing activities used for lineage demonstration.",
+      "id": "model.dbt_privacy_inventory.stg_demo_activities",
+      "name": "stg_demo_activities",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "seed.dbt_privacy_inventory.assets"
+      ],
+      "description": "Fictional asset inventory records; not real organizations or persons.",
+      "id": "model.dbt_privacy_inventory.stg_demo_assets",
+      "name": "stg_demo_assets",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "seed.dbt_privacy_inventory.retention_rules"
+      ],
+      "description": "Fictional retention policy references.",
+      "id": "model.dbt_privacy_inventory.stg_demo_retention",
+      "name": "stg_demo_retention",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [
+        "seed.dbt_privacy_inventory.vendors"
+      ],
+      "description": "Fictional processors and risk flags.",
+      "id": "model.dbt_privacy_inventory.stg_demo_vendors",
+      "name": "stg_demo_vendors",
+      "tags": [],
+      "type": "model"
+    },
+    {
+      "depends_on": [],
+      "description": "",
+      "id": "seed.dbt_privacy_inventory.assets",
+      "name": "assets",
+      "tags": [],
+      "type": "seed"
+    },
+    {
+      "depends_on": [],
+      "description": "",
+      "id": "seed.dbt_privacy_inventory.processing_activities",
+      "name": "processing_activities",
+      "tags": [],
+      "type": "seed"
+    },
+    {
+      "depends_on": [],
+      "description": "",
+      "id": "seed.dbt_privacy_inventory.retention_rules",
+      "name": "retention_rules",
+      "tags": [],
+      "type": "seed"
+    },
+    {
+      "depends_on": [],
+      "description": "",
+      "id": "seed.dbt_privacy_inventory.vendors",
+      "name": "vendors",
+      "tags": [],
+      "type": "seed"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_risk_flags"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.accepted_values_int_demo_risk_flags_risk_flag__none__vendor_high_risk__restricted_data__unresolved_reference.2aad7f7ee7",
+      "name": "accepted_values_int_demo_risk_flags_risk_flag__none__vendor_high_risk__restricted_data__unresolved_reference",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.accepted_values_stg_demo_activities_status__active__paused__retired.34dabb73ae",
+      "name": "accepted_values_stg_demo_activities_status__active__paused__retired",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_assets"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.accepted_values_stg_demo_assets_classification__public__internal__confidential__restricted.aee77e8eec",
+      "name": "accepted_values_stg_demo_assets_classification__public__internal__confidential__restricted",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_retention"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.accepted_values_stg_demo_retention_period_unit__days__months__years.e2ae60ef8e",
+      "name": "accepted_values_stg_demo_retention_period_unit__days__months__years",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.accepted_values_stg_demo_vendors_risk_tier__low__medium__high.7381b89126",
+      "name": "accepted_values_stg_demo_vendors_risk_tier__low__medium__high",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_int_demo_activity_links_activity_id.007edb1fbc",
+      "name": "not_null_int_demo_activity_links_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_risk_flags"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_int_demo_risk_flags_activity_id.0efd5770fe",
+      "name": "not_null_int_demo_risk_flags_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_activity_id.0ea1551941",
+      "name": "not_null_mart_demo_ropa_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_asset_id.bd91b28a98",
+      "name": "not_null_mart_demo_ropa_asset_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_purpose.0bddae256c",
+      "name": "not_null_mart_demo_ropa_purpose",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_mart_demo_ropa_retention_rule_id.7dc0a5499c",
+      "name": "not_null_mart_demo_ropa_retention_rule_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_vendor_risk"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_mart_demo_vendor_risk_vendor_id.8a8e13f79b",
+      "name": "not_null_mart_demo_vendor_risk_vendor_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_activities_activity_id.4a5e0848f9",
+      "name": "not_null_stg_demo_activities_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_activities_asset_id.4f90202d3e",
+      "name": "not_null_stg_demo_activities_asset_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_activities_purpose.52fdd56196",
+      "name": "not_null_stg_demo_activities_purpose",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_activities_retention_rule_id.cbef00072d",
+      "name": "not_null_stg_demo_activities_retention_rule_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_assets"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_assets_asset_id.36b77d4405",
+      "name": "not_null_stg_demo_assets_asset_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_retention"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_retention_rule_id.404717a47c",
+      "name": "not_null_stg_demo_retention_rule_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.not_null_stg_demo_vendors_vendor_id.fff635df47",
+      "name": "not_null_stg_demo_vendors_vendor_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities",
+        "model.dbt_privacy_inventory.stg_demo_assets"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.relationships_stg_demo_activities_asset_id__asset_id__ref_stg_demo_assets_.d67a230b37",
+      "name": "relationships_stg_demo_activities_asset_id__asset_id__ref_stg_demo_assets_",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities",
+        "model.dbt_privacy_inventory.stg_demo_retention"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.relationships_stg_demo_activities_retention_rule_id__rule_id__ref_stg_demo_retention_.63f73a3b15",
+      "name": "relationships_stg_demo_activities_retention_rule_id__rule_id__ref_stg_demo_retention_",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities",
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.relationships_stg_demo_activities_vendor_id__vendor_id__ref_stg_demo_vendors_.f180de5f72",
+      "name": "relationships_stg_demo_activities_vendor_id__vendor_id__ref_stg_demo_vendors_",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.ropa_has_no_unresolved_references",
+      "name": "ropa_has_no_unresolved_references",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa",
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.ropa_row_count_matches_activities",
+      "name": "ropa_row_count_matches_activities",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_activity_links"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_int_demo_activity_links_activity_id.86ebc1d7d7",
+      "name": "unique_int_demo_activity_links_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.int_demo_risk_flags"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_int_demo_risk_flags_activity_id.2f887c13ac",
+      "name": "unique_int_demo_risk_flags_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_ropa"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_mart_demo_ropa_activity_id.e2781fe317",
+      "name": "unique_mart_demo_ropa_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.mart_demo_vendor_risk"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_mart_demo_vendor_risk_vendor_id.03859b1560",
+      "name": "unique_mart_demo_vendor_risk_vendor_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_activities"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_stg_demo_activities_activity_id.efa930605c",
+      "name": "unique_stg_demo_activities_activity_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_assets"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_stg_demo_assets_asset_id.853d5db9d5",
+      "name": "unique_stg_demo_assets_asset_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_retention"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_stg_demo_retention_rule_id.1577ae408e",
+      "name": "unique_stg_demo_retention_rule_id",
+      "tags": [],
+      "type": "test"
+    },
+    {
+      "depends_on": [
+        "model.dbt_privacy_inventory.stg_demo_vendors"
+      ],
+      "description": "",
+      "id": "test.dbt_privacy_inventory.unique_stg_demo_vendors_vendor_id.ab6b7a6d20",
+      "name": "unique_stg_demo_vendors_vendor_id",
+      "tags": [],
+      "type": "test"
+    }
+  ],
+  "schema": "public_graph/v1"
+}

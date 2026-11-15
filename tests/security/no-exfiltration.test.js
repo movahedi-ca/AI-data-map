@@ -8,13 +8,20 @@
  *     site-integration/bundle is a byte-identical deploy copy, so it is
  *     deduplicated, not double-counted). The vendor/ directories are excluded.
  *     Assert zero request primitives (fetch(, XMLHttpRequest, WebSocket(,
- *     EventSource(, navigator.sendBeacon) except two documented cases:
+ *     EventSource(, navigator.sendBeacon) except three documented cases:
  *       - executor/js/net-guard.js: the instrumenter itself, which wraps
  *         the primitives to COUNT cross-origin requests for the trust UI.
  *       - executor/js/executor.js: one same-origin fetch of the vendored
  *         ONNX model, sha256-verified in-browser before use, with
  *         { credentials: "same-origin" }. Same-origin asset loads are
  *         page loads, not exfiltration.
+ *       - import/manifest-tie.js: the dbt manifest adapter release tie
+ *         (MANIFEST-ADAPTER-CONTRACT.md section 9, privacy rules V-2 and
+ *         V-3). Exactly one fetch call site, GET only, no body, fixed
+ *         movahedi.ca releases base, paths naming only a validated
+ *         release ID. These are public release records; no file content,
+ *         manifest field, projection, or hash is ever sent. The strict
+ *         shape is asserted below, like the executor.js case.
  *  B. Runtime: install net-guard's instrumentation over a recording fetch
  *     stub, exercise every pure first-party module (tokenizer, utils,
  *     templates, narration, review, i18n, exporter, import parse-core,
@@ -101,6 +108,24 @@ function main() {
         ok(/SCRIPT_BASE[\s\S]{0,400}document\.currentScript/.test(f.src),
           f.rel + ": SCRIPT_BASE must derive from the script's own URL");
         continue;
+      }
+      if (/(^|\/)manifest-tie\.js$/.test(f.rel)) {
+        /* Documented release-tie exception (contract V-3): only the
+           fetch( sink is allowed, in exactly the asserted shape. Every
+           other sink in this file is still a finding. */
+        if (s.name === "fetch(") {
+          eq(hits.length, 1, f.rel + ": exactly one fetch call site expected, got " + hits.length);
+          ok(/RELEASES_BASE\s*=\s*"https:\/\/movahedi\.ca\/dbt\/releases\/"/.test(f.src),
+            f.rel + ": the fetch base must be the fixed movahedi.ca releases base");
+          ok(/fetch\(url,\s*\{\s*method:\s*"GET"\s*\}\)/.test(f.src),
+            f.rel + ": the single fetch must be a bare GET with no options beyond the method");
+          ok(!/\bbody\s*:/.test(f.src), f.rel + ": the tie must never send a request body");
+          ok(/"index\.json"/.test(f.src) && /"current\.json"/.test(f.src) && /"\/release\.json"/.test(f.src),
+            f.rel + ": only the three public release records may be named");
+          ok(/RELEASE_ID_RE\s*=\s*\/\^rel-/.test(f.src),
+            f.rel + ": the release ID must be validated before it enters a URL path");
+          continue;
+        }
       }
       findings.push(f.rel + ": " + s.name + " x" + hits.length);
     }
